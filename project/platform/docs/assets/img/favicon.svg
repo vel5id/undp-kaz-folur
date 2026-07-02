@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" role="img" aria-label="FOLUR">
+  <!-- Favicon: тот же росток в фирменном зелёном на тёплом фоне. -->
+  <rect width="40" height="40" rx="9" fill="#1B5E3A"/>
+  <path d="M20 31 V16" stroke="#FAF9F6" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M20 21 C20 14 14 12 9 12 C9 18 13 22 20 22 Z" fill="#FAF9F6"/>
+  <path d="M20 18 C20 12 25 9.5 30 10 C29.5 15.5 26 19 20 19 Z" fill="#D4A24E"/>
+</svg>

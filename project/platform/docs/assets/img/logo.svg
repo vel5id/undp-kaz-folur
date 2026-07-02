@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" role="img" aria-label="FOLUR">
+  <!-- Знак платформы FOLUR: росток над линией горизонта степи (земля·вода·рост). Белый — для тёмной шапки. -->
+  <path d="M6 30 H34" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+  <path d="M20 30 V16" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M20 20 C20 13 14 11 9 11 C9 17 13 21 20 21 Z" fill="#FFFFFF"/>
+  <path d="M20 17 C20 11 25 8.5 30 9 C29.5 14.5 26 18 20 18 Z" fill="#E8C886"/>
+</svg>

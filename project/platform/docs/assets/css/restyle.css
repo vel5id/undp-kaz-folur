@@ -1,0 +1,182 @@
+/* =========================================================================
+   FOLUR «Степной атлас» — сильный рестайл (v2).
+   Загружается ПОСЛЕ brand.css и lessons.css → переопределяет их.
+   Только CSS, $0, без зависимостей. Идентичность «Степь» сохранена;
+   дисциплина — Minimalism/Swiss (ui-ux-pro-max). Сигнатура: топо-контур в hero.
+   ========================================================================= */
+
+:root {
+  /* 8pt-ритм */
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.25rem;
+  --s6:1.5rem; --s8:2rem; --s10:2.5rem; --s12:3rem; --s16:4rem;
+  /* радиусы / тени / кривая */
+  --r-sm:.45rem; --r-md:.8rem; --r-lg:1.1rem;
+  --sh1:0 1px 2px rgba(19,64,41,.06);
+  --sh2:0 6px 18px rgba(19,64,41,.10);
+  --sh3:0 16px 38px rgba(19,64,41,.16);
+  --ease:cubic-bezier(.2,.7,.3,1);
+}
+
+/* ── Типошкала и вертикальный ритм ───────────────────────────────────────── */
+.md-typeset h1 { font-size: 2.15rem; line-height: 1.12; letter-spacing: -.02em; margin: 0 0 var(--s6); }
+.md-typeset h2 { font-size: 1.5rem; letter-spacing: -.015em; margin: var(--s12) 0 var(--s4); }
+.md-typeset h3 { font-size: 1.14rem; margin: var(--s8) 0 var(--s3); }
+.md-typeset p, .md-typeset li { line-height: 1.72; }
+
+/* Читаемая мера (~70 знаков) только для текстовых блоков статьи; таблицы,
+   карточки, hero, рисунки и mermaid — на всю ширину. */
+/* Строгий скоуп сайдбара: показываем ТОЛЬКО активный модуль, а не все блоки
+   курса. prune помечает соседние блоки/модули классом --pruned → прячем их.
+   Переход между модулями — через таб «Каталог модулей» и хлебные крошки. */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary .md-nav__item--pruned { display: none; }
+}
+
+/* Иконки в таблице «Программа модуля» — монохромные, в брендовом зелёном
+   (заменили цветные эмодзи 📖🛠✅📄 на :material-*: в контенте). */
+.md-typeset table:not([class]) td .twemoji { color: var(--folur-green); }
+.md-typeset table:not([class]) td .twemoji svg { width: 1.05rem; height: 1.05rem; vertical-align: -.18em; }
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td .twemoji { color: #6FD39F; }
+
+/* ── Inline-код: приглушить (внутренние пути не должны спорить с текстом) ──── */
+.md-typeset :not(pre) > code {
+  background: var(--folur-paper-2);
+  color: var(--md-default-fg-color--light);
+  font-size: .82em;
+  padding: .1em .35em;
+  border-radius: .3rem;
+  border: 0;
+}
+[data-md-color-scheme="slate"] .md-typeset :not(pre) > code { background: rgba(255,255,255,.05); }
+
+/* ════════════════════════════════════════════════════════════════════════
+   HERO — сигнатура: топографический контур (как изолинии карт/батиметрии)
+   ════════════════════════════════════════════════════════════════════════ */
+.folur-hero { border-radius: 0 0 var(--r-lg) var(--r-lg); padding: 3.8rem 2.4rem 3.4rem; }
+.folur-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .12;
+  background:
+    repeating-radial-gradient(circle at 86% 124%, transparent 0 21px, rgba(255,255,255,.85) 21px 22.3px);
+  -webkit-mask: linear-gradient(75deg, transparent 8%, #000 65%);
+          mask: linear-gradient(75deg, transparent 8%, #000 65%);
+}
+.folur-hero > * { position: relative; z-index: 1; }
+.folur-hero__title { font-size: 2.9rem; line-height: 1.06; letter-spacing: -.025em; max-width: 19ch; }
+.folur-hero__badge { backdrop-filter: blur(2px); }
+.folur-btn { padding: .8rem 1.4rem; border-radius: var(--r-sm); }
+.folur-btn--primary { box-shadow: 0 6px 18px rgba(212,162,78,.45); }
+
+/* ── Полоса-статистика ────────────────────────────────────────────────────── */
+.folur-stats { border-radius: var(--r-md); box-shadow: var(--sh1); margin-top: calc(-1 * var(--s6)); position: relative; z-index: 2; }
+.folur-stat { padding: 1.3rem 1rem; transition: background .15s var(--ease); }
+.folur-stat:hover { background: var(--folur-paper-2); }
+.folur-stat__num { font-size: 1.9rem; }
+
+/* ════════════════════════════════════════════════════════════════════════
+   ЗАГОЛОВКИ БЛОКОВ каталога — eyebrow + «пшеничная» линия
+   ════════════════════════════════════════════════════════════════════════ */
+.folur-block-head { border-bottom: 0; align-items: baseline; gap: var(--s3); margin: var(--s12) 0 var(--s5); position: relative; }
+.folur-block-head::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.6rem; height: 2px;
+  background: linear-gradient(90deg, var(--folur-wheat) 0 4rem, var(--folur-line) 4rem);
+}
+.folur-block-head h2 { font-size: 1.3rem; }
+.folur-block-tag {
+  font-size: .68rem; font-weight: 600; letter-spacing: .03em;
+  color: var(--md-default-fg-color--light); background: transparent; padding: 0;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   КАРТОЧКИ МОДУЛЕЙ — рестайл: иконка-чип, код, акцент-полоса, чистая мета
+   ════════════════════════════════════════════════════════════════════════ */
+.md-typeset .grid.cards > :is(ul,ol) > li,
+.md-typeset .grid.cards > :is(ul,ol) > li {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--folur-line); border-radius: var(--r-md);
+  padding: var(--s5) var(--s5) var(--s4);
+  box-shadow: var(--sh1);
+  position: relative; overflow: hidden;
+  transition: transform .16s var(--ease), box-shadow .16s var(--ease), border-color .16s var(--ease);
+}
+/* левая акцент-полоса: зелёная (А) / вода (П через .folur-code--prof) */
+.md-typeset .grid.cards > :is(ul,ol) > li::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--folur-green); opacity: .9;
+}
+.md-typeset .grid.cards > :is(ul,ol) > li:has(.folur-code--prof)::before { background: var(--folur-water); }
+.md-typeset .grid.cards > :is(ul,ol) > li:hover {
+  transform: translateY(-5px); box-shadow: var(--sh3); border-color: var(--folur-green-light);
+}
+
+/* иконка модуля → крупный зелёный знак в мягком чипе */
+.md-typeset .grid.cards > :is(ul,ol) > li > p:first-child { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s2); }
+/* только ведущая иконка модуля (.lg), НЕ стрелка ссылки «Открыть модуль» */
+.md-typeset .grid.cards .twemoji.lg {
+  display: inline-grid; place-items: center;
+  width: 2.4rem; height: 2.4rem; flex: none;
+  border-radius: var(--r-sm);
+  background: rgba(27,94,58,.10); color: var(--folur-green);
+}
+.md-typeset .grid.cards > :is(ul,ol) > li:has(.folur-code--prof) .twemoji.lg {
+  background: rgba(42,157,143,.12); color: var(--folur-water-dark);
+}
+.md-typeset .grid.cards .twemoji.lg svg { width: 1.35rem; height: 1.35rem; }
+[data-md-color-scheme="slate"] .md-typeset .grid.cards .twemoji.lg { background: rgba(111,211,159,.14); color: #6FD39F; }
+
+/* код-чип модуля */
+.folur-code { font-size: .68rem; padding: .16rem .5rem; vertical-align: middle; }
+/* мета-строка карточки — приглушённая */
+.md-typeset .grid.cards > :is(ul,ol) > li > p:nth-of-type(2) { color: var(--md-default-fg-color--light); font-size: .76rem; margin: 0; }
+/* «Открыть модуль» прижата вниз как футер карточки */
+.md-typeset .grid.cards > :is(ul,ol) > li > p:last-child { margin-top: auto; padding-top: var(--s3); font-weight: 600; }
+.md-typeset .grid.cards hr { display: none; }
+
+/* ════════════════════════════════════════════════════════════════════════
+   ТАБЛИЦЫ — editorial: hairline, зебра, заголовки-капс
+   ════════════════════════════════════════════════════════════════════════ */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--folur-line); border-radius: var(--r-sm); overflow: hidden;
+  box-shadow: var(--sh1); font-size: .78rem;
+}
+.md-typeset table:not([class]) th {
+  background: var(--folur-paper-2); color: var(--md-default-fg-color);
+  font-weight: 700; font-size: .7rem; letter-spacing: .04em; text-transform: uppercase;
+  border: 0;
+}
+.md-typeset table:not([class]) td { border: 0; border-top: 1px solid var(--folur-line); }
+.md-typeset table:not([class]) tr:nth-child(even) td { background: color-mix(in srgb, var(--folur-paper-2) 55%, transparent); }
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th { background: rgba(255,255,255,.05); }
+
+/* ════════════════════════════════════════════════════════════════════════
+   ЛЕКЦИЯ — карточка-шапка урока + читаемость
+   ════════════════════════════════════════════════════════════════════════ */
+.folur-lesson-head {
+  background: linear-gradient(100deg, rgba(27,94,58,.06), rgba(42,157,143,.05));
+  border: 1px solid var(--folur-line); border-left: 3px solid var(--folur-green);
+  border-radius: var(--r-sm); padding: var(--s3) var(--s4); font-size: .78rem;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   ВЕРХНЯЯ ПАНЕЛЬ / ТАБЫ — активный таб с «пшеничным» индикатором
+   ════════════════════════════════════════════════════════════════════════ */
+.md-tabs__link { opacity: .9; transition: opacity .12s var(--ease); }
+.md-tabs__link:hover, .md-tabs__link--active { opacity: 1; }
+.md-tabs__item--active .md-tabs__link {
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--folur-wheat);
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   ДОСТУПНОСТЬ — видимый фокус + уважение к reduced-motion
+   ════════════════════════════════════════════════════════════════════════ */
+:where(a, button, .md-nav__link, .folur-btn, .md-tabs__link):focus-visible {
+  outline: 3px solid var(--folur-wheat);
+  outline-offset: 2px; border-radius: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  .md-typeset .grid.cards > :is(ul,ol) > li:hover { transform: none; }
+}
+
+/* ── Кредиты-подвал ───────────────────────────────────────────────────────── */
+.folur-credits { border-radius: var(--r-md); border-left-width: 4px; }

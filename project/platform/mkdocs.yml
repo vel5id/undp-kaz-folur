@@ -8,29 +8,45 @@ docs_dir: docs
 theme:
   name: material
   language: ru
+  logo: assets/img/logo.svg
+  favicon: assets/img/favicon.svg
+  font:
+    text: Inter
+    code: JetBrains Mono
+  # Фирменные цвета «Степь» задаются в assets/css/brand.css (custom-палитра).
   palette:
     - scheme: default
-      primary: green
-      accent: light green
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Тёмная тема
     - scheme: slate
-      primary: green
-      accent: light green
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Светлая тема
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.prune       # сайдбар показывает только активную ветвь (модуль)
+    - navigation.path        # хлебные крошки (глубина 3+ уровней)
     - navigation.top
+    - navigation.footer
+    - toc.follow
     - search.suggest
+    - search.highlight
     - content.code.copy
 
 markdown_extensions:
   - admonition
+  - md_in_html
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -54,8 +70,12 @@ extra_javascript:
   - javascripts/qrcode.js
   - javascripts/quiz-engine.js
   - javascripts/verify.js
+  - javascripts/steppe.js
 
 extra_css:
+  - assets/css/brand.css
+  - assets/css/steppe-lessons.css
+  - assets/css/restyle.css   # сильный рестайл: карточки, hero-контур, таблицы, a11y
   - stylesheets/quiz-engine.css
 
 nav:
