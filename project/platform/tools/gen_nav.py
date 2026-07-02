@@ -46,6 +46,7 @@ nav = ["nav:",
 for code in [f"a{i}" for i in range(1, 7)]:
     nav += module_nav(code, "      ")
 nav.append("  - Профессиональные модули:")
+nav.append("      - Обзор: modules/professional.md")
 for code in [f"p{i}" for i in range(1, 16)]:
     nav += module_nav(code, "      ")
 nav.append("  - Практикумы: practicums/index.md")

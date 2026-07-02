@@ -146,6 +146,7 @@ nav:
           - ИИ-ассистент в работе: modules/a6/ai-assistant.md
           - Оценивание: modules/a6/assessment/final.md
   - Профессиональные модули:
+      - Обзор: modules/professional.md
       - П1. Управление данными в агрохозяйстве:
           - Программа: modules/p1/index.md
           - Фиксируем каждый замер полностью — координаты, время, условия: modules/p1/lectures/01-atributy-zamera.md
