@@ -1,16 +1,20 @@
-/* Тест-движок платформы FOLUR (клиентский, MVP Этапа 2).
+/* Тест-движок платформы FOLUR (клиентский, Этап 2).
  *
  * Находит fenced-блоки ```quiz (JSON-массив вопросов), заменяет их интерактивным
  * тестом. Индивидуальный вариант: из банка берётся подвыборка вопросов и порядок
  * опций, детерминированно зависящие от идентификатора слушателя (анти-списывание:
  * у соседей разные варианты, а преподаватель может воспроизвести любой вариант).
  * Порог зачёта — 75% (политика платформы). Работает на GitHub Pages без сервера.
+ *
+ * На страницах /assessment/ после сдачи всех квизов с итогом ≥ 75% доступен
+ * сертификат с QR-кодом верификации (см. страницу «Проверка сертификата»).
  */
 (function () {
   "use strict";
 
   var PASS_THRESHOLD = 0.75;
   var SUBSET = 0.8; // доля банка в индивидуальном варианте (мин. 3 вопроса)
+  var CERT_SALT = "folur-kaz-2026-v1";
 
   // FNV-1a: детерминированный хэш идентификатора слушателя
   function hash(str) {
@@ -64,7 +68,92 @@
     });
   }
 
-  function render(container, bank, quizKey) {
+  /* ---- Сертификат с QR-верификацией ------------------------------------
+   * Ограничение MVP (задокументировано на странице «Проверка сертификата»):
+   * контрольная сумма защищает код от опечаток и порчи, но не является
+   * криптографической подписью; Open Badges — при передаче платформы ПРООН. */
+
+  function certCode(payload) {
+    var k = hash(JSON.stringify(payload) + CERT_SALT).toString(16);
+    return btoa(unescape(encodeURIComponent(JSON.stringify({ j: payload, k: k }))))
+      .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+
+  function openCertificate(studentId, share) {
+    var h1 = document.querySelector("h1");
+    var payload = {
+      v: 1,
+      s: studentId,
+      m: h1 ? h1.textContent.replace(/¶/g, "").trim() : document.title,
+      p: Math.round(share * 100),
+      d: new Date().toISOString().slice(0, 10),
+    };
+    var code = certCode(payload);
+    var base = location.pathname.split("/modules/")[0] || "";
+    var url = location.origin + base + "/verify/?c=" + code;
+    var svg = "";
+    if (window.qrcode) {
+      var qr = window.qrcode(0, "M");
+      qr.addData(url);
+      qr.make();
+      svg = qr.createSvgTag({ cellSize: 3, margin: 2 });
+    }
+    var w = window.open("", "_blank");
+    w.document.write(
+      '<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>Сертификат</title>' +
+      "<style>body{font-family:Georgia,serif;max-width:760px;margin:2rem auto;padding:2rem;" +
+      "border:6px double #2e7d32;text-align:center}h1{color:#2e7d32;margin:.2rem 0}" +
+      ".muted{color:#555;font-size:.9rem}.name{font-size:1.6rem;margin:1rem 0}" +
+      ".qr{margin-top:1rem}.code{font-size:.65rem;color:#777;word-break:break-all;margin-top:1rem}" +
+      "button{margin-top:1.2rem;padding:.5rem 1.4rem;font-size:1rem}@media print{button{display:none}}" +
+      "</style></head><body>" +
+      '<div class="muted">Учебная платформа проекта UNDP-KAZ FOLUR · КРУ им. А. Байтұрсынұлы</div>' +
+      "<h1>СЕРТИФИКАТ</h1>" +
+      '<div>подтверждает, что</div><div class="name">' + payload.s.replace(/</g, "&lt;") + "</div>" +
+      "<div>успешно прошёл(а) аттестацию</div><p><strong>" + payload.m.replace(/</g, "&lt;") + "</strong></p>" +
+      "<div>с результатом <strong>" + payload.p + "%</strong> (порог " + Math.round(PASS_THRESHOLD * 100) + "%) · " + payload.d + "</div>" +
+      '<div class="qr">' + svg + "</div>" +
+      '<div class="muted">Проверка подлинности: отсканируйте QR или введите код на странице «Проверка сертификата»</div>' +
+      '<div class="code">' + code + "</div>" +
+      "<button onclick=\"window.print()\">Печать / Сохранить в PDF</button>" +
+      "</body></html>");
+    w.document.close();
+  }
+
+  // Наблюдатель аттестации: собирает результаты всех квизов страницы /assessment/
+  function makeCertWatcher(total) {
+    if (!/\/assessment\//.test(location.pathname) || total === 0) return function () {};
+    var scores = new Array(total).fill(null);
+    return function (idx, correct, n, lastForm) {
+      scores[idx] = { correct: correct, n: n };
+      if (scores.some(function (s) { return s === null; })) return;
+      var sum = scores.reduce(function (a, s) { return a + s.correct; }, 0);
+      var all = scores.reduce(function (a, s) { return a + s.n; }, 0);
+      var share = sum / all;
+      var box = document.querySelector(".folur-cert");
+      if (!box) {
+        box = document.createElement("div");
+        box.className = "folur-cert";
+        lastForm.parentNode.insertBefore(box, lastForm.nextSibling);
+      }
+      box.innerHTML = "<strong>Итог аттестации: " + sum + "/" + all + " (" +
+        Math.round(share * 100) + "%)</strong>";
+      if (share >= PASS_THRESHOLD) {
+        var btn = document.createElement("button");
+        btn.className = "md-button md-button--primary";
+        btn.textContent = "Сформировать сертификат (PDF)";
+        btn.addEventListener("click", function () {
+          openCertificate(getStudentId(), share);
+        });
+        box.appendChild(btn);
+      } else {
+        box.appendChild(document.createTextNode(" — ниже порога " +
+          Math.round(PASS_THRESHOLD * 100) + "%. Повторите материал и пройдите аттестацию снова."));
+      }
+    };
+  }
+
+  function render(container, bank, quizKey, onSubmit) {
     var studentId = getStudentId();
     var variant = buildVariant(bank, studentId, quizKey);
     var form = document.createElement("form");
@@ -114,26 +203,31 @@
       out.innerHTML = "<strong>Результат: " + correct + "/" + variant.length +
         " (" + Math.round(share * 100) + "%) — " +
         (share >= PASS_THRESHOLD ? "зачёт ✓" : "ниже порога, повторите материал") + "</strong>";
+      if (onSubmit) onSubmit(correct, variant.length, form);
     });
 
     container.replaceWith(form);
   }
 
   function init() {
-    var blocks = document.querySelectorAll(
+    var codes = document.querySelectorAll(
       "pre.quiz > code, div.quiz pre > code, pre > code.language-quiz, pre > code.quiz"
     );
-    var idx = 0;
-    blocks.forEach(function (code) {
-      var bank;
+    var parsed = [];
+    codes.forEach(function (code) {
       try {
-        bank = JSON.parse(code.textContent);
+        parsed.push({ code: code, bank: JSON.parse(code.textContent) });
       } catch (err) {
-        return; // сломанный JSON ловит validate_content.py на сборке
+        // сломанный JSON ловит validate_content.py на сборке
       }
-      var key = location.pathname + "#quiz" + idx++;
-      var host = code.closest("div.quiz") || code.closest("pre");
-      render(host, bank, key);
+    });
+    var watcher = makeCertWatcher(parsed.length);
+    parsed.forEach(function (item, idx) {
+      var key = location.pathname + "#quiz" + idx;
+      var host = item.code.closest("div.quiz") || item.code.closest("pre");
+      render(host, item.bank, key, function (correct, n, form) {
+        watcher(idx, correct, n, form);
+      });
     });
   }
 

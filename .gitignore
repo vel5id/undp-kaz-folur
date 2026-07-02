@@ -14,3 +14,7 @@ __pycache__/
 data-not-anonymys/
 data-raw-restricted/
 **/SECRET-origin.json
+
+# Генерируемые артефакты (пересоздаются tools/make_module_pdfs.mjs; для публикации — Git LFS)
+project/platform/docs/pdf/
+project/platform/offline/

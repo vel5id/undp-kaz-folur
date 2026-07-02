@@ -51,7 +51,9 @@ plugins:
       lang: ru
 
 extra_javascript:
+  - javascripts/qrcode.js
   - javascripts/quiz-engine.js
+  - javascripts/verify.js
 
 extra_css:
   - stylesheets/quiz-engine.css
@@ -63,6 +65,8 @@ nav:
       - Шаблон модуля: about/module-template.md
   - ИИ-инструменты: ai-tools.md
   - Датасеты: datasets.md
+  - Офлайн-материалы: offline.md
+  - Проверка сертификата: verify.md
   - Академические модули:
       - Обзор: modules/index.md
       - А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT):

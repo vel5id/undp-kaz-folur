@@ -38,6 +38,8 @@ nav = ["nav:",
        "      - Шаблон модуля: about/module-template.md",
        "  - ИИ-инструменты: ai-tools.md",
        "  - Датасеты: datasets.md",
+       "  - Офлайн-материалы: offline.md",
+       "  - Проверка сертификата: verify.md",
        "  - Академические модули:",
        "      - Обзор: modules/index.md"]
 for code in [f"a{i}" for i in range(1, 7)]:
