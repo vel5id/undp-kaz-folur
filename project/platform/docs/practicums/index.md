@@ -6,7 +6,7 @@
     Демонстрационный ноутбук прототипа: загрузка промеров глубин, отбраковка выбросов, карта глубин.
     Данные — **синтетические** (реальный датасет исполнителя публикуется на Zenodo с DOI на Этапе 2).
 
-    Ноутбук: [`notebooks/00-test-practicum-bathymetry.ipynb`](https://github.com/) *(Colab-ссылка будет назначена после создания GitHub-репозитория)*
+    Ноутбук: [открыть в Colab](https://colab.research.google.com/github/vel5id/folur-platform/blob/main/notebooks/00-test-practicum-bathymetry.ipynb)
 
 ## Guided-проекты Этапа 2 (план)
 

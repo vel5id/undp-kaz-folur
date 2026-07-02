@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  var CERT_SALT = "folur-kaz-2026-v1";
+  var CERT_SALT = "folur-kaz-30c9f7cea8ba8869";
 
   function hash(str) {
     var h = 0x811c9dc5;

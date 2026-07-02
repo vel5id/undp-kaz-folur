@@ -14,7 +14,7 @@
 
   var PASS_THRESHOLD = 0.75;
   var SUBSET = 0.8; // доля банка в индивидуальном варианте (мин. 3 вопроса)
-  var CERT_SALT = "folur-kaz-2026-v1";
+  var CERT_SALT = "folur-kaz-30c9f7cea8ba8869";
   // режим аттестации: ?mode=pre — входной тест (другой детерминированный вариант
   // того же банка; сертификат недоступен, только код результата для реестра)
   var MODE = new URLSearchParams(location.search).get("mode") === "pre" ? "pre" : "final";

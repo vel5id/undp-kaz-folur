@@ -14,7 +14,7 @@ import base64
 import json
 import sys
 
-CERT_SALT = "folur-kaz-2026-v1"  # синхронизировано с javascripts/quiz-engine.js
+CERT_SALT = "folur-kaz-30c9f7cea8ba8869"  # синхронизировано с javascripts/quiz-engine.js
 
 
 def fnv1a(s: str) -> str:
