@@ -155,6 +155,20 @@
     var firstLesson = lectures[0] || items[0];
     if (!firstLesson) return;
 
+    // Coursera-паттерн «продолжить с места остановки»
+    var done = visited();
+    var doneCount = items.filter(function (i) { return done.indexOf(i.url) !== -1; }).length;
+    var nextItem = items.filter(function (i) { return done.indexOf(i.url) === -1; })[0];
+    var ctaText = "Начать обучение →", ctaHref = firstLesson.url, ctaNote = "";
+    if (doneCount > 0 && nextItem) {
+      ctaText = "Продолжить обучение →";
+      ctaHref = nextItem.url;
+      ctaNote = "пройдено " + doneCount + " из " + items.length + " · далее: " + nextItem.title;
+    } else if (doneCount > 0 && !nextItem) {
+      ctaText = "Повторить материал →";
+      ctaNote = "все " + items.length + " шагов модуля пройдены";
+    }
+
     // описание: первый абзац после h1
     var desc = "";
     var el = h1.nextElementSibling;
@@ -178,9 +192,10 @@
       "</div>" +
       (desc ? '<p class="folur-course-hero__desc">' + desc.replace(/</g, "&lt;") + "</p>" : "") +
       '<div class="folur-course-hero__cta">' +
-      '<a class="md-button md-button--primary" href="' + firstLesson.url + '">Начать обучение →</a>' +
+      '<a class="md-button md-button--primary" href="' + ctaHref + '">' + ctaText + "</a>" +
       (assessment ? '<a class="md-button" href="' + assessment.url + '">Аттестация</a>' : "") +
-      "</div>";
+      "</div>" +
+      (ctaNote ? '<div class="folur-course-hero__note">' + ctaNote.replace(/</g, "&lt;") + "</div>" : "");
 
     var band = document.createElement("div");
     band.className = "folur-course-band";
@@ -197,6 +212,130 @@
 
     h1.parentNode.insertBefore(hero, h1.nextSibling);
     hero.parentNode.insertBefore(band, hero.nextSibling);
+    learnBlock(article, band);
+  }
+
+  /* ── Карт-обложки карточек (подпись дизайна): детерминированные SVG-изолинии
+   * от кода модуля. А-серия — зелень «земля», П-серия — «вода». ────────────── */
+  // FNV-1a (локальная копия: quiz-engine.js — отдельный IIFE)
+  function hash(str) {
+    var h = 0x811c9dc5;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 0x01000193) >>> 0;
+    }
+    return h;
+  }
+
+  function seedRand(str) {
+    var s = hash(str);
+    return function () {
+      s = (s + 0x6d2b79f5) >>> 0;
+      var t = s;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function coverSvg(code, prof) {
+    var rnd = seedRand("cover|" + code);
+    var W = 360, H = 96;
+    var cx = 70 + rnd() * 220, cy = 20 + rnd() * 56;
+    var rings = [];
+    var base = 10 + rnd() * 8;
+    for (var k = 0; k < 5; k++) {
+      var r = base + k * (13 + rnd() * 5);
+      var pts = [];
+      var n = 10;
+      for (var i = 0; i < n; i++) {
+        var a = (i / n) * 2 * Math.PI;
+        var rr = r * (0.82 + rnd() * 0.4);
+        pts.push([cx + rr * Math.cos(a), cy + rr * Math.sin(a) * 0.62]);
+      }
+      var d = "M" + pts[0][0].toFixed(1) + " " + pts[0][1].toFixed(1);
+      for (var j = 1; j <= n; j++) {
+        var p = pts[j % n], q = pts[(j - 1) % n];
+        var mx = ((p[0] + q[0]) / 2).toFixed(1), my = ((p[1] + q[1]) / 2).toFixed(1);
+        d += " Q" + q[0].toFixed(1) + " " + q[1].toFixed(1) + " " + mx + " " + my;
+      }
+      rings.push('<path d="' + d + 'Z" fill="none" stroke="rgba(255,255,255,.38)" stroke-width="1.1"/>');
+    }
+    var g1 = prof ? "#1F7A6E" : "#134029";
+    var g2 = prof ? "#2A9D8F" : "#1B5E3A";
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="' + g1 + '"/><stop offset="1" stop-color="' + g2 + '"/></linearGradient></defs>' +
+      '<rect width="' + W + '" height="' + H + '" fill="url(#g)"/>' + rings.join("") +
+      '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="3.2" fill="#D4A24E"/>' +
+      "</svg>";
+  }
+
+  // элементов в модуле: А = 4 урока + практикум + ИИ + аттестация; П = 3 + те же
+  function moduleTotal(codePath) {
+    return codePath.charAt(0) === "a" ? 7 : 6;
+  }
+
+  function cardCovers() {
+    document.querySelectorAll(".grid.cards li").forEach(function (li) {
+      if (li.querySelector(".folur-cover")) return;
+      var chip = li.querySelector(".folur-code");
+      var link = li.querySelector('a[href*="index"], p:last-child a');
+      if (!chip || !link) return;
+      var m = (link.getAttribute("href") || "").match(/([ap]\d+)\//);
+      var codePath = m ? m[1] : chip.textContent.trim().toLowerCase();
+      var prof = chip.classList.contains("folur-code--prof");
+
+      var cover = document.createElement("a");
+      cover.className = "folur-cover";
+      cover.href = link.getAttribute("href");
+      cover.setAttribute("tabindex", "-1");
+      cover.setAttribute("aria-hidden", "true");
+      cover.innerHTML = coverSvg(chip.textContent.trim(), prof);
+      li.insertBefore(cover, li.firstChild);
+
+      // Stepik-прогресс: «пройдено N из M» + полоса
+      var done = visited().filter(function (p) {
+        return p.indexOf("/modules/" + codePath + "/") !== -1;
+      }).length;
+      if (done > 0) {
+        var total = moduleTotal(codePath);
+        var pct = Math.min(100, Math.round(100 * done / total));
+        var prog = document.createElement("div");
+        prog.className = "folur-card-progress";
+        prog.innerHTML = '<div class="folur-card-progress__bar"><span style="width:' + pct + '%"></span></div>' +
+          '<div class="folur-card-progress__label">пройдено ' + Math.min(done, total) + " из " + total + "</div>";
+        li.appendChild(prog);
+      }
+    });
+  }
+
+  /* ── «Что вы освоите» (Coursera) — выжимка первых Bloom-целей модуля ────── */
+  function learnBlock(article, band) {
+    if (article.querySelector(".folur-learn")) return;
+    var ol = null;
+    article.querySelectorAll("ol").forEach(function (o) {
+      if (!ol && o.querySelector(".bloom")) ol = o;
+    });
+    if (!ol) return;
+    var items = [];
+    ol.querySelectorAll(":scope > li").forEach(function (li) {
+      if (items.length >= 4) return;
+      var c = li.cloneNode(true);
+      c.querySelectorAll(".bloom").forEach(function (b) { b.remove(); });
+      var t = c.textContent.replace(/\s+/g, " ").trim();
+      t = t.charAt(0).toUpperCase() + t.slice(1);
+      if (t.length > 160) t = t.slice(0, 157).replace(/[,;\s]+\S*$/, "") + "…";
+      items.push(t);
+    });
+    if (items.length < 2) return;
+    var block = document.createElement("div");
+    block.className = "folur-learn";
+    block.innerHTML = '<div class="folur-learn__title">Что вы освоите</div>' +
+      '<ul class="folur-learn__grid">' +
+      items.map(function (t) { return "<li>" + t.replace(/</g, "&lt;") + "</li>"; }).join("") +
+      "</ul>";
+    band.parentNode.insertBefore(block, band.nextSibling);
   }
 
   function init() {
@@ -205,6 +344,7 @@
     bloomPills();
     stepsBar();
     courseLanding();
+    cardCovers();
   }
 
   if (window.document$ && window.document$.subscribe) {

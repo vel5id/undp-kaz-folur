@@ -53,6 +53,75 @@
 [data-md-color-scheme="slate"] .folur-course-hero,
 [data-md-color-scheme="slate"] .folur-course-band { border-color: #2C3A32; }
 
+/* ── Мобильная адаптация заголовков блоков каталога ──────────────────────── */
+@media screen and (max-width: 44em) {
+  .folur-block-head { flex-wrap: wrap; row-gap: .3rem; }
+  .folur-block-head h2 { min-width: 0; }
+  .folur-block-tag { white-space: normal; line-height: 1.5; }
+}
+
+/* ── Карт-обложки карточек (генеративные SVG-изолинии) ───────────────────── */
+.md-typeset .grid.cards > :is(ul,ol) > li { padding-top: 0 !important; }
+.folur-cover {
+  display: block;
+  margin: 0 calc(-1 * var(--s5, 1.25rem)) var(--s4, 1rem);
+  height: 96px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--folur-line, #E4E0D6);
+}
+.folur-cover svg { width: 100%; height: 100%; display: block; transition: transform .35s var(--ease, ease); }
+.md-typeset .grid.cards li:hover .folur-cover svg { transform: scale(1.045); }
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .grid.cards li:hover .folur-cover svg { transform: none; }
+}
+
+/* Stepik-прогресс на карточке */
+.folur-card-progress { margin-top: .6rem; }
+.folur-card-progress__bar {
+  height: 5px; border-radius: 3px; overflow: hidden;
+  background: var(--folur-line, #E4E0D6);
+}
+.folur-card-progress__bar span {
+  display: block; height: 100%;
+  background: var(--folur-green-light, #2E7D52);
+}
+.folur-card-progress__label {
+  font-size: .64rem; color: var(--md-default-fg-color--light); margin-top: .25rem;
+}
+[data-md-color-scheme="slate"] .folur-card-progress__bar { background: #2C3A32; }
+
+/* «Что вы освоите» (Coursera) */
+.folur-learn {
+  margin: 0 0 1.6rem;
+  padding: 1.1rem 1.3rem 1.2rem;
+  border: 1px solid var(--folur-line, #E4E0D6);
+  border-radius: var(--r-md, .8rem);
+  background: var(--md-default-bg-color);
+  box-shadow: var(--sh1, 0 1px 2px rgba(19,64,41,.06));
+}
+.folur-learn__title { font-weight: 800; font-size: .95rem; margin-bottom: .7rem; }
+.md-typeset .folur-learn__grid {
+  display: grid; gap: .55rem .9rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  list-style: none !important; margin: 0 !important; padding: 0;
+}
+.md-typeset .folur-learn__grid li {
+  margin: 0 !important; padding-left: 1.5rem; position: relative;
+  font-size: .76rem; line-height: 1.55;
+  list-style: none !important;
+}
+.md-typeset .folur-learn__grid li::marker { content: ""; }
+.folur-learn__grid li::before {
+  content: "✓";
+  position: absolute; left: 0; top: -.05rem;
+  color: var(--folur-green-light, #2E7D52); font-weight: 800;
+}
+.folur-course-hero__note {
+  margin-top: .6rem; font-size: .7rem;
+  color: var(--md-default-fg-color--light);
+}
+[data-md-color-scheme="slate"] .folur-learn { border-color: #2C3A32; }
+
 /* ── Степ-бар модуля (квадратики, как на Stepik) ─────────────────────────── */
 .folur-steps {
   display: flex; flex-wrap: wrap; gap: .35rem;
