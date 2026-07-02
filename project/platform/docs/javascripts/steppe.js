@@ -107,23 +107,35 @@
     if (v.indexOf(path) === -1) { v.push(path); localStorage.setItem(VISITED_KEY, JSON.stringify(v)); }
   }
 
-  /* ── Степ-бар урока (Stepik-стиль): квадратики = РАЗДЕЛЫ текущего урока.
-   * Каждый квадрат — якорная ссылка (свой URL); при скролле текущий раздел
-   * подсвечивается, пройденные — зеленеют. ──────────────────────────────── */
+  /* ── Шаги урока (Stepik-стиль): каждый раздел (h2) рендерится ОТДЕЛЬНО.
+   * Квадратики и хэш-URL переключают активный раздел; внизу «Назад/Дальше».
+   * Печать/PDF видят весь урок целиком (скрытие — классом, print его снимает,
+   * а в режиме генерации PDF пагинация не включается вовсе). ─────────────── */
   function stepsBar() {
     var code = pathCode();
     if (!code || !/\/(lectures|practicum|ai-assistant|assessment)\//.test(location.pathname + "/")) return;
     var article = document.querySelector("article.md-content__inner, article");
     if (!article || article.querySelector(".folur-steps")) return;
     markVisited(location.pathname);
+    if (window.__FOLUR_PDF__) return; // конспект печатается сплошным текстом
 
     var heads = Array.prototype.slice.call(article.querySelectorAll("h2[id]"));
     if (heads.length < 2) return;
 
-    // позиция урока в модуле — для подписи «Урок N из M»
+    // разбивка: раздел = h2 + все top-level блоки до следующего h2
+    var sections = heads.map(function (h) { return { head: h, els: [h] }; });
+    var si = -1;
+    Array.prototype.slice.call(article.children).forEach(function (el) {
+      var idx = heads.indexOf(el);
+      if (idx !== -1) { si = idx; return; }
+      if (si >= 0) sections[si].els.push(el);
+    });
+
+    // подпись «шаг N из M модуля»
     var items = moduleItems(code);
     var pos = 0;
     items.forEach(function (it, i) { if (it.url === location.pathname) pos = i + 1; });
+    var next = items[pos] || null; // следующий шаг модуля (pos 1-базный)
     var kind = /\/assessment\//.test(location.pathname) ? "Оценивание"
       : /\/practicum\//.test(location.pathname) ? "Практикум"
       : /\/ai-assistant\//.test(location.pathname) ? "ИИ-задание" : "Урок";
@@ -137,34 +149,88 @@
       (pos && items.length ? " · шаг " + pos + " из " + items.length : "") +
       " · разделы:";
     bar.appendChild(label);
-
-    var squares = heads.map(function (h, i) {
+    var squares = sections.map(function (s, i) {
       var a = document.createElement("a");
       a.className = "folur-step";
-      a.href = "#" + h.id;
-      var t = h.textContent.replace(/¶/g, "").trim();
+      a.href = "#" + s.head.id;
+      var t = s.head.textContent.replace(/¶/g, "").trim();
       a.title = t;
-      a.setAttribute("aria-label", "Раздел: " + t);
+      a.setAttribute("aria-label", "Раздел " + (i + 1) + ": " + t);
       a.textContent = String(i + 1);
       bar.appendChild(a);
       return a;
     });
     article.insertBefore(bar, article.firstChild);
 
-    // подсветка по скроллу: разделы выше текущего — «пройдены»
-    var update = function () {
-      var cur = -1;
-      var probe = window.scrollY + window.innerHeight * 0.28;
-      heads.forEach(function (h, i) {
-        if (h.offsetTop + (h.closest("article") ? 0 : 0) <= probe) cur = i;
+    // пейджер внизу
+    var pager = document.createElement("nav");
+    pager.className = "folur-pager";
+    var prevBtn = document.createElement("a");
+    prevBtn.className = "md-button folur-pager__prev";
+    prevBtn.textContent = "← Назад";
+    var nextBtn = document.createElement("a");
+    nextBtn.className = "md-button md-button--primary folur-pager__next";
+    var title = document.createElement("span");
+    title.className = "folur-pager__title";
+    pager.appendChild(prevBtn); pager.appendChild(title); pager.appendChild(nextBtn);
+    article.appendChild(pager);
+
+    var seen = {};
+    var current = 0;
+
+    function idToIndex(id) {
+      if (!id) return 0;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].head.id === id) return i;
+        for (var j = 0; j < sections[i].els.length; j++) {
+          if (sections[i].els[j].id === id || sections[i].els[j].querySelector("#" + CSS.escape(id))) return i;
+        }
+      }
+      return 0;
+    }
+
+    function show(i, scrollTop) {
+      current = Math.max(0, Math.min(sections.length - 1, i));
+      seen[current] = true;
+      sections.forEach(function (s, j) {
+        s.els.forEach(function (el) { el.classList.toggle("folur-step-hidden", j !== current); });
       });
-      squares.forEach(function (s, i) {
-        s.classList.toggle("folur-step--done", i < cur);
-        s.classList.toggle("folur-step--current", i === cur);
+      squares.forEach(function (sq, j) {
+        sq.classList.toggle("folur-step--current", j === current);
+        sq.classList.toggle("folur-step--done", !!seen[j] && j !== current);
       });
-    };
-    window.addEventListener("scroll", update, { passive: true });
-    update();
+      title.textContent = "Раздел " + (current + 1) + " из " + sections.length + ": " +
+        sections[current].head.textContent.replace(/¶/g, "").trim();
+      prevBtn.style.visibility = current === 0 ? "hidden" : "visible";
+      prevBtn.href = current > 0 ? "#" + sections[current - 1].head.id : "#";
+      if (current < sections.length - 1) {
+        nextBtn.textContent = "Дальше →";
+        nextBtn.href = "#" + sections[current + 1].head.id;
+      } else if (next) {
+        nextBtn.textContent = "Следующий шаг модуля →";
+        nextBtn.href = next.url;
+      } else {
+        nextBtn.textContent = "К странице модуля →";
+        nextBtn.href = "/".concat("modules/", code, "/").replace("//", "/");
+        nextBtn.href = location.pathname.split("/modules/")[0] + "/modules/" + code + "/";
+      }
+      if (scrollTop !== false) {
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      }
+    }
+
+    window.addEventListener("hashchange", function () {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var i = idToIndex(id);
+      show(i, false);
+      // если якорь — подраздел (h3) внутри секции, доскроллить к нему
+      var target = id && document.getElementById(id);
+      if (target && target !== sections[i].head) target.scrollIntoView();
+      else window.scrollTo({ top: 0 });
+    });
+
+    show(idToIndex(decodeURIComponent(location.hash.slice(1))), false);
   }
 
   /* ── Лендинг курса (Coursera-стиль) на странице модуля ─────────────────── */

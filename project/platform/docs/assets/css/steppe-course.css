@@ -126,6 +126,26 @@ html { scroll-behavior: smooth; }
 }
 [data-md-color-scheme="slate"] .folur-learn { border-color: #2C3A32; }
 
+/* ── Пошаговый рендер разделов урока ─────────────────────────────────────── */
+.folur-step-hidden { display: none !important; }
+@media print { .folur-step-hidden { display: block !important; } }
+.folur-pager {
+  display: flex; align-items: center; gap: 1rem;
+  margin-top: 2rem; padding-top: 1.1rem;
+  border-top: 1px solid var(--folur-line, #E4E0D6);
+}
+.folur-pager .md-button { margin: 0; white-space: nowrap; }
+.folur-pager__title {
+  flex: 1; text-align: center;
+  font-size: .7rem; color: var(--md-default-fg-color--light);
+  min-width: 0;
+}
+@media screen and (max-width: 44em) {
+  .folur-pager { flex-wrap: wrap; }
+  .folur-pager__title { order: -1; flex-basis: 100%; text-align: left; }
+}
+[data-md-color-scheme="slate"] .folur-pager { border-color: #2C3A32; }
+
 /* ── Сайдбар модуля: уроки как отдельные карточки-шаги ───────────────────── */
 .md-sidebar--primary .folur-nav-step { margin: .28rem 0; }
 .md-sidebar--primary .folur-nav-step > a.md-nav__link {
