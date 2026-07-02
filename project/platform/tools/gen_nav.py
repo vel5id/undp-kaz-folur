@@ -33,6 +33,7 @@ def module_nav(code: str, indent: str) -> list[str]:
 
 nav = ["nav:",
        "  - Главная: index.md",
+       "  - Моё обучение: my-learning.md",
        "  - О платформе:",
        "      - Архитектура: about/platform.md",
        "      - Шаблон модуля: about/module-template.md",
@@ -55,3 +56,21 @@ text = MK.read_text(encoding="utf-8")
 text = re.sub(r"\nnav:.*\Z", "\n" + "\n".join(nav) + "\n", text, flags=re.S)
 MK.write_text(text, encoding="utf-8")
 print(f"nav обновлён: {len(nav)} строк")
+
+# Манифест модулей для клиентского слоя (steppe.js): заголовок + число шагов.
+manifest = {}
+for code in [f"a{i}" for i in range(1, 7)] + [f"p{i}" for i in range(1, 16)]:
+    d = DOCS / "modules" / code
+    title = re.sub(r"^[АП]\d+\s*[.·—-]\s*", "", h1(d / "index.md"))
+    total = 0
+    for sub in ("lectures", "practicum", "assessment"):
+        if (d / sub).is_dir():
+            total += len(list((d / sub).glob("*.md")))
+    if (d / "ai-assistant.md").exists():
+        total += 1
+    manifest[code] = {"title": title, "total": total}
+import json
+js = ("/* Автогенерируется tools/gen_nav.py — не править руками. */\n"
+      "window.FOLUR_MODULES = " + json.dumps(manifest, ensure_ascii=False) + ";\n")
+(PLATFORM / "docs" / "javascripts" / "modules-manifest.js").write_text(js, encoding="utf-8")
+print(f"манифест модулей: {len(manifest)} записей")

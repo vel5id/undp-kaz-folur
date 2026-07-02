@@ -172,6 +172,17 @@
         box.appendChild(document.createTextNode(" — ниже порога " +
           Math.round(PASS_THRESHOLD * 100) + "%. Повторите материал и пройдите аттестацию снова."));
       }
+      // локальная история результатов (для страницы «Моё обучение»);
+      // хранится только в браузере слушателя, никуда не отправляется
+      try {
+        var hist = JSON.parse(localStorage.getItem("folur-results") || "{}");
+        hist[location.pathname] = {
+          p: Math.round(share * 100), r: sum + "/" + all,
+          mode: MODE, d: new Date().toISOString().slice(0, 10),
+        };
+        localStorage.setItem("folur-results", JSON.stringify(hist));
+      } catch (e) { /* приватный режим — не критично */ }
+
       var codeDiv = document.createElement("div");
       codeDiv.className = "folur-result-code";
       var code = resultCode(getStudentId(), sum, all);

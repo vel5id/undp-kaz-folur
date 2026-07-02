@@ -68,6 +68,7 @@ plugins:
 
 extra_javascript:
   - javascripts/qrcode.js
+  - javascripts/modules-manifest.js
   - javascripts/quiz-engine.js
   - javascripts/verify.js
   - javascripts/steppe.js
@@ -81,6 +82,7 @@ extra_css:
 
 nav:
   - Главная: index.md
+  - Моё обучение: my-learning.md
   - О платформе:
       - Архитектура: about/platform.md
       - Шаблон модуля: about/module-template.md

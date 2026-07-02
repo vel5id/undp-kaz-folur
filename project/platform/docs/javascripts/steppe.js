@@ -271,8 +271,10 @@
       "</svg>";
   }
 
-  // элементов в модуле: А = 4 урока + практикум + ИИ + аттестация; П = 3 + те же
+  // число шагов модуля: из манифеста (генерится gen_nav.py); фолбэк — по типу
   function moduleTotal(codePath) {
+    var m = window.FOLUR_MODULES && window.FOLUR_MODULES[codePath];
+    if (m && m.total) return m.total;
     return codePath.charAt(0) === "a" ? 7 : 6;
   }
 
@@ -338,6 +340,83 @@
     band.parentNode.insertBefore(block, band.nextSibling);
   }
 
+  /* ── «Моё обучение»: сводка прогресса из localStorage ─────────────────── */
+  function moduleTitleFromNav(codePath) {
+    var m = window.FOLUR_MODULES && window.FOLUR_MODULES[codePath];
+    if (m && m.title) return m.title;
+    return codePath.replace("a", "А").replace("p", "П").toUpperCase();
+  }
+
+  function myLearning() {
+    var box = document.getElementById("folur-my-learning");
+    if (!box) return;
+
+    var done = visited();
+    var results = {};
+    try { results = JSON.parse(localStorage.getItem("folur-results") || "{}"); } catch (e) {}
+
+    // сгруппировать пройденные шаги по модулям
+    var byModule = {};
+    done.forEach(function (p) {
+      var m = p.match(/\/modules\/([ap]\d+)\//);
+      if (m) (byModule[m[1]] = byModule[m[1]] || []).push(p);
+    });
+    var codes = Object.keys(byModule).sort(function (a, b) {
+      var ka = (a[0] === "a" ? 0 : 100) + parseInt(a.slice(1), 10);
+      var kb = (b[0] === "a" ? 0 : 100) + parseInt(b.slice(1), 10);
+      return ka - kb;
+    });
+
+    if (!codes.length) {
+      box.innerHTML = "<p>Вы ещё не открывали уроки в этом браузере. " +
+        'Начните с <a href="modules/professional/">профессиональных модулей</a> ' +
+        'или <a href="modules/">общего каталога</a>.</p>';
+      return;
+    }
+
+    // сводные показатели
+    var steps = done.length;
+    var passed = 0;
+    Object.keys(results).forEach(function (p) {
+      if (results[p].mode === "final" && results[p].p >= 75) passed++;
+    });
+
+    var html = '<div class="folur-stats" style="margin-top:0">' +
+      '<div class="folur-stat"><div class="folur-stat__num">' + codes.length + '</div><div class="folur-stat__label">модулей начато</div></div>' +
+      '<div class="folur-stat"><div class="folur-stat__num">' + steps + '</div><div class="folur-stat__label">шагов пройдено</div></div>' +
+      '<div class="folur-stat"><div class="folur-stat__num">' + passed + '</div><div class="folur-stat__label">аттестаций сдано (≥75%)</div></div>' +
+      "</div>";
+
+    html += '<div class="folur-mylearn">';
+    codes.forEach(function (code) {
+      var total = moduleTotal(code);
+      var n = Math.min(byModule[code].length, total);
+      var pct = Math.round(100 * n / total);
+      var title = moduleTitleFromNav(code);
+      var badge = code.replace("a", "А").replace("p", "П").toUpperCase();
+      // результат аттестации этого модуля (final)
+      var res = null;
+      Object.keys(results).forEach(function (p) {
+        if (p.indexOf("/modules/" + code + "/assessment/") !== -1 && results[p].mode === "final") res = results[p];
+      });
+      var resHtml = res
+        ? '<span class="folur-mylearn__res ' + (res.p >= 75 ? "ok" : "no") + '">аттестация: ' + res.p + "%" + (res.p >= 75 ? " ✓" : "") + "</span>"
+        : "";
+      html += '<div class="folur-mylearn__row">' +
+        '<span class="folur-badge">' + badge + "</span>" +
+        '<div class="folur-mylearn__main">' +
+        '<a class="folur-mylearn__title" href="modules/' + code + '/">' + title.replace(/</g, "&lt;") + "</a>" +
+        '<div class="folur-card-progress__bar"><span style="width:' + pct + '%"></span></div>' +
+        '<div class="folur-card-progress__label">пройдено ' + n + " из " + total + (resHtml ? " · " : "") + resHtml + "</div>" +
+        "</div>" +
+        '<a class="md-button' + (n < total ? " md-button--primary" : "") + '" href="modules/' + code + '/">' +
+        (n < total ? "Продолжить" : "Открыть") + "</a>" +
+        "</div>";
+    });
+    html += "</div>";
+    box.innerHTML = html;
+  }
+
   function init() {
     readbar();
     lessonHead();
@@ -345,6 +424,7 @@
     stepsBar();
     courseLanding();
     cardCovers();
+    myLearning();
   }
 
   if (window.document$ && window.document$.subscribe) {
