@@ -1,0 +1,16 @@
+# Служебное
+*:Zone.Identifier
+.~lock.*#
+
+# Рабочие извлечения из docx (генерируются заново)
+.work/
+
+# Платформа: сборка и окружение
+project/platform/site/
+project/platform/.venv/
+__pycache__/
+
+# Сырые НЕобезличенные данные — не коммитить и не публиковать
+data-not-anonymys/
+data-raw-restricted/
+**/SECRET-origin.json

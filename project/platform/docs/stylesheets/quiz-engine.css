@@ -1,0 +1,11 @@
+.folur-quiz { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .3rem; padding: 1rem; margin: 1.2rem 0; }
+.folur-quiz-head { font-size: .75rem; opacity: .75; margin-bottom: .6rem; }
+.folur-quiz fieldset { border: none; border-left: 3px solid var(--md-default-fg-color--lightest); margin: .8rem 0; padding: .2rem .8rem; }
+.folur-quiz legend { font-weight: 600; }
+.folur-quiz label { display: block; cursor: pointer; margin: .15rem 0; }
+.folur-quiz fieldset.folur-ok { border-left-color: #4caf50; }
+.folur-quiz fieldset.folur-bad { border-left-color: #ef5350; }
+.folur-explain { font-size: .75rem; opacity: .85; margin-top: .4rem; }
+.folur-quiz-result { margin-top: .8rem; }
+.folur-cert { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .3rem; padding: 1rem; margin: 1rem 0; }
+.folur-cert button { margin-left: .8rem; }
