@@ -76,6 +76,7 @@ extra_css:
   - assets/css/brand.css
   - assets/css/steppe-lessons.css
   - assets/css/restyle.css   # сильный рестайл: карточки, hero-контур, таблицы, a11y
+  - assets/css/steppe-course.css   # лендинг курса + степ-бар уроков
   - stylesheets/quiz-engine.css
 
 nav:

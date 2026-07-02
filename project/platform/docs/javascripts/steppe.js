@@ -78,10 +78,133 @@
     });
   }
 
+  /* ── Элементы модуля из навигации (в порядке следования) ────────────── */
+  function moduleItems(code) {
+    var seen = new Set(), items = [];
+    var re = new RegExp("/modules/" + code + "/(lectures|practicum|ai-assistant|assessment)");
+    document.querySelectorAll(".md-nav__link[href]").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      var abs = new URL(href, location.href).pathname;
+      if (!re.test(abs) || seen.has(abs)) return;
+      seen.add(abs);
+      items.push({ url: abs, title: (a.textContent || "").trim() });
+    });
+    return items;
+  }
+
+  function pathCode() {
+    var m = location.pathname.match(/\/modules\/([ap]\d+)\//);
+    return m ? m[1] : null;
+  }
+
+  var VISITED_KEY = "folur-visited";
+  function visited() {
+    try { return JSON.parse(localStorage.getItem(VISITED_KEY) || "[]"); }
+    catch (e) { return []; }
+  }
+  function markVisited(path) {
+    var v = visited();
+    if (v.indexOf(path) === -1) { v.push(path); localStorage.setItem(VISITED_KEY, JSON.stringify(v)); }
+  }
+
+  /* ── Степ-бар модуля (Stepik-стиль): квадратики уроков сверху ─────────── */
+  function stepsBar() {
+    var code = pathCode();
+    if (!code || !/\/(lectures|practicum|ai-assistant|assessment)\//.test(location.pathname)) return;
+    var article = document.querySelector("article.md-content__inner, article");
+    if (!article || article.querySelector(".folur-steps")) return;
+    var items = moduleItems(code);
+    if (items.length < 2) return;
+    markVisited(location.pathname);
+    var done = visited();
+    var bar = document.createElement("nav");
+    bar.className = "folur-steps";
+    bar.setAttribute("aria-label", "Шаги модуля " + code.toUpperCase());
+    var label = document.createElement("span");
+    label.className = "folur-steps__label";
+    bar.appendChild(label);
+    var doneCount = 0;
+    items.forEach(function (it, i) {
+      var a = document.createElement("a");
+      var isDone = done.indexOf(it.url) !== -1;
+      var isCur = it.url === location.pathname;
+      if (isDone) doneCount++;
+      a.className = "folur-step" + (isDone ? " folur-step--done" : "") +
+        (isCur ? " folur-step--current" : "") +
+        (/\/assessment\//.test(it.url) ? " folur-step--assessment" : "");
+      a.href = it.url;
+      a.title = it.title;
+      a.textContent = /\/assessment\//.test(it.url) ? "✓" : String(i + 1);
+      bar.appendChild(a);
+    });
+    label.textContent = "Модуль " + (moduleCode() || "") + " · пройдено " + doneCount + " из " + items.length;
+    article.insertBefore(bar, article.firstChild);
+  }
+
+  /* ── Лендинг курса (Coursera-стиль) на странице модуля ─────────────────── */
+  function courseLanding() {
+    var code = pathCode();
+    if (!code || !/\/modules\/[ap]\d+\/(index\.html)?$/.test(location.pathname)) return;
+    var article = document.querySelector("article.md-content__inner, article");
+    var h1 = article && article.querySelector("h1");
+    if (!h1 || article.querySelector(".folur-course-hero")) return;
+
+    var items = moduleItems(code);
+    var lectures = items.filter(function (i) { return /\/lectures\//.test(i.url); });
+    var assessment = items.filter(function (i) { return /\/assessment\//.test(i.url); })[0];
+    var firstLesson = lectures[0] || items[0];
+    if (!firstLesson) return;
+
+    // описание: первый абзац после h1
+    var desc = "";
+    var el = h1.nextElementSibling;
+    while (el && !desc) {
+      if (el.tagName === "P" && el.textContent.trim().length > 60) desc = el.textContent.trim();
+      el = el.nextElementSibling;
+    }
+    // суммарное время: все «~N мин» на странице программы
+    var mins = 0;
+    (article.textContent.match(/~\s?(\d+)(?=\s*(?:–|-)?\s*мин)/g) || []).forEach(function (s) {
+      mins += parseInt(s.replace(/[^\d]/g, ""), 10) || 0;
+    });
+    var hours = mins ? Math.max(1, Math.round(mins / 60)) : null;
+    var isAcademic = code.charAt(0) === "a";
+
+    var hero = document.createElement("div");
+    hero.className = "folur-course-hero";
+    hero.innerHTML =
+      '<div class="folur-course-hero__kicker">' +
+      (isAcademic ? "Академический модуль · уровень pro-code" : "Профессиональный модуль · 16–40 ак. часов") +
+      "</div>" +
+      (desc ? '<p class="folur-course-hero__desc">' + desc.replace(/</g, "&lt;") + "</p>" : "") +
+      '<div class="folur-course-hero__cta">' +
+      '<a class="md-button md-button--primary" href="' + firstLesson.url + '">Начать обучение →</a>' +
+      (assessment ? '<a class="md-button" href="' + assessment.url + '">Аттестация</a>' : "") +
+      "</div>";
+
+    var band = document.createElement("div");
+    band.className = "folur-course-band";
+    var cells = [
+      [String(lectures.length || items.length), "уроков в серии + практикум и ИИ-задание"],
+      [hours ? "~" + hours + " ч" : "самостоятельный темп", "суммарная трудозатрата по программе"],
+      [isAcademic ? "Академический" : "Профессиональный", isAcademic ? "бакалавриат и магистратура" : "фермеры, специалисты, МСБ"],
+      ["≥ 75%", "порог аттестации — сертификат с QR-проверкой"],
+    ];
+    band.innerHTML = cells.map(function (c) {
+      return '<div class="folur-course-band__cell"><div class="folur-course-band__num">' + c[0] +
+        '</div><div class="folur-course-band__label">' + c[1] + "</div></div>";
+    }).join("");
+
+    h1.parentNode.insertBefore(hero, h1.nextSibling);
+    hero.parentNode.insertBefore(band, hero.nextSibling);
+  }
+
   function init() {
     readbar();
     lessonHead();
     bloomPills();
+    stepsBar();
+    courseLanding();
   }
 
   if (window.document$ && window.document$.subscribe) {

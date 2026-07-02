@@ -1,0 +1,99 @@
+/* Лендинг курса (Coursera-подобный) + степ-бар уроков (Stepik-подобный).
+ * Собираются client-side скриптом steppe.js из контента и навигации. */
+
+/* ── Лендинг модуля ──────────────────────────────────────────────────────── */
+.folur-course-hero {
+  margin: .2rem 0 1.2rem;
+  padding: 1.6rem 1.8rem 1.5rem;
+  border-radius: var(--r-md, .8rem);
+  background:
+    radial-gradient(120% 160% at 95% -20%, rgba(42,157,143,.16), transparent 55%),
+    linear-gradient(115deg, rgba(27,94,58,.08), rgba(212,162,78,.07));
+  border: 1px solid var(--folur-line, #E4E0D6);
+}
+.folur-course-hero__kicker {
+  font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: .4rem;
+}
+.folur-course-hero__desc {
+  max-width: 62ch;
+  margin: .6rem 0 1rem;
+  font-size: .82rem; line-height: 1.65;
+  color: var(--md-default-fg-color);
+}
+.folur-course-hero__cta { display: flex; gap: .7rem; flex-wrap: wrap; }
+.folur-course-hero__cta .md-button { margin: 0; }
+
+/* инфо-полоса (серия · время · уровень · сертификат) */
+.folur-course-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  margin: 1rem 0 1.6rem;
+  border: 1px solid var(--folur-line, #E4E0D6);
+  border-radius: var(--r-md, .8rem);
+  box-shadow: var(--sh1, 0 1px 2px rgba(19,64,41,.06));
+  overflow: hidden;
+  background: var(--md-default-bg-color);
+}
+.folur-course-band__cell {
+  padding: .9rem 1.1rem;
+  border-left: 1px solid var(--folur-line, #E4E0D6);
+}
+.folur-course-band__cell:first-child { border-left: 0; }
+.folur-course-band__num {
+  font-weight: 800; font-size: 1.05rem; line-height: 1.2;
+  color: var(--folur-green, #1B5E3A);
+  word-break: keep-all; hyphens: none;
+}
+/* длинные текстовые значения («Академический») — компактнее цифр */
+.folur-course-band__num:not([data-num]) { font-size: clamp(.82rem, 1.4vw, 1.05rem); }
+.folur-course-band__label { font-size: .68rem; color: var(--md-default-fg-color--light); margin-top: .1rem; }
+[data-md-color-scheme="slate"] .folur-course-band__num { color: #7DD3A3; }
+[data-md-color-scheme="slate"] .folur-course-hero,
+[data-md-color-scheme="slate"] .folur-course-band { border-color: #2C3A32; }
+
+/* ── Степ-бар модуля (квадратики, как на Stepik) ─────────────────────────── */
+.folur-steps {
+  display: flex; flex-wrap: wrap; gap: .35rem;
+  margin: 0 0 1rem;
+  padding: .55rem .65rem;
+  border: 1px solid var(--folur-line, #E4E0D6);
+  border-radius: var(--r-sm, .45rem);
+  background: var(--md-code-bg-color, rgba(0,0,0,.03));
+}
+.folur-steps__label {
+  flex-basis: 100%;
+  font-size: .64rem; font-weight: 600; letter-spacing: .04em;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: .15rem;
+}
+.folur-step {
+  width: 1.55rem; height: 1.55rem;
+  display: inline-grid; place-items: center;
+  border-radius: .3rem;
+  border: 1.5px solid var(--folur-line, #cfcabc);
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color--light);
+  font-size: .62rem; font-weight: 700;
+  text-decoration: none !important;
+  transition: transform .12s var(--ease, ease), border-color .12s, background .12s;
+}
+.folur-step:hover { transform: translateY(-2px); border-color: var(--folur-green-light, #2E7D52); }
+.folur-step--done {
+  background: var(--folur-green-light, #2E7D52);
+  border-color: var(--folur-green-light, #2E7D52);
+  color: #fff;
+}
+.folur-step--current {
+  outline: 2.5px solid var(--folur-wheat, #D4A24E);
+  outline-offset: 1.5px;
+  font-weight: 800;
+}
+.folur-step--assessment { border-radius: 50%; }
+[data-md-color-scheme="slate"] .folur-step {
+  background: transparent; border-color: #2C3A32; color: #A7B3AC;
+}
+[data-md-color-scheme="slate"] .folur-step--done {
+  background: #2E7D52; border-color: #2E7D52; color: #fff;
+}
