@@ -1,4 +1,8 @@
-# Публикация платформы (GitHub Pages)
+# Публикация платформы
+
+> **Актуальная схема (2026-07-02):** хостинг — **Firebase Hosting** (https://folur-kaz-platform.web.app/, проект `folur-kaz-platform`), исходники — **приватный** GitHub-репозиторий vel5id/folur-platform. Деплой: `tools/deploy_firebase.sh`; синхронизация репо: `tools/publish_platform.sh`; CI на push — валидация + strict-сборка. Раздел ниже (GitHub Pages) сохранён как альтернатива для вузов-приёмников с публичным репозиторием.
+
+## Архив: вариант GitHub Pages
 
 > Роль-владелец: IT-разработчик · Предусловие пилота: платформа доступна слушателям по публичному URL.
 

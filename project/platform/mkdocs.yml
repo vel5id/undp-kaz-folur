@@ -2,7 +2,7 @@ site_name: FOLUR Казахстан — учебная платформа
 site_description: >-
   Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана.
   Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.
-site_url: https://vel5id.github.io/folur-platform/
+site_url: https://folur-kaz-platform.web.app/
 docs_dir: docs
 
 theme:

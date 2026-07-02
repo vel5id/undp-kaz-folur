@@ -2,7 +2,9 @@
 
 Учебная платформа проекта UNDP-KAZ FOLUR (Food Systems, Land Use and Restoration): устойчивое управление агроландшафтами Северного Казахстана. Исполнитель — НАО «Костанайский региональный университет им. А. Байтұрсынұлы».
 
-**Сайт:** https://vel5id.github.io/folur-platform/
+**Сайт:** https://folur-kaz-platform.web.app/ (Firebase Hosting; репозиторий приватный)
+
+Деплой: `tools/deploy_firebase.sh` (валидация → strict-сборка → `firebase deploy`). CI на push проверяет контент и сборку.
 
 ## Состав
 
