@@ -9,3 +9,5 @@
 .folur-quiz-result { margin-top: .8rem; }
 .folur-cert { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .3rem; padding: 1rem; margin: 1rem 0; }
 .folur-cert button { margin-left: .8rem; }
+.folur-result-code { margin-top: .8rem; font-size: .75rem; }
+.folur-code-text { display: block; word-break: break-all; margin: .4rem 0; padding: .4rem; background: var(--md-code-bg-color); }

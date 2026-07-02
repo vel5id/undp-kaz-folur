@@ -10,7 +10,7 @@
     var h = 0x811c9dc5;
     for (var i = 0; i < str.length; i++) {
       h ^= str.charCodeAt(i);
-      h = (h * 0x01000193) >>> 0;
+      h = Math.imul(h, 0x01000193) >>> 0;
     }
     return h;
   }
@@ -40,12 +40,16 @@
       return;
     }
     var d = res.data;
+    var kind = d.t === "result"
+      ? (d.mode === "pre" ? "Код результата входного (pre) теста" : "Код результата аттестации")
+      : "Сертификат";
     box.innerHTML =
-      "<p><strong>✓ Код целостен.</strong></p>" +
+      "<p><strong>✓ Код целостен.</strong> Тип: " + kind + ".</p>" +
       "<table><tbody>" +
       "<tr><td>Слушатель</td><td><strong>" + esc(d.s) + "</strong></td></tr>" +
       "<tr><td>Аттестация</td><td>" + esc(d.m) + "</td></tr>" +
-      "<tr><td>Результат</td><td>" + esc(d.p) + "% (порог 75%)</td></tr>" +
+      "<tr><td>Результат</td><td>" + esc(d.p) + "%" + (d.r ? " (" + esc(d.r) + ")" : "") +
+      (d.t === "result" ? "" : " (порог 75%)") + "</td></tr>" +
       "<tr><td>Дата</td><td>" + esc(d.d) + "</td></tr>" +
       "</tbody></table>" +
       "<p class='folur-verify-note'>Сверьте слушателя с реестром проекта (KPI-журнал). " +

@@ -40,6 +40,7 @@ nav = ["nav:",
        "  - Датасеты: datasets.md",
        "  - Офлайн-материалы: offline.md",
        "  - Проверка сертификата: verify.md",
+       "  - Для тренера: training/index.md",
        "  - Академические модули:",
        "      - Обзор: modules/index.md"]
 for code in [f"a{i}" for i in range(1, 7)]:

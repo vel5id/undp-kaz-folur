@@ -15,13 +15,17 @@
   var PASS_THRESHOLD = 0.75;
   var SUBSET = 0.8; // доля банка в индивидуальном варианте (мин. 3 вопроса)
   var CERT_SALT = "folur-kaz-2026-v1";
+  // режим аттестации: ?mode=pre — входной тест (другой детерминированный вариант
+  // того же банка; сертификат недоступен, только код результата для реестра)
+  var MODE = new URLSearchParams(location.search).get("mode") === "pre" ? "pre" : "final";
 
-  // FNV-1a: детерминированный хэш идентификатора слушателя
+  // FNV-1a: детерминированный хэш (Math.imul — точная 32-битная арифметика,
+  // иначе h*prime теряет биты за пределами 2^53 и не совпадает с эталонным FNV)
   function hash(str) {
     var h = 0x811c9dc5;
     for (var i = 0; i < str.length; i++) {
       h ^= str.charCodeAt(i);
-      h = (h * 0x01000193) >>> 0;
+      h = Math.imul(h, 0x01000193) >>> 0;
     }
     return h;
   }
@@ -120,6 +124,23 @@
     w.document.close();
   }
 
+  // Код результата для KPI-реестра: формируется после ЛЮБОЙ полной сдачи
+  // аттестации (pre и final, любой процент). Слушатель передаёт код
+  // координатору; батч-проверка — tools/registry_check.py.
+  function resultCode(studentId, sum, all) {
+    var h1 = document.querySelector("h1");
+    return certCode({
+      v: 2,
+      t: "result",
+      mode: MODE,
+      s: studentId,
+      m: h1 ? h1.textContent.replace(/¶/g, "").trim() : document.title,
+      p: Math.round((sum / all) * 100),
+      r: sum + "/" + all,
+      d: new Date().toISOString().slice(0, 10),
+    });
+  }
+
   // Наблюдатель аттестации: собирает результаты всех квизов страницы /assessment/
   function makeCertWatcher(total) {
     if (!/\/assessment\//.test(location.pathname) || total === 0) return function () {};
@@ -136,9 +157,10 @@
         box.className = "folur-cert";
         lastForm.parentNode.insertBefore(box, lastForm.nextSibling);
       }
-      box.innerHTML = "<strong>Итог аттестации: " + sum + "/" + all + " (" +
+      var label = MODE === "pre" ? "Итог входного (pre) теста" : "Итог аттестации";
+      box.innerHTML = "<strong>" + label + ": " + sum + "/" + all + " (" +
         Math.round(share * 100) + "%)</strong>";
-      if (share >= PASS_THRESHOLD) {
+      if (MODE === "final" && share >= PASS_THRESHOLD) {
         var btn = document.createElement("button");
         btn.className = "md-button md-button--primary";
         btn.textContent = "Сформировать сертификат (PDF)";
@@ -146,10 +168,24 @@
           openCertificate(getStudentId(), share);
         });
         box.appendChild(btn);
-      } else {
+      } else if (MODE === "final") {
         box.appendChild(document.createTextNode(" — ниже порога " +
           Math.round(PASS_THRESHOLD * 100) + "%. Повторите материал и пройдите аттестацию снова."));
       }
+      var codeDiv = document.createElement("div");
+      codeDiv.className = "folur-result-code";
+      var code = resultCode(getStudentId(), sum, all);
+      codeDiv.innerHTML = "<em>Код результата для реестра (передайте координатору):</em>" +
+        '<code class="folur-code-text">' + code + "</code>";
+      var copy = document.createElement("button");
+      copy.className = "md-button";
+      copy.textContent = "Копировать код";
+      copy.addEventListener("click", function () {
+        navigator.clipboard && navigator.clipboard.writeText(code);
+        copy.textContent = "Скопировано ✓";
+      });
+      codeDiv.appendChild(copy);
+      box.appendChild(codeDiv);
     };
   }
 
@@ -223,7 +259,8 @@
     });
     var watcher = makeCertWatcher(parsed.length);
     parsed.forEach(function (item, idx) {
-      var key = location.pathname + "#quiz" + idx;
+      // MODE в сиде: у pre- и final-теста разные детерминированные варианты
+      var key = location.pathname + "#" + MODE + "#quiz" + idx;
       var host = item.code.closest("div.quiz") || item.code.closest("pre");
       render(host, item.bank, key, function (correct, n, form) {
         watcher(idx, correct, n, form);
