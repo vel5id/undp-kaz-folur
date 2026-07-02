@@ -53,6 +53,10 @@
 [data-md-color-scheme="slate"] .folur-course-hero,
 [data-md-color-scheme="slate"] .folur-course-band { border-color: #2C3A32; }
 
+/* Плавный скролл к якорям (например, «Выбрать программу ↓» на главной) */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
 /* ── Мобильная адаптация заголовков блоков каталога ──────────────────────── */
 @media screen and (max-width: 44em) {
   .folur-block-head { flex-wrap: wrap; row-gap: .3rem; }

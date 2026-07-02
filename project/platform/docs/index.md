@@ -14,8 +14,8 @@ hide:
 <p class="folur-hero__sub">Открытая обучающая платформа для фермеров, МСБ, специалистов и студентов Северного Казахстана: 21 модуль по данным, ГИС, ИИ, землепользованию, воде и экономике — с практикумами на реальных открытых данных и ИИ-ассистентом в каждом модуле. Бесплатно, без регистрации.</p>
 
 <div class="folur-hero__cta">
-<a class="folur-btn folur-btn--primary" href="modules/p1/">Начать обучение →</a>
-<a class="folur-btn folur-btn--ghost" href="#catalog">Каталог модулей</a>
+<a class="folur-btn folur-btn--primary" href="#catalog">Выбрать программу ↓</a>
+<a class="folur-btn folur-btn--ghost" href="my-learning/">Моё обучение</a>
 </div>
 </div>
 

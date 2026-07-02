@@ -417,6 +417,25 @@
     box.innerHTML = html;
   }
 
+  /* ── Строгий сайдбар модуля: внутри А1 не показываем А2, А3, П… ─────────── */
+  function pruneSidebarToModule() {
+    var code = pathCode();
+    if (!code) return;
+    var mine = "/modules/" + code + "/";
+    document.querySelectorAll(".md-sidebar--primary .md-nav__item").forEach(function (item) {
+      var links = item.querySelectorAll("a[href]");
+      if (!links.length) return;
+      var hasOther = false, hasMine = false;
+      links.forEach(function (a) {
+        var p = new URL(a.getAttribute("href"), location.href).pathname;
+        var m = p.match(/\/modules\/([ap]\d+)\//);
+        if (!m) return;
+        if (m[1] === code) hasMine = true; else hasOther = true;
+      });
+      if (hasOther && !hasMine) item.style.display = "none";
+    });
+  }
+
   function init() {
     readbar();
     lessonHead();
@@ -425,6 +444,7 @@
     courseLanding();
     cardCovers();
     myLearning();
+    pruneSidebarToModule();
   }
 
   if (window.document$ && window.document$.subscribe) {
