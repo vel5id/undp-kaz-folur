@@ -16,7 +16,7 @@ rsync -a --delete \
 cd "$STAGE"
 git init -q -b main
 git add -A
-git -c user.name="KRU FOLUR" -c user.email="vladimirfominov49@gmail.com" \
+git -c user.name="KRU FOLUR" -c user.email="vel5id@users.noreply.github.com" \
   commit -q -m "Platform snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
 git remote add origin "https://github.com/$REPO.git"
 git push -q --force origin main
