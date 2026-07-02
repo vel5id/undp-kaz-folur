@@ -107,38 +107,64 @@
     if (v.indexOf(path) === -1) { v.push(path); localStorage.setItem(VISITED_KEY, JSON.stringify(v)); }
   }
 
-  /* ── Степ-бар модуля (Stepik-стиль): квадратики уроков сверху ─────────── */
+  /* ── Степ-бар урока (Stepik-стиль): квадратики = РАЗДЕЛЫ текущего урока.
+   * Каждый квадрат — якорная ссылка (свой URL); при скролле текущий раздел
+   * подсвечивается, пройденные — зеленеют. ──────────────────────────────── */
   function stepsBar() {
     var code = pathCode();
-    if (!code || !/\/(lectures|practicum|ai-assistant|assessment)\//.test(location.pathname)) return;
+    if (!code || !/\/(lectures|practicum|ai-assistant|assessment)\//.test(location.pathname + "/")) return;
     var article = document.querySelector("article.md-content__inner, article");
     if (!article || article.querySelector(".folur-steps")) return;
-    var items = moduleItems(code);
-    if (items.length < 2) return;
     markVisited(location.pathname);
-    var done = visited();
+
+    var heads = Array.prototype.slice.call(article.querySelectorAll("h2[id]"));
+    if (heads.length < 2) return;
+
+    // позиция урока в модуле — для подписи «Урок N из M»
+    var items = moduleItems(code);
+    var pos = 0;
+    items.forEach(function (it, i) { if (it.url === location.pathname) pos = i + 1; });
+    var kind = /\/assessment\//.test(location.pathname) ? "Оценивание"
+      : /\/practicum\//.test(location.pathname) ? "Практикум"
+      : /\/ai-assistant\//.test(location.pathname) ? "ИИ-задание" : "Урок";
+
     var bar = document.createElement("nav");
     bar.className = "folur-steps";
-    bar.setAttribute("aria-label", "Шаги модуля " + code.toUpperCase());
+    bar.setAttribute("aria-label", "Разделы: " + document.title);
     var label = document.createElement("span");
     label.className = "folur-steps__label";
+    label.textContent = (moduleCode() || "") + " · " + kind +
+      (pos && items.length ? " · шаг " + pos + " из " + items.length : "") +
+      " · разделы:";
     bar.appendChild(label);
-    var doneCount = 0;
-    items.forEach(function (it, i) {
+
+    var squares = heads.map(function (h, i) {
       var a = document.createElement("a");
-      var isDone = done.indexOf(it.url) !== -1;
-      var isCur = it.url === location.pathname;
-      if (isDone) doneCount++;
-      a.className = "folur-step" + (isDone ? " folur-step--done" : "") +
-        (isCur ? " folur-step--current" : "") +
-        (/\/assessment\//.test(it.url) ? " folur-step--assessment" : "");
-      a.href = it.url;
-      a.title = it.title;
-      a.textContent = /\/assessment\//.test(it.url) ? "✓" : String(i + 1);
+      a.className = "folur-step";
+      a.href = "#" + h.id;
+      var t = h.textContent.replace(/¶/g, "").trim();
+      a.title = t;
+      a.setAttribute("aria-label", "Раздел: " + t);
+      a.textContent = String(i + 1);
       bar.appendChild(a);
+      return a;
     });
-    label.textContent = "Модуль " + (moduleCode() || "") + " · пройдено " + doneCount + " из " + items.length;
     article.insertBefore(bar, article.firstChild);
+
+    // подсветка по скроллу: разделы выше текущего — «пройдены»
+    var update = function () {
+      var cur = -1;
+      var probe = window.scrollY + window.innerHeight * 0.28;
+      heads.forEach(function (h, i) {
+        if (h.offsetTop + (h.closest("article") ? 0 : 0) <= probe) cur = i;
+      });
+      squares.forEach(function (s, i) {
+        s.classList.toggle("folur-step--done", i < cur);
+        s.classList.toggle("folur-step--current", i === cur);
+      });
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
   }
 
   /* ── Лендинг курса (Coursera-стиль) на странице модуля ─────────────────── */
@@ -417,11 +443,11 @@
     box.innerHTML = html;
   }
 
-  /* ── Строгий сайдбар модуля: внутри А1 не показываем А2, А3, П… ─────────── */
+  /* ── Строгий сайдбар модуля: внутри А1 не показываем А2, А3, П…;
+   * уроки своего модуля — пронумерованные карточки-шаги. ─────────────────── */
   function pruneSidebarToModule() {
     var code = pathCode();
     if (!code) return;
-    var mine = "/modules/" + code + "/";
     document.querySelectorAll(".md-sidebar--primary .md-nav__item").forEach(function (item) {
       var links = item.querySelectorAll("a[href]");
       if (!links.length) return;
@@ -433,6 +459,31 @@
         if (m[1] === code) hasMine = true; else hasOther = true;
       });
       if (hasOther && !hasMine) item.style.display = "none";
+    });
+
+    // нумерация шагов своего модуля (карточки в сайдбаре)
+    var seen = new Set(), n = 0;
+    var re = new RegExp("/modules/" + code + "/(lectures|practicum|ai-assistant|assessment)");
+    document.querySelectorAll('.md-sidebar--primary .md-nav__link[href]').forEach(function (a) {
+      var p = new URL(a.getAttribute("href"), location.href).pathname;
+      var item = a.closest(".md-nav__item");
+      if (!item) return;
+      if (p === "/") return;
+      if (re.test(p)) {
+        if (seen.has(p)) return;
+        seen.add(p);
+        n++;
+        item.classList.add("folur-nav-step");
+        if (!a.querySelector(".folur-nav-num")) {
+          var chip = document.createElement("span");
+          chip.className = "folur-nav-num";
+          chip.textContent = n;
+          a.insertBefore(chip, a.firstChild);
+        }
+      } else if (p.replace(/index\.html$/, "") === "/modules/" + code + "/" ||
+                 p.endsWith("/modules/" + code + "/")) {
+        item.classList.add("folur-nav-home");
+      }
     });
   }
 
