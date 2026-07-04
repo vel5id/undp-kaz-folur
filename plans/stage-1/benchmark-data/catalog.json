@@ -1,0 +1,177 @@
+{
+  "generated": "2026-06-23",
+  "total_courses": 14,
+  "verified_count": 13,
+  "providers": {
+    "coursera": {
+      "name": "Coursera",
+      "readme": "coursera/README.md",
+      "courses": [
+        {
+          "course_id": "coursera-geospatial-ds",
+          "title": "Mastering Geospatial Data Science: From Beginner to Expert (Specialization)",
+          "url": "https://www.coursera.org/specializations/mastering-geospatial-data-science-from-beginner-to-expert",
+          "language": "English (English only; no Russian or Kazakh subtitles confirmed on the page)",
+          "cost": "Freemium. Individual courses can be enrolled \"for free\" (audit) with access to materials and assignments; the shareable career certificate requires a paid Coursera subscription (Coursera Plus, with a 40% discount advertised at fetch time). Financial aid noted as available. Exact price not displayed on the page.",
+          "verified": true,
+          "syllabus_modules": 6,
+          "file": "coursera/coursera-geospatial-ds.json"
+        },
+        {
+          "course_id": "geneva-ecosystem-services",
+          "title": "Ecosystem Services: a Method for Sustainable Development",
+          "url": "https://www.coursera.org/learn/ecosystem-services",
+          "language": "Taught in English; 22 subtitle languages available on Coursera (Russian subtitles included among them). Original content and assessments are in English.",
+          "cost": "Free to audit the lecture/video content; the verified certificate is paid (subscription or one-off purchase, included with Coursera Plus). Financial aid is available. A free trial is offered.",
+          "verified": true,
+          "syllabus_modules": 6,
+          "file": "coursera/geneva-ecosystem-services.json"
+        },
+        {
+          "course_id": "ufl-sustainable-land",
+          "title": "Sustainable Agricultural Land Management",
+          "url": "https://www.coursera.org/learn/sustainable-agriculture",
+          "language": "Taught in English; subtitles/translation available in 22 languages (per Coursera page). Russian availability not individually confirmed [UNVERIFIED — page states \"22 languages\" without enumerating them].",
+          "cost": "Audit/free access to course materials available; full course included with Coursera Plus subscription; a shareable certificate requires purchase. Free Trial and financial aid options offered. (Coursera page)",
+          "verified": true,
+          "syllabus_modules": 8,
+          "file": "coursera/ufl-sustainable-land.json"
+        }
+      ]
+    },
+    "fao-elearning": {
+      "name": "FAO eLearning Academy",
+      "readme": "fao-elearning/README.md",
+      "courses": [
+        {
+          "course_id": "fao-agroecology",
+          "title": "Agroecology for Africa",
+          "url": "https://elearning.fao.org/course/view.php?id=1256",
+          "language": "English and French (verified on course page). No Russian version found.",
+          "cost": "Free (no fee for enrollment, course materials, exam, or digital badge)",
+          "verified": true,
+          "syllabus_modules": 4,
+          "file": "fao-elearning/fao-agroecology.json"
+        },
+        {
+          "course_id": "fao-climate-smart-soil",
+          "title": "Climate-smart Soil and Land Management",
+          "url": "https://elearning.fao.org/course/view.php?id=435",
+          "language": "English, French, Spanish, Arabic (multilingual; курс доступен на 4 языках, русского нет)",
+          "cost": "Free / бесплатно (0 USD)",
+          "verified": true,
+          "syllabus_modules": 4,
+          "file": "fao-elearning/fao-climate-smart-soil.json"
+        },
+        {
+          "course_id": "fao-food-value-chains",
+          "title": "Sustainable Food Value Chains for Nutrition",
+          "url": "https://elearning.fao.org/course/view.php?id=566",
+          "language": "English, Spanish, French (course-specific). The FAO elearning Academy platform overall hosts courses in 9 languages including Russian, but THIS course is offered in EN/ES/FR only — no Russian version verified.",
+          "cost": "Free (no fee). Registration/account on elearning.fao.org required.",
+          "verified": true,
+          "syllabus_modules": 4,
+          "file": "fao-elearning/fao-food-value-chains.json"
+        },
+        {
+          "course_id": "fao-slm-restoration",
+          "title": "Sustainable land management and restoration",
+          "url": "https://elearning.fao.org/course/view.php?id=454",
+          "language": "English and Arabic for this specific course. The FAO elearning Academy overall is multilingual (English, French, Spanish, Arabic and others). No Russian version of this course confirmed. [UNVERIFIED whether a Russian localization exists]",
+          "cost": "Free of charge. All FAO elearning Academy courses (incl. the final certification test and digital badge) are provided at no cost as a \"global public good.\" Self-registration on elearning.fao.org required.",
+          "verified": true,
+          "syllabus_modules": 5,
+          "file": "fao-elearning/fao-slm-restoration.json"
+        }
+      ]
+    },
+    "nasa-spatialthoughts": {
+      "name": "NASA ARSET + Spatial Thoughts",
+      "readme": "nasa-spatialthoughts/README.md",
+      "courses": [
+        {
+          "course_id": "nasa-arset-ag-rs",
+          "title": "NASA ARSET — Satellite Remote Sensing for Agricultural Applications",
+          "url": "https://www.earthdata.nasa.gov/learn/trainings/satellite-remote-sensing-agricultural-applications",
+          "language": "English and Spanish (all slides and homework provided in both; live webinars delivered in English with Spanish-language materials)",
+          "cost": "Free ($0). No registration fee; all slides, Q&A transcripts, and homework are open-access.",
+          "verified": true,
+          "syllabus_modules": 4,
+          "file": "nasa-spatialthoughts/nasa-arset-ag-rs.json"
+        },
+        {
+          "course_id": "nasa-arset-ml-rs",
+          "title": "Large Scale Applications of Machine Learning using Remote Sensing for Building Agriculture Solutions (NASA ARSET)",
+          "url": "https://www.earthdata.nasa.gov/learn/trainings/large-scale-applications-machine-learning-using-remote-sensing-building-agriculture",
+          "language": "English (live delivery). Slides for all three parts also provided in Spanish. No Russian materials.",
+          "cost": "Free ($0). ARSET trainings are free and open; registration required.",
+          "verified": true,
+          "syllabus_modules": 3,
+          "file": "nasa-spatialthoughts/nasa-arset-ml-rs.json"
+        },
+        {
+          "course_id": "spatialthoughts-gee",
+          "title": "End-to-End Google Earth Engine (Full Course)",
+          "url": "https://courses.spatialthoughts.com/end-to-end-gee.html",
+          "language": "English (course material and videos in English; no Russian version)",
+          "cost": "Self-study (OpenCourseWare): free. Live instructor-led cohort: USD $229 / INR ₹15,999 + GST.",
+          "verified": true,
+          "syllabus_modules": 7,
+          "file": "nasa-spatialthoughts/spatialthoughts-gee.json"
+        }
+      ]
+    },
+    "itc-twente": {
+      "name": "ITC / University of Twente",
+      "readme": "itc-twente/README.md",
+      "courses": [
+        {
+          "course_id": "itc-uav-precision-ag",
+          "title": "UAVs in Precision Agriculture",
+          "url": "https://www.geoversity.io/courses/uavs-in-precision-agriculture/",
+          "language": "English. Стандарт курса — английский; в требованиях указано «Basic English skills». Русскоязычной версии нет.",
+          "cost": "Курс бесплатный (free). Опциональный сертификат — €50 (Certificate of Completion, требуется 100% прохождения). Всё ПО и данные предоставляются бесплатно.",
+          "verified": false,
+          "syllabus_modules": 6,
+          "file": "itc-twente/itc-uav-precision-ag.json"
+        }
+      ]
+    },
+    "stepik": {
+      "name": "Stepik (RU)",
+      "readme": "stepik/README.md",
+      "courses": [
+        {
+          "course_id": "stepik-agroecology",
+          "title": "АГРОЭКОЛОГИЯ (Сельскохозяйственная экология)",
+          "url": "https://stepik.org/course/84866/promo",
+          "language": "RU (русский)",
+          "cost": "Бесплатно (free, is_paid: false)",
+          "verified": true,
+          "syllabus_modules": 13,
+          "file": "stepik/stepik-agroecology.json"
+        },
+        {
+          "course_id": "stepik-digital-apk",
+          "title": "Цифровые технологии в АПК",
+          "url": "https://stepik.org/course/84869/promo",
+          "language": "RU (Russian, ru)",
+          "cost": "Бесплатный (is_paid=false, display_price=\"-\")",
+          "verified": true,
+          "syllabus_modules": 8,
+          "file": "stepik/stepik-digital-apk.json"
+        },
+        {
+          "course_id": "stepik-gis-intro",
+          "title": "Геоинформационные системы: Начальный уровень",
+          "url": "https://stepik.org/course/120208/promo",
+          "language": "RU (русский)",
+          "cost": "Бесплатно (is_paid=false, price=null)",
+          "verified": true,
+          "syllabus_modules": 3,
+          "file": "stepik/stepik-gis-intro.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "course_id": "ufl-sustainable-land",
+  "title": "Sustainable Agricultural Land Management",
+  "url": "https://www.coursera.org/learn/sustainable-agriculture",
+  "provider": "University of Florida (via Coursera). Instructor: George J. Hochmuth, Ph.D.",
+  "language": "Taught in English; subtitles/translation available in 22 languages (per Coursera page). Russian availability not individually confirmed [UNVERIFIED — page states \"22 languages\" without enumerating them].",
+  "cost": "Audit/free access to course materials available; full course included with Coursera Plus subscription; a shareable certificate requires purchase. Free Trial and financial aid options offered. (Coursera page)",
+  "certificate": "Yes — shareable electronic certificate added to the Coursera Accomplishments page; requires payment (not available on free audit).",
+  "duration": "Approx. 2 weeks at ~10 hours/week as listed by Coursera (the original cohort design was 8 weeks, one module/lecture-set per week). 8 modules total, module workloads 2-4 hours each.",
+  "level": "Beginner — no prior experience required (Coursera).",
+  "target_audience": "Anyone interested in sustainable agriculture, water quality, and land management; framed for practitioners, farmers, and environmental/extension professionals — originally with a peer-assessed project tied to an agricultural/environmental issue \"where the students live and work.\"",
+  "format": "Self-paced online MOOC: ~3 video lectures per module, weekly quizzes, weekly discussion topics, and a multi-part peer-assessed course project. (Coursera + MOOC aggregator descriptions)",
+  "assessment": "8 quizzes (one per module, ~30 min each); 3 peer-reviewed course-project submissions (project parts span modules 2, 4, 6, with final submission in module 8); some AI-graded assignments noted on the current Coursera page.",
+  "hands_on": "Practical work centers on a multi-part, peer-assessed Course Project in which learners analyze a real agricultural/environmental (water-quality/nutrient/land-management) issue relevant to their own region/work. No software lab or notebook component; project is analytical/written, built progressively across the modules.",
+  "tools": "No specialized software, GIS, or coding tools required or mentioned. Content focuses conceptually on water-quality analysis, nutrient mass-balance reasoning, soil testing interpretation, and BMP evaluation. (Coursera page lists no tools.)",
+  "syllabus": [
+    {
+      "module": "Module 1 — Introduction to Sustainable Agricultural Land Management (~2 h)",
+      "topics": "Welcome and course overview; introduction to the instructor; introduction to the course project; three-part conceptual introduction to sustainable agricultural land management."
+    },
+    {
+      "module": "Module 2 — Water Quality Issues and Regulations (~3 h)",
+      "topics": "Big-picture examples and the value of agriculture; overview of water quality and the regulatory landscape; Course Project Part 1."
+    },
+    {
+      "module": "Module 3 — TMDLs & Nutrients (~2 h)",
+      "topics": "TMDLs (Total Maximum Daily Loads) and agriculture; agricultural soils; nutrient fates (Part 1)."
+    },
+    {
+      "module": "Module 4 — Best Management Practices (~3 h)",
+      "topics": "Nutrient fates (Parts 2-3); nutrient mass balance; Course Project Part 2."
+    },
+    {
+      "module": "Module 5 — Soil Management (~2 h)",
+      "topics": "Soil management (Parts 1-2); soil testing (Part 1)."
+    },
+    {
+      "module": "Module 6 — Nutrient Management (~3 h)",
+      "topics": "Soil testing (Part 2); nutrient management (Parts 1-2); Course Project Part 3."
+    },
+    {
+      "module": "Module 7 — Water for Agriculture (~2 h)",
+      "topics": "Nutrient management (Part 3); water resources in Florida; irrigation management (Part 1)."
+    },
+    {
+      "module": "Module 8 — Agricultural Irrigation Management (~4 h)",
+      "topics": "Irrigation management (Parts 2-3); overall course review; Course Project final submission."
+    }
+  ],
+  "strengths": [
+    "High learner satisfaction: 4.8/5 from ~669 reviews, ~83% five-star, ~98% satisfaction, ~58k enrolled (Coursera page metrics).",
+    "Strong, coherent narrative thread: water quality -> regulation (TMDLs) -> nutrient fates -> BMPs -> soil/nutrient/irrigation management — a logical cause-to-practice arc.",
+    "Project-based learning grounded in the learner's OWN region/work, which reviewers said let them 'apply immediately to my work'.",
+    "Concrete pedagogy on nutrient mass balance and soil-test interpretation — reviewers cited nutrient management as the most valuable part.",
+    "Beginner-accessible, no prerequisites, free to audit — low barrier to entry.",
+    "Regulatory + scientific framing combined (policy behind BMPs), not just agronomy."
+  ],
+  "weaknesses": [
+    "Heavily Florida-specific (Florida water bodies, Florida regulations, Florida irrigation context); a minority of reviewers found this limiting outside the region — direct relevance to North Kazakhstan dryland/rainfed systems is low without re-grounding.",
+    "Reviewers reported lectures can be 'dry and hard to follow at times' — talking-head video style.",
+    "Depth is uneven: praised as a solid introduction but criticized for lacking depth in specialized areas.",
+    "No software / quantitative tooling (no GIS, GEE, QGIS, Python) — purely conceptual, so it does not build technical/computational skills.",
+    "Water-quality and TMDL-regulatory emphasis is humid-subtropical and US-policy bound; assumes irrigation abundance rather than the moisture-limited, soil-degradation/salinization concerns dominant in СКО/Костанай/Акмола.",
+    "Certificate is paywalled; full project peer-review experience tied to paid/enrolled track."
+  ],
+  "borrow_for_folur": [
+    "Adopt the single-spine narrative arc: проблема (качество воды/деградация почв) -> регуляторная рамка -> судьба питательных веществ/процессы -> лучшие практики (BMP) -> почвенный/питательный/водный менеджмент. Для FOLUR заменить флоридский водный фокус на доминирующие для СКО/Костанай/Акмола темы: деградация и засоление почв, влагосбережение, no-till/почвозащитное земледелие.",
+    "Borrow the 'project on YOUR own land/region' design: каждый слушатель (агро-МСБ) ведёт сквозной проект по своему реальному участку/хозяйству, сдаваемый по частям в модулях 2/4/6/8 — это даёт немедленную применимость, что прямо хвалили рецензенты.",
+    "Modular workload labeling (часы на модуль, 2-4 ч) — публиковать ожидаемую трудозатрату на каждый модуль для занятых практиков МСБ.",
+    "One quiz per module (~30 мин) + сквозной проект как двойной механизм оценки — лёгкая автопроверка знаний плюс прикладной артефакт; согласуется с автогрейдером и тест-движком платформы.",
+    "Teach an explicit, reusable analytical tool: nutrient mass balance / интерпретация почвенных анализов как переносимый навык — у FOLUR сделать аналогом расчёт баланса гумуса/N-P-K и чтение агрохимкартограмм по реальным региональным данным.",
+    "Connect science to local policy/regulation (как сделано с TMDL/BMP) — для FOLUR привязать практики к нормам РК и мерам субсидирования (помечать как [UNVERIFIED] до сверки с источниками, не выдумывать цифры субсидий).",
+    "AVOID copying their weaknesses: не делать «сухие» лекции — добавлять Mermaid-схемы, региональные кейсы и интерактив; обязательно включать $0-инструментарий (QGIS/GEE/Colab), которого у них нет, как практический дифференциатор FOLUR."
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Whether Russian is among the 22 subtitle languages is not individually confirmed; Coursera page states '22 languages' without enumerating.",
+    "Class Central page (classcentral.com/course/...-539) returned HTTP 403 and could not be fetched directly; reviewer strengths/weaknesses below come from web-search snippets summarizing reviews, not a directly fetched review page — treat specific quotes as search-snippet-sourced.",
+    "Exact current enrollment/rating figures (58,441 learners; 4.8/5; 669 reviews; 82.95% five-star; 98% satisfaction) are as reported by the Coursera page at fetch time (2026-06) and may change.",
+    "Coursera lists duration as ~2 weeks @10h/wk; the original/aggregator descriptions describe an 8-week cadence (one module per week). Both reflect the same 8-module content; the discrepancy is presentation/pacing, not content."
+  ],
+  "sources": [
+    "https://www.coursera.org/learn/sustainable-agriculture (fetched directly — primary source for title, provider, instructor, cost, certificate, duration, level, audience, full 8-module syllabus, assessment, metrics)",
+    "https://www.mooc-list.com/course/sustainable-agricultural-land-management-coursera (search result — corroborates 8-week/3-lectures-per-week structure and peer-assessed project)",
+    "https://www.classcentral.com/course/coursera-sustainable-agricultural-land-management-539 (appeared in search results; direct fetch returned HTTP 403 — NOT successfully fetched)",
+    "https://www.classcentral.com/course/sustainableag-539 (search result — reviewer strengths/weaknesses summarized from snippet, page not directly fetched)",
+    "https://coursesity.com/course-detail/sustainable-agricultural-land-management (search result — corroborates free/audit availability)",
+    "https://opencourser.com/course/6zt9l8/sustainable-agricultural-land-management (search result — corroborates course existence/structure)"
+  ]
+}

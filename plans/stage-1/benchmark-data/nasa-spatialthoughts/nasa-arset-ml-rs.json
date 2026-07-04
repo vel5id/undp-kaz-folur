@@ -1,0 +1,73 @@
+{
+  "course_id": "nasa-arset-ml-rs",
+  "title": "Large Scale Applications of Machine Learning using Remote Sensing for Building Agriculture Solutions (NASA ARSET)",
+  "url": "https://www.earthdata.nasa.gov/learn/trainings/large-scale-applications-machine-learning-using-remote-sensing-building-agriculture",
+  "provider": "NASA Applied Remote Sensing Training (ARSET), NASA Applied Sciences / Earthdata",
+  "language": "English (live delivery). Slides for all three parts also provided in Spanish. No Russian materials.",
+  "cost": "Free ($0). ARSET trainings are free and open; registration required.",
+  "certificate": "Certificate of completion available but conditional: per ARSET policy you must attend ALL live webinar sessions AND submit the homework (Google Form) by the due date (April 1, 2024). Recordings-only does not qualify. Certificates emailed ~2-4 months after the course concludes.",
+  "duration": "Three parts of 1.5 hours each = 4.5 contact hours, delivered weekly on March 5, 12 and 19, 2024. Each part offered twice the same day (10:00-11:30 or 14:00-15:30 EST). Plus optional self-paced exercises and one homework assignment.",
+  "level": "Advanced",
+  "format": "Live instructor-led online webinar series (not self-paced). Recordings, slides, data files, and Q&A transcripts published afterward for asynchronous review.",
+  "target_audience": "Remote sensing scientists, practitioners, and geospatial analysts from local, regional, federal, and non-governmental organizations who use remote sensing for agriculture; also agronomists, data scientists, data engineers, and ML engineers. Advanced prerequisites required (see assessment/notes).",
+  "syllabus": [
+    {
+      "module": "Part 1 — Data Preparation (Mar 5, 2024)",
+      "topics": "Submitting boundary lists to the USDA NASS API and retrieving Cropland Data Layer (CDL) rasters; manipulating Sentinel-2 imagery; verifying data through visualization; Databricks environment setup. Instructors: Sean McCartney (ARSET) with John Just & Erik Sorensen (John Deere/Deere & Co.). Slides in EN+ES, data files, Q&A transcript, Databricks setup guide, optional exercise."
+    },
+    {
+      "module": "Part 2 — Data Loaders (Mar 12, 2024)",
+      "topics": "Setting up a TensorFlow data loader that reads Parquet files to build a training pipeline; data normalization; time-series bucketization; train/validation/test splitting with random sampling that avoids information (data) leakage. Slides EN+ES, data, Q&A transcript, optional exercise."
+    },
+    {
+      "module": "Part 3 — Model Training & Testing (Mar 19, 2024)",
+      "topics": "Setting up and training a 1-D convolutional neural network (CNN) to detect crop type from time-series spectral data; monitoring hyperparameters during training; validating predictions on the test set. Slides EN+ES, data, Q&A transcript, optional exercise."
+    }
+  ],
+  "assessment": "Three optional, ungraded, self-paced exercises (one per part). One graded homework assignment submitted via Google Form, due April 1, 2024 — required (together with full live attendance) for the certificate. Heavy prerequisite chain: learners must first complete 'Fundamentals of Remote Sensing' plus several SAR/optical crop-classification trainings (Agricultural Crop Classification with SAR/Optical RS; Mapping Crops/Biophysical Characteristics with Polarimetric SAR; Crop Mapping using SAR/Optical RS).",
+  "hands_on": "Strong applied focus. End-to-end big-data ML pipeline on agricultural imagery: (1) pull CDL labels via NASS API + Sentinel-2 imagery for >5GB-scale areas; (2) build a TensorFlow data loader over Parquet, normalize, bucketize time series, split without leakage; (3) train and validate a 1-D CNN crop-type classifier. Work runs in Databricks notebooks with PySpark; data files and per-part optional exercises supplied. NOT free/zero-cost to reproduce — requires AWS S3 + Databricks compute.",
+  "tools": "Python; TensorFlow (model + data loaders); PySpark (distributed processing); Databricks (notebook/compute environment); AWS S3 (cloud storage); Parquet (columnar data format); USDA NASS API. Datasets: Sentinel-2 optical imagery and the USDA Cropland Data Layer (CDL) as labels. Note: does NOT use Google Earth Engine or Colab — it is an AWS/Databricks/PySpark/TensorFlow stack.",
+  "strengths": [
+    "Realistic, production-grade end-to-end ML workflow (ingest -> data loader -> train -> validate) rather than a toy example",
+    "Co-taught with industry practitioners from John Deere, grounding it in real agricultural ML practice",
+    "Explicitly teaches large-scale (>5GB) data handling and, importantly, how to avoid information/data leakage in train/val/test splits — a rigor point most intro courses skip",
+    "Uses authentic agricultural labels (USDA CDL via NASS API) paired with Sentinel-2 — a clean labeled-data pattern",
+    "Free, with persistent published slides (EN + ES), data, Q&A transcripts, and recordings for asynchronous reuse",
+    "Time-series spectral 1-D CNN for crop-type classification is a strong, transferable modeling pattern"
+  ],
+  "weaknesses": [
+    "Stack is NOT zero-cost: AWS S3 + Databricks require paid cloud accounts — directly conflicts with FOLUR's $0 / no-admin invariant (Colab/GEE)",
+    "Uses neither Google Earth Engine nor Colab, so the hands-on pedagogy does not transfer directly to FOLUR's tooling",
+    "Advanced level with a heavy prerequisite chain (Fundamentals + multiple SAR/optical trainings) — too steep for SMB agro practitioners",
+    "US-centric data: USDA CDL and NASS API have no Kazakhstan/Central Asia equivalent, so labels must be substituted",
+    "Short (4.5 contact hours) and assumes substantial prior Python/ML maturity; little conceptual scaffolding for non-coders",
+    "Certificate requires live attendance on fixed 2024 dates — not reusable asynchronously for a credential"
+  ],
+  "borrow_for_folur": [
+    "Adopt the end-to-end pipeline narrative (label ingest -> data loader -> train -> validate -> predict) as a module spine, but re-implement it on the FOLUR $0 stack: Sentinel-2 via GEE/Colab instead of S3/Databricks/PySpark",
+    "Replace USDA CDL labels with a regional analogue for North Kazakhstan (СКО/Костанай/Акмола) — e.g. ground-truth field polygons + ESA WorldCover/Dynamic World — and document the substitution as a teaching point on label sourcing",
+    "Borrow the time-series spectral 1-D CNN crop-type classifier as an advanced FOLUR notebook (NDVI/spectral-band time series per field), runnable free in Colab with scikit-learn/TensorFlow",
+    "Teach train/validation/test splitting WITHOUT spatial/information leakage explicitly — adapt their leakage lesson into a Russian-language methodology block; high pedagogical value and rarely covered",
+    "Mirror their tiered structure: optional ungraded self-paced exercises per part PLUS one graded homework gate for the certificate — fits FOLUR's autograder + certificate engine",
+    "Reuse the prerequisite-laddering idea: position the ML/crop-classification module as advanced, behind 'Fundamentals of RS' and a crop-mapping basics module, so SMB learners are scaffolded",
+    "Provide bilingual artifacts (their EN+ES slides) as a model — FOLUR should ship Russian primary content; consider Kazakh as a parallel-language stretch goal",
+    "Borrow the practitioner co-teaching model (NASA + John Deere) — pair academic content with a regional agribusiness/agronomist case to keep it concrete"
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Exact 1-D CNN architecture details (layer count, kernel sizes, hyperparameters) could not be read: the Part 3 slides PDF (https://earthdata.nasa.gov/s3fs-public/2025-06/ARSET-AgML2024-part3-slides.pdf) downloaded as binary and was not text-extractable in this session. Existence and topic of the slides are confirmed via search; technical internals are [UNVERIFIED].",
+    "Cost is stated as free based on standard ARSET policy (all ARSET trainings are free); the specific course page did not print an explicit price line.",
+    "Homework due date (April 1, 2024) and the >5GB scale figure are taken from the Earthdata course page / forum summary; not independently re-verified against the raw homework form.",
+    "Whether the published recordings are on YouTube specifically was referenced but a direct video URL was not captured.",
+    "The number of registered/completing participants and any KPI/outcome figures are not reported by the source pages — none asserted here."
+  ],
+  "sources": [
+    "https://www.earthdata.nasa.gov/learn/trainings/large-scale-applications-machine-learning-using-remote-sensing-building-agriculture",
+    "https://appliedsciences.nasa.gov/get-involved/training/english/arset-large-scale-applications-machine-learning-using-remote-sensing",
+    "https://forum.earthdata.nasa.gov/viewtopic.php?t=5139",
+    "https://earthdata.nasa.gov/s3fs-public/2025-06/ARSET-AgML2024-part3-slides.pdf?VersionId=LOyhbN2Gk4f8UiUdNGnNe4WEl_Bq30MQ",
+    "https://appliedsciences.nasa.gov/arset-faq",
+    "https://www.earthdata.nasa.gov/data/projects/arset/training-types-levels",
+    "https://appliedsciences.nasa.gov/what-we-do/capacity-building/arset/arset-agriculture-trainings"
+  ]
+}

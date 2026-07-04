@@ -1,0 +1,85 @@
+{
+  "course_id": "spatialthoughts-gee",
+  "title": "End-to-End Google Earth Engine (Full Course)",
+  "url": "https://courses.spatialthoughts.com/end-to-end-gee.html",
+  "provider": "Spatial Thoughts (Ujaval Gandhi)",
+  "language": "English (course material and videos in English; no Russian version)",
+  "cost": "Self-study (OpenCourseWare): free. Live instructor-led cohort: USD $229 / INR ₹15,999 + GST.",
+  "certificate": "No certificate for the free self-study version. Employer-verifiable certificate issued ONLY for the paid live online classes upon completing all sessions and assignments.",
+  "duration": "27 hours of content. As a live cohort, typically conducted in 9 sessions of 3 hours each over 3 weeks. Self-study version is untimed/self-paced.",
+  "level": "Beginner to Advanced (progresses from \"Hello World\" basics through ML classification, change detection, app building, and the Python API).",
+  "target_audience": "GIS/remote-sensing practitioners, researchers and environmental analysts who want practical skills to implement remote-sensing workflows on cloud-based satellite imagery. Assumes basic GIS familiarity; no prior programming required (starts from Hello World). No specific agro/SMB focus.",
+  "format": "Primarily self-paced OpenCourseWare: pre-recorded video lectures (YouTube playlist + downloadable Vimeo) plus a shared Earth Engine code repository of scripts/exercises added to your own GEE account. A paid live webinar/cohort variant (9 x 3h sessions over 3 weeks) is also offered with instructor support.",
+  "assessment": "Per-module assignments; certificate gated behind paid live cohort; free version is self-checked/ungraded.",
+  "hands_on": "Heavily hands-on. Every concept has an in-line \"[Try in Code Editor]\" interactive task. Course material is distributed as runnable GEE scripts in a shared code repository. 5 end-to-end Guided Projects on real scenarios: rainfall deviation, flood mapping, time-series extraction, landcover analysis, nighttime lights. Module 6 moves the same work into Python via Colab and QGIS.",
+  "tools": "Google Earth Engine (JavaScript Code Editor — primary), Earth Engine Python API + Google Colab (Module 6), QGIS via the GEE plugin, XArray for Python data handling. Datasets: Sentinel-2 (and Sentinel-1, Landsat, MODIS), VIIRS DNB Nighttime Lights, TerraClimate, Dynamic World, Google CLOUD_SCORE_PLUS (cloud masking), GOOGLE/SATELLITE_EMBEDDING/V1/ANNUAL (deep-learning embeddings), ALOS World 3D DEM, GAUL admin boundaries, GHS Urban Centre Database. No SMAP observed.",
+  "syllabus": [
+    {
+      "module": "Module 1 — Earth Engine Basics",
+      "topics": "01 Hello World; 02 Working with Image Collections; 03 Filtering Image Collections; 04 Creating Mosaics and Composites from ImageCollections; 05 Working with Feature Collections; 06 Importing Data; 07 Clipping Images; 08 Exporting Data; Assignment 1"
+    },
+    {
+      "module": "Module 2 — Earth Engine Intermediate",
+      "topics": "01 Earth Engine Objects; 02 Calculating Indices; 03 Computation on ImageCollections; 04 Cloud Masking; 05 Reducers; 06 Time-Series Charts; Assignment 2"
+    },
+    {
+      "module": "Module 3 — Supervised Classification",
+      "topics": "Intro to Machine Learning & Supervised Classification; 01 Basic Supervised Classification; 02 Accuracy Assessment; 03 Feature Engineering; 04 Using Satellite Embeddings; 05 Exporting Classification Results; 06 Visualize Exported Images; 07 Calculating Area; Assignment 3"
+    },
+    {
+      "module": "Module 4 — Change Detection",
+      "topics": "Intro to Change Detection; 01 Spectral Index Change; 02 Spectral Distance Change; 03 Direct Classification of Change; 04 Post-classification Comparison"
+    },
+    {
+      "module": "Module 5 — Earth Engine Apps",
+      "topics": "01 Client vs. Server; 02 Using UI Elements; 03 Building and Publishing an App; 04 Publishing the App; 05 Create a Split Panel App"
+    },
+    {
+      "module": "Module 6 — Google Earth Engine Python API",
+      "topics": "Intro to Python API; 01 Python API Syntax; 02 Automatic Conversion of JavaScript Code to Python; 03 Batch Exports; 04 Using Earth Engine with XArray; 05 Automating Downloads; 06 Automating Exports; 07 Using the GEE QGIS Plugin"
+    },
+    {
+      "module": "Supplement & Guided Projects",
+      "topics": "5 Guided Projects: rainfall deviation, flood mapping, time-series extraction, landcover analysis, nighttime lights; plus Learning Resources, Debugging and Scaling guidance"
+    }
+  ],
+  "strengths": [
+    "Truly $0 self-study path — full 27h of material, videos (YouTube + downloadable Vimeo) and a runnable code repository, all free; matches the FOLUR no-cost stack",
+    "Exercise design is exemplary: every single concept has an inline '[Try in Code Editor]' task, so learners never just watch — they run code immediately",
+    "End-to-end real-world Guided Projects (flood mapping, rainfall deviation, landcover, nighttime lights) connect primitives to a complete workflow, not toy snippets",
+    "Strong, modern dataset and technique choices: Dynamic World, Cloud Score+, deep-learning Satellite Embeddings, accuracy assessment, scaling to large regions",
+    "Covers the full pipeline incl. app-building (sharing results with non-coders) and a dedicated Python/Colab/QGIS module — directly mirrors the FOLUR Python+QGIS+GEE+Colab stack",
+    "Code distributed as a shareable GEE script repository you add to your own account — instantly reproducible, a clean model for hands-on delivery"
+  ],
+  "weaknesses": [
+    "English only — no Russian, so directly unusable for the Russian-language FOLUR audience without translation",
+    "Free version has no certificate and no autograded assessment; certification is paywalled behind the $229 live cohort",
+    "Audience is general GIS/RS practitioners, not agronomy/SMB; no farm-economics, agronomic interpretation, or business framing",
+    "Examples are global, not regional — nothing for North Kazakhstan (СКО/Костанай/Акмола); FOLUR must localize all AOIs and datasets",
+    "JavaScript-first; Python only arrives in Module 6, whereas FOLUR's stack is Python+Colob-centric from the start",
+    "No SMAP / soil-moisture or dedicated agricultural-monitoring track; emphasis is generic classification and change detection"
+  ],
+  "borrow_for_folur": [
+    "Adopt the '[Try in Code Editor]' inline-exercise pattern: after every concept, embed a small runnable Colab/GEE cell so learners execute, not just read — convert to «Попробуйте в Colab» blocks",
+    "Build 3-5 regional end-to-end Guided Projects mirroring his model, but for North Kazakhstan: e.g. NDVI time-series for a Костанай wheat field, flood/soil-moisture mapping in СКО, landcover change in Акмола",
+    "Reuse his progression ladder: filter→composite→index→cloud-mask→reduce→classify→assess accuracy→detect change — a clean spine for FOLUR's GEE/Colab lectures",
+    "Borrow dataset choices that are free and agro-relevant: Sentinel-2, Dynamic World, Cloud Score+ cloud masking, TerraClimate; add SMAP soil moisture which this course lacks but FOLUR agro audience needs",
+    "Distribute FOLUR code as a shared, add-to-your-account repository (GEE scripts + Colab notebooks) so SMB learners get reproducible, ready-to-run material — matches the $0/no-admin invariant",
+    "Include an explicit Accuracy Assessment lesson and an app-building lesson so SMB practitioners can both trust results and share interactive maps with non-technical stakeholders",
+    "Keep his self-paced free model but ADD the autograded assessment + certificate that this course locks behind payment — FOLUR's notebook autograder and certificate engine already fill that gap"
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "License (e.g. CC-BY) is not stated on the fetched pages — not confirmed.",
+    "Exact GitHub/code-repository URL not surfaced on the pages fetched; material is described as a shareable GEE script repository added to your account.",
+    "SMAP soil-moisture is NOT listed among datasets; reported as absent based on the fetched syllabus/dataset list.",
+    "Exact module sub-lesson counts and 27h figure come from the provider's own pages; live-cohort price ($229/₹15,999) reflects the listing at fetch time and may change.",
+    "Free-version certificate status: confirmed not offered for self-study per the spatialthoughts.com course page."
+  ],
+  "sources": [
+    "https://courses.spatialthoughts.com/end-to-end-gee.html",
+    "https://spatialthoughts.com/courses/google-earth-engine/",
+    "https://www.youtube.com/playlist?list=PLppGmFLhQ1HJuIb7qMiKIv11HiEQhy3ha",
+    "https://pgrsc.org/free-gis-and-remote-sensing-resources-series-week-10-google-earth-engine-course-and-tutorial-from-spatial-thoughts/"
+  ]
+}

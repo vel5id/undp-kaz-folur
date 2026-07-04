@@ -1,0 +1,78 @@
+{
+  "course_id": "fao-agroecology",
+  "title": "Agroecology for Africa",
+  "url": "https://elearning.fao.org/course/view.php?id=1256",
+  "provider": "FAO elearning Academy (Food and Agriculture Organization of the United Nations), with the Alliance for Food Sovereignty in Africa (AFSA) and the McKnight Foundation",
+  "language": "English and French (verified on course page). No Russian version found.",
+  "cost": "Free (no fee for enrollment, course materials, exam, or digital badge)",
+  "certificate": "Digital badge (open-badge style) issued automatically on passing the final certification exam with a grade of at least 75%. Self-paced; no facilitator. Number of exam retake attempts not stated on the page [UNVERIFIED].",
+  "duration": "Approximately 3 hours 45 minutes total (4 lessons, each ~45-70 minutes). Self-paced, asynchronous.",
+  "level": "Introductory-to-intermediate (conceptual/policy orientation; not stated explicitly on the page — inferred from content and audience). [UNVERIFIED exact level label]",
+  "target_audience": "Government officials in ministries of agriculture, food security, environment, health, trade, economics or rural affairs; policymakers and advisors; and training/capacity-development practitioners. Oriented to the African context.",
+  "syllabus": [
+    {
+      "module": "Lesson 1 — Introduction to agroecology",
+      "topics": "Key concepts and definition of agroecology; framing of agroecology as a science, practice and social movement; the 10 Elements of Agroecology framework (recycling, efficiency, diversity, resilience, synergies, co-creation of knowledge, human and social values, culture and food traditions, responsible governance, circular and solidarity economy); contribution to sustainable agrifood-system transformation. ~45-70 min."
+    },
+    {
+      "module": "Lesson 2 — Applying the ecological principles of agroecology",
+      "topics": "Ecological/agronomic dimension: recycling, input-use efficiency, biodiversity and diversification, synergies, soil health, and resilience at field and agroecosystem level; how ecological principles improve agroecosystem health and farm resilience. ~45-70 min."
+    },
+    {
+      "module": "Lesson 3 — Applying the social principles of agroecology",
+      "topics": "Social and economic dimension: co-creation and sharing of knowledge, human and social values, culture and food traditions, responsible governance, and circular/solidarity economy; equity and inclusion in agrifood systems. ~45-70 min."
+    },
+    {
+      "module": "Lesson 4 — Scaling up and scaling out agroecology",
+      "topics": "How governments, civil society and the private sector enable adoption; scaling up (institutions/policy) and scaling out (geographic spread); enabling environments, with African practical examples and case studies. ~45-70 min."
+    }
+  ],
+  "format": "Browser-based, self-paced e-learning (SCORM-style interactive modules; requires pop-ups and a modern browser — Chrome, Edge, Firefox or Safari). Downloadable PDF course summary and an offline-downloadable full course package (~67.8 MB) are provided.",
+  "assessment": "Single final certification exam at the end of the course; pass threshold 75%. Per-lesson quiz/knowledge-check details are not specified on the public page. [UNVERIFIED per-lesson quizzes]",
+  "hands_on": "No technical hands-on/lab work; the course is conceptual and policy-oriented. \"Practical\" content is delivered through real-world African examples and case studies illustrating uptake and scaling, not through software or field exercises. [UNVERIFIED whether any embedded interactive exercises exist beyond case studies]",
+  "tools": "None required beyond a modern web browser with pop-ups enabled. No GIS, coding, or specialized software. Downloadable PDF summary and full course package for offline use.",
+  "strengths": [
+    "Genuinely free, including the certifying digital badge — matches a $0-cost stack",
+    "Clear, compact 4-lesson structure (~3h45) that is easy to complete and re-skin into a module sequence",
+    "Built on FAO's authoritative '10 Elements of Agroecology' framework (endorsed by 197 FAO members) — credible, citable conceptual backbone",
+    "Bilingual delivery (EN/FR) demonstrates a working multilingual single-course model",
+    "Logical pedagogical arc: concept -> ecological principles -> social principles -> scaling, separating ecological from social dimensions",
+    "Self-paced, browser-only, with an offline-downloadable package (~68 MB) and PDF summary — good for low-connectivity rural learners",
+    "Automatic badge issuance on a defined 75% threshold — simple, transparent certification rule",
+    "Heavy use of real regional case studies to ground abstract principles"
+  ],
+  "weaknesses": [
+    "No Russian (or Central Asian) localization — content and case studies are Africa-specific, not transferable to North Kazakhstan SMB context",
+    "Audience is government officials/policymakers, not SMB agro-practitioners — framing is policy/advocacy, not on-farm how-to",
+    "No technical hands-on, data, tools, notebooks, or field-method instruction — purely conceptual",
+    "Short and high-level; insufficient depth for skill certification of practitioners",
+    "Single end-of-course exam with no stated per-lesson formative assessment limits learning reinforcement",
+    "Number of exam attempts and detailed grading rules not transparent on the public page",
+    "No regional crop/economic specificity (e.g., grain-belt steppe agriculture) — examples won't resonate with СКО/Костанай/Акмола audiences"
+  ],
+  "borrow_for_folur": [
+    "Adopt the automatic digital badge model with a fixed, transparent pass threshold (FAO uses 75%) — clean fit for the platform's zero-cost certificate engine; document the threshold openly like FAO does",
+    "Copy the compact 4-lesson arc as a reusable module template: concept -> ecological/technical principles -> social/economic principles -> scaling/adoption; for FOLUR add a 5th 'tools & data' lesson to cover the missing hands-on layer",
+    "Reuse FAO's '10 Elements of Agroecology' as the authoritative, citable conceptual spine for FOLUR agroecology/sustainable-land modules — separate ecological elements (recycling, efficiency, diversity, resilience, synergies) from social elements (co-creation of knowledge, human/social values, culture & food traditions, responsible governance, circular/solidarity economy)",
+    "Mirror the multilingual single-course pattern (EN/FR) as the model for a Russian-primary + Kazakh secondary delivery, proving one course can ship in two languages on the same platform",
+    "Provide an offline-downloadable course package (FAO ships ~68 MB) plus a PDF summary per module — critical for low-connectivity rural SMB learners in North Kazakhstan; achievable with MkDocs static export",
+    "Ground every principle in real case studies the way FAO does — but swap Africa cases for North-Kazakhstan steppe/grain cases (СКО/Костанай/Акмола) so the audience sees themselves",
+    "Keep self-paced, browser-only delivery with a modern-browser requirement — confirms the GitHub Pages + static-site approach is sufficient for a credentialing course",
+    "Where FAO targets policymakers, deliberately reposition FOLUR content for SMB practitioners: keep the scaling lesson but add concrete on-farm decision steps, costs, and tool walkthroughs FAO omits"
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "The course at id=1256 is titled 'Agroecology for Africa', not a generic 'Agroecology' — title in the task ('Agroecology') is the short name; full/displayed title is 'Agroecology for Africa'.",
+    "Exact level label (beginner/intermediate/advanced) is not stated on the page; inferred as introductory-to-intermediate.",
+    "Number of allowed final-exam attempts is not stated on the public page.",
+    "Per-lesson quizzes/formative assessments and embedded interactive exercises are not detailed on the public page; only the final certification exam is confirmed.",
+    "Exact per-lesson durations are given only as a range (~45-70 min each, ~3h45 total), not lesson-by-lesson exact minutes.",
+    "Release date stated as February 2025."
+  ],
+  "sources": [
+    "https://elearning.fao.org/course/view.php?id=1256",
+    "https://www.fao.org/agroecology/overview/overview10elements/en/",
+    "https://www.fao.org/family-farming/detail/en/c/1147761/",
+    "https://openknowledge.fao.org/server/api/core/bitstreams/3d7778b3-8fba-4a32-8d13-f21dd5ef31cf/content"
+  ]
+}

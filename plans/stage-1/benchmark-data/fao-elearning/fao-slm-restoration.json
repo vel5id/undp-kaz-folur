@@ -1,0 +1,82 @@
+{
+  "course_id": "fao-slm-restoration",
+  "title": "Sustainable land management and restoration",
+  "url": "https://elearning.fao.org/course/view.php?id=454",
+  "provider": "FAO elearning Academy (Food and Agriculture Organization of the United Nations), in partnership with CIHEAM-Bari, WOCAT, the Economics of Land Degradation (ELD) initiative, and University of Leeds",
+  "language": "English and Arabic for this specific course. The FAO elearning Academy overall is multilingual (English, French, Spanish, Arabic and others). No Russian version of this course confirmed. [UNVERIFIED whether a Russian localization exists]",
+  "cost": "Free of charge. All FAO elearning Academy courses (incl. the final certification test and digital badge) are provided at no cost as a \"global public good.\" Self-registration on elearning.fao.org required.",
+  "certificate": "Free verifiable digital badge / certificate of completion. Issued by FAO after passing the final scenario-based performance assessment with a score of 75% or higher. Badges conform to the Open Badges standard with embedded metadata (issuer, criteria, recipient, competency) and are externally verifiable via Badgecheck.io; shareable on LinkedIn / email signature / personal site. [UNVERIFIED that this exact course uses the badge test rather than a plain completion certificate — stated as the Academy-wide standard policy]",
+  "duration": "Approximately 2 to 3.5 hours total, self-paced. The FAO course page lists ~3h30m across 5 lessons (each ~35–50 min); FAO's agroecology description cites it as a \"2 hours long course.\" Released March 2019.",
+  "level": "Introductory / general audience — written for non-specialists; no prior expertise required.",
+  "target_audience": "Local and national policy makers; land and water management technicians; extension agents and agronomists; farmers and land users. Aimed at those involved in selecting, planning, implementing and monitoring SLM interventions and the enabling environment, framed around SDG target 15.3 (land degradation neutrality).",
+  "syllabus": [
+    {
+      "module": "Lesson 1 — Introduction to Sustainable Land Management and land restoration: basic principles",
+      "topics": "Core SLM and land restoration concepts; land degradation drivers; the case for SLM; SDG target 15.3 / land degradation neutrality framing. (~35–50 min)"
+    },
+    {
+      "module": "Lesson 2 — Planning implementation of SLM interventions",
+      "topics": "Participatory SLM land-use planning approach; selecting appropriate interventions; engaging stakeholders and land users. (~35–50 min)"
+    },
+    {
+      "module": "Lesson 3 — Tools of implementation of sustainable land management",
+      "topics": "Tools and methods for putting SLM into practice, including the WOCAT global network of SLM technologies and approaches. (~35–50 min)"
+    },
+    {
+      "module": "Lesson 4 — Incentives for transition to SLM",
+      "topics": "Enabling environment and economic incentives; the Economics of Land Degradation (ELD) initiative; cost-benefit reasoning for adopting SLM. (~35–50 min)"
+    },
+    {
+      "module": "Lesson 5 — Monitoring SLM success",
+      "topics": "Monitoring and evaluating SLM outcomes; indicators of success; case study (e.g. Zambia) applying the approach. (~35–50 min)"
+    }
+  ],
+  "format": "Self-paced online e-learning on a Moodle-based platform; 5 interactive multimedia lessons with video, narrated content and embedded knowledge checks. Open-enrollment, no cohort/deadlines.",
+  "assessment": "Embedded in-lesson knowledge checks plus a final certification test. Per FAO Academy policy the final assessment is scenario-based / performance-oriented and requires ≥75% to earn the certificate and digital badge. A course evaluation form is also offered. [UNVERIFIED that the 75% scenario-test applies to this specific course vs. a generic completion certificate]",
+  "hands_on": "No software lab or coding. \"Hands-on\" is conceptual: a participatory SLM land-use planning walkthrough, real case studies (Zambia), and demonstrations of decision-support tools (WOCAT, ELD). It points learners to external tools rather than having them operate GIS/data tools inside the course. [Related FAO/GEF CACILM II trainings separately taught QGIS + the WOCAT watershed tool, but that is not part of course id=454.]",
+  "tools": "WOCAT global SLM database/network; Economics of Land Degradation (ELD) initiative methodology; FAO participatory land-use planning approach. No proprietary software required to take the course.",
+  "strengths": [
+    "Genuinely free, certified, and openly self-enrollable — strong fit with a $0-cost platform philosophy.",
+    "Tight, logical 5-lesson arc that mirrors the SLM project lifecycle: principles -> planning -> implementation tools -> incentives -> monitoring. Very reusable as a module skeleton.",
+    "Verifiable Open Badges credential with a clear, transparent 75% threshold and external verification (Badgecheck.io) — credible, copyable certification model.",
+    "Grounds content in recognized real tools (WOCAT, ELD) and concrete case studies rather than abstractions.",
+    "Explicitly multi-audience (policy makers -> technicians -> farmers), with non-specialist language that lowers the barrier for SMB practitioners.",
+    "Anchored to a recognized policy frame (SDG 15.3 / land degradation neutrality), giving the curriculum external legitimacy."
+  ],
+  "weaknesses": [
+    "Short and high-level (~2–3.5h, introductory) — gives breadth, not the operational depth an SMB agronomist needs to actually execute SLM on a specific field.",
+    "No Russian version confirmed and not localized to Kazakhstan/Central Asia — cases (e.g. Zambia) are not regionally relevant to СКО/Костанай/Акмола.",
+    "No real hands-on tooling inside the course (no QGIS/GEE/data exercises); it references tools instead of training their use.",
+    "Available in only English + Arabic for this course, limiting direct reuse for a Russian-speaking audience.",
+    "Assessment is single final test rather than per-lesson graded practice; limited formative feedback.",
+    "Released 2019 — some material may predate newer datasets/methods."
+  ],
+  "borrow_for_folur": [
+    "Copy the 5-lesson lifecycle backbone (принципы -> планирование -> инструменты внедрения -> стимулы/экономика -> мониторинг) as the canonical structure for FOLUR SLM modules — it is clean and audience-tested.",
+    "Adopt the Open Badges certification model: a verifiable digital badge with a transparent fixed threshold (FAO uses 75%). The FOLUR platform already has a stdlib certificate engine — align its pass threshold and add Open Badges-style embedded metadata + an external verification path (mirror Badgecheck.io with a GitHub Pages verify page).",
+    "Borrow the scenario-based / performance final assessment idea (decision scenarios) instead of pure multiple-choice — better for adult SMB practitioners; the existing test-engine variant generation can support this.",
+    "Replicate the explicit multi-audience layering (policy maker / technician / agronom / фермер) but re-cut it for North-Kazakhstan SMB, replacing the Zambia case with СКО/Костанай/Акмола cases.",
+    "Reuse the WOCAT + ELD framing: embed WOCAT SLM technologies and the ELD economics-of-degradation cost-benefit logic, localized with regional figures, as a credible open-data tool layer.",
+    "Imitate the 'global public good / fully free, no-admin enrollment' positioning — it validates the platform's $0, open-access invariant and can be cited as a peer benchmark.",
+    "Anchor FOLUR modules to SDG 15.3 / land-degradation-neutrality (as FAO does) to give the Russian-language curriculum recognized international legitimacy.",
+    "Where FAO is weak (no real GIS lab), differentiate FOLUR by adding the hands-on Colab/QGIS/GEE notebooks FAO omits — use FAO for the conceptual scaffolding, then go deeper with regional, runnable, open-data exercises."
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Total duration conflicts between sources: FAO course page implies ~3h30m (5 lessons x 35–50 min) while FAO agroecology text says '2 hours long'. Reported as a 2–3.5h range.",
+    "Languages for THIS course confirmed as English + Arabic; no Russian localization found/confirmed.",
+    "The 75% passing score and scenario-based final test are documented as the Academy-wide certification policy; not independently confirmed on course id=454's own assessment page (page requires login to inspect the test).",
+    "Lesson titles taken from the public course page; exact per-lesson durations are approximate (course/agroecology pages give ranges, not exact minutes).",
+    "Partner list (CIHEAM-Bari, WOCAT, ELD, University of Leeds) and the Zambia case study come from FAO/UNCCD descriptions; could not be re-confirmed on the agroecology detail page (returned HTTP 404 at fetch time).",
+    "Certificate phrasing ('digital badge' vs 'certificate of completion') is the Academy standard; the exact credential artifact for this course was not viewable without enrollment."
+  ],
+  "sources": [
+    "https://elearning.fao.org/course/view.php?id=454",
+    "https://elearning.fao.org/",
+    "https://elearning.fao.org/mod/page/view.php?id=5179",
+    "https://elearning.fao.org/course/view.php?id=730",
+    "https://www.fao.org/family-farming/detail/en/c/1743109/",
+    "https://knowledge.unccd.int/publications/new-e-learning-course-sustainable-land-management-and-land-restoration-focused-sdg",
+    "https://wocat.net/en/"
+  ]
+}

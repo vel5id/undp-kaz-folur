@@ -1,0 +1,81 @@
+{
+  "course_id": "nasa-arset-ag-rs",
+  "title": "NASA ARSET — Satellite Remote Sensing for Agricultural Applications",
+  "url": "https://www.earthdata.nasa.gov/learn/trainings/satellite-remote-sensing-agricultural-applications",
+  "provider": "NASA Applied Remote Sensing Training Program (ARSET), under NASA Applied Sciences / Earthdata",
+  "language": "English and Spanish (all slides and homework provided in both; live webinars delivered in English with Spanish-language materials)",
+  "cost": "Free ($0). No registration fee; all slides, Q&A transcripts, and homework are open-access.",
+  "certificate": "ARSET issues certificates of completion for attendees who attend all live sessions and complete the homework assignments (standard ARSET policy). The specific course page does not state certificate criteria verbatim — set as ARSET-standard but [UNVERIFIED] for this exact offering.",
+  "duration": "Four weeks (April 14 – May 5, 2020); four live webinar sessions of 1.5 hours each (~6 hours total live instruction), plus two homework assignments.",
+  "level": "Introductory. Prerequisite: ARSET \"Fundamentals of Remote Sensing\" course.",
+  "target_audience": "Local, state, federal, private, and non-governmental organizations involved in agricultural monitoring, agricultural policy, food security, agricultural insurance, and humanitarian relief.",
+  "format": "Online instructor-led live webinar series — four Tuesday sessions, each 1.5 hours, with live Q&A. Recordings, slides, and Q&A transcripts archived for self-paced viewing afterward. NOT a hands-on coding course; it is a data-product / data-access / case-study briefing series.",
+  "assessment": "Two homework assignments delivered via Google Forms: Homework 1 (assigned in Part 1, due April 28, 2020) and Homework 2 (assigned in Part 3, due May 12, 2020). Spanish versions of both homeworks provided. Homework completion plus attendance is the basis for ARSET certificates.",
+  "hands_on": "Minimal / none. This is a conceptual webinar focused on data discovery, data access, and decision-making case studies — not on code exercises. Participants learn how to locate and acquire products (e.g., SMAP soil moisture, LDAS, ET/ESI) and interpret them, but there are no Google Earth Engine scripts or Jupyter/Colab notebooks bundled with this specific course. Homework is form-based (data-acquisition and interpretation questions) rather than programming.",
+  "tools": "Missions/sensors: Landsat (record since 1972), SMAP (Soil Moisture Active Passive). Data products: SMAP soil moisture, NASA Land Data Assimilation System (LDAS) soil moisture & shallow groundwater, evapotranspiration (ET), Evaporative Stress Index (ESI). Programs referenced: NASA HARVEST. Monitored parameters: precipitation, temperature, evapotranspiration, soil moisture, vegetation health. No GEE, Python, or QGIS used in this introductory course.",
+  "syllabus": [
+    {
+      "module": "Part 1 — Overview of Agricultural Remote Sensing (Apr 14, 2020)",
+      "topics": "History of Earth observations for agriculture; satellites and sensors usable for agriculture; limitations of satellite data; introduction to NASA HARVEST; examples of current EO applications in agriculture; live Q&A. Materials: slides (74.1 MB PDF, EN; 13.4 MB ES), Q&A transcript, Homework 1."
+    },
+    {
+      "module": "Part 2 — Soil Moisture for Agricultural Applications (Apr 21, 2020)",
+      "topics": "Overview of SMAP (Soil Moisture Active Passive); agricultural case studies using SMAP; soil moisture and shallow groundwater from the Land Data Assimilation System (LDAS); live Q&A. Materials: slides (88.1 MB PDF, EN; 5.6 MB ES), Q&A transcript."
+    },
+    {
+      "module": "Part 3 — Earth Observations for Agricultural Monitoring (Apr 28, 2020)",
+      "topics": "Review of related/previous ARSET trainings relevant to agricultural monitoring; case studies of EO used for crop and agricultural monitoring; live Q&A. Materials: slides (80.4 MB PDF, EN; 4.7 MB ES), Q&A transcript, Homework 2 (due May 12)."
+    },
+    {
+      "module": "Part 4 — Evapotranspiration (ET) and Evaporative Stress Index (ESI) for Agricultural Applications (May 5, 2020)",
+      "topics": "Guest-speaker presentation; overview of ET and ESI; agricultural and drought case studies; live Q&A. Materials: slides (9.4 MB PDF, EN; 32.9 MB ES), Q&A transcript."
+    }
+  ],
+  "strengths": [
+    "Genuinely $0-cost and fully open-access (slides, recordings, Q&A transcripts, homework) — matches FOLUR's zero-budget constraint exactly.",
+    "Fully bilingual delivery (English + Spanish) with parallel homework — proves a workable model for non-English audiences, directly relevant to FOLUR's Russian-language requirement.",
+    "Clearly scoped, modular 4-part structure (1.5h each) with explicit learning objectives — low cognitive load, easy to schedule for working professionals/SMB.",
+    "Audience definition is decision-maker / practitioner oriented (policy, insurance, food security, humanitarian) rather than academic — same practitioner framing FOLUR needs for agro-SMB.",
+    "Strong emphasis on data DISCOVERY and ACCESS (where to find SMAP/LDAS/ET products and how to acquire them) — a transferable, tool-agnostic skill.",
+    "Case-study-driven: each thematic session anchors concepts in real applications (drought, crop monitoring, humanitarian response).",
+    "Explicit prerequisite chaining ('Fundamentals of Remote Sensing' first) gives a clean learning pathway.",
+    "Homework delivered via free Google Forms — a zero-infrastructure assessment mechanism FOLUR could mirror."
+  ],
+  "weaknesses": [
+    "No hands-on coding: zero Google Earth Engine, Python, or Colab exercises — learners cannot DO crop analysis after this course, only understand concepts. FOLUR's audience needs executable skills, which this course does not deliver.",
+    "Dataset emphasis is US/NASA-centric (SMAP, LDAS, HARVEST) with coarse-resolution soil-moisture products less suited to field-scale SMB decisions in North Kazakhstan.",
+    "Content is from 2020 — predates current GEE/cloud workflows and newer Sentinel-based methods; some product links and tooling may be dated.",
+    "Webinar/lecture format with form-based homework gives weak skill verification — no graded notebooks or reproducible artifacts proving competence.",
+    "Very large slide PDFs (74–88 MB) are a real barrier for low-bandwidth rural users — a delivery anti-pattern FOLUR should avoid.",
+    "No QGIS or open-desktop GIS component, so it does not cover the visualization tooling FOLUR's $0 stack relies on.",
+    "Certificate criteria not stated on the course page itself (ARSET-standard assumption only)."
+  ],
+  "borrow_for_folur": [
+    "Заимствовать тематическую модульную структуру 4×1.5ч с явными learning objectives на каждый модуль — низкая когнитивная нагрузка, удобно для работающих представителей МСБ.",
+    "Перенять модель полностью двуязычной выдачи материалов (у NASA — EN/ES) как доказанный шаблон для русскоязычной аудитории СКО/Костанай/Акмола: слайды + конспект Q&A + домашка на одном языке.",
+    "Использовать тематические блоки как карту: влажность почвы (аналог SMAP/LDAS), эвапотранспирация и индекс водного стресса (ET/ESI) для оценки засухи, мониторинг состояния посевов — это прямые сценарии для агро-МСБ Северного Казахстана; в FOLUR заменить продукты NASA на бесплатные Sentinel-1/2 + GEE/Colab аналоги.",
+    "Перенять акцент на НАВЫК ПОИСКА И ДОСТУПА к данным (где найти продукт, как его скачать) как отдельную обучаемую компетенцию — но реализовать через GEE Data Catalog и открытые порталы (Copernicus, ASF), а не NASA Earthdata.",
+    "Заимствовать бесплатный механизм оценки через Google Forms как нулевой-инфраструктурный вариант — но в FOLUR УСИЛИТЬ его автогрейдингом ноутбуков (у платформы уже есть engine/autograder), чтобы закрыть слабую верификацию навыка у ARSET.",
+    "Перенять кейс-ориентированную подачу (каждая тема = реальный сценарий: засуха, классификация культур, страхование урожая) и заземлить на реальные данные СКО/Костанай/Акмола вместо абстрактных примеров.",
+    "ИЗ СМЕЖНОГО, БОЛЕЕ СИЛЬНОГО КУРСА ARSET (Crop Mapping using SAR & Optical RS / Crop Classification) заимствовать практическую педагогику, которой нет в данном вводном курсе: готовые Jupyter-ноутбуки (.ipynb) + zip с imagery и vector data через Google Drive, GitHub-репозиторий, и пошаговые инструкции 'повтори упражнение самостоятельно' на Sentinel-1/Sentinel-2 — это и есть hands-on GEE/Colab-модель для FOLUR.",
+    "Заимствовать чёткую цепочку предпосылок (сначала 'Основы ДЗЗ', потом прикладной курс) для выстраивания траектории А-модулей FOLUR.",
+    "АНТИ-паттерн для избегания: не публиковать слайды по 70–90 МБ; для сельской аудитории с низкой пропускной способностью дробить материалы и хостить на GitHub Pages в лёгком виде."
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Certificate of completion: ARSET generally issues certificates for full attendance + homework, but this specific course page does not state the criteria verbatim — marked [UNVERIFIED] for this exact 2020 offering.",
+    "Exact session start times (clock hour) not captured; sessions were Tuesdays, 1.5h each, but the precise time-of-day was not confirmed from a real page.",
+    "The official Agriculture_Agenda.pdf (appliedsciences.nasa.gov/sites/default/files/2021-01/Agriculture_Agenda.pdf) was retrieved as binary and could not be text-extracted (no pdftotext in environment); agenda details above come from the Earthdata course page and ARSET search index, not the PDF.",
+    "The hands-on materials (ipynb, imagery zip, GitHub, SNAP) described in the borrow list belong to the ADJACENT ARSET 'Crop Mapping/Crop Classification with SAR & Optical RS' training, NOT to this introductory Agricultural Applications course — kept separate to avoid conflation.",
+    "appliedsciences.nasa.gov agriculture-trainings index page returned HTTP 500 and could not be read; broader ARSET catalog details rely on search-result snippets."
+  ],
+  "sources": [
+    "https://www.earthdata.nasa.gov/learn/trainings/satellite-remote-sensing-agricultural-applications",
+    "https://disasters.nasa.gov/get-involved/training/english/arset-satellite-remote-sensing-agricultural-applications",
+    "https://www.earthdata.nasa.gov/data/projects/arset",
+    "https://www.earthdata.nasa.gov/learn/trainings/crop-mapping-using-synthetic-aperture-radar-sar-optical-remote-sensing",
+    "https://appliedsciences.nasa.gov/get-involved/training/english/arset-agricultural-crop-classification-synthetic-aperture-radar-and",
+    "https://eo4society.esa.int/event/agricultural-crop-classification-with-synthetic-aperture-radar-and-optical-remote-sensing/",
+    "https://www.earthdata.nasa.gov/learn/trainings/fundamentals-remote-sensing"
+  ]
+}

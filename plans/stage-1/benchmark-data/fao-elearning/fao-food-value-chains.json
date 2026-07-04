@@ -1,0 +1,77 @@
+{
+  "course_id": "fao-food-value-chains",
+  "title": "Sustainable Food Value Chains for Nutrition",
+  "url": "https://elearning.fao.org/course/view.php?id=566",
+  "provider": "FAO elearning Academy (Food and Agriculture Organization of the United Nations)",
+  "language": "English, Spanish, French (course-specific). The FAO elearning Academy platform overall hosts courses in 9 languages including Russian, but THIS course is offered in EN/ES/FR only — no Russian version verified.",
+  "cost": "Free (no fee). Registration/account on elearning.fao.org required.",
+  "certificate": "Digital badge (Open Badge model used across the FAO Academy) issued upon completing the course AND passing the final certification exam with a minimum grade of 75%.",
+  "duration": "~2 hours 30 minutes total; individual lessons range ~20-55 minutes each.",
+  "level": "Intermediate — aimed at practitioners (level not formally labelled on the page; inferred from target audience as intermediate). [UNVERIFIED as an explicit page label]",
+  "target_audience": "Development practitioners, policy makers, extension agents, researchers, and private-sector professionals working on sustainable food systems and nutrition-sensitive value chains.",
+  "format": "Self-paced online e-learning (browser-based: Chrome, Safari, Edge, Firefox); also downloadable as a standalone package (Windows PC only, ~24MB). Moodle-based LMS, mobile-friendly platform.",
+  "assessment": "Single final certification exam; pass threshold 75%. Badge awarded on pass.",
+  "hands_on": "Applied activities embedded in lessons — commodity/value-chain analysis and SFVCN project-design exercises (walking learners through framing, impact pathways, and designing a project). No external software/data lab; activities are in-course interactive exercises. [Hands-on depth UNVERIFIED beyond page summary]",
+  "tools": "No external/specialized software required — fully in-browser self-contained course. Conceptual frameworks used: FAO Sustainable Food Value Chain (SFVC) framework and SFVCN impact-pathway model.",
+  "syllabus": [
+    {
+      "module": "Lesson 1 — Introduction to nutrition and sustainable food value chains",
+      "topics": "Core concepts linking nutrition and value chains; rationale for an SFVCN approach; key terminology and the malnutrition/food-system problem framing."
+    },
+    {
+      "module": "Lesson 2 — Framing sustainability and nutrition in value chains",
+      "topics": "How sustainability (economic, social, environmental) and nutrition outcomes are integrated into the FAO SFVC framework; positioning nutrition within value-chain analysis."
+    },
+    {
+      "module": "Lesson 3 — Supporting nutritional outcomes through SFVCN impact pathways",
+      "topics": "Impact-pathway logic; how interventions along the value chain translate into improved nutrition outcomes; supply- and demand-side levers."
+    },
+    {
+      "module": "Lesson 4 — Designing an SFVCN project",
+      "topics": "Applying the framework to design a nutrition-sensitive value-chain project; commodity selection/analysis, intervention design, and project-design activity."
+    }
+  ],
+  "strengths": [
+    "Genuinely $0-cost with a recognized, verifiable digital badge (Open Badge) gated behind a 75% exam — credible credential at zero price.",
+    "Tight, completable scope: 4 lessons / ~2.5 hours total lowers drop-off for busy practitioners.",
+    "Clear pedagogical arc: concept -> framing -> impact pathways -> hands-on project design (theory ends in an applied design task).",
+    "Practitioner-oriented audience framing (extension agents, private sector, policy) closely matches an SMB agro audience.",
+    "Multilingual delivery (EN/ES/FR for this course; platform supports 9 languages incl. Russian) — proven model for localization.",
+    "Offline/downloadable package option supports low-connectivity learners.",
+    "Backed by an authoritative institution (FAO) with a published SFVC framework underpinning the content."
+  ],
+  "weaknesses": [
+    "No Russian version of THIS course — directly limits reuse for a Russian-language North-Kazakhstan audience.",
+    "Short and high-level: 2.5h cannot deliver deep technical/operational skill; it is awareness/framework-level, not a how-to for field practice.",
+    "Single end-of-course exam (no per-lesson formative quizzes confirmed) is a thin assessment design.",
+    "Downloadable package is Windows-only — excludes other devices for offline use.",
+    "No region-specific cases (nothing for Central Asia / dryland cereal-livestock systems); generic global examples.",
+    "No live/cohort or mentoring component — fully self-paced, which can lower completion for less-motivated SMB learners.",
+    "Hands-on is in-course exercises only — no real datasets, tools, or transferable artifacts the learner keeps."
+  ],
+  "borrow_for_folur": [
+    "Adopt the badge-gated-by-exam model: issue a free verifiable credential (Open Badge spec) only after a >=75% final test — credible and $0, fits the platform's GitHub Pages + cert-engine stack.",
+    "Copy the 4-step learning arc (concept -> framing -> impact pathway -> applied project design) as a reusable module template, ending every module in an applied design/analysis task rather than a passive read.",
+    "Keep modules short and completable (~2-2.5h, ~4 lessons) to reduce drop-off among busy SMB agro practitioners — mirror this length cap per FOLUR module.",
+    "Make the value-chain framework explicit and reusable (FAO SFVC framework + impact-pathway diagram) — adapt it to North-Kazakhstan cereal/livestock/FOLUR commodity chains with regional cases (СКО/Костанай/Акмола) to fix FAO's gap of generic examples.",
+    "Provide a downloadable/offline package per module for low-connectivity rural learners — but make it cross-platform (not Windows-only) to beat FAO's limitation.",
+    "Treat the multilingual delivery as the headline differentiator: deliver FOLUR content fully in Russian (Cyrillic) since FAO leaves this course EN/ES/FR-only — a clear localization gap to own.",
+    "Improve on FAO's thin assessment: add short per-lesson formative quizzes (использовать движок test_engine с генерацией вариантов) plus the gating final exam, so learners self-check before the 75% gate."
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Course 'level' is not explicitly labelled on the page; 'intermediate' is inferred from the target-audience description.",
+    "Open Badges (vs. a generic digital badge) is the FAO Academy-wide standard; the specific badge standard for THIS course was not confirmed on the course page itself.",
+    "Per-lesson formative quizzes are not confirmed — only the single final exam is documented; assessment design beyond the final exam is unverified.",
+    "Depth/format of the hands-on 'project design' and 'commodity analysis' activities is summarized from the page description, not directly inspected (course content is behind login).",
+    "Release date reported as April 2020 by the page summary; not independently cross-checked.",
+    "Russian-language availability of this specific course was not found; platform-level 9-language support is confirmed but not for course id=566.",
+    "The FAO policy-support EN resource page (c/1322990) returned HTTP 404; the FR variant appeared in search but was not fetched."
+  ],
+  "sources": [
+    "https://elearning.fao.org/course/view.php?id=566",
+    "https://elearning.fao.org/",
+    "https://www.fao.org/nutrition/e-learning-courses/en/",
+    "https://www.fao.org/policy-support/tools-and-publications/resources-details/fr/c/1322990/"
+  ]
+}

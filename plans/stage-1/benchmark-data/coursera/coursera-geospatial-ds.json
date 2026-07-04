@@ -1,0 +1,84 @@
+{
+  "course_id": "coursera-geospatial-ds",
+  "title": "Mastering Geospatial Data Science: From Beginner to Expert (Specialization)",
+  "url": "https://www.coursera.org/specializations/mastering-geospatial-data-science-from-beginner-to-expert",
+  "provider": "Coursera (authored in-house, credited on the page as \"Professionals from the Industry\"; not a named university/company partner)",
+  "language": "English (English only; no Russian or Kazakh subtitles confirmed on the page)",
+  "cost": "Freemium. Individual courses can be enrolled \"for free\" (audit) with access to materials and assignments; the shareable career certificate requires a paid Coursera subscription (Coursera Plus, with a 40% discount advertised at fetch time). Financial aid noted as available. Exact price not displayed on the page.",
+  "certificate": "Yes — shareable career certificate upon completion (addable to LinkedIn/resume). Certificate is gated behind paid enrollment; auditing is free but yields no certificate.",
+  "duration": "~53 hours total across 6 courses (page lists per-course hours: 7+6+10+9+10+11). Marketed as \"4 weeks at 10 hours/week\"; self-paced.",
+  "level": "Beginner (stated \"Beginner level,\" \"beginner-friendly,\" no prior experience required; despite the \"to Expert\" title the recommended experience is beginner).",
+  "target_audience": "Aspiring geospatial data scientists / GIS analysts and developers starting from core GIS concepts and moving to modern geospatial workflows. General professional learners; NOT tailored to agricultural SMBs or any specific sector/region.",
+  "format": "Self-paced online (Coursera). Video lessons organized into short named modules, plus integrated hands-on activities and a capstone. Learn-at-your-own-pace with flexible scheduling.",
+  "assessment": "Graded assignments (AI-graded), quizzes, and hands-on learning activities. Course 1 alone has 16 assignments. No peer review mentioned. Specialization certificate requires completing all graded coursework including the capstone.",
+  "hands_on": "Strong practical orientation: \"guided, hands-on projects integrated across the program\" — desktop GIS & spatial database projects, remote sensing analysis, web mapping/visualization, geospatial ML, and a capstone geospatial data engineering project (cloud platforms, ETL automation, real-time data streaming, climate dataset analysis). Course 1 includes a reproducible Conda geo-environment setup and GeoPandas spatial-join/reprojection exercises.",
+  "tools": "Python; GeoPandas; QGIS + PyQGIS; PostgreSQL/PostGIS; Rasterio; GDAL; Folium/Leaflet; Google Earth Engine; AWS/GCP; Apache Airflow; Conda (environment management). Generative-AI tools referenced for visualization.",
+  "syllabus": [
+    {
+      "module": "Course 1 — Geospatial Foundations & Vector Analysis (~7h, 12 modules, 16 assignments)",
+      "topics": "Reference/coordinate systems; how spatial data is represented; real-world GIS uses; installing the Python geo stack with Conda; building a reproducible geo environment; verifying the stack; GeoPandas spatial joins for territory analysis; reprojection & aggregation; summarizing territory totals; ISO-19115 metadata; geometry validity checks; organizing geo projects for collaboration."
+    },
+    {
+      "module": "Course 2 — Desktop GIS & Spatial Databases (~6h)",
+      "topics": "QGIS map creation and styling; automating workflows with PyQGIS; PostGIS spatial queries; integrating GIS with databases."
+    },
+    {
+      "module": "Course 3 — Raster Processing & Remote Sensing (~10h)",
+      "topics": "Raster data processing with Rasterio and GDAL; satellite imagery analysis and spectral index computation; multispectral and SAR data; applied remote-sensing techniques."
+    },
+    {
+      "module": "Course 4 — Visualization, Web Mapping & Cloud GIS (~9h)",
+      "topics": "Map design principles; interactive web maps with Folium/Leaflet; Google Earth Engine for cloud analysis; AI tools for geospatial visualization."
+    },
+    {
+      "module": "Course 5 — Spatial Analysis, 3D Data & Machine Learning (~10h)",
+      "topics": "Spatial statistics and interpolation; LiDAR and 3D geospatial data; training ML models on geospatial datasets; deep learning / CNNs and Random Forest for imagery classification."
+    },
+    {
+      "module": "Course 6 — Geospatial Data Engineering (~11h, capstone)",
+      "topics": "Using cloud platforms for processing; building ETL pipelines (Apache Airflow); real-time geospatial data stream processing; climate data and ESG-metrics analysis; integrated data-engineering capstone."
+    }
+  ],
+  "strengths": [
+    "Clear beginner-to-advanced progression: fundamentals → desktop GIS → remote sensing → web/cloud → ML → data engineering, each course building on the last.",
+    "Entirely open-source / free-tier $0 stack (Python, GeoPandas, QGIS, PostGIS, Rasterio, GDAL, Folium, Google Earth Engine) — directly compatible with FOLUR's no-cost constraint.",
+    "Short, outcome-named modules (e.g. 'Crunch Vectors with GeoPandas: Spatial Joins for Territory Analysis') signal a concrete deliverable per lesson.",
+    "Reproducibility taught early: a dedicated Conda 'reproducible geo environment' module and metadata/geometry-validity modules — strong data-hygiene pedagogy.",
+    "Hands-on projects in every course plus an integrative capstone; AI-graded assignments give immediate feedback and scale without instructors.",
+    "Free audit option lowers the entry barrier; certificate is optional/paid."
+  ],
+  "weaknesses": [
+    "English only — unusable as-is for a Russian-language SMB audience; would require full translation/localization.",
+    "Generic, sector-agnostic and region-agnostic — no agriculture, land-use, or Central Asia / Kazakhstan context; no FOLUR-style real local cases.",
+    "'Beginner to Expert' title oversells: officially beginner-level and only ~53h; depth on ML/deep-learning and data engineering is necessarily shallow for that time budget.",
+    "Provider is anonymous ('Professionals from the Industry'), no named university/expert or instructor reputation; no visible independent ratings/reviews (Class Central page was inaccessible — 403).",
+    "Certificate is paywalled behind a Coursera subscription; auditing gives no credential.",
+    "Cloud/data-engineering modules lean on AWS/GCP and Airflow, which introduce paid-tier and ops complexity beyond a true $0/no-admin stack.",
+    "Relies on Coursera's AI auto-grading; no peer review or human mentorship/cohort interaction."
+  ],
+  "borrow_for_folur": [
+    "Outcome-named micro-modules: title each lesson by the deliverable it produces (e.g. 'Считаем NDVI по полю в GEE', 'Пространственное соединение: считаем посевы по району') instead of abstract topic names — mirrors this course's 'verb + result' module naming for motivation and clarity.",
+    "Teach reproducibility up front: add an early 'воспроизводимое окружение в Colab' module plus explicit metadata (ISO-19115) and geometry-validity checks — borrow their 'setup → verify → validate' sequence so SMB learners get clean, shareable data habits before analysis.",
+    "Spiral progression across the platform: fundamentals → desktop GIS (QGIS) → remote sensing (GEE) → web maps (Folium) → ML, each module reusing the previous module's dataset — replicate this dependency chain so North-Kazakhstan field data threads through the whole curriculum.",
+    "Capstone pattern: end the program with one integrative project that chains ETL → analysis → map/output on a real СКО/Костанай/Акмола dataset, instead of isolated per-module exercises.",
+    "One concrete hands-on assignment per lesson with automated grading: adopt the autograder-per-lesson model (the platform already has a notebook autograder) to give instant feedback and scale to ≥360 learners without instructors.",
+    "Free-tier-only tool choice as an explicit design principle (GeoPandas/QGIS/GEE/Colab) — confirms FOLUR's $0 stack is industry-aligned; reuse the same toolchain so learners' skills transfer to recognized workflows.",
+    "Map-design / web-mapping module (Folium/Leaflet) as a dedicated step: borrow the idea of a 'publish an interactive map' deliverable so SMB practitioners produce a shareable artifact, not just notebook output."
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Exact monetary price and currency not shown on the page (only 'enroll for free' audit + paid Coursera Plus with a 40% promo at fetch time).",
+    "Independent reviews/ratings could not be confirmed: Class Central subject page returned HTTP 403; no review aggregator was successfully fetched.",
+    "Provider identity is only 'Professionals from the Industry' on the Coursera page — no named author/university/company confirmed.",
+    "Module/syllabus detail beyond Course 1 comes from the specialization landing page summaries, not from fetching each individual course page (only Course 1's page was fetched in full).",
+    "Specialization-level assessment structure inferred from Course 1 ('16 assignments', AI-graded, quizzes, no peer review); per-course assessment counts for Courses 2–6 not individually verified.",
+    "'4 weeks at 10 hours/week' vs ~53 total hours is the page's own marketing framing; actual completion time will vary."
+  ],
+  "sources": [
+    "https://www.coursera.org/specializations/mastering-geospatial-data-science-from-beginner-to-expert (fetched successfully via WebFetch — primary source for title, course list, hours, skills, tools, certificate, audit option)",
+    "https://www.coursera.org/learn/geospatial-foundations-and-vector-analysis (fetched successfully via WebFetch — Course 1 module list, 16 AI-graded assignments, audit vs paid certificate, beginner level)",
+    "https://www.classcentral.com/subject/google-earth-engine (attempted via WebFetch — returned HTTP 403, NOT verified; appeared in WebSearch results)",
+    "WebSearch results for 'Mastering Geospatial Data Science Coursera specialization Google Earth Engine syllabus review' (corroborated curriculum, tools, hands-on projects, capstone)",
+    "WebSearch results for provider/partner query (confirmed it is a Coursera-hosted specialization, not an Edureka or named-university partner offering)"
+  ]
+}

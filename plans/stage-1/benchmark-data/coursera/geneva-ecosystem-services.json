@@ -1,0 +1,86 @@
+{
+  "course_id": "geneva-ecosystem-services",
+  "title": "Ecosystem Services: a Method for Sustainable Development",
+  "url": "https://www.coursera.org/learn/ecosystem-services",
+  "provider": "University of Geneva (UNIGE) on Coursera — developed with the Geneva Water Hub and the Natural Capital Project",
+  "language": "Taught in English; 22 subtitle languages available on Coursera (Russian subtitles included among them). Original content and assessments are in English.",
+  "cost": "Free to audit the lecture/video content; the verified certificate is paid (subscription or one-off purchase, included with Coursera Plus). Financial aid is available. A free trial is offered.",
+  "certificate": "Shareable Coursera certificate upon completion of graded assignments — requires payment (or financial aid). Auditing gives content access without the certificate.",
+  "duration": "Approximately 17 hours total to complete (self-paced). Coursera markets it as ~2 weeks at 10 h/week; UNIGE lists \"about 17 hours.\" Video load by module: ~89 min, 174 min, 76 min, 104 min, 105 min across the five core modules.",
+  "level": "Intermediate (some prior environmental/sustainability background assumed)",
+  "target_audience": "Learners in environmental sustainability, policy-making, natural-resource management, conservation, and GIS/spatial-analysis applications — students, professionals, and decision-makers. Not designed specifically for SMB agricultural practitioners; oriented toward policy and academic/professional learners.",
+  "format": "MOOC: video lectures (the dominant format), readings/supporting case-study materials, module quizzes, peer-reviewed essay assignments, discussion prompts, an interactive \"TRADE-OFF\" serious game, and expert interviews. Self-paced with flexible deadlines.",
+  "assessment": "Module quizzes (multiple choice), peer-reviewed short essays (e.g. on valuation and on mainstreaming), and graded assignments (mix of auto/AI-graded and peer-evaluated). Certificate requires passing the graded items.",
+  "hands_on": "Mostly conceptual rather than hands-on. The standout practical element is the optional Module 6 \"Create Your Own Ecosystem Services Case\": learners do GIS-based hydrological modeling of water ecosystem services using QGIS + the InVEST package, with data preparation/preprocessing, climate-change scenario building, and results interpretation (Kenya's Tana River basin case study). The TRADE-OFF serious game is the other interactive element. Reviewers explicitly note the hands-on technical training is limited relative to the conceptual depth.",
+  "tools": "QGIS (open-source GIS), InVEST (Integrated Valuation of Ecosystem Services and Tradeoffs — open-source spatial modeling toolkit from the Natural Capital Project), and remote-sensing/open spatial data (elevation, climate, land-use). The TRADE-OFF online serious game.",
+  "syllabus": [
+    {
+      "module": "Module 1 — Frontiers in Ecosystem Services (~89 min video; 7 readings, 1 quiz)",
+      "topics": "Introduction and key questions; the TRADE-OFF serious game; context and applications of the ES method; weaknesses and limitations of the approach; links between biodiversity, ecosystem services and sustainability; case studies (hydroelectric dams, watershed investments); expert interviews."
+    },
+    {
+      "module": "Module 2 — Valuation of Ecosystem Services (~174 min video)",
+      "topics": "Valuation vs monetization; price vs value; economic valuation theory and discount rates; critiques and biases in monetization; indigenous and local knowledge systems; non-monetary valuation approaches; climate-change impacts on agriculture; the 'pricing nature' debate."
+    },
+    {
+      "module": "Module 3 — Understanding the Normative Dimensions (~76 min video)",
+      "topics": "History of the ES concept (events, places, people behind it); neoliberalism and ideological underpinnings; participation and social justice in decision-making; power issues and stakeholder engagement; implementation across policy scales."
+    },
+    {
+      "module": "Module 4 — Quantitative and Spatially-Explicit Assessment (~104 min video)",
+      "topics": "Data collection and remote sensing; modeling and mapping ecosystem services; scenario planning and prediction; case studies at global, European, national and local scales; tools and software applications."
+    },
+    {
+      "module": "Module 5 — Mainstreaming Ecosystem Services into Decision-Making (~105 min video)",
+      "topics": "Governance and regulatory frameworks; enabling factors for successful implementation; private-sector integration; sustainable finance; role of international organizations (e.g. IPBES); regional case studies (Europe, Peru, Mekong Basin)."
+    },
+    {
+      "module": "Module 6 — Create Your Own Ecosystem Services Case (optional, ~1 hr, hands-on)",
+      "topics": "Practical GIS modeling of water ecosystem services with QGIS + InVEST; data preparation and preprocessing; hydrological modeling; climate-change scenario development; results interpretation. Kenya Tana River basin case study."
+    }
+  ],
+  "strengths": [
+    "Interdisciplinary balance: deliberately covers scientific/technical, economic, and socio-political dimensions of one method rather than siloing them — a coherent 'one method, many lenses' spine.",
+    "Critical honesty: a whole module (and explicit lecture) on the weaknesses, biases, and ideological baggage of the ecosystem-services approach — builds critical thinking instead of selling a tool.",
+    "Strong use of real case studies (dams, watersheds, Peru, Mekong, Tana River) and expert interviews — concrete, place-based grounding.",
+    "Serious game (TRADE-OFF) as an engaging entry point that lets learners feel trade-offs before formal theory.",
+    "Optional applied GIS capstone built entirely on $0 open-source tools (QGIS + InVEST) producing a learner's own case — exactly the zero-cost, reproducible model FOLUR targets.",
+    "High production quality and clear instruction; 4.8/5 across 742 reviews, ~98% satisfaction, ~48k enrolled.",
+    "Includes non-monetary and indigenous/local knowledge valuation — pluralistic, not just economics."
+  ],
+  "weaknesses": [
+    "Heavily video-centric; reviewers complain videos are long and the format is monotonous, with too few readings paired to lectures.",
+    "Limited hands-on technical practice: many learners wanted real data-gathering and valuation method practice; the only deep practical work (GIS) is a short optional module.",
+    "Some content felt outdated (noted as of 2024).",
+    "Structure feels fragmented to some — scattered case studies without a strong, explicit theoretical scaffold tying them together.",
+    "A few interview segments judged poorly executed.",
+    "Intermediate level and policy/academic framing — not tailored to SMB practitioners; English-only assessments limit accessibility for Russian-speaking agro audiences."
+  ],
+  "borrow_for_folur": [
+    "'One method, multiple lenses' module spine: structure a FOLUR module so the same regional case (e.g. a Kostanay/СКО watershed or degraded pasture) is examined through technical, economic, and socio-political lenses in sequence — gives coherence the reviewers found missing when cases are scattered.",
+    "Open-source applied capstone on a $0 stack: replicate the QGIS+InVEST 'create your own case' as a Colab+QGIS notebook where SMB learners model a real North-Kazakhstan basin/landscape with open data — directly matches the FOLUR Python+QGIS+GEE+Colab stack and produces a tangible artifact.",
+    "A dedicated 'weaknesses and limitations' lecture per method: teach where ecosystem-service valuation, remote-sensing indices, etc. fail — builds practitioner judgement and scientific honesty (aligns with FOLUR's integrity constraint of not overselling).",
+    "Serious-game / trade-off simulation as a hook: a lightweight interactive 'land-use trade-off' exercise (e.g. crop vs grazing vs restoration on a real СКО parcel) before formal theory, to make abstract trade-offs felt.",
+    "Pluralistic valuation including non-monetary and local knowledge: explicitly incorporate indigenous/local knowledge and non-monetary value — adapt to Kazakh pastoral/community valuation rather than economics-only.",
+    "Real place-based case studies throughout (the course's strongest praised feature): mandate that every FOLUR lecture anchors in a concrete North-Kazakhstan case with real maps/data, never abstract examples.",
+    "FIX the format weakness FOLUR can avoid: pair each short video/lecture with a concise reading and an immediate small task, instead of long talking-head videos — directly answers this course's top criticism.",
+    "Make the practical work core, not optional: the #1 learner complaint is too little hands-on; FOLUR should make the GIS/data exercise mandatory and central for its practitioner audience.",
+    "Offer full Russian-language delivery (lectures + assessments in Cyrillic), not just subtitles, to remove the accessibility barrier this course leaves for non-English audiences."
+  ],
+  "verified": true,
+  "unverified_notes": [
+    "Coursera's marketing said '89 total hours of lectures' — this is contradicted by the UNIGE official page and per-module figures (89 MINUTES of video in Module 1; ~17 hours total course). Treated as a Coursera-page extraction artifact; the ~17-hour total is the reliable figure.",
+    "Coursera markets '2 weeks at 10 hours/week' (=20h) while UNIGE states 'about 17 hours'; both are platform estimates and roughly consistent.",
+    "Exact current price of the certificate not captured (Coursera shows it behind subscription/region-specific pricing); reported only as 'paid / included with Coursera Plus / financial aid available'.",
+    "Enrollment (48,316), rating (4.8), and review count (742) are as shown on the Coursera page on the fetch date and will drift over time.",
+    "Russian is stated to be among Coursera's 22 subtitle languages but the exact subtitle-language list was not individually enumerated from the page; confidence is high but the specific Russian inclusion is [partially inferred].",
+    "The official UNIGE course page (unige.ch/formcont) returned HTTP 403 on direct fetch; its details were obtained via the Coursera-platform UNIGE MOOC listing instead, which did load."
+  ],
+  "sources": [
+    "https://www.coursera.org/learn/ecosystem-services (fetched directly — main course page: title, instructors, syllabus, level, cost, ratings)",
+    "https://www.coursera.org/learn/ecosystem-services/reviews (fetched directly — 4.8/5, 742 reviews, learner praise and criticism quotes)",
+    "https://www.unige.ch/formcont/en/courses/mooc-sustainable-development (appeared in search; direct WebFetch of this exact URL returned HTTP 403 — could not load)",
+    "https://www.classcentral.com/course/ecosystem-services-8088 (appeared in search results; direct WebFetch returned HTTP 403 — could not load review content)",
+    "WebSearch results corroborating syllabus, partners (Geneva Water Hub, Natural Capital Project), TRADE-OFF game, and optional QGIS/InVEST module (mooc-list, my-mooc, Geneva Water Hub, Glp.earth, careers360 listings appeared in results but were not individually fetched)"
+  ]
+}

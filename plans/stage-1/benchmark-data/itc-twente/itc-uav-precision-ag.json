@@ -1,0 +1,103 @@
+{
+  "course_id": "itc-uav-precision-ag",
+  "title": "UAVs in Precision Agriculture",
+  "url": "https://www.geoversity.io/courses/uavs-in-precision-agriculture/",
+  "provider": "ITC — Faculty of Geo-Information Science and Earth Observation, University of Twente (hosted on the Geoversity platform). Lead instructor: F.J. Ellsäßer (Florian Ellsäßer), Assistant Professor.",
+  "language": "English. Стандарт курса — английский; в требованиях указано «Basic English skills». Русскоязычной версии нет.",
+  "cost": "Курс бесплатный (free). Опциональный сертификат — €50 (Certificate of Completion, требуется 100% прохождения). Всё ПО и данные предоставляются бесплатно.",
+  "certificate": "«Certificate of Completion» (страница Geoversity, запуск 2025) / «Certificate of Attendance» (анонс первого запуска сен–дек 2024, Dronewatch/GIS Resources) за €50, выдаётся при 100% завершении курса. Без оплаты сертификат не выдаётся, но контент доступен бесплатно.",
+  "duration": "~40 часов, self-paced. Первый запуск: доступ 16 сен — 2 дек 2024, регдедлайн 4 ноя 2024 (342 места). Следующий запуск: регистрация открывается 19 авг 2025 (подтверждено страницей Geoversity на момент повторного обхода).",
+  "level": "Beginner. Единственные предварительные требования — интерес к БПЛА и точному земледелию, базовый английский, ПК (Windows 10/11; совместим с MacOS/Linux) и стабильный интернет для скачивания больших наборов данных.",
+  "target_audience": "Студенты и исследователи (Bachelor/Master/PhD); профессионалы — фермеры и агрономы, желающие внедрить data-driven agriculture; пилоты БПЛА и энтузиасты; специалисты по пространственным данным; все, кто интересуется БПЛА и точным земледелием.",
+  "format": "Self-paced онлайн-курс на платформе Geoversity («Progress at your own speed»). Видео/материалы + наборы данных для скачивания + ПО; без обязательного расписания и преподавательского сопровождения в реальном времени.",
+  "assessment": "Completion-based — сертификат при 100% прохождении всех юнитов; формальные квизы/итоговый тест публично не подтверждены [UNVERIFIED].",
+  "hands_on": "Сильная практическая составляющая, выполняемая БЕЗ собственного дрона — все снимки/наборы данных предоставляются: построение 2D-карт (ортомозаик) и 3D-облаков точек из перекрывающихся UAV-снимков; оценка голой почвы (bare soil estimation); создание масок растительности (vegetation masks); расчёт вегетационных/растительных индексов из RGB, мультиспектральных и тепловых карт; оценка высоты культур, биомассы и урожайности; мониторинг здоровья растений и карты для внесения удобрений (fertilizer distribution); расчёт водопотребления растений и оценка водного стресса (crop water stress) для оптимизации орошения; инвентаризация растений/культур.",
+  "tools": "Курс «focuses on the use of free and open-source software, although temporary licenses for commercial software will be available for certain components» (дословно, Dronewatch Europe). Страница курса Geoversity говорит об «open-source and commercial software». Конкретные пакеты (например WebODM/OpenDroneMap, Agisoft Metashape, Pix4D, QGIS, Python) на публичных страницах НЕ перечислены — точный стек без логина не подтверждён [UNVERIFIED].",
+  "syllabus": [
+    {
+      "module": "Структура курса (общая)",
+      "topics": "Курс содержит 11 юнитов (Unit 1–11), сгруппированных в логические блоки. Точные названия всех 11 юнитов за логин-стеной Geoversity LMS и публично не раскрыты [UNVERIFIED]. Ниже — реальные тематические блоки и пять подтверждённых тем из официальных анонсов (DroneLife, Dronewatch, GIS Resources).",
+      "source_confidence": "Блоки 1–3 реконструированы из официальных описаний; 5 тем подтверждены дословно из DroneLife-анонса."
+    },
+    {
+      "module": "Блок 1 — Введение и планирование миссий",
+      "topics": "«Introduction to drones and their applications in precision agriculture» (тема 1, дословно DroneLife). Введение в использование пространственных данных с БПЛА в сельском хозяйстве; оценка пригодности БПЛА для конкретных задач; проектирование безопасных, легальных и профессиональных полётных миссий.",
+      "source_confidence": "Тема 1 подтверждена дословно. Остальное — из официального описания Geoversity/анонсов."
+    },
+    {
+      "module": "Блок 2 — Создание карт и 3D-моделей",
+      "topics": "«Creating maps and 3d-point-clouds from images» (тема 2, дословно DroneLife). Обработка перекрывающихся снимков для построения 2D-ортомозаик и 3D-облаков точек с помощью open-source и коммерческого ПО.",
+      "source_confidence": "Тема 2 подтверждена дословно."
+    },
+    {
+      "module": "Блок 3 — RGB/визуальные данные",
+      "topics": "«The power of visual/RGB images» (тема 3, дословно DroneLife). Применение RGB-снимков для определения размера поля, покрытия растительностью, оценки голой почвы, создания масок растительности.",
+      "source_confidence": "Тема 3 подтверждена дословно."
+    },
+    {
+      "module": "Блок 4 — Мультиспектральные данные и агро-индексы",
+      "topics": "«Multispectral imagery and agricultural indices» (тема 4, дословно DroneLife). Мультиспектральные снимки и вегетационные индексы; оценка высоты культур, биомассы и урожайности; мониторинг здоровья растений; точные карты для внесения удобрений.",
+      "source_confidence": "Тема 4 подтверждена дословно."
+    },
+    {
+      "module": "Блок 5 — Тепловые данные и агро-решения",
+      "topics": "«Working with thermal data for agricultural decision-making» (тема 5, дословно DroneLife). Тепловые снимки; расчёт водопотребления растений; оценка водного стресса (crop water stress); оптимизация орошения.",
+      "source_confidence": "Тема 5 подтверждена дословно."
+    }
+  ],
+  "learning_outcomes": [
+    "«Evaluate for which tasks and desired output UAVs are the right tool to use in agriculture»",
+    "«Design safe, legal and professional UAV survey missions»",
+    "«Process UAV recorded imagery to create maps and 3D-point-clouds using open-source and commercial software»",
+    "Определять размер поля, покрытие растительностью, высоту культур, биомассу и урожайность",
+    "Мониторинг здоровья культур и создание карт для точного внесения удобрений",
+    "Прогнозирование водопотребления культур и оценка водного стресса для оптимизации орошения"
+  ],
+  "strengths": [
+    "Полностью бесплатный контент при $0-стеке: акцент на free and open-source ПО (с временными лицензиями на коммерческое для отдельных компонентов) — близко к инварианту FOLUR-платформы.",
+    "Снимает аппаратный барьер: «You don't need your own UAV — we will provide you with all the data and software required» — практика возможна без покупки дрона.",
+    "Сквозной практический pipeline: от планирования миссии → ортомозаика/3D → индексы → агрорешения (биомасса, водный стресс, удобрения).",
+    "Покрывает три типа сенсоров (RGB, мультиспектр, тепло) и реальные агро-кейсы (урожайность, орошение, удобрения).",
+    "Уровень Beginner с минимальными предпосылками — подходит для практиков-аграриев МСБ.",
+    "Self-paced — гибкий темп для занятых фермеров.",
+    "Чёткие, измеримые learning outcomes (evaluate / design / process / estimate).",
+    "Курс переиздаётся: запуск 2024 (сен–дек) + новый запуск с регистрацией 19 авг 2025 — признак устойчивости.",
+    "Есть продолжение — «Advanced Mission Planning and Data Acquisition for Precision Agriculture» (также Geoversity/ITC)."
+  ],
+  "weaknesses": [
+    "Только на английском — прямой барьер для русскоязычной аудитории СКО/Костанай/Акмола; требует локализации.",
+    "Сертификат платный (€50) — против $0-инварианта для выдачи документа об обучении.",
+    "Требует ПК (Windows 10/11; MacOS/Linux совместимы) и стабильного интернета для «large data downloads» — риск для сельской аудитории с ограниченным каналом; нет упора на облачные (Colab) среды.",
+    "Конкретный стек ПО публично не раскрыт — затрудняет оценку воспроизводимости и переноса методики [UNVERIFIED].",
+    "Данные и кейсы не привязаны к Северному Казахстану (европейский контекст ITC/UTwente).",
+    "Оценивание — только completion-based; глубина проверки знаний (квизы/проект) публично не подтверждена [UNVERIFIED].",
+    "Точные названия 11 юнитов закрыты за логином — полный syllabi без регистрации недоступен.",
+    "Временные лицензии на коммерческое ПО (часть компонентов) создают зависимость от поставщиков."
+  ],
+  "borrow_for_folur": [
+    "ГЛАВНОЕ: модель «дрон не обязателен» — предоставлять учащимся готовые наборы UAV-снимков (RGB/мультиспектр/тепло) для скачивания, чтобы вся обработка (ортомозаика, индексы, биомасса, водный стресс) выполнялась без владения дроном. Это снимает капитальный барьер для МСБ-аграриев.",
+    "Пять реальных тематических блоков (введение → карта/3D → RGB → мультиспектр → тепло/водный стресс) как каркас UAV-модуля FOLUR: адаптировать на открытые данные и кейсы СКО/Костанай/Акмола.",
+    "Акцент на free & open-source — конкретизировать стек под наш инвариант: OpenDroneMap/WebODM + QGIS + Python в Colab, убрав требование мощного ПК и больших локальных загрузок.",
+    "Практика водного стресса и оптимизации орошения по тепловым снимкам — высокорелевантна для засушливого Северного Казахстана; адаптировать на местные данные.",
+    "Чёткие measurable learning outcomes (evaluate/design/process/estimate) — перенести как формулировки целей нашего UAV-урока дословно.",
+    "Раздел про безопасные/легальные/профессиональные полётные миссии — заменить на нормы РК по эксплуатации БПЛА (вместо EU/NL).",
+    "Трёхсенсорный подход (RGB / мультиспектр / тепло) с привязкой каждого сенсора к агро-задаче — воспроизвести структуру, заменив данные на открытые источники (Sentinel-2, открытые UAV-датасеты)."
+  ],
+  "verified": false,
+  "unverified_notes": [
+    "Точные названия всех 11 юнитов (Unit 1–11) находятся за логин-стеной Geoversity LMS и на публичных страницах не раскрыты. Приведённые в syllabus «блоки» и их порядок основаны на пяти дословно подтверждённых темах (DroneLife) + официальных описаниях; они не являются дословными заголовками юнитов и не гарантируют соответствие юнит-границам.",
+    "Конкретные названия ПО (open-source и commercial) публично не перечислены; известно лишь «free and open-source software, although temporary licenses for commercial software will be available for certain components» (Dronewatch). WebODM/QGIS/Python/Pix4D/Agisoft — НЕ подтверждены источниками.",
+    "Формат оценивания глубже completion (квизы, итоговый тест, проект) публично не подтверждён.",
+    "Метка сертификата расходится между источниками: страница Geoversity (2025) — «Certificate of Completion»; анонс Dronewatch/GIS Resources (2024) — «Certificate of Attendance». Цена €50 указана на странице Geoversity.",
+    "Постоянная доступность курса вне окна запуска не подтверждена; платформа показывает «Registration Opens: August 19, 2025», что подразумевает когортную модель, а не вечный self-paced доступ."
+  ],
+  "sources": [
+    "https://www.geoversity.io/courses/uavs-in-precision-agriculture/",
+    "https://dronelife.com/2024/09/17/unlocking-the-power-of-drones-free-online-course-on-uavs-in-precision-agriculture/",
+    "https://gisresources.com/free-course-offered-by-itc-on-uavs-in-precision-agriculture/",
+    "https://www.dronewatch.eu/university-of-twente-offers-free-course-uavs-in-precision-agriculture/",
+    "https://www.geoversity.io/courses/advanced-mission-planning/",
+    "https://www.utwente.nl/en/itc/education/study-finder/earth-observation-with-unmanned-aerial-vehicles/",
+    "https://www.geoversity.io/stories/1322442/how-do-uavs-help-precision-agriculture/"
+  ]
+}
