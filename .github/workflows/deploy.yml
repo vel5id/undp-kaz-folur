@@ -1,4 +1,11 @@
-name: Deploy platform to GitHub Pages
+name: Validate, build and deploy to Firebase Hosting
+
+# Firebase Hosting (folur-kaz-platform.web.app) — основной хостинг платформы,
+# альтернатива GitHub Pages (репозиторий приватный, Pages недоступен).
+# Пока секрет FIREBASE_SERVICE_ACCOUNT не добавлен, workflow работает как CI:
+# валидация контента + строгая сборка; деплой-шаг пропускается.
+# Секрет: Firebase Console → Project settings → Service accounts →
+# Generate new private key → содержимое JSON в секрет репозитория.
 
 on:
   push:
@@ -8,16 +15,16 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: firebase-hosting
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      HAS_FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -31,16 +38,15 @@ jobs:
       - name: Build (strict)
         working-directory: project/platform
         run: mkdocs build --strict
-      - uses: actions/upload-pages-artifact@v3
+      - name: Deploy to Firebase Hosting (live)
+        if: env.HAS_FIREBASE_SA == 'true' && github.event_name == 'push'
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          path: project/platform/site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: folur-kaz-platform
+          entryPoint: project/platform
+      - name: Deploy skipped — нет секрета FIREBASE_SERVICE_ACCOUNT
+        if: env.HAS_FIREBASE_SA != 'true'
+        run: echo "Секрет FIREBASE_SERVICE_ACCOUNT не задан — деплой пропущен. Публикация вручную: project/platform/tools/deploy_firebase.sh"
