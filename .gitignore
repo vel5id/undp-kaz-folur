@@ -1,5 +1,6 @@
 # Служебное
 *:Zone.Identifier
+*Zone.Identifier
 .~lock.*#
 
 # Рабочие извлечения из docx (генерируются заново)
@@ -14,6 +15,20 @@ __pycache__/
 data-not-anonymys/
 data-raw-restricted/
 **/SECRET-origin.json
+
+# Уровень C по правовой оценке (plans/stage-1/05_data-legal-compliance.md):
+# сырые промеры и производные с реальной геопривязкой (Закон РК № 166-VII,
+# режим крупномасштабной топографии, антитеррористическая защищённость ГТС).
+# Публикуется только уровень A — обезличенный датасет в локальной СК.
+**/coords_depth.csv
+**/all_points_cleaned.csv
+**/interior_cleaned.csv
+**/merged_points_transformed.csv
+**/edge_points.csv
+**/representative_80000_points.csv
+**/bathymetry1.tif
+**/bathymetry1.tfw
+**/shoreline.*
 
 # Генерируемые артефакты (пересоздаются tools/make_module_pdfs.mjs; для публикации — Git LFS)
 project/platform/docs/pdf/
