@@ -49,4 +49,6 @@ jobs:
           entryPoint: project/platform
       - name: Deploy skipped — нет секрета FIREBASE_SERVICE_ACCOUNT
         if: env.HAS_FIREBASE_SA != 'true'
-        run: echo "Секрет FIREBASE_SERVICE_ACCOUNT не задан — деплой пропущен. Публикация вручную: project/platform/tools/deploy_firebase.sh"
+        run: |
+          echo "Секрет FIREBASE_SERVICE_ACCOUNT не задан — деплой пропущен."
+          echo "Публикация вручную: project/platform/tools/deploy_firebase.sh"
