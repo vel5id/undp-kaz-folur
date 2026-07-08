@@ -234,6 +234,7 @@ nav:
           - Планируем съёмку глубин своего водоёма — эхолот, GPS и галсы, которые не придётся переделывать: modules/p11/lectures/01-planiruem-semku-glubin.md
           - Превращаем лог эхолота в карту глубин — чистка и интерполяция без программиста: modules/p11/lectures/02-ot-promerov-k-karte-glubin.md
           - Считаем воду и принимаем решения — объём, заиление и спутниковые архивы: modules/p11/lectures/03-obyom-zailenie-resheniya.md
+          - Шаг галса и цена точности — эксперимент на 519 192 реальных промерах: modules/p11/lectures/04-shag-galsa-i-cena-tochnosti.md
           - Практикум — карта глубин и объём водоёма своими руками: modules/p11/practicum/01-karta-glubin-svoimi-rukami.md
           - ИИ-ассистент в работе: modules/p11/ai-assistant.md
           - Оценивание: modules/p11/assessment/final.md
