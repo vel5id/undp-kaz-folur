@@ -30,6 +30,7 @@ data-raw-restricted/
 **/bathymetry1.tfw
 **/shoreline.*
 
-# Генерируемые артефакты (пересоздаются tools/make_module_pdfs.mjs; для публикации — Git LFS)
-project/platform/docs/pdf/
+# Генерируемые артефакты: PDF-конспекты закоммичены (нужны strict-сборке в CI
+# и Firebase-деплою; пересоздаются tools/make_module_pdfs.mjs), офлайн-пакет —
+# 40 МБ, раздаётся координатором вручную, в git не хранится.
 project/platform/offline/
