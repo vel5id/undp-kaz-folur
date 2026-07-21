@@ -1,0 +1,3502 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/a1/lectures/01-zhiznennyy-tsikl-agrodannykh/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../02-bpla-kompleks-i-polyotnyy-plan/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Академические модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Почему «жизненный цикл», а не просто «сбор данных»
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Почему «жизненный цикл», а не просто «сбор данных»">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Роли и ответственность
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Карта источников агроданных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Карта источников агроданных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Открытые данные как скелет системы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gnss-rtkppk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Геопривязка полевых измерений: GNSS, RTK/PPK и опорные точки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Геопривязка полевых измерений: GNSS, RTK/PPK и опорные точки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Бюджет точности: считаем ошибку по всей цепочке
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Фотограмметрия: как из сотен снимков получаются три продукта
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Фотограмметрия: как из сотен снимков получаются три продукта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Как проверить фотограмметрический продукт, не будучи фотограмметристом
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Проектируем систему данных хозяйства: методика из пяти шагов
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-bpla-kompleks-i-polyotnyy-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-bpla-ili-sputnik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-standarty-formaty-fair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-poljotnoe-zadanie-bpla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/01-vector-raster-projections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/02-qgis-python-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/03-spatial-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/04-ai-uav-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/practicum/01-landuse-map-sko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта землепользования района СКО
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/01-open-data-catalogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/02-dataset-preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/03-classic-models-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/04-cnn-and-architecture-choice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/practicum/01-lulc-three-approaches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/01-vodnyj-balans-stepnogo-vodosbora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/02-karta-glubin-iz-promerov/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/03-sputnikovyj-monitoring-vody/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/04-godovoj-cikl-vodoyoma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/practicum/01-karta-glubin-i-ndwi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин по сырым промерам + сезонная динамика NDWI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/01-landshaftnyj-podhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим хозяйство на функциональные зоны — ландшафтный подход
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/02-degradaciya-zemel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностируем деградацию земель степной зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/03-pochvosberegayushchee-zemledelie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем почвосберегающую систему земледелия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/04-tochnoe-zemledelie-i-ustojchivost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем мониторинг устойчивости и климатическую адаптацию
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/practicum/01-plan-zemlepolzovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — план устойчивого землепользования модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/02-bioraznoobrazie-agrolandshafta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/03-monitoring-degradacii-dzz-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/04-proektirovanie-vosstanovleniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/practicum/01-plan-vosstanovleniya-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект плана восстановления деградированного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../professional/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Почему «жизненный цикл», а не просто «сбор данных»
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Почему «жизненный цикл», а не просто «сбор данных»">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Роли и ответственность
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Карта источников агроданных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Карта источников агроданных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Открытые данные как скелет системы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gnss-rtkppk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Геопривязка полевых измерений: GNSS, RTK/PPK и опорные точки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Геопривязка полевых измерений: GNSS, RTK/PPK и опорные точки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Бюджет точности: считаем ошибку по всей цепочке
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Фотограмметрия: как из сотен снимков получаются три продукта
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Фотограмметрия: как из сотен снимков получаются три продукта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Как проверить фотограмметрический продукт, не будучи фотограмметристом
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Проектируем систему данных хозяйства: методика из пяти шагов
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Академические модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Выстраиваем жизненный цикл данных хозяйства: от датчика в поле до аналитического слоя<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~24 мин чтения + ~20 мин практики
+Модуль <strong>А1: Жизненный цикл данных в агросфере (+ БПЛА и IoT)</strong>, урок 1 из 4.
+Академический уровень. Проект UNDP-KAZ FOLUR. Компоненты FOLUR: <strong>1</strong>, <strong>2</strong>.</p>
+</blockquote>
+<h2 id="_2">Цели лекции и место в модуле<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Эта лекция — фундамент всего модуля и, по сути, всей академической линейки платформы. Прежде чем считать NDVI (А2), обучать модели (А3) или строить карты глубин (А4), нужно ответить на вопросы: откуда берутся данные, кто и как их собирает, где они лежат, кто им доверяет и почему. Здесь мы строим целостную картину: источники агроданных, стадии их жизненного цикла, точность геопривязки полевых измерений и первый взгляд на фотограмметрический конвейер БПЛА.</p>
+<p>После изучения лекции слушатель сможет:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять основные источники данных агросферы и стадии жизненного цикла данных.</li>
+<li><strong>[Bloom: понимать]</strong> объяснять, чем различаются точности автономного GNSS, RTK и PPK и зачем нужны наземные опорные точки (GCP).</li>
+<li><strong>[Bloom: применять]</strong> составлять схему движения данных для конкретного хозяйства Северного Казахстана — от точки сбора до аналитического продукта.</li>
+<li><strong>[Bloom: анализировать]</strong> находить «узкие места» в существующей практике сбора данных хозяйства и предлагать, какую стадию цикла нужно укрепить в первую очередь.</li>
+</ol>
+<blockquote>
+<p><strong>Границы лекции.</strong> Внутри: карта источников данных, модель жизненного цикла, геопривязка полевых измерений (RTK/PPK, GCP), обзор фотограмметрических продуктов (ортофотоплан, ЦМР, ЦММ) и открытого конвейера OpenDroneMap. За рамками: устройство самого БПЛА и расчёт полётных параметров — подробнее в <a href="../02-bpla-kompleks-i-polyotnyy-plan/">Уроке 2</a>; сравнение БПЛА и спутников — в <a href="../03-bpla-ili-sputnik/">Уроке 3</a>; системы координат, форматы файлов и принципы FAIR — в <a href="../04-standarty-formaty-fair/">Уроке 4</a>; собственно ГИС-анализ собранных данных — в модуле <a href="../../../a2/">А2</a>.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. Почему «жизненный цикл», а не просто «сбор данных»<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Типичная история казахстанского хозяйства среднего размера выглядит так. Агроном ведёт журнал обработок в тетради. Результаты агрохимического обследования лежат в PDF-отчёте подрядчика. Комбайн пишет треки и урожайность на флешку в собственном формате производителя техники. Кто-то однажды заказывал съёмку с дрона — архив остался на диске у подрядчика. Спутниковые снимки «где-то в интернете». Когда через три года хозяйство решает внедрить дифференцированное внесение удобрений, выясняется: данных формально много, но соединить их невозможно — нет общих координат, дат, форматов и ответственных.</p>
+<p>Проблема здесь не в отсутствии данных и не в жадности подрядчиков. Проблема в том, что данные собирались <strong>без модели жизненного цикла</strong> — никто не проектировал их путь дальше момента сбора. Жизненный цикл данных — это явное описание всех стадий, которые проходит каждое наблюдение: планирование, сбор, обработка, контроль качества, хранение, использование, архивирование или удаление. Ценность данных возникает только тогда, когда все стадии согласованы: измерение без геопривязки, файл без метаданных, архив без ответственного — это потерянные деньги хозяйства.</p>
+<p>Международные рамки говорят о том же на языке политик. Рамка FAO «10 элементов агроэкологии» прямо включает элемент совместного создания и обмена знаниями (co-creation and sharing of knowledge) — а обмениваться можно только данными, которые переживают своего автора и его тетрадь. База WOCAT документирует технологии устойчивого землепользования по единому стандарту именно потому, что несопоставимые описания невозможно сравнивать. Индикатор ЦУР 15.3.1 (доля деградированных земель) рассчитывается из многолетних спутниковых рядов — то есть из данных, чей жизненный цикл спроектирован на десятилетия вперёд.</p>
+<pre class="mermaid"><code>flowchart LR
+    P[Планирование:&lt;br&gt;что, где, как часто,&lt;br&gt;с какой точностью] --&gt; C[Сбор:&lt;br&gt;датчик, БПЛА, спутник,&lt;br&gt;полевой журнал]
+    C --&gt; Q[Обработка и контроль качества:&lt;br&gt;геопривязка, фильтрация,&lt;br&gt;калибровка]
+    Q --&gt; S[Хранение:&lt;br&gt;форматы, метаданные,&lt;br&gt;резервные копии]
+    S --&gt; U[Использование:&lt;br&gt;карты, модели,&lt;br&gt;решения агронома]
+    U --&gt; A[Архив / удаление:&lt;br&gt;версии, сроки,&lt;br&gt;ответственный]
+    A -.-&gt;|опыт следующего сезона| P</code></pre>
+<p><em>Рис. 1. Жизненный цикл агроданных: шесть стадий, замкнутых в кольцо. Alt: блок-схема из шести стадий — планирование, сбор, обработка и контроль качества, хранение, использование, архивирование — соединённых стрелками слева направо; пунктирная стрелка от архива обратно к планированию показывает, что опыт сезона улучшает план следующего.</em></p>
+<p>Ключевое следствие модели: <strong>качество данных закладывается на стадии планирования, а не исправляется на стадии обработки</strong>. Если координата замера не записана в поле, никакой алгоритм не восстановит её потом. Если у снимка нет даты и высоты съёмки, его нельзя сопоставить с погодным рядом. Поэтому в этом модуле мы движемся по циклу слева направо: сначала источники и сбор (уроки 1–3), затем стандарты и контроль качества (урок 4).</p>
+<h3 id="11">1.1 Роли и ответственность<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>У каждой стадии цикла должен быть владелец. В крупном агрохолдинге это отдельные специалисты (полевой оператор, инженер данных, аналитик); в фермерском хозяйстве все роли может совмещать один человек — но роли от этого не исчезают. Практический минимум: для каждого потока данных (журнал обработок, треки техники, снимки) письменно зафиксировать, кто собирает, кто проверяет, где лежит мастер-копия и кто имеет право её изменять. Как организовать это без программиста — на уровне шаблонов и бесплатных инструментов — разбирает профессиональный модуль <a href="../../../p1/">П1 «Управление данными в агрохозяйстве»</a>: подробнее — в нём.</p>
+<hr />
+<h2 id="2">2. Карта источников агроданных<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Источники данных агросферы удобно делить по способу получения. Таблица ниже — рабочая карта, к которой мы будем возвращаться весь модуль.</p>
+<table>
+<thead>
+<tr>
+<th>Класс источника</th>
+<th>Примеры</th>
+<th>Что даёт</th>
+<th>Типичная частота</th>
+<th>Ключевой риск качества</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Дистанционное зондирование (спутники)</td>
+<td>Sentinel-1/2, Landsat, MODIS, ASTER</td>
+<td>Индексы вегетации, влажность, температура поверхности, снимки в динамике</td>
+<td>3–16 дней (зависит от миссии)</td>
+<td>Облачность; разрешение 10 м и грубее у открытых миссий</td>
+</tr>
+<tr>
+<td>БПЛА</td>
+<td>Мультиротор/самолётного типа с RGB- или мультиспектральной камерой</td>
+<td>Ортофотоплан 2–10 см, ЦМР/ЦММ, детальные карты состояния посевов</td>
+<td>По запросу</td>
+<td>Требует планирования полёта и обработки; правовые ограничения</td>
+</tr>
+<tr>
+<td>IoT-датчики</td>
+<td>Метеостанции, датчики влажности почвы, уровня воды</td>
+<td>Непрерывные ряды точечных измерений</td>
+<td>Минуты–часы</td>
+<td>Дрейф калибровки, разрывы связи, точечность</td>
+</tr>
+<tr>
+<td>GPS-треки техники</td>
+<td>Бортовые терминалы тракторов и комбайнов</td>
+<td>Фактические траектории работ, карты урожайности</td>
+<td>Каждая операция</td>
+<td>Закрытые форматы производителей; пропуски сигнала</td>
+</tr>
+<tr>
+<td>Полевые обследования</td>
+<td>Агрохимическое обследование, учёт всходов, фенология</td>
+<td>Точные наземные значения — «истина» для калибровки ДЗЗ</td>
+<td>Раз в сезон — раз в 5 лет</td>
+<td>Ручной ввод, ошибки координат, малая плотность точек</td>
+</tr>
+<tr>
+<td>Открытые реестры и архивы</td>
+<td>data.gov.kz, метеоархивы, кадастровые слои, OpenStreetMap</td>
+<td>Контекст: границы, дороги, гидрография, климатические нормы</td>
+<td>Обновления нерегулярны</td>
+<td>Актуальность и полнота требуют проверки</td>
+</tr>
+<tr>
+<td>Ряды хозяйства</td>
+<td>Урожайность по полям, севообороты, журналы обработок</td>
+<td>Целевая переменная для любой аналитики</td>
+<td>Сезон</td>
+<td>Часто без геопривязки и в несовместимых форматах</td>
+</tr>
+</tbody>
+</table>
+<p>Три наблюдения по таблице. Во-первых, ни один источник не самодостаточен: спутник даёт покрытие, но грубое разрешение; БПЛА — детальность, но малую площадь; датчик — непрерывность, но одну точку. Аналитическая ценность возникает при <strong>совмещении</strong> источников, а совмещение требует общей геопривязки и совместимых форматов — тема урока 4. Во-вторых, самые дорогие по трудозатратам данные — полевые обследования — одновременно самые ценные: именно они служат опорной «истиной» при калибровке дистанционных данных и обучении моделей (это станет критичным в модуле <a href="../../../a3/">А3</a>). В-третьих, ряды самого хозяйства (урожайность, обработки) — недооценённый актив: без них невозможно связать «что видно со спутника» с «что получили на току».</p>
+<p>Разберём три источника из таблицы подробнее — те, что чаще всего недооцениваются при проектировании.</p>
+<p><strong>IoT-датчики.</strong> Полевые метеостанции, датчики влажности почвы на разных горизонтах, датчики уровня воды в прудах-накопителях образуют «нервную систему» хозяйства: они дают непрерывные ряды там, где спутник даёт снимок раз в несколько дней, а человек — измерение раз в сезон. Но у непрерывности есть цена. Во-первых, дрейф калибровки: датчик влажности, не поверявшийся два сезона, продолжает слать правдоподобные числа, которые постепенно расходятся с реальностью — это самый коварный тип ошибки, потому что визуально ряд выглядит нормальным. Во-вторых, разрывы связи: в степной зоне LoRa- или GSM-канал теряется, и в ряду появляются пропуски, которые нужно уметь честно помечать, а не заполнять молча (методы работы с пропусками — в <a href="../04-standarty-formaty-fair/">Уроке 4</a>). В-третьих, точечность: датчик описывает кубический дециметр почвы, а решение принимается о поле в сотни гектаров — экстраполяция требует понимания пестроты почвенного покрова.</p>
+<p><strong>GPS-треки техники.</strong> Бортовые терминалы тракторов и комбайнов пишут не только траекторию, но и ширину захвата, скорость, расход, а комбайны — поток зерна, из которого строятся карты урожайности. Это единственный источник, который документирует <em>фактически выполненные</em> операции, а не запланированные. Главная ловушка — проприетарные форматы: каждый производитель техники хранит данные по-своему, и хозяйство с разномарочным парком получает три несовместимых архива. Правило жизненного цикла здесь: сразу после сезона выгружать треки в открытый формат (GeoPackage, GeoJSON) и класть в общее хранилище — пока терминал не перезаписал память и пока сотрудник, знающий пароль от фирменного кабинета, не уволился.</p>
+<p><strong>Погодные ряды.</strong> Осадки и температура — главные объясняющие переменные почти любой агроаналитики Северного Казахстана, где влагообеспеченность лимитирует урожай. Источники трёх уровней: собственная метеостанция (точно, но коротко — ряд начинается с момента покупки), ближайшая государственная станция (длинный ряд, но станция может быть в десятках километров), глобальные реанализы и спутниковые продукты (полное покрытие, но ячейка в километры и своя погрешность). Грамотная система использует все три уровня и документирует, какой откуда взят.</p>
+<h3 id="21">2.1 Открытые данные как скелет системы<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Для Северного Казахстана скелет любой системы агроданных можно собрать целиком из открытых источников: снимки Sentinel-2 (Copernicus Data Space Ecosystem, Google Earth Engine, Microsoft Planetary Computer), границы и гидрография из OpenStreetMap, открытые реестры data.gov.kz. Это принципиально для устойчивости: система, построенная на открытых данных и открытом ПО, не умирает вместе с подпиской на коммерческий сервис. Платные источники (коммерческие спутники сверхвысокого разрешения, закрытые агроплатформы) мы рассматриваем в уроке 3 — но только в сравнительном ключе.</p>
+<hr />
+<h2 id="3-gnss-rtkppk">3. Геопривязка полевых измерений: GNSS, RTK/PPK и опорные точки<a class="headerlink" href="#3-gnss-rtkppk" title="Permanent link">&para;</a></h2>
+<p>Любое наблюдение без координат — просто число. Чтобы измерение стало <em>пространственными данными</em>, ему нужна геопривязка, и её точность должна соответствовать задаче. Здесь важно развести три уровня точности спутниковой навигации (GNSS — обобщающее название систем GPS, ГЛОНАСС, Galileo, BeiDou).</p>
+<p><strong>Автономный GNSS-приёмник</strong> (смартфон, бытовой навигатор, обычный приёмник дрона) определяет позицию по сигналам спутников без внешних поправок. Типичная точность — единицы метров. Для привязки точки агрохимического отбора на поле в 300 га этого достаточно; для сшивки снимков в ортофотоплан сантиметрового разрешения — нет.</p>
+<p><strong>RTK (Real-Time Kinematic)</strong> — кинематика реального времени: приёмник получает поправки от базовой станции (собственной или сетевой) прямо в полёте/в поле и достигает точности порядка сантиметров. Требует радио- или интернет-канала до базы и покрытия поправочного сервиса.</p>
+<p><strong>PPK (Post-Processed Kinematic)</strong> — та же идея, но поправки применяются после съёмки, при офисной обработке сырых GNSS-логов приёмника и базы. Не требует устойчивой связи в поле — важное преимущество в степной зоне, где сотовое покрытие неравномерно.</p>
+<p><strong>GCP (Ground Control Points, наземные опорные точки)</strong> — контрастные марки, разложенные на участке и измеренные точным приёмником. Фотограмметрический софт находит марки на снимках и «пришивает» модель к их координатам. Часть измеренных точек намеренно <em>не</em> передают в обработку, а оставляют как контрольные (check points): по расхождению модели с ними оценивается фактическая, а не заявленная точность продукта. GCP — независимый контроль: даже при RTK-дроне несколько опорных и контрольных точек позволяют <em>проверить</em>, а не предположить точность итогового ортофотоплана. Запомните этот паттерн — «независимая контрольная точка» — он же станет главным приёмом верификации результатов ИИ в <a href="../../ai-assistant/">ИИ-задании модуля</a>.</p>
+<p>Практические требования к GCP просты: марки должны быть контрастными и достаточно крупными, чтобы уверенно опознаваться на снимках при выбранном GSD; распределяться по всему участку, включая углы и центр, а не выстраиваться в линию; измеряться приёмником, точность которого лучше целевой точности продукта. Для учебных задач модуля роль марок могут играть устойчивые опознаваемые объекты — углы капитальных сооружений, пересечения дорог.</p>
+<p>Практическое правило выбора: точность геопривязки должна быть на порядок лучше размера объектов, которые вы хотите различать. Считаете ряды пропашной культуры с междурядьем 70 см — метровая точность автономного GNSS не годится. Оцениваете состояние поля по зонам в десятки метров — избыточно платить за RTK.</p>
+<h3 id="31">3.1 Бюджет точности: считаем ошибку по всей цепочке<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>Точность итогового продукта складывается из ошибок всех звеньев цепочки, и думать о ней нужно как о бюджете: каждое звено «тратит» часть допустимой ошибки. Для ортофотоплана это, как минимум: погрешность позиционирования камеры (GNSS-уровень: метры автономно, сантиметры с RTK/PPK), погрешность измерения опорных точек, качество калибровки камеры, устойчивость самой фотограмметрической сшивки (зависит от перекрытий и текстуры поверхности — однородное созревшее поле сшивается хуже, чем поле с видимой структурой). Для полевого журнала — погрешность приёмника плюс человеческий фактор: оператор записал координату, стоя у машины, а не у точки отбора, и вот уже «сантиметровый RTK» дал ошибку в пятнадцать метров.</p>
+<p>Два практических следствия. Первое: усиливать нужно самое слабое звено, а не самое дорогое. Бессмысленно ставить RTK-модуль на дрон, если опорные точки меряются смартфоном. Второе: бюджет точности задаётся <em>от задачи</em>, а не от возможностей техники. Формулировка «нам нужна максимальная точность» — признак незавершённого шага 2 методики из раздела 5; правильная формулировка звучит как «зоны внесения имеют размер 30–50 м, значит суммарная ошибка позиционирования до 3–5 м приемлема». Такая формулировка сразу говорит, что для данной задачи достаточно автономного GNSS, и освобождает бюджет на более дефицитные звенья — например, на свежее агрохимическое обследование.</p>
+<p>Обратите внимание, как бюджет точности связывает стадии цикла: требование формулируется на стадии планирования, обеспечивается на стадии сбора, проверяется на стадии контроля качества (независимыми контрольными точками) и документируется в метаданных на стадии хранения — иначе следующий пользователь данных не узнает, чему можно доверять.</p>
+<blockquote>
+<p><strong>Подробнее</strong> — устройство GNSS/RTK-модулей и автопилотов БПЛА разбирается в <a href="../02-bpla-kompleks-i-polyotnyy-plan/">Уроке 2</a>; преобразования между системами координат — в <a href="../04-standarty-formaty-fair/">Уроке 4</a>.</p>
+</blockquote>
+<hr />
+<h2 id="4">4. Фотограмметрия: как из сотен снимков получаются три продукта<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>БПЛА за один вылет делает сотни перекрывающихся снимков. Сами по себе они малополезны: искажены перспективой, не привязаны к карте, дублируют друг друга. Фотограмметрическая обработка (в современном виде — технология Structure from Motion, SfM) восстанавливает по перекрытиям геометрию сцены и положение камеры в момент каждого кадра и выдаёт три стандартных продукта:</p>
+<ul>
+<li><strong>Ортофотоплан</strong> — единое бесшовное изображение участка, геометрически исправленное так, что по нему можно измерять расстояния и площади, как по карте.</li>
+<li><strong>ЦМР (цифровая модель рельефа)</strong> — высоты «голой» земли, без растительности и построек; нужна для анализа стока, микрорельефа, планирования мелиорации.</li>
+<li><strong>ЦММ (цифровая модель местности)</strong> — высоты верхней поверхности всего, что есть на участке, включая посевы и лесополосы; разность ЦММ и ЦМР даёт, например, высоту растительного покрова.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    F[Сотни перекрывающихся снимков + GNSS-логи] --&gt; SfM[SfM: поиск общих точек,&lt;br&gt;восстановление геометрии]
+    GCP[Опорные точки GCP] --&gt; SfM
+    SfM --&gt; PC[Плотное облако точек]
+    PC --&gt; DSM[ЦММ: верхняя поверхность]
+    PC --&gt; DTM[ЦМР: голая земля]
+    PC --&gt; ORTO[Ортофотоплан]</code></pre>
+<p><em>Рис. 2. Фотограмметрический конвейер: от снимков и GNSS-логов через плотное облако точек к трём продуктам. Alt: схема, где снимки с логами и опорные точки входят в блок SfM-обработки, из него получается плотное облако точек, а из облака — три выхода: цифровая модель местности, цифровая модель рельефа и ортофотоплан.</em></p>
+<p>Инструменты. Базовый для платформы — <strong>OpenDroneMap (ODM/WebODM)</strong>: полностью открытый конвейер, который выполняет весь путь с рис. 2 и работает локально или в контейнере. Коммерческие аналоги — <strong>Agisoft Metashape</strong> и <strong>Pix4D</strong> — упоминаем в сравнительном ключе: они предлагают отточенный интерфейс, поддержку и ряд специализированных модулей, но требуют лицензий; все учебные задания платформы выполнимы в ODM. Важно понимать: различия между пакетами — в удобстве и деталях реализации, а физика метода (перекрытия, опорные точки, качество GNSS) одна и та же, и ошибки планирования съёмки не исправит ни один из них.</p>
+<p>Насколько детальным будет результат, определяет <strong>GSD (Ground Sample Distance)</strong> — размер пикселя на местности. Он задаётся ещё до взлёта высотой полёта и характеристиками камеры; расчёту GSD и перекрытий посвящён раздел 4 <a href="../02-bpla-kompleks-i-polyotnyy-plan/">Урока 2</a>.</p>
+<h3 id="41">4.1 Как проверить фотограмметрический продукт, не будучи фотограмметристом<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Даже если обработку выполняет подрядчик или открытый конвейер «в один клик», заказчик обязан уметь оценить результат — это стадия контроля качества цикла. Минимальный чек-лист приёмки ортофотоплана состоит из четырёх проверок. Геометрия: измерьте на ортофотоплане 2–3 расстояния между объектами, которые можно промерить на местности или на независимом источнике (например, ширину дороги, длину склада), и сравните. Сшивка: пролистайте план на полном увеличении вдоль линейных объектов — дорог, лесополос, рядов посева; разрывы и «ступеньки» на них выдают проблемы совмещения снимков. Полнота: проверьте края участка и зоны с однородной текстурой — там чаще всего «дыры» и артефакты. Метаданные: дата и время съёмки, высота, тип камеры, система координат, использованные GCP — всё это должно приехать вместе с файлом; продукт без метаданных не подлежит приёмке, потому что его невозможно корректно совместить с другими слоями.</p>
+<p>Тот же чек-лист, почти дословно, работает для приёмки <em>любого</em> производного продукта данных — включая карты, построенные ИИ-агентом: независимые промеры, визуальный контроль вдоль структур, проверка краёв, обязательные метаданные. В <a href="../../ai-assistant/">ИИ-задании модуля</a> вы примените его к плану полётной миссии, сгенерированному кодинг-агентом.</p>
+<hr />
+<h2 id="5">5. Проектируем систему данных хозяйства: методика из пяти шагов<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>Соберём материал лекции в рабочую методику. Она пригодится в практикуме и в итоговой аттестации, а в профессиональном модуле П1 существует в упрощённой форме для фермера.</p>
+<p><strong>Шаг 1. Инвентаризация решений.</strong> Выпишите 3–5 решений, которые хозяйство принимает регулярно и дорого: чем и когда сеять, где и сколько вносить удобрений, какие поля осматривать в первую очередь, когда убирать. Данные нужны не «вообще», а под решения.</p>
+<p><strong>Шаг 2. Обратная трассировка к данным.</strong> Для каждого решения определите: какие данные его улучшили бы, с какой точностью, как часто и в какой момент сезона они нужны. Здесь появляется требование к геопривязке (раздел 3) и к источнику (раздел 2).</p>
+<p><strong>Шаг 3. Выбор источников.</strong> По карте источников подберите минимальную комбинацию: как правило, открытый спутниковый ряд как основа + точечные полевые данные как опора + БПЛА для проблемных участков. Критерии выбора платформы — <a href="../03-bpla-ili-sputnik/">Урок 3</a>.</p>
+<p><strong>Шаг 4. Проектирование хранения.</strong> Для каждого потока: формат (открытый!), место мастер-копии, схема резервного копирования, минимальный набор метаданных (кто, когда, где, чем, в какой системе координат). Детали — <a href="../04-standarty-formaty-fair/">Урок 4</a>.</p>
+<p><strong>Шаг 5. Контур качества.</strong> Заранее определите, как будете проверять данные: контрольные точки для съёмок, дубли измерений для датчиков, визуальная сверка треков с границами полей. Правило то же, что и с GCP: у каждого автоматического результата должна быть независимая проверка.</p>
+<p>Пять шагов намеренно не привязаны ни к какому программному продукту: это дисциплина мышления, а не софт. Инструментальную реализацию (QGIS-проект, структура каталогов, ноутбуки) вы соберёте в практикуме и в модуле А2.</p>
+<p>Завершим методику тремя антипаттернами, которые встречаются в проектах систем агроданных чаще всего. <strong>«Сначала техника, потом задача»</strong>: покупка дрона, датчиков или подписки до выполнения шагов 1–2; техника простаивает или собирает данные, которые никто не использует. <strong>«Данные у подрядчика»</strong>: съёмки, обследования и обработка заказываются без пункта договора о передаче исходных данных в открытых форматах вместе с метаданными; хозяйство получает красивый PDF, а актив остаётся у исполнителя. <strong>«Единственный носитель»</strong>: мастер-копия живёт на одном ноутбуке или одной флешке; вопрос не в том, потеряются ли данные, а в том, когда. Все три антипаттерна — нарушения конкретных стадий цикла (планирования, хранения, архивирования), и все три дешевле предотвратить одним абзацем в плане или договоре, чем исправлять после.</p>
+<p>Отдельно подчеркнём: данные хозяйства — это актив с накопительной ценностью. Один сезон наблюдений почти ничего не говорит о зонах продуктивности — слишком велик вклад погоды конкретного года; пять сопоставимых сезонов выявляют устойчивые закономерности, на которых уже можно строить дифференцированное внесение и планирование севооборота. Отсюда следствие, важное для мотивации: дисциплина жизненного цикла окупается не в первый сезон, а начиная со второго-третьего, и главная ошибка — бросить систему через год, «потому что пока ничего не дала».</p>
+<hr />
+<h2 id="_3">Региональный кейс<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация:</strong> зерновое хозяйство в Костанайской области (основная культура — пшеница, ключевая для странового проекта FOLUR) планирует перейти к дифференцированному внесению удобрений по зонам продуктивности. У хозяйства есть: журналы обработок в бумажном виде, агрохимическое обследование трёхлетней давности (PDF-отчёт с картами-схемами без координатных файлов), комбайны с бортовыми терминалами и желание «купить дрон, чтобы всё видеть». Руководитель просит вас, как приглашённого специалиста по данным, оценить готовность хозяйства.</p>
+<p><strong>Данные:</strong> Sentinel-2 L2A за вегетационные сезоны последних лет по территории района — открыто через Copernicus Data Space Ecosystem или Google Earth Engine; границы полей — оцифровка по снимку в QGIS; открытые реестры — data.gov.kz.</p>
+<p><strong>Задача:</strong></p>
+<ol>
+<li>Разложите имеющиеся активы хозяйства по стадиям жизненного цикла (рис. 1): какие стадии обеспечены, какие отсутствуют полностью?</li>
+<li>Для решения «дифференцированное внесение» выполните шаги 1–3 методики: какие данные, с какой геопривязкой и из каких источников реально нужны?</li>
+<li>Оцените идею «сначала купить дрон»: какую стадию цикла она закрывает, а какие оставляет пустыми?</li>
+</ol>
+<p><strong>Разбор:</strong> инвентаризация показывает типовой перекос: у хозяйства есть фрагменты стадии «сбор» (журналы, терминалы комбайнов, старое обследование), но полностью отсутствуют стадии «обработка/контроль качества» и «хранение» — PDF без координат нельзя совместить со снимками, а треки комбайнов никогда не выгружались. Для дифференцированного внесения базовый контур собирается из открытых данных: многолетний ряд Sentinel-2 даёт устойчивые зоны продуктивности, свежее агрохимическое обследование с геопривязкой каждой точки отбора (достаточно автономного GNSS) — опорные значения. Покупка дрона закрывает только часть стадии «сбор», причём наименее дефицитную: без выстроенного хранения и контроля качества ортофотопланы повторят судьбу PDF-отчёта. Правильная последовательность: сначала спроектировать цикл (шаги 1–5), затем покупать источники данных под него. Этот кейс продолжается в <a href="../../practicum/01-poljotnoe-zadanie-bpla/">практикуме</a>, где вы спроектируете съёмку модельного участка, и в модуле П1, где та же логика упакована для самостоятельной работы фермера.</p>
+<hr />
+<h2 id="_4">Закрепление и применение<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Попробуйте в Colab</p>
+<p>Откройте ноутбук урока: <code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>. В нём — шаблон «паспорта потока данных» (источник → геопривязка → формат → хранение → контроль) и мини-упражнение: по описанию трёх потоков данных условного хозяйства найти, у какого из них отсутствующая стадия цикла сделает данные бесполезными через год.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>Модель жизненного цикла — рамка планирования, а не гарантия качества: она показывает, <em>какие</em> стадии должны существовать, но не подменяет предметные методики (агрохимический отбор, калибровку датчиков, фотограмметрические допуски). Точности GNSS в разделе 3 — типичные порядки величин, а не паспортные характеристики конкретных приёмников: для реального проекта сверяйтесь с документацией оборудования и требованиями заказчика.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Один час, потраченный на шаги 1–5 методики до покупки техники и подписок, обычно экономит сезон работы по пересбору несовместимых данных. Минимальный жизнеспособный вариант: общая папка с датированными подпапками, таблица-журнал с обязательными колонками координат и даты, бесплатный ряд Sentinel-2 как основа мониторинга.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Хозяйство пять лет собирало карты урожайности с комбайнов, но координаты писались автономным GNSS, а границы полей ежегодно перецифровывались заново разными людьми. Теперь зоны продуктивности «плавают» между сезонами на 5–15 метров. Какие стадии цикла были нарушены? Можно ли спасти архив задним числом и что для этого понадобится? (Подсказка: подумайте про единый эталонный слой границ и про то, какая точность реально нужна для зон в десятки метров.)</p>
+</div>
+<hr />
+<h3 id="_5">Проверь себя<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "Хозяйство обнаружило, что в полевом журнале не записаны координаты точек отбора почвы. На какой стадии жизненного цикла была допущена ошибка, которую теперь нельзя исправить обработкой?",
+    "options": ["На стадии планирования сбора данных", "На стадии хранения", "На стадии архивирования", "На стадии использования"],
+    "answer": 0,
+    "explain": "§1: качество данных закладывается при планировании; отсутствующую в поле координату невозможно восстановить алгоритмически на последующих стадиях."
+  },
+  {
+    "q": "Чем PPK принципиально отличается от RTK?",
+    "options": ["Поправки применяются после съёмки при офисной обработке, связь с базой в поле не нужна", "PPK точнее RTK на порядок", "PPK не требует базовой станции вообще", "PPK работает только с GPS, а RTK — со всеми GNSS"],
+    "answer": 0,
+    "explain": "§3: RTK получает поправки в реальном времени и требует канала связи; PPK обрабатывает сырые логи постфактум, что удобно при неравномерном сотовом покрытии степной зоны."
+  },
+  {
+    "q": "Зачем нужны GCP при наличии RTK-приёмника на борту БПЛА?",
+    "options": ["Как независимый контроль фактической точности итоговых продуктов", "Чтобы увеличить перекрытие снимков", "Чтобы заменить калибровку камеры", "GCP при RTK не нужны никогда"],
+    "answer": 0,
+    "explain": "§3: контрольные точки позволяют проверить, а не предположить точность ортофотоплана — паттерн независимой верификации, сквозной для модуля."
+  },
+  {
+    "q": "Какой из продуктов фотограмметрии описывает высоты «голой» земли без растительности?",
+    "options": ["ЦМР", "ЦММ", "Ортофотоплан", "Плотное облако точек"],
+    "answer": 0,
+    "explain": "§4: ЦМР — рельеф без объектов; ЦММ включает растительность и постройки; их разность даёт высоту покрова."
+  },
+  {
+    "q": "Почему полевые обследования называют «опорной истиной», хотя они самые трудозатратные?",
+    "options": ["Они дают точные наземные значения для калибровки дистанционных данных и обучения моделей", "Они покрывают наибольшую площадь", "Они не требуют геопривязки", "Они всегда дешевле спутниковых данных"],
+    "answer": 0,
+    "explain": "§2: наземные измерения — эталон, к которому привязываются спутниковые и БПЛА-данные; без них дистанционные ряды не с чем сверять."
+  }
+]</code></pre>
+<h3 id="_6">Контрольные вопросы<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Перечислите шесть стадий жизненного цикла данных и по одному типичному провалу на каждой. <em>(Bloom: знать)</em></li>
+<li>Объясните, почему совмещение источников из таблицы раздела 2 требует общей геопривязки и открытых форматов. <em>(Bloom: понимать)</em></li>
+<li>Составьте паспорт потока данных «GPS-треки комбайнов» для хозяйства Акмолинской области по шаблону раздела 5. <em>(Bloom: применять)</em></li>
+</ol>
+<h2 id="_7">Что дальше?<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>В <a href="../02-bpla-kompleks-i-polyotnyy-plan/">Уроке 2 «Собираем БПЛА-комплекс под агрозадачу»</a> мы раскроем самый технологичный источник из карты раздела 2: типы носителей, сенсоры от RGB до LiDAR и эхолота, электронику GNSS/RTK и автопилоты, и научимся рассчитывать полётные параметры. Затем <a href="../03-bpla-ili-sputnik/">Урок 3</a> поставит БПЛА рядом со спутниками и научит выбирать между ними, а <a href="../04-standarty-formaty-fair/">Урок 4</a> замкнёт цикл стандартами хранения и контролем качества. Параллельно можно заглянуть в <a href="../../../p1/">П1</a> — как эта лекция выглядит в версии для практика без программирования, — и в <a href="../../../p7/">П7</a>, где мониторинг земель по ДЗЗ и БПЛА разобран как готовый рабочий процесс специалиста.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Назад: Программа">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Программа
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-bpla-kompleks-i-polyotnyy-plan/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>

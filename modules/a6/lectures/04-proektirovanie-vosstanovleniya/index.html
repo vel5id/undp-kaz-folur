@@ -1,0 +1,3762 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/a6/lectures/04-proektirovanie-vosstanovleniya/">
+      
+      
+        <link rel="prev" href="../03-monitoring-degradacii-dzz-ml/">
+      
+      
+        <link rel="next" href="../../practicum/01-plan-vosstanovleniya-uchastka/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Проектируем восстановление участка — от диагноза к плану практик - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Проектируем восстановление участка — от диагноза к плану практик
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Академические модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/01-zhiznennyy-tsikl-agrodannykh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/02-bpla-kompleks-i-polyotnyy-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/03-bpla-ili-sputnik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/04-standarty-formaty-fair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/practicum/01-poljotnoe-zadanie-bpla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/01-vector-raster-projections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/02-qgis-python-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/03-spatial-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/04-ai-uav-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/practicum/01-landuse-map-sko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта землепользования района СКО
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/01-open-data-catalogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/02-dataset-preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/03-classic-models-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/04-cnn-and-architecture-choice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/practicum/01-lulc-three-approaches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/01-vodnyj-balans-stepnogo-vodosbora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/02-karta-glubin-iz-promerov/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/03-sputnikovyj-monitoring-vody/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/04-godovoj-cikl-vodoyoma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/practicum/01-karta-glubin-i-ndwi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин по сырым промерам + сезонная динамика NDWI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/01-landshaftnyj-podhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим хозяйство на функциональные зоны — ландшафтный подход
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/02-degradaciya-zemel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностируем деградацию земель степной зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/03-pochvosberegayushchee-zemledelie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем почвосберегающую систему земледелия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/04-tochnoe-zemledelie-i-ustojchivost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем мониторинг устойчивости и климатическую адаптацию
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/practicum/01-plan-zemlepolzovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — план устойчивого землепользования модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-ekosistemnye-uslugi-i-prirodnyj-kapital/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-bioraznoobrazie-agrolandshafta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-monitoring-degradacii-dzz-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Принцип восстановления: диагноз ведёт практику
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Принцип восстановления: диагноз ведёт практику">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Иерархия восстановления
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Соответствие «диагноз → практика»
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Практики восстановления степной зоны
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Практики восстановления степной зоны">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Фитомелиорация
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Залужение и управляемая залежь
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Восстановление пастбищеоборота
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Лесомелиорация: восстановление и создание лесополос
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Рекультивация нарушенных земель
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Восстановление буферов и водных экосистем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 Естественное и содействующее восстановление
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-wocat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 WOCAT как каталог проверенных практик
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. От практик к плану: приоритизация и размещение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. От практик к плану: приоритизация и размещение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Три критерия приоритизации
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Размещение по карте
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3-a Разбор приоритизации на условном участке
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Мониторинг: как проверить, что восстановление идёт
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Пределы и честность проекта
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Пределы и честность проекта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Что восстановление может и чего не может
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Научная честность в проекте восстановления
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Проект восстановления в цикле управления
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-plan-vosstanovleniya-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект плана восстановления деградированного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../professional/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Принцип восстановления: диагноз ведёт практику
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Принцип восстановления: диагноз ведёт практику">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Иерархия восстановления
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Соответствие «диагноз → практика»
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Практики восстановления степной зоны
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Практики восстановления степной зоны">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Фитомелиорация
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Залужение и управляемая залежь
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Восстановление пастбищеоборота
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Лесомелиорация: восстановление и создание лесополос
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Рекультивация нарушенных земель
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Восстановление буферов и водных экосистем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 Естественное и содействующее восстановление
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-wocat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 WOCAT как каталог проверенных практик
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. От практик к плану: приоритизация и размещение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. От практик к плану: приоритизация и размещение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Три критерия приоритизации
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Размещение по карте
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3-a Разбор приоритизации на условном участке
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Мониторинг: как проверить, что восстановление идёт
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Пределы и честность проекта
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Пределы и честность проекта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Что восстановление может и чего не может
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Научная честность в проекте восстановления
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Проект восстановления в цикле управления
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Академические модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Проектируем восстановление участка: от диагноза к плану практик<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~26 мин чтения + ~30 мин практики</p>
+<p>Модуль <strong>А6: Экосистемные услуги, биоразнообразие, восстановление земель</strong>, лекция 4 из 4.
+Академический уровень. Проект UNDP-KAZ, FOLUR. Компонент FOLUR: <strong>3</strong>.</p>
+</blockquote>
+<h2 id="_2">Цели лекции и место в модуле<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Это финальная лекция модуля и всей академической линии платформы. Здесь три предыдущих слоя — язык услуг (лекция 1), каркас биоразнообразия (лекция 2) и диагноз деградации (лекция 3) — соединяются в действие: проект плана восстановления деградированного участка, прикладной продукт модуля А6 и прямой вклад в Компонент 3 FOLUR. Мы разберём набор практик восстановления, научимся подбирать их под тип деградации, приоритизировать вложения и оформлять план так, чтобы он был защищаем перед акиматом, донором или ПРООН и реализуем на открытом стеке.</p>
+<p>После изучения лекции слушатель сможет:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять основные практики восстановления деградированных земель степной зоны (фитомелиорация, залужение и управляемая залежь, восстановление пастбищеоборота, лесомелиорация, рекультивация нарушенных земель, восстановление буферов и коридоров) и рамки целеполагания (LDN, FOLUR, WOCAT).</li>
+<li><strong>[Bloom: понимать]</strong> объяснять принцип «диагноз → практика», иерархию восстановления (предотвратить → снизить → обратить) и связь каждой практики с восстанавливаемыми услугами и капиталом.</li>
+<li><strong>[Bloom: применять]</strong> подбирать практики под конкретный тип деградации участка СКО, Костанайской или Акмолинской области и размещать их по карте с учётом каркаса (лекция 2) и очагов (лекция 3).</li>
+<li><strong>[Bloom: анализировать]</strong> приоритизировать элементы плана по затратам, скорости отдачи и восстанавливаемым услугам, задавать контрольные индикаторы мониторинга и честно оценивать пределы восстановления.</li>
+</ol>
+<blockquote>
+<p><strong>Границы лекции.</strong> Внутри: практики восстановления, принцип «диагноз → практика», иерархия и приоритизация, структура плана и мониторинг. Снаружи: язык услуг — <a href="../01-ekosistemnye-uslugi-i-prirodnyj-kapital/">лекция 1</a>; элементы каркаса — <a href="../02-bioraznoobrazie-agrolandshafta/">лекция 2</a>; методика диагноза — <a href="../03-monitoring-degradacii-dzz-ml/">лекция 3</a>. Агрономические детали практик (no-till, севообороты, покровные культуры) — в модуле <a href="../../../a5/">А5</a> и профмодулях П8–П10; экономика и заявки на поддержку — в профмодулях П6, П14. Полная реализация плана на данных — в <a href="../../practicum/01-plan-vosstanovleniya-uchastka/">практикуме</a>.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. Принцип восстановления: диагноз ведёт практику<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 Иерархия восстановления<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>Прежде чем выбирать практику, стоит понять иерархию действий, принятую в управлении деградацией (она же логика LDN из лекции 3). Приоритеты идут сверху вниз:</p>
+<ol>
+<li><strong>Предотвратить (avoid)</strong> — не допускать новой деградации: не распахивать целину и уязвимые склоны, не осушать ВБУ, не превышать пастбищную нагрузку. Самое дешёвое и эффективное действие.</li>
+<li><strong>Снизить (reduce)</strong> — на уже используемых землях смягчать деградацию: перейти на no-till, ввести буферы, отрегулировать выпас.</li>
+<li><strong>Обратить (reverse)</strong> — активно восстанавливать уже деградированное: фитомелиорация засоления, залужение эродированной пашни, лесомелиорация, рекультивация.</li>
+</ol>
+<p>Порядок важен: обращать деградацию дороже и медленнее, чем предотвращать. Хороший проект восстановления начинается с предотвращения (закрепить то, что ещё цело) и лишь затем вкладывается в обращение — это и есть смысл нейтрального баланса: не только чинить, но и не ломать.</p>
+<p>Эта иерархия прямо вытекает из логики капитала (лекция 1). Предотвращение — это сохранение уже накопленного природного капитала: не тратить то, что степь копила тысячелетиями. Снижение — замедление расхода на землях, которые уже в обороте. Обращение — восстановление капитала с нуля, самая трудоёмкая операция, потому что природе требуются годы и десятилетия, чтобы заново нарастить гумус, сомкнуть травостой, вырастить лесополосу. Экономически иерархия означает, что рубль, вложенный в предотвращение, обычно сохраняет больше услуг, чем рубль, вложенный в обращение уже случившейся потери. Отсюда типичная ошибка неопытного проектировщика — броситься восстанавливать самый заметный, сильно нарушенный очаг, потратив на него весь бюджет, и упустить дешёвую защиту соседних, ещё не потерянных земель, которые за то же время успеют деградировать. Нейтральный баланс LDN требует смотреть на территорию целиком: важно не только сколько восстановили, но и сколько при этом НЕ дали потерять.</p>
+<h3 id="12">1.2 Соответствие «диагноз → практика»<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p>Центральный принцип лекции: практика выбирается не по моде, а по диагнозу из лекции 3. Каждому типу деградации соответствует свой набор практик, восстанавливающих именно утраченные услуги.</p>
+<table>
+<thead>
+<tr>
+<th>Тип деградации (диагноз, лекция 3)</th>
+<th>Утраченные услуги</th>
+<th>Практики восстановления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ветровая эрозия (дефляция) распаханных земель</td>
+<td>защита почвы, влага, продуктивность</td>
+<td>лесомелиорация (полосы), no-till/стерня, кулисы, залужение самых уязвимых контуров</td>
+</tr>
+<tr>
+<td>Водная эрозия склонов, заиление водоёмов</td>
+<td>защита почвы, чистая вода, объём водоёма</td>
+<td>буферные полосы, залужение ложбин стока, противоэрозионная организация полей</td>
+</tr>
+<tr>
+<td>Засоление (у бессточных понижений, при подъёме грунтовых вод)</td>
+<td>продуктивность, качество почвы</td>
+<td>фитомелиорация солеустойчивыми травами, регулирование гидрорежима, отказ от избыточного орошения</td>
+</tr>
+<tr>
+<td>Дегумификация, падение продуктивности пашни</td>
+<td>продуктивность, углерод, почвообразование</td>
+<td>залужение/консервация в управляемую залежь, no-till, покровные культуры, севообороты</td>
+</tr>
+<tr>
+<td>Пастбищная деградация (выбивание)</td>
+<td>корма, защита почвы, углерод</td>
+<td>восстановление пастбищеоборота, регулирование нагрузки, залужение сбоев</td>
+</tr>
+<tr>
+<td>Нарушенные земли (карьеры, отвалы, стоянки)</td>
+<td>почти все услуги</td>
+<td>техническая и биологическая рекультивация</td>
+</tr>
+<tr>
+<td>Разрыв экологического каркаса</td>
+<td>опыление, биоконтроль, связность</td>
+<td>восстановление лесополос-коридоров, буферов, краевых местообитаний</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    Diag[Диагноз участка&lt;br/&gt;лекция 3:&lt;br/&gt;тип и очаги деградации] --&gt; Match{Соответствие&lt;br/&gt;диагноз → практика}
+    Match --&gt; Prev[Предотвратить:&lt;br/&gt;не распахивать, не осушать,&lt;br/&gt;нагрузка ≤ ёмкости]
+    Match --&gt; Red[Снизить:&lt;br/&gt;no-till, буферы,&lt;br/&gt;регулирование выпаса]
+    Match --&gt; Rev[Обратить:&lt;br/&gt;фитомелиорация, залужение,&lt;br/&gt;лесомелиорация, рекультивация]
+    Prev --&gt; Serv[Восстановленный поток услуг&lt;br/&gt;и прирост капитала → LDN]
+    Red --&gt; Serv
+    Rev --&gt; Serv</code></pre>
+<p><em>Рис. 1. Принцип «диагноз → практика» в иерархии предотвратить–снизить–обратить. Alt: диагноз участка направляет выбор практик по трём уровням иерархии — предотвращение, снижение, обращение деградации; все они ведут к восстановленному потоку услуг, приросту капитала и нейтральному балансу деградации.</em></p>
+<hr />
+<h2 id="2">2. Практики восстановления степной зоны<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Ниже разобраны основные практики восстановления, применимые в степной зоне. Важно держать в голове, что почти все они уже описаны в международной базе <a href="../../">WOCAT</a> и в национальном опыте защитного лесоразведения и почвозащитного земледелия — мы не изобретаем их, а систематизируем под принцип «диагноз → практика». Практики не исключают друг друга: реальный проект восстановления почти всегда комбинирует несколько из них, размещая по карте под разные очаги (§3). Разбор идёт от самых мягких и дешёвых мер к самым капиталоёмким — в порядке той же иерархии «предотвратить → снизить → обратить».</p>
+<h3 id="21">2.1 Фитомелиорация<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Фитомелиорация — восстановление земель с помощью специально подобранных растений. Классический случай для региона — засоленные и солонцовые земли у бессточных понижений: высев солеустойчивых и солевыносящих трав (галофитов и устойчивых многолетников) закрепляет почву, снижает испарительный подъём солей, постепенно улучшает структуру и возвращает продуктивность и защиту почвы. Фитомелиорация работает и на дефлированных песчаных и супесчаных участках (закрепление подвижной поверхности корневой системой), и на сбитых пастбищах (подсев ценных многолетних трав). Это медленная, но недорогая практика, восстанавливающая сразу несколько услуг — защиту почвы, корма, углерод.</p>
+<h3 id="22">2.2 Залужение и управляемая залежь<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>Залужение — перевод деградированной пашни в многолетние травы; управляемая залежь — сознательная консервация наименее продуктивных или наиболее уязвимых контуров под естественное или направленное зарастание. Как мы видели в лекции 1, залежь в первые десятилетия накапливает почвенный углерод, восстанавливает структуру почвы, даёт местообитание и защиту от эрозии, а также нередко оказывается устойчивее пашни к засухе. Разница между «брошенной» и «управляемой» залежью — в намерении и контроле: управляемая залежь входит в план землепользования как временная или постоянная мера восстановления с заданными сроками и мониторингом, а не как признак упадка. Для сильно деградированной пашни на уязвимых землях залужение часто — оптимальное решение и по капиталу, и по экономике.</p>
+<h3 id="23">2.3 Восстановление пастбищеоборота<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>Пастбищная деградация в степи — результат бессистемного или чрезмерного выпаса, особенно вблизи водопоя и стоянок. Восстановление опирается не столько на дорогие мероприятия, сколько на организацию: пастбищеоборот (чередование участков с периодами отдыха), приведение нагрузки в соответствие с кормовой ёмкостью, распределение водопоев для рассредоточения скота, при необходимости — подсев трав на сбитых участках (§2.1). Это восстанавливает травостой (корма), защиту почвы и углерод одновременно — синергия из лекции 1. Агрономические детали пастбищного управления — в модуле <a href="../../../a5/">А5</a> и профмодулях агроблока.</p>
+<h3 id="24">2.4 Лесомелиорация: восстановление и создание лесополос<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>Лесомелиорация — восстановление старых и создание новых защитных лесонасаждений (лекция 2, §2.1). В проекте восстановления это ключевой инструмент против ветровой эрозии и разрыва каркаса: ремонт изреженных полос, дозакладка звеньев, замыкающих коридоры, создание новых полос поперёк преобладающих ветров на дефлируемых полях. Проектные параметры (ориентация поперёк вредоносных ветров, продуваемая конструкция для равномерного снегораспределения, подбор устойчивых к засухе и засолению пород) выбираются под местные условия; конкретные нормативы размещения — предмет специальной агролесомелиоративной документации, которую мы не воспроизводим по памяти. Лесомелиорация — медленная (эффект нарастает годами), но дающая наибольшее число услуг на элемент.</p>
+<h3 id="25">2.5 Рекультивация нарушенных земель<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
+<p>Рекультивация — восстановление земель, нарушенных до потери почвенного профиля: карьеры, отвалы, площадки, сильно эродированные бедленды. Она двухэтапна: техническая (планировка, формирование корнеобитаемого слоя, при необходимости — нанесение снятого плодородного слоя) и биологическая (закрепление растительностью, фитомелиорация). Рекультивация — самая дорогая практика, поэтому применяется точечно, к действительно нарушенным контурам, выявленным в диагнозе как открытая почва без покрова. Именно из-за высокой стоимости рекультивацию почти никогда не назначают всей деградированной площади: её резервируют для очагов, где почвенный профиль утрачен и естественное или содействующее восстановление (§2.7) не запустится само. На остальных землях те же средства дадут больше восстановленных услуг, будучи вложенными в дешёвые предотвращающие и снижающие меры (§3.1).</p>
+<h3 id="26">2.6 Восстановление буферов и водных экосистем<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
+<p>Отдельный блок — восстановление регулирующих элементов, связанных с водой (лекции 2, <a href="../../../a4/">А4</a>): закладка буферных полос между пашней и водоёмами (перехват наносов и биогенов, снижение заиления), восстановление прибрежной и водной растительности ВБУ, отказ от осушения западин и восстановление гидрорежима переувлажнённых угодий. Эти меры дёшевы относительно эффекта и снимают конфликты с ООПТ (лекция 2, §4).</p>
+<h3 id="27">2.7 Естественное и содействующее восстановление<a class="headerlink" href="#27" title="Permanent link">&para;</a></h3>
+<p>Важный выбор при проектировании — насколько активно вмешиваться. На одном полюсе — <strong>пассивное (естественное) восстановление</strong>: убрать фактор деградации (снять распашку, прекратить перевыпас) и дать экосистеме восстановиться самой. В степной зоне это часто работает: убранная из оборота пашня зарастает разнотравьем в залежь без посева, сбитое пастбище восстанавливает травостой при снятии нагрузки. Пассивное восстановление почти бесплатно, но медленно и не всегда идёт в желаемую сторону (может закрепиться бурьянистая стадия или сорные виды). На другом полюсе — <strong>активное восстановление</strong>: посев трав, посадка лесополос, техническая рекультивация, регулирование гидрорежима. Оно быстрее и управляемее, но дороже. Между ними — <strong>содействующее восстановление</strong>: минимальное вмешательство, направляющее естественный процесс (подсев ценных видов на залежь, точечная посадка в разрывы, борьба с инвазивными сорняками).</p>
+<p>Практическое правило выбора: чем сильнее нарушен участок и чем дальше он от источников естественного заселения (семян, диаспор), тем активнее должно быть вмешательство. Слабо деградированную пашню рядом с целинными участками разумно отдать под естественную залежь; сильно эродированный или засолённый очаг в окружении такой же нарушенной земли — восстанавливать активно. Этот выбор напрямую влияет на бюджет проекта и потому тесно связан с приоритизацией (§3).</p>
+<h3 id="28-wocat">2.8 WOCAT как каталог проверенных практик<a class="headerlink" href="#28-wocat" title="Permanent link">&para;</a></h3>
+<p>Подбирать практики «из головы» рискованно. Международная база <a href="../../">WOCAT</a> (World Overview of Conservation Approaches and Technologies) — систематизированный каталог технологий устойчивого землепользования и восстановления, задокументированных по единому формату с описанием условий применения, эффектов и ограничений. Для проектировщика это способ не изобретать решение заново, а опереться на задокументированный опыт схожих условий: по типу деградации и агроэкологической зоне подобрать технологию, посмотреть её описанные плюсы и минусы, адаптировать под свой участок. Использование такого каталога — часть научной честности проекта: практика опирается на задокументированный опыт, а не на выдуманные обещания. При этом перенос практики требует критической оценки применимости к местным условиям — тот же принцип «ИИ ускоряет — человек верифицирует», только применённый к переносу чужого опыта.</p>
+<hr />
+<h2 id="3">3. От практик к плану: приоритизация и размещение<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 Три критерия приоритизации<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>Проект восстановления почти всегда ограничен ресурсами: восстановить всё сразу нельзя. Поэтому элементы плана приоритизируют. Три рабочих критерия:</p>
+<ol>
+<li><strong>Скорость отдачи.</strong> Одни меры дают эффект за сезон-два (буферная полоса, регулирование выпаса), другие — за годы (лесополосы, залежь). Быстрые меры полезно запускать первыми, чтобы получить ранний результат и мотивацию.</li>
+<li><strong>Затраты.</strong> Организационные меры (пастбищеоборот, вынос распашки из буфера) почти бесплатны; фитомелиорация и залужение недороги; лесомелиорация и особенно рекультивация — дороги. При равном эффекте выбирают дешёвое.</li>
+<li><strong>Восстанавливаемые услуги и риск.</strong> В первую очередь закрывают меры, предотвращающие необратимые потери и снимающие острые конфликты: буфер у деградирующего ВБУ, защита эродируемого склона, вынос распашки от ООПТ. Здесь язык услуг лекции 1 напрямую задаёт приоритет.</li>
+</ol>
+<p>Комбинация критериев обычно даёт естественный порядок: сначала — дешёвые, быстрые и предотвращающие потери меры (иерархия «предотвратить/снизить»), затем — дорогие и медленные меры обращения деградации там, где без них не обойтись.</p>
+<h3 id="32">3.2 Размещение по карте<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>План — это не список, а карта. Размещение опирается на два слоя из предыдущих лекций: карту очагов деградации (лекция 3) и карту каркаса с его разрывами (лекция 2). Правила размещения:</p>
+<ul>
+<li>практики обращения (фитомелиорация, рекультивация, залужение) — на очаги соответствующего типа;</li>
+<li>лесополосы — поперёк вредоносных ветров и в разрывы коридоров, замыкая сеть;</li>
+<li>буферы — вдоль водотоков и по периметру водоёмов и ВБУ;</li>
+<li>предотвращающие меры (щадящий режим) — в буферных зонах ООПТ и на уязвимых землях, ещё не деградированных.</li>
+</ul>
+<p>Так план восстановления становится связным каркасом (лекция 2): элементы не разрозненны, а образуют сеть, где лесополосы соединяют местообитания, буферы защищают воду, а залежи и фитомелиорация закрывают очаги.</p>
+<pre class="mermaid"><code>flowchart TD
+    L2[Карта каркаса и разрывов&lt;br/&gt;лекция 2] --&gt; Plan[Проект плана&lt;br/&gt;восстановления]
+    L3[Карта очагов и типов&lt;br/&gt;деградации, лекция 3] --&gt; Plan
+    L1[Приоритет по услугам&lt;br/&gt;и капиталу, лекция 1] --&gt; Plan
+    Plan --&gt; Map[Карта размещения практик]
+    Plan --&gt; Tab[Таблица: тип → практика →&lt;br/&gt;услуги → приоритет → срок]
+    Plan --&gt; Mon[Индикаторы мониторинга:&lt;br/&gt;тренд NDVI, целостность каркаса,&lt;br/&gt;состояние водоёмов]</code></pre>
+<p><em>Рис. 2. Сборка проекта плана восстановления из трёх слоёв модуля. Alt: карты каркаса (лекция 2) и очагов деградации (лекция 3) вместе с приоритетом по услугам (лекция 1) образуют проект плана, который включает карту размещения практик, таблицу соответствий и индикаторы мониторинга.</em></p>
+<h3 id="33-a">3.3-a Разбор приоритизации на условном участке<a class="headerlink" href="#33-a" title="Permanent link">&para;</a></h3>
+<p>Чтобы принцип §3.1 стал осязаемым, разберём порядок рассуждения на условном участке (без выдуманных цифр — только логика). Пусть диагноз (лекция 3) дал четыре элемента: (1) очаг водной эрозии в ложбине стока к пруду; (2) очаг засоления у бессточного понижения; (3) дефляция на возвышенной распахиваемой части; (4) разрыв лесополосного коридора между приозёрным местообитанием и дальними полями.</p>
+<p>Прогоняем каждый элемент через три критерия. <strong>Буфер и залужение ложбины (1):</strong> дёшево, эффект за 1–2 сезона, предотвращает необратимое (заиление пруда, вынос биогенов). Три критерия за — это первый этап. <strong>Регулирование распашки на возвышенности + стерня (3, снижающая часть):</strong> почти бесплатно, эффект быстрый, предотвращает дальнейшую дефляцию — тоже ранний этап. <strong>Фитомелиорация засоления (2):</strong> недорого, но эффект за годы; засоление медленно, но не катастрофически прогрессирует — средний приоритет. <strong>Ремонт и дозакладка лесополос (3, обращающая часть, и 4):</strong> дорого и медленно (эффект за годы роста), но именно звено, замыкающее коридор (4), даёт наибольший прирост связности сети (лекция 2, §3.3) — поэтому среди лесомелиоративных работ его ставят первым, а сплошной ремонт полос распределяют на последующие этапы.</p>
+<p>Итоговый порядок: этап 1 — буфер ложбины и щадящий режим возвышенности (дёшево, быстро, предотвращает потери); этап 2 — фитомелиорация засоления и ключевое звено коридора; этап 3 — остальная лесомелиорация. Обратите внимание: порядок не совпал ни с «сначала самое дорогое», ни с «сначала самый большой очаг» — он вытек из комбинации скорости, затрат и предотвращения необратимого. Именно такой обоснованный порядок отличает проект от списка пожеланий.</p>
+<h3 id="33">3.3 Мониторинг: как проверить, что восстановление идёт<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p>План без мониторинга — намерение, а не проект. Мониторинг — это то, что превращает восстановление в проверяемое обязательство: он отвечает на вопрос «работает ли то, что мы сделали», и делает это на тех же открытых данных, что доступны любому внешнему проверяющему, а значит, результат нельзя ни приукрасить, ни оспорить голословно. Восстановление проверяют теми же открытыми инструментами, что и диагноз (лекция 3), только теперь ожидая <strong>положительной</strong> динамики: значимый рост тренда продуктивности на восстанавливаемых очагах (относительно контрольных участков — чтобы отделить эффект восстановления от влажной фазы климата), восстановление целостности каркаса (лесополосы сомкнулись на снимках), стабилизация или рост водоёмов и ВБУ, увеличение площади многолетнего покрова. Контрольные индикаторы задаются в плане заранее, вместе с базовым (нулевым) состоянием и сроками проверки, — это делает проект измеримым и отчётным по логике LDN и FOLUR.</p>
+<hr />
+<h2 id="4">4. Пределы и честность проекта<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 Что восстановление может и чего не может<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Восстановление — не возврат к «первозданной степи», а управляемое улучшение услуг и капитала в рамках работающего хозяйства (интегрированный подход FOLUR, лекция 2, §4.3). Цель проекта — не музей природы, а продуктивный и устойчивый агроландшафт, в котором восстановленные регулирующие услуги работают на само производство. У него есть пределы. Некоторые потери необратимы или очень медленны: гумус, накопленный степью за тысячелетия, залежью за десятилетия не восстанавливается полностью; сильно засолённые земли возвращаются в оборот годами и не всегда; лесополоса даёт полный эффект через годы роста. Честный проект различает достижимое (закрепить почву, поднять продуктивность уязвимых контуров, восстановить каркас и буферы) и недостижимое в обозримый срок (полное восстановление целинного капитала) и не обещает донору того, чего данные и биология дать не могут.</p>
+<h3 id="42">4.2 Научная честность в проекте восстановления<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>Проект восстановления особенно уязвим к соблазну выдуманных чисел: «прибавка урожая столько-то ц/га», «связано столько-то тонн углерода», «окупаемость за столько-то лет». Таких цифр без локальных полевых данных и валидированных моделей у нас нет, и приводить их — фабрикация (запрет платформы, <a href="../../../../about/module-template/">шаблон модуля</a>). Профессиональный проект оперирует направлениями и порядками величин, натуральными индикаторами (гектары под покровом, целостность каркаса, тренд продуктивности) и явными оговорками, а количественные обещания даёт только там, где есть подтверждённые данные. Именно такой — честный, измеримый, защищаемый — проект слушатель соберёт в практикуме и представит на сценарной части экзамена.</p>
+<p>Это требование не формальность, а условие доверия к проекту. Донор и ПРООН читают десятки заявок и отличают обоснованный проект от красивых обещаний: правдоподобная, но невыводимая из данных цифра прибавки урожая подрывает доверие ко всему документу, тогда как честная формулировка «ожидаем восстановления защиты почвы и роста продуктивности уязвимых контуров; количественная оценка эффекта — после первого цикла мониторинга» усиливает его. Там, где заказчику всё же нужны числа (для сметы, для расчёта углеродного эффекта), их берут из официальных нормативов, справочных коэффициентов с указанием источника или закладывают в проект полевые измерения на этапе базовой оценки — но никогда не подставляют «по аналогии». Экономические цифры (стоимость работ, субсидии, гранты) в проекте берутся только из официальных источников — этому посвящён профмодуль П14, где выдуманные ИИ суммы субсидий разбираются как учебный анти-пример.</p>
+<h3 id="43">4.3 Проект восстановления в цикле управления<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>Наконец, полезно видеть проект восстановления не как разовый документ, а как звено цикла адаптивного управления: <strong>диагноз → план → внедрение → мониторинг → корректировка</strong>. Мониторинг (§3.3) не просто отчитывается об успехе — он даёт обратную связь: если через два-три года тренд продуктивности восстанавливаемого очага не растёт относительно контроля, значит, диагноз или выбор практики были ошибочны, и план корректируется. Такой цикл превращает восстановление из ставки «сделали и надеемся» в управляемый процесс с проверяемыми контрольными точками — ровно та же логика верификации, что пронизывает всю платформу. Именно поэтому индикаторы и базовое состояние закладываются в план с самого начала: без них цикл не замыкается, и проект остаётся непроверяемым намерением.</p>
+<blockquote>
+<p><strong>Подробнее</strong> об экономическом обосновании и оформлении заявки на поддержку восстановления — в профмодулях <a href="../../../p6/">П6</a> и П14 (субсидии и гранты, где нормативные цифры берутся только из официальных источников).</p>
+</blockquote>
+<hr />
+<h2 id="_3">Региональный кейс<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация:</strong> По итогам диагноза (кейс лекции 3) акимат Костанайской области подтвердил, что контур действительно деградирует — не климат: на возвышенной распахиваемой части выявлены очаги дефляции с открытой почвой, у бессточного понижения — вероятное засоление, вдоль лога к пруду — водная эрозия и смыв, лесополосная сеть разорвана. Ресурсы проекта FOLUR ограничены; нужно превратить диагноз в приоритизированный проект восстановления, реализуемый поэтапно, с индикаторами.</p>
+<p><strong>Данные:</strong> карты из лекций 2–3 (каркас и разрывы по Sentinel-2/OSM; очаги и типы деградации по трендам и классификации), рельеф (ложбины стока), ERA5-Land (ветровой и осадковый контекст), JRC Global Surface Water (состояние пруда), база практик <a href="../../">WOCAT</a> как каталог решений.</p>
+<p><strong>Задача:</strong></p>
+<ol>
+<li>Сопоставить каждому очагу диагноза практику восстановления (принцип §1.2).</li>
+<li>Приоритизировать элементы по скорости отдачи, затратам и услугам (§3.1) и разместить по карте (§3.2).</li>
+<li>Задать 2–3 контрольных индикатора мониторинга и честно указать пределы восстановления (§4).</li>
+</ol>
+<p><strong>Разбор:</strong> Соответствие «диагноз → практика»: дефляция на возвышенной пашне → лесомелиорация (ремонт и дозакладка полос поперёк вредоносных ветров) + no-till/стерня, а самые уязвимые контуры — в залужение; засоление у понижения → фитомелиорация солеустойчивыми травами + отказ от избыточного увлажнения; водная эрозия вдоль лога → буферная полоса и залужение ложбин стока (одновременно снижает заиление пруда — связь с <a href="../../../a4/">А4</a>); разрыв каркаса → восстановление звеньев лесополос, замыкающих коридор. Приоритизация: сначала дешёвые, быстрые, предотвращающие потери меры — буфер у лога (быстро снижает смыв и заиление), регулирование распашки на уязвимых контурах, залужение сбоев; затем недорогая фитомелиорация засоления; лесомелиорация — как более медленная и дорогая, но ключевая для каркаса — этапом позже, начиная со звеньев, замыкающих коридоры. Индикаторы мониторинга: тренд NDVI восстанавливаемых очагов относительно контрольных участков (рост = восстановление, лекция 3), целостность лесополосной сети на снимках, стабилизация площади пруда. Пределы (§4): полное восстановление исходного капитала недостижимо в срок проекта; засоление отступает годами; эффект лесополос нарастает годами — проект обещает закрепление почвы, рост продуктивности уязвимых контуров и восстановление каркаса, но не «возврат целины» и не конкретные ц/га без полевых данных. Продукт — карта размещения практик + таблица «очаг → практика → услуги → приоритет → срок → индикатор» + раздел оговорок. Это и есть шаблон прикладного продукта модуля, который собирается в <a href="../../practicum/01-plan-vosstanovleniya-uchastka/">практикуме</a>.</p>
+<hr />
+<h2 id="_4">Закрепление и применение<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Попробуйте в Colab</p>
+<p>Откройте ноутбук лекции (<code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>) и на карте участка Костанайской области (слои каркаса и очагов из лекций 2–3) разместите практики восстановления по принципу §1.2, затем соберите таблицу «очаг → практика → услуги → приоритет → срок». Задание выполнимо и без ИИ-ассистента; как ускорить сбор диагностического слоя с Claude Code — в <a href="../../ai-assistant/">ИИ-задании модуля</a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>Проект на открытых данных — это обоснованный черновик, а не проектно-сметная документация: конкретные нормативы размещения лесополос, дозы, породы и сметы определяются специальной документацией и полевым обследованием. Количественные обещания (прибавка урожая, тонны углерода, окупаемость) без локальных данных не приводятся — это запрет платформы. Восстановление имеет биологические пределы и сроки; часть капитала необратима.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Приоритизированный проект восстановления превращает разрозненные «надо бы посадить лесополосу» в поэтапный план с ранними дешёвыми победами и измеримыми индикаторами. Такой план — основа заявки на поддержку по линии FOLUR и других программ и одновременно способ восстановить бесплатные регулирующие услуги, от которых зависит устойчивость самого хозяйства.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Хозяйству выделили ограниченный бюджет на восстановление и предложили потратить его целиком на дорогую рекультивацию одного сильно нарушенного контура. Опираясь на иерархию §1.1 и приоритизацию §3.1, обоснуйте, почему часть средств разумнее направить на дешёвые предотвращающие и снижающие меры на ещё не потерянных землях. Какие индикаторы покажут, что выбор был верным?</p>
+</div>
+<h3 id="_5">Проверь себя<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "Каков правильный порядок приоритетов в иерархии восстановления (LDN)?",
+    "options": ["Предотвратить новую деградацию → снизить на используемых землях → обратить уже деградированное", "Обратить → снизить → предотвратить", "Сначала рекультивация всего нарушенного", "Порядок не важен"],
+    "answer": 0,
+    "explain": "§1.1: обращать деградацию дороже и медленнее, чем предотвращать; проект начинают с предотвращения и снижения, а к обращению переходят там, где без него не обойтись."
+  },
+  {
+    "q": "Диагноз выявил засоление у бессточного понижения. Какая практика восстановления профильна для этого типа?",
+    "options": ["Фитомелиорация солеустойчивыми травами и регулирование гидрорежима", "Рекультивация с завозом грунта", "Осушение и распашка", "Только лесополоса поперёк ветра"],
+    "answer": 0,
+    "explain": "§1.2 и §2.1: засоление лечат фитомелиорацией устойчивыми травами, снижением испарительного подъёма солей и отказом от избыточного увлажнения; практика выбирается по типу деградации."
+  },
+  {
+    "q": "Почему буферную полосу у деградирующего пруда обычно ставят в плане первой, а лесомелиорацию — позже?",
+    "options": ["Буфер дёшев, быстро снижает смыв и заиление и предотвращает необратимые потери; лесополоса дороже и даёт эффект через годы", "Лесополоса не нужна", "Буфер дороже", "Порядок случаен"],
+    "answer": 0,
+    "explain": "§3.1: приоритет по скорости отдачи, затратам и предотвращению потерь; дешёвые быстрые предотвращающие меры идут первыми, дорогие и медленные меры обращения — этапом позже."
+  },
+  {
+    "q": "Как в проекте проверяют, что восстановление действительно идёт, а не совпало с влажной фазой климата?",
+    "options": ["Смотрят тренд продуктивности восстанавливаемых очагов относительно контрольных участков — как в диагнозе, но ожидая положительной динамики", "Верят отчёту исполнителя", "Считают только осадки", "Ждут 50 лет"],
+    "answer": 0,
+    "explain": "§3.3: мониторинг использует те же инструменты, что диагноз (лекция 3), с контрольными участками для отделения эффекта восстановления от климата; индикаторы задаются заранее с базовым состоянием."
+  },
+  {
+    "q": "Почему в проекте восстановления нельзя указывать конкретную прибавку урожая в ц/га и тонны связанного углерода без локальных данных?",
+    "options": ["Без полевых данных и валидированных моделей это фабрикация; оперируют направлениями, натуральными индикаторами и оговорками", "Потому что углерод не считается", "Потому что урожай не важен", "Потому что цифры всегда занижены"],
+    "answer": 0,
+    "explain": "§4.2: количественные обещания без подтверждённых данных запрещены платформой; честный проект даёт направления и порядки величин, а точные цифры — только из проверенных источников."
+  }
+]</code></pre>
+<h3 id="_6">Контрольные вопросы<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Перечислите основные практики восстановления степной зоны и по одному типу деградации, который каждая лечит. <em>(Bloom: знать)</em></li>
+<li>Объясните, почему проект восстановления начинают с предотвращения, а не с рекультивации. <em>(Bloom: понимать)</em></li>
+<li>Для деградированного участка в вашем районе предложите приоритизированный набор практик с размещением по карте и 2–3 индикаторами мониторинга; укажите пределы восстановления. <em>(Bloom: применять/анализировать)</em></li>
+</ol>
+<h2 id="_7">Что дальше?<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>Мы прошли весь путь модуля: услуги и капитал → каркас биоразнообразия → диагноз деградации → проект восстановления. Теперь соберём всё в прикладной продукт. В <a href="../../practicum/01-plan-vosstanovleniya-uchastka/">практикуме «Проект плана восстановления деградированного участка»</a> вы на реальных открытых данных пройдёте цикл диагноз → план для участка своего региона и оформите shareable-документ. Делегировать сбор диагностического слоя кодинг-агенту и верифицировать его — в <a href="../../ai-assistant/">ИИ-задании модуля</a>. Проверить себя по всему модулю — <a href="../../assessment/final/">итоговая аттестация</a>. Связанные материалы: практики землепользования — модуль <a href="../../../a5/">А5</a>; оценка услуг и заявки для практиков — профмодули <a href="../../../p6/">П6</a>, <a href="../../../p13/">П13</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../03-monitoring-degradacii-dzz-ml/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../practicum/01-plan-vosstanovleniya-uchastka/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Практикум — проект плана восстановления деградированного участка">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Практикум — проект плана восстановления деградированного участка
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>

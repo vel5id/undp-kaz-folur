@@ -1,0 +1,5686 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/p5/lectures/01-inventarizaciya-territorii/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../02-funkcionalnye-zony/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Проводим инвентаризацию территории хозяйства на открытых данных - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Проводим инвентаризацию территории хозяйства на открытых данных
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Профессиональные модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../professional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П1. Управление данными в агрохозяйстве
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П1. Управление данными в агрохозяйстве
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/lectures/01-atributy-zamera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фиксируем каждый замер полностью — координаты, время, условия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/lectures/02-zhurnaly-i-instrumenty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем журналы учёта в бесплатных инструментах — Google Sheets, QField, локальная база
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/lectures/03-rezervnye-kopii-i-peredacha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сохраняем и передаём данные — резервные копии по правилу 3-2-1 и передача партнёрам
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/practicum/01-shablon-sistemy-uchyota/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — собираем шаблон системы учёта хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p1/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П2. Введение в ГИС и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П2. Введение в ГИС и открытые геоданные
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/lectures/01-qgis-first-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Устанавливаем QGIS и собираем первый проект хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/lectures/02-open-data-sentinel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим своё хозяйство на космоснимке — открытые данные Sentinel и Landsat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/lectures/03-digitize-and-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оцифровываем границы полей и выпускаем карту — PDF и KML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/practicum/01-farm-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта вашего хозяйства на подложке Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p2/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П3. ИИ-инструменты без программирования
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П3. ИИ-инструменты без программирования
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/lectures/01-chitaem-ndvi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем карту NDVI — что спутник видит на вашем поле
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/lectures/02-nastraivaem-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем еженедельный NDVI-мониторинг полей в готовом сервисе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/lectures/03-proveryaem-servisy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверяем ИИ на честность — проблемные зоны, прогноз урожайности и выбор сервиса
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/practicum/01-ndvi-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — NDVI-паспорт поля и настроенный мониторинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p3/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П4. Python и Jupyter для специалистов
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П4. Python и Jupyter для специалистов
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/lectures/01-zapuskaem-python-v-colab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Запускаем Python без установки — первый ноутбук в Google Colab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/lectures/02-pandas-matplotlib-chistka-tablic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем и чистим 80 000 промеров — pandas и matplotlib
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/lectures/03-rasterio-i-paketnaya-obrabotka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Открываем растры и автоматизируем рутину — rasterio и пакетная обработка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/practicum/01-pervyj-rabochij-skript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — первый рабочий скрипт — паспорт водоёма из 80 000 промеров
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p4/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П5. Ландшафтное планирование для МСБ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П5. Ландшафтное планирование для МСБ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим инвентаризацию территории хозяйства на открытых данных
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим инвентаризацию территории хозяйства на открытых данных
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели урока и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Зачем руководителю ландшафтный план
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Что инвентаризируем: элементы агроландшафта
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Что инвентаризируем: элементы агроландшафта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Знание людей — тоже данные
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Открытые данные: смотрим на территорию бесплатно
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Открытые данные: смотрим на территорию бесплатно">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Как «читать» снимок без специальной подготовки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Рельеф и вода: что видно и что придётся проверить ногами
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Паспорт территории: собираем результат урока
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Паспорт территории: собираем результат урока">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Типичные ошибки инвентаризации
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Кто делает инвентаризацию и сколько это стоит
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-funkcionalnye-zony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим территорию на функциональные зоны — производство, буферы, охрана
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-plan-na-5-let/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем ландшафтный план на 5 лет — от карты к дорожной карте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-landshaftnyj-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — ландшафтный план модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П6. Оценка экосистемных услуг хозяйства
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П6. Оценка экосистемных услуг хозяйства
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/lectures/01-inventarizaciya-prirodnogo-kapitala/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Составляем инвентаризацию природного капитала хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/lectures/02-reguliruyushchie-uslugi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Картируем регулирующие услуги — опыление, защита от эрозии, удержание воды
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/lectures/03-ekonomika-i-otchyot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Связываем экосистемные услуги с рентабельностью и собираем отчёт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/practicum/01-otchyot-ob-ekosistemnyh-uslugah/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — собираем отчёт об экосистемных услугах территории
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p6/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8" id="__nav_10_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П7. ДЗЗ и БПЛА для мониторинга земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П7. ДЗЗ и БПЛА для мониторинга земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/lectures/01-chitaem-pole-iz-kosmosa-ndvi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем поле из космоса — NDVI и производные индексы по Sentinel-2 и Landsat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/lectures/02-mnogoletnij-ryad-ndvi-problemnye-zony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Строим многолетний ряд NDVI и находим настоящие проблемные зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/lectures/03-oblyot-bpla-i-opendronemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Досматриваем проблемную зону с воздуха — облёт БПЛА, сенсоры, OpenDroneMap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/practicum/01-ryad-ndvi-i-razbor-oblyota/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — многолетний ряд NDVI поля + разбор готового облёта БПЛА
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p7/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_9" id="__nav_10_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П8. Почвосберегающее земледелие, no-till
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П8. Почвосберегающее земледелие, no-till
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/lectures/01-gotovnost-poley-k-no-till/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оцениваем готовность полей к no-till — стерня, сорняки, влага
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/lectures/02-tekhnika-i-sezon-pryamogo-poseva/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перестраиваем технику и сезон работ под прямой посев
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/lectures/03-perekhodnyy-period-i-ekonomika/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Планируем переходный период и считаем экономику на своих цифрах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/practicum/01-plan-perekhoda-na-no-till/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — собираем план перехода хозяйства на no-till
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p8/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П9. Севообороты и кормовая база
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П9. Севообороты и кормовая база
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/lectures/01-shema-pod-vlagu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем схему севооборота под влагообеспеченность своей зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/lectures/02-kormovaya-baza/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Встраиваем кормовую базу — связываем поле и ферму в одном севообороте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/lectures/03-sborka-i-perekhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем трёх- или пятипольный севооборот хозяйства и план перехода
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/practicum/01-rotacionnaya-tablica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — ротационная таблица модельного хозяйства по снимкам Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p9/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_11" id="__nav_10_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П10. «Зелёное» производство и органика
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П10. «Зелёное» производство и органика
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/lectures/01-organika-bez-mifov/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отличаем сертифицированную органику от «эко»-маркетинга — принципы, стандарты, готовность хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/lectures/02-put-sertifikacii/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проходим путь сертификации — переходный период, документы, инспекция
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/lectures/03-rynok-i-dorozhnaya-karta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Продаём органику — маркировка, каналы сбыта и сборка дорожной карты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/practicum/01-dorozhnaya-karta-perekhoda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — дорожная карта перехода модельного хозяйства на органику
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p10/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_12" id="__nav_10_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П11. Батиметрия и мониторинг водных объектов
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П11. Батиметрия и мониторинг водных объектов
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/lectures/01-planiruem-semku-glubin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Планируем съёмку глубин своего водоёма — эхолот, GPS и галсы, которые не придётся переделывать
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/lectures/02-ot-promerov-k-karte-glubin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем лог эхолота в карту глубин — чистка и интерполяция без программиста
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/lectures/03-obyom-zailenie-resheniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Считаем воду и принимаем решения — объём, заиление и спутниковые архивы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/lectures/04-shag-galsa-i-cena-tochnosti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Шаг галса и цена точности — эксперимент на 519 192 реальных промерах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/practicum/01-karta-glubin-svoimi-rukami/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин и объём водоёма своими руками
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p11/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_13" id="__nav_10_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П12. Водосбережение и ирригация
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П12. Водосбережение и ирригация
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/lectures/01-vodnyj-byudzhet-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Считаем водный бюджет участка — сколько воды нужно культуре и где её взять
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/lectures/02-kapelnoe-oroshenie-i-datchiki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем технологию полива — капельное орошение, дождевание и датчики влажности
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/lectures/03-ekonomika-i-proekt-vodosberezheniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Считаем экономику перехода и собираем проект водосбережения
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/practicum/01-proekt-vodosberezheniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект системы водосбережения для модельного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p12/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_14" id="__nav_10_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П13. Биоразнообразие и прилегающие экосистемы
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П13. Биоразнообразие и прилегающие экосистемы
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/lectures/01-inventarizaciya-bioraznoobraziya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инвентаризируем биоразнообразие агроландшафта — местообитания, виды, экологический каркас
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/lectures/02-ekologicheskij-karkas-bufery-lesopolosy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем экологический каркас — буферные зоны, лесополосы, водно-болотные полосы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/lectures/03-oopt-vbu-plan-sohraneniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Соседство с ООПТ и ВБУ — собираем план сохранения биоразнообразия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/practicum/01-plan-sohraneniya-bioraznoobraziya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — собираем план сохранения биоразнообразия хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p13/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_15" id="__nav_10_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П14. Субсидии, гранты, финансовые инструменты
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П14. Субсидии, гранты, финансовые инструменты
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/lectures/01-karta-istochnikov-finansirovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Строим карту источников финансирования — господдержка, доноры, кредиты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/lectures/02-zelenye-finansy-i-uglerodnye-platezhi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Разбираемся в зелёных финансах — зелёные кредиты, углеродные платежи и агроэкологические инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/lectures/03-sobiraem-zayavku/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем заявку — пакет документов, процедура подачи и типовые ошибки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/practicum/01-zayavka-na-meru-podderzhki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — формируем заявку на меру поддержки для модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p14/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_16" id="__nav_10_16_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    П15. Устойчивые цепочки и маркетинг
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    П15. Устойчивые цепочки и маркетинг
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/lectures/01-karta-cepochki-stoimosti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Строим карту цепочки стоимости — от поля до покупателя «зелёной» продукции
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/lectures/02-trassiruemost-i-markirovka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подтверждаем устойчивость документами — трассируемость, маркировка, честные «зелёные» заявления
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/lectures/03-marketingovyj-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем маркетинговый план продвижения «зелёной» продукции
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/practicum/01-marketingovyj-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта цепочки и маркетинговый план модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../p15/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели урока и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Зачем руководителю ландшафтный план
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Что инвентаризируем: элементы агроландшафта
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Что инвентаризируем: элементы агроландшафта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Знание людей — тоже данные
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Открытые данные: смотрим на территорию бесплатно
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Открытые данные: смотрим на территорию бесплатно">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Как «читать» снимок без специальной подготовки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Рельеф и вода: что видно и что придётся проверить ногами
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Паспорт территории: собираем результат урока
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Паспорт территории: собираем результат урока">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Типичные ошибки инвентаризации
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Кто делает инвентаризацию и сколько это стоит
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../professional/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Профессиональные модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    П5. Ландшафтное планирование для МСБ
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Проводим инвентаризацию территории хозяйства на открытых данных<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~15 мин чтения + ~25 мин практики
+Модуль <strong>П5: Ландшафтное планирование для МСБ</strong>, урок 1 из 3.
+Профессиональный уровень (руководители). Проект UNDP-KAZ FOLUR. Компоненты FOLUR: <strong>1</strong>, <strong>2</strong>.</p>
+</blockquote>
+<h2 id="_2">Цели урока и место в модуле<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Ландшафтный план начинается не с карты зон, а с честного ответа на вопрос: <strong>что вообще есть на моей земле?</strong> В этом уроке мы разберём, зачем руководителю смотреть на хозяйство как на ландшафт, а не как на список полей в севообороте; какие элементы территории обязаны попасть в инвентаризацию; и как за один вечер собрать «паспорт территории» на бесплатных открытых данных — без ГИС-специалиста в штате. Результат урока — заполненная таблица инвентаризации, которая станет первой страницей вашего ландшафтного плана.</p>
+<p>После изучения урока слушатель сможет:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять элементы агроландшафта, подлежащие инвентаризации: пашня, кормовые угодья, лесополосы, водные объекты, деградированные и неудобные участки, инфраструктура.</li>
+<li><strong>[Bloom: понимать]</strong> объяснять, почему решения «по полям» без взгляда на территорию целиком приводят к потерям и как ландшафтный план работает на доходность хозяйства.</li>
+<li><strong>[Bloom: применять]</strong> находить и осматривать свою территорию на открытых данных — OpenStreetMap, Sentinel-2 (браузер Copernicus), ESA WorldCover — и заполнять паспорт территории.</li>
+<li><strong>[Bloom: анализировать]</strong> отличать по открытым снимкам благополучные участки от проблемных и формулировать вопросы для полевой проверки.</li>
+</ol>
+<blockquote>
+<p><strong>Границы урока.</strong> Внутри: зачем нужен ландшафтный план, элементы территории и техника инвентаризации на открытых данных. За рамками: правила деления территории на функциональные зоны — подробнее в <a href="../02-funkcionalnye-zony/">Уроке 2</a>; сборка плана и дорожная карта на 5 лет — в <a href="../03-plan-na-5-let/">Уроке 3</a>; научная основа ландшафтного подхода и диагностика деградации — в академическом модуле <a href="../../../a5/">А5</a>; базовые навыки QGIS — в модуле <a href="../../../p2/">П2</a>.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. Зачем руководителю ландшафтный план<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Большинство хозяйств Северного Казахстана управляются «по полям»: у каждого поля есть культура, техника и план работ на сезон. Это необходимый уровень управления, но недостаточный. Поле не существует отдельно от территории: склон соседнего увала гонит на него талую воду, выпавшая лесополоса перестала держать снег и ветер, пересыхающее озеро меняет микроклимат окрестных участков. Решения, принятые для каждого поля в отдельности, могут быть по отдельности разумными — и вместе вести территорию к деградации.</p>
+<p><strong>Ландшафтный план</strong> — это управленческий документ, который отвечает на три вопроса: что есть на территории хозяйства (инвентаризация — этот урок), какую функцию выполняет каждый участок (зонирование — <a href="../02-funkcionalnye-zony/">Урок 2</a>) и что мы делаем с этим в ближайшие пять лет (дорожная карта — <a href="../03-plan-na-5-let/">Урок 3</a>).</p>
+<p>Для руководителя у плана три практических выгоды:</p>
+<ul>
+<li><strong>Защита актива.</strong> Земля — главный капитал хозяйства. Эрозия, дегумификация и засоление снижают его стоимость медленно и незаметно; план заставляет увидеть проблемные участки раньше, чем они станут убыточными. Как именно развиваются эти процессы, подробно разбирает <a href="../../../a5/lectures/02-degradaciya-zemel/">лекция А5 о деградации земель</a>.</li>
+<li><strong>Язык для партнёров.</strong> Программа FOLUR в Казахстане развивает кооперацию с экспортёрами и ритейлом вокруг «зелёной пшеницы» — устойчиво выращенной продукции; подтверждать устойчивость нужно документами. Карта зонирования и дорожная карта — понятный аргумент для партнёра, консультанта или донора. Подготовку заявок на поддержку разбирает модуль <a href="../../../p14/">П14</a>.</li>
+<li><strong>Экономия управленческих усилий.</strong> Один раз разделив территорию на зоны, вы перестаёте каждый сезон заново решать судьбу «того солонца за дорогой» — у него уже есть функция и план.</li>
+</ul>
+<p>Международная рамка здесь та же, что и в академическом модуле: FAO описывает баланс производства и экосистем в «10 элементах агроэкологии», а ЦУР 15.3 задаёт принцип нейтрального баланса деградации земель (LDN) — не терять продуктивной земли больше, чем восстанавливаем. Ландшафтный план хозяйства — тот же принцип, уменьшенный до масштаба одного землепользователя.</p>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>План — не «отчёт для галочки», а способ увидеть скрытые резервы: где вы тратите ресурсы на заведомо убыточные клинья пашни, где выпавшая лесополоса стоит вам снегозадержания, а где заброшенный участок может стать кормовым угодьем. Большинство находок инвентаризации конвертируются в решения без капитальных затрат.</p>
+</div>
+<hr />
+<h2 id="2">2. Что инвентаризируем: элементы агроландшафта<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Инвентаризация — это перепись всех элементов территории, а не только посевных площадей. Минимальный список для зернового хозяйства степной зоны выглядит так:</p>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Элементы</th>
+<th>Что фиксируем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Производственные земли</td>
+<td>Поля пашни, пары, залежи</td>
+<td>Границы, состояние, известные проблемные места</td>
+</tr>
+<tr>
+<td>Кормовые угодья</td>
+<td>Пастбища, сенокосы</td>
+<td>Границы, признаки сбитости, доступ к воде</td>
+</tr>
+<tr>
+<td>Древесно-кустарниковый каркас</td>
+<td>Лесополосы, колки, кустарники</td>
+<td>Расположение, разрывы, состояние</td>
+</tr>
+<tr>
+<td>Водные объекты</td>
+<td>Озёра, реки, ручьи, пруды, плотины, скважины</td>
+<td>Расположение, сезонность, прибрежные земли</td>
+</tr>
+<tr>
+<td>Рельефные элементы</td>
+<td>Склоны, увалы, ложбины стока, западины</td>
+<td>Где вода идёт и где стоит</td>
+</tr>
+<tr>
+<td>Проблемные участки</td>
+<td>Солонцы, вымочки, эрозионные промоины, переуплотнение</td>
+<td>Расположение, площадь «на глаз», динамика</td>
+</tr>
+<tr>
+<td>Инфраструктура</td>
+<td>Дороги, тока, склады, фермы, ЛЭП</td>
+<td>Расположение, ограничения для работ</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание на два принципа. Первый: <strong>инвентаризируются и «неудобья»</strong> — солонцовые пятна, заболоченные западины, крутые склоны. Именно они чаще всего становятся буферными и природоохранными зонами в Уроке 2, и именно про них у хозяйства обычно нет никаких записей. Второй: <strong>фиксируется состояние, а не только наличие</strong>. Лесополоса «есть» и лесополоса «есть, но с разрывами в половину длины» — это два разных факта с разными последствиями для плана.</p>
+<h3 id="21">2.1 Знание людей — тоже данные<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Часть инвентаризации не видна ни на одном снимке: «эта западина топит посевы раз в три-четыре года», «здесь при сильном ветре тянет позёмку», «этот край поля всегда убираем последним — не вызревает». Носители этих сведений — агроном, механизаторы, старожилы села. Правило простое: при инвентаризации опросите людей, работающих на земле, и запишите их наблюдения в тот же паспорт территории с пометкой «со слов, требует проверки». Как превращать такие наблюдения в полноценные записи с координатами и датой, разбирает модуль <a href="../../../p1/">П1</a>.</p>
+<hr />
+<h2 id="3">3. Открытые данные: смотрим на территорию бесплатно<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>Ещё десять лет назад для инвентаризации нужны были заказные аэрофотосъёмки. Сегодня три бесплатных источника закрывают большинство потребностей руководителя.</p>
+<p><strong>OpenStreetMap (openstreetmap.org)</strong> — открытая карта мира. Для степной зоны на ней обычно есть дороги, населённые пункты, крупные водные объекты и часть лесополос. Это ваша «векторная» основа: по ней удобно ориентироваться и на неё вы будете наносить зоны в <a href="../../practicum/01-landshaftnyj-plan/">практикуме</a>.</p>
+<p><strong>Sentinel-2 через браузер Copernicus (dataspace.copernicus.eu)</strong> — свежие спутниковые снимки с детальностью 10 метров, бесплатно и без программирования: открыли сайт, нашли свою территорию, выбрали дату. Снимки обновляются каждые несколько дней; в браузере доступны и готовые «раскраски», включая индекс вегетации NDVI, по которому видна неоднородность полей. Что NDVI показывает, а чего не показывает — тема модуля <a href="../../../p3/">П3</a>; для инвентаризации достаточно видеть контрасты: однородное поле против поля с пятнами.</p>
+<p><strong>ESA WorldCover (esa-worldcover.org)</strong> — открытая карта земного покрова мира с детальностью 10 метров: пашня, травянистые угодья, деревья, вода, застройка. Она полезна как «второе мнение»: если WorldCover считает часть вашего «пастбища» голой землёй — это повод присмотреться.</p>
+<p>Четвёртый источник — <strong>национальный портал открытых данных (data.egov.kz)</strong>: наборы данных государственных органов РК. Состав и полнота наборов по конкретному району различаются, поэтому портал используется как дополнительный, а не основной источник: перед использованием проверьте актуальность конкретного набора.</p>
+<p>Практический порядок первого сеанса — полчаса за компьютером:</p>
+<ol>
+<li>Откройте OpenStreetMap, найдите свою территорию по названию села или визуально, оцените, какие элементы карта уже «знает» (дороги, вода, лесополосы), а какие отсутствуют.</li>
+<li>Откройте браузер Copernicus (dataspace.copernicus.eu), найдите ту же территорию. Выберите летний безоблачный снимок Sentinel-2 текущего года — это ваш «портрет» территории. Затем переключитесь на апрель–май: появятся тёмные трассы влаги и стоячая вода.</li>
+<li>Переключите визуализацию на NDVI и посмотрите на поля: однородны ли они, где устойчивые пятна.</li>
+<li>Откройте ESA WorldCover, сверьте классы покрова с вашим представлением о территории. Расхождения выпишите — это вопросы для проверки.</li>
+<li>Всё увиденное сразу заносите строками в паспорт территории (§4) с указанием источника и даты снимка.</li>
+</ol>
+<pre class="mermaid"><code>flowchart LR
+    K[Знание хозяйства:&lt;br&gt;агроном, механизаторы] --&gt; P[Паспорт территории]
+    O[OpenStreetMap:&lt;br&gt;дороги, вода, ориентиры] --&gt; P
+    S[Sentinel-2 / Copernicus:&lt;br&gt;свежие снимки, NDVI] --&gt; P
+    W[ESA WorldCover:&lt;br&gt;карта земного покрова] --&gt; P
+    P --&gt; Z[Урок 2:&lt;br&gt;функциональное зонирование]
+    P --&gt; R[Урок 3:&lt;br&gt;дорожная карта на 5 лет]</code></pre>
+<p><em>Рис. 1. Паспорт территории собирается из четырёх бесплатных источников и питает оба следующих урока. Alt: блок-схема — знание работников хозяйства, OpenStreetMap, снимки Sentinel-2 и карта ESA WorldCover сходятся в паспорт территории, из которого выходят стрелки к зонированию (урок 2) и дорожной карте (урок 3).</em></p>
+<h3 id="31">3.1 Как «читать» снимок без специальной подготовки<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>Руководителю не нужно быть дешифровщиком — достаточно четырёх приёмов:</p>
+<ol>
+<li><strong>Сравнивайте сезоны.</strong> Один и тот же участок в мае, июле и сентябре. Западины, которые топит талыми водами, видны на весенних снимках тёмными пятнами; солонцы летом выделяются светлыми «лысинами» на фоне вегетации.</li>
+<li><strong>Ищите постоянство.</strong> Пятно, которое появляется на снимках каждый год в одном месте, — свойство земли (рельеф, засоление, переувлажнение). Пятно одного года — скорее событие сезона (огрех сева, локальный вымокший участок).</li>
+<li><strong>Смотрите на границы.</strong> Резкая граница пятна по прямой линии — почти всегда след техники или агротехники; извилистая «природная» граница — рельеф или почва.</li>
+<li><strong>Не ставьте диагноз по снимку.</strong> Снимок показывает, <em>где</em> проблема, но не <em>какая</em>. Светлое пятно может быть солонцом, песчаным участком или переуплотнённой разворотной полосой. Каждое пятно из инвентаризации — это точка для полевой проверки, а методика различения самих процессов — в <a href="../../../a5/lectures/02-degradaciya-zemel/">лекции А5 о диагностике деградации</a>.</li>
+</ol>
+<h3 id="32">3.2 Рельеф и вода: что видно и что придётся проверить ногами<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>Рельеф степной зоны обманчив: перепады в несколько метров не видны глазу с дороги, но именно они решают, куда идёт талая вода. На открытых снимках рельеф читается косвенно: по рисунку ложбин (тёмные извилистые полосы влажной почвы весной), по направлению эрозионных промоин, по цепочкам западин. Дополнительно существуют открытые глобальные цифровые модели рельефа (например, Copernicus DEM с детальностью около 30 м) — их использование с QGIS выходит за рамки этого модуля и разбирается в <a href="../../../p2/">П2</a> и <a href="../../../a2/">А2</a>; для ландшафтного плана хозяйства обычно достаточно косвенных признаков плюс знание местности.</p>
+<p>Водные объекты инвентаризируйте с особым вниманием: озеро или пруд — это и ресурс (водопой, орошение, пожарный запас), и источник обязательств (прибрежные земли имеют особый режим использования — подробнее в <a href="../02-funkcionalnye-zony/">Уроке 2</a>). Зафиксируйте сезонность: постоянный это водоём или пересыхающий — весенние и осенние снимки Sentinel-2 отвечают на этот вопрос за пять минут. Если хозяйству нужна глубина и объём водоёма, это отдельная задача — батиметрия, модуль <a href="../../../p11/">П11</a>; учебные данные там используются в обезличенном виде («водохранилище степной зоны Казахстана», без геопривязки — см. <a href="../../../../datasets/">политику данных платформы</a>).</p>
+<hr />
+<h2 id="4">4. Паспорт территории: собираем результат урока<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>Итог инвентаризации — <strong>паспорт территории</strong>: одна таблица, где каждый элемент ландшафта получает строку. Рекомендуемые колонки:</p>
+<table>
+<thead>
+<tr>
+<th>Колонка</th>
+<th>Пример записи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID элемента</td>
+<td>ЛП-03 (лесополоса), ПОЛЕ-12, ОЗ-01, СОЛ-02</td>
+</tr>
+<tr>
+<td>Тип</td>
+<td>лесополоса / поле / озеро / солонцовое пятно / ложбина стока</td>
+</tr>
+<tr>
+<td>Где</td>
+<td>привязка к полю или ориентиру; в практикуме — контур на карте</td>
+</tr>
+<tr>
+<td>Состояние</td>
+<td>словарь: хорошее / удовлетворительное / проблемное</td>
+</tr>
+<tr>
+<td>Источник сведений</td>
+<td>снимок (дата) / WorldCover / со слов (кто) / полевой осмотр</td>
+</tr>
+<tr>
+<td>Проблема или ресурс</td>
+<td>«разрывы посадки», «топит раз в 3–4 года, со слов агронома»</td>
+</tr>
+<tr>
+<td>Вопрос для проверки</td>
+<td>«выехать после схода снега, уточнить границу вымочки»</td>
+</tr>
+</tbody>
+</table>
+<p>Три правила заполнения. Первое: <strong>каждому элементу — постоянный ID</strong>; на эти идентификаторы будут ссылаться зонирование и дорожная карта, как журналы хозяйства ссылаются на справочник полей в <a href="../../../p1/">П1</a>. Второе: <strong>разделяйте факт и предположение</strong> — колонка «источник сведений» обязательна, запись «со слов» не хуже других, но должна быть помечена. Третье: <strong>паспорт не обязан быть полным с первого раза</strong> — это живой документ; колонка «вопрос для проверки» превращает белые пятна в план полевых выездов, а не в повод отложить работу.</p>
+<p>На типовое хозяйство паспорт собирается за один-два вечера: час на снимки и карты, час на опрос агронома и механизаторов, час на сведение таблицы. Это самая дешёвая часть ландшафтного планирования — и самая недооценённая: по опыту программ устойчивого землепользования (база практик WOCAT построена именно на стандартизированном описании территорий), качество плана определяется качеством инвентаризации.</p>
+<h3 id="41">4.1 Типичные ошибки инвентаризации<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Четыре ошибки встречаются в первых паспортах почти всегда — проверьте себя по списку:</p>
+<ul>
+<li><strong>Переписаны только поля.</strong> Паспорт из одних полей — это копия севооборотной ведомости, а не инвентаризация: без лесополос, воды и «неудобий» зонировать в Уроке 2 будет нечего.</li>
+<li><strong>«Состояние» без критерия.</strong> Записи «нормальное», «так себе» несравнимы между собой и по годам. Договоритесь о словаре из трёх значений (хорошее / удовлетворительное / проблемное) и коротко зафиксируйте, что означает каждое — например, «проблемное» для лесополосы: разрывы либо усыхание, заметные на снимке или при осмотре.</li>
+<li><strong>Смешаны наблюдение и вывод.</strong> «Светлое пятно на снимке 2026-07-14» — наблюдение; «солонец» — вывод, требующий полевой проверки. В паспорте наблюдение и предполагаемый диагноз живут в разных колонках; методика самой диагностики — в <a href="../../../a5/lectures/02-degradaciya-zemel/">лекции А5</a>.</li>
+<li><strong>Паспорт сделан и забыт.</strong> Инвентаризация без даты следующего обновления мертвеет за пару сезонов. Правило модуля: паспорт обновляется минимум раз в год — удобнее всего вместе с осенней сверкой плана, которую введёт <a href="../03-plan-na-5-let/">Урок 3</a>, и после каждого события, меняющего территорию (новая промоина, выпавшая посадка, купленный участок).</li>
+</ul>
+<h3 id="42">4.2 Кто делает инвентаризацию и сколько это стоит<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>Ответ на частый вопрос руководителя: не нужно нанимать ГИС-специалиста. Роли распределяются внутри хозяйства: руководитель или его заместитель работает со снимками и сводит таблицу (навыков этого урока достаточно); агроном отвечает за колонку «состояние» и полевые проверки; механизаторы — источник знаний о воде, ветре и «вечных» проблемных местах. Из затрат — только время: все использованные источники данных бесплатны и не требуют регистрации с оплатой. Если в хозяйстве уже есть человек, прошедший модуль <a href="../../../p2/">П2</a>, паспорт сразу можно вести в QGIS как слой с атрибутами — но таблицы и распечатанного снимка для старта достаточно.</p>
+<hr />
+<h2 id="_3">Региональный кейс<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация.</strong> Зерновое хозяйство в Северо-Казахстанской области (пшеница — ключевая культура и региона, и проекта FOLUR в Северном Казахстане) готовится к разговору с покупателем, который заявил интерес к «устойчиво выращенному» зерну. Руководитель решает начать с инвентаризации: территория осваивалась десятилетиями, часть лесополос выпала, у двух полей есть постоянно «слабые» края, к югу от пашни — пересыхающее озеро с полосой солончаков. Никаких карт, кроме схемы полей из документов, в хозяйстве нет.</p>
+<p><strong>Данные.</strong> Снимки Sentinel-2 за май, июль и сентябрь текущего и прошлого года (браузер Copernicus, dataspace.copernicus.eu — бесплатно, без программирования); OpenStreetMap — дороги, озеро, часть лесополос; ESA WorldCover — покров территории.</p>
+<p><strong>Задача.</strong></p>
+<ol>
+<li>Составьте для этого хозяйства список элементов инвентаризации по таблице §2: какие строки паспорта территории появятся обязательно?</li>
+<li>По каким признакам на сезонных снимках Sentinel-2 руководитель отличит постоянно проблемные края полей от разовых огрехов сезона (§3.1)?</li>
+<li>Какие сведения не даст ни один открытый источник — и у кого в хозяйстве их надо спросить?</li>
+</ol>
+<p><strong>Разбор.</strong> В паспорт обязательно попадут: все поля с пометками о «слабых» краях, лесополосы с указанием разрывов (их видно и на снимках, и на OpenStreetMap), озеро с пометкой о сезонности и полосой солончаков как отдельный элемент, ложбины стока, ведущие к озеру. Постоянство проблемы проверяется сравнением лет: пятна, повторяющиеся на снимках обоих лет в одних контурах, — свойство земли, кандидаты в особые зоны Урока 2; пятно одного сезона — событие. Не даст ни один снимок: историю «топит раз в несколько лет», причины выпадения лесополос, планы соседей — это знание агронома и механизаторов, которое фиксируется в паспорте с пометкой «со слов». Итог кейса: уже на этапе инвентаризации хозяйство получает аргументы для разговора с покупателем — не лозунг «мы за устойчивость», а перепись территории с зафиксированными проблемами и планом их проверки.</p>
+<hr />
+<h2 id="_4">Закрепление и применение<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Паспорт территории — это час-два работы и ноль тенге затрат, но он сразу меняет качество решений: споры «мне кажется, там всегда сыро» заканчиваются, начинаются факты с датами снимков. Он же — готовая основа для разговора с консультантом, банком или партнёром по «зелёной» цепочке: вы показываете не эмоции, а таблицу и снимки.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>Открытые снимки детальностью 10 м показывают пятна от десятков метров — межу, отдельное дерево или начало промоины вы на них не увидите. Снимок фиксирует <em>где</em>, но не <em>что</em>: диагноз ставится полевой проверкой. И помните о правовой стороне: паспорт территории с точными координатами — внутренний документ хозяйства; что и как можно передавать наружу, разбирает <a href="../../../p1/lectures/03-rezervnye-kopii-i-peredacha/">Урок 3 модуля П1</a>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Механизатор говорит: «Зачем нам переписывать солонцы и западины — мы и так знаем, где они». Через два года хозяйство планирует расширяться и нанимать новых людей, а агроном собирается на пенсию. Что произойдёт со «знаем и так» и какие колонки паспорта территории защищают хозяйство от этой потери?</p>
+</div>
+<hr />
+<h3 id="_5">Проверь себя<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "Чем ландшафтный взгляд на хозяйство отличается от управления «по полям»?",
+    "options": ["Он учитывает связи между участками: сток со склона, работу лесополос, влияние водоёмов — решения по отдельным полям могут быть разумными порознь и вредными вместе", "Он заменяет план полевых работ на сезон", "Он требует отказаться от деления территории на поля", "Он применим только к хозяйствам с орошением"],
+    "answer": 0,
+    "explain": "§1: поле не существует отдельно от территории; ландшафтный план дополняет, а не заменяет сезонное управление полями."
+  },
+  {
+    "q": "Почему в инвентаризацию обязательно включают «неудобья» — солонцы, западины, крутые склоны?",
+    "options": ["Именно они чаще всего становятся буферными и природоохранными зонами, и именно о них у хозяйства обычно нет записей", "Их требуется ежегодно распахивать", "Без них не откроется браузер Copernicus", "Они всегда приносят основной доход"],
+    "answer": 0,
+    "explain": "§2: инвентаризируется вся территория, а не только посевные площади; «неудобья» получат функцию в Уроке 2."
+  },
+  {
+    "q": "На снимках Sentinel-2 за два разных года в одном и том же месте поля видно светлое пятно. О чём это говорит по методике урока?",
+    "options": ["Повторяемость из года в год указывает на свойство земли (почва, рельеф) — участок заносится в паспорт как кандидат для полевой проверки", "Пятно можно сразу записать как солонец без выезда в поле", "Это точно огрех сева одного сезона", "Снимки с детальностью 10 м не показывают пятен на полях"],
+    "answer": 0,
+    "explain": "§3.1: постоянные пятна — свойство земли, разовые — событие сезона; но диагноз по снимку не ставится — нужна полевая проверка."
+  },
+  {
+    "q": "Зачем в паспорте территории обязательна колонка «источник сведений»?",
+    "options": ["Она разделяет факт и предположение: запись «со слов агронома» допустима, но должна быть помечена и проверена", "Она нужна только для научных публикаций", "Без неё файл не сохранится в GeoPackage", "Чтобы указать стоимость каждого элемента"],
+    "answer": 0,
+    "explain": "§4: знание людей — тоже данные, но с пометкой «со слов, требует проверки»; смешивать его с проверенными фактами нельзя."
+  },
+  {
+    "q": "Что из перечисленного НЕЛЬЗЯ получить из открытых источников (OSM, Sentinel-2, WorldCover) при инвентаризации?",
+    "options": ["Историю «эту западину топит раз в три-четыре года» и причины выпадения лесополосы", "Расположение крупных водных объектов", "Контрасты вегетации внутри поля по NDVI", "Сезонность водоёма по весенним и осенним снимкам"],
+    "answer": 0,
+    "explain": "§2.1 и §3.2: многолетняя история и причины событий — знание работников хозяйства; снимки дают расположение, контрасты и сезонность."
+  }
+]</code></pre>
+<hr />
+<h2 id="_6">Что дальше?<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>У вас есть перепись территории — теперь каждому элементу нужно назначить функцию. В <a href="../02-funkcionalnye-zony/">Уроке 2 «Делим территорию на функциональные зоны»</a> мы разберём три типа зон — производственные, буферные, природоохранные — и правила их выделения с учётом рельефа и водных объектов. Научная основа ландшафтного подхода — в <a href="../../../a5/lectures/01-landshaftnyj-podhod/">лекции А5</a>; свой паспорт территории вы превратите в карту в <a href="../../practicum/01-landshaftnyj-plan/">практикуме модуля</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Назад: Программа">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Программа
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-funkcionalnye-zony/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Делим территорию на функциональные зоны — производство, буферы, охрана">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Делим территорию на функциональные зоны — производство, буферы, охрана
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>

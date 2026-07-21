@@ -1,0 +1,3844 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/a2/lectures/02-qgis-python-stack/">
+      
+      
+        <link rel="prev" href="../01-vector-raster-projections/">
+      
+      
+        <link rel="next" href="../03-spatial-analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#qgis-python-" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Академические модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/01-zhiznennyy-tsikl-agrodannykh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/02-bpla-kompleks-i-polyotnyy-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/03-bpla-ili-sputnik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/04-standarty-formaty-fair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/practicum/01-poljotnoe-zadanie-bpla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-vector-raster-projections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели урока и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. QGIS: не «программа с кнопками», а среда геообработки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. QGIS: не «программа с кнопками», а среда геообработки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Интерактивный уровень
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Графические модели: автоматизация без кода
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-pyqgis-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 PyQGIS и консоль Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Экосистема плагинов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Типовой рабочий цикл
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-python-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Python-стек: пять библиотек, одна логика
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Python-стек: пять библиотек, одна логика">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-shapely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Shapely: геометрия как объект
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-fiona-pyproj-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Fiona и pyproj: ввод-вывод и координаты
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-geopandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 GeoPandas: таблица, у которой есть геометрия
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-rasterio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Rasterio: растры без боли
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-xarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 xarray: когда измерений больше двух
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Где всё это запускать
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 Как читать чужой геокод: чек-лист из пяти вопросов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Открытые геоданные: где брать сырьё
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Открытые геоданные: где брать сырьё">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-openstreetmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 OpenStreetMap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-natural-earth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Natural Earth и глобальные подложки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Государственные открытые данные РК
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-copernicus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Copernicus и производные продукты
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Паспорт источника: минимальная гигиена
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Воспроизводимость: проект → модель → скрипт
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Воспроизводимость: проект → модель → скрипт">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Антипаттерны воспроизводимости
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-spatial-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-ai-uav-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-landuse-map-sko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта землепользования района СКО
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/01-open-data-catalogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/02-dataset-preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/03-classic-models-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/04-cnn-and-architecture-choice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/practicum/01-lulc-three-approaches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/01-vodnyj-balans-stepnogo-vodosbora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/02-karta-glubin-iz-promerov/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/03-sputnikovyj-monitoring-vody/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/04-godovoj-cikl-vodoyoma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/practicum/01-karta-glubin-i-ndwi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин по сырым промерам + сезонная динамика NDWI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/01-landshaftnyj-podhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим хозяйство на функциональные зоны — ландшафтный подход
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/02-degradaciya-zemel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностируем деградацию земель степной зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/03-pochvosberegayushchee-zemledelie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем почвосберегающую систему земледелия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/04-tochnoe-zemledelie-i-ustojchivost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем мониторинг устойчивости и климатическую адаптацию
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/practicum/01-plan-zemlepolzovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — план устойчивого землепользования модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/02-bioraznoobrazie-agrolandshafta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/03-monitoring-degradacii-dzz-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/04-proektirovanie-vosstanovleniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/practicum/01-plan-vosstanovleniya-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект плана восстановления деградированного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../professional/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели урока и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. QGIS: не «программа с кнопками», а среда геообработки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. QGIS: не «программа с кнопками», а среда геообработки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Интерактивный уровень
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Графические модели: автоматизация без кода
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-pyqgis-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 PyQGIS и консоль Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Экосистема плагинов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Типовой рабочий цикл
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-python-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Python-стек: пять библиотек, одна логика
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Python-стек: пять библиотек, одна логика">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-shapely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Shapely: геометрия как объект
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-fiona-pyproj-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Fiona и pyproj: ввод-вывод и координаты
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-geopandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 GeoPandas: таблица, у которой есть геометрия
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-rasterio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Rasterio: растры без боли
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-xarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 xarray: когда измерений больше двух
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Где всё это запускать
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 Как читать чужой геокод: чек-лист из пяти вопросов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Открытые геоданные: где брать сырьё
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Открытые геоданные: где брать сырьё">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-openstreetmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 OpenStreetMap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-natural-earth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Natural Earth и глобальные подложки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Государственные открытые данные РК
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-copernicus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Copernicus и производные продукты
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Паспорт источника: минимальная гигиена
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Воспроизводимость: проект → модель → скрипт
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Воспроизводимость: проект → модель → скрипт">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Антипаттерны воспроизводимости
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Академические модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    А2. Геоинформатика и пространственный анализ
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="qgis-python-">Автоматизируем геообработку: QGIS, Python-стек и открытые геоданные<a class="headerlink" href="#qgis-python-" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~20 мин чтения + ~25 мин практики</p>
+<p>Модуль <strong><a href="../../">А2: Геоинформатика и пространственный анализ</a></strong>, урок 2.
+Академический уровень. Проект UNDP-KAZ-00683, FOLUR. Компоненты FOLUR: <strong>1</strong>, <strong>2</strong>.</p>
+</blockquote>
+<h2 id="_1">Цели урока и место в модуле<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>В <a href="../01-vector-raster-projections/">уроке 1</a> мы научились собирать корректный ГИС-проект руками. Ручная работа хороша для разового результата и плоха для всего остального: её нельзя воспроизвести, проверить, поставить на поток по 200 полям или передать коллеге. Этот урок — про инструментальный слой модуля: QGIS как рабочая среда, Python-стек как средство автоматизации и открытые геоданные как сырьё. Именно на этом слое в <a href="../../ai-assistant/">уроке про ИИ-ассистента</a> будет работать кодинг-агент — и вы сможете проверять его код, потому что понимаете, из каких библиотек и зачем он собран.</p>
+<p>После изучения урока вы сможете:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять компоненты открытого геостека — QGIS (панель обработки, модельер, PyQGIS) и Python-библиотеки (GeoPandas, Shapely, Rasterio, Fiona, xarray) — и их зоны ответственности.</li>
+<li><strong>[Bloom: понимать]</strong> объяснять, когда задача решается в QGIS без кода, когда — графической моделью, а когда — скриптом, и как связаны GeoPandas с pandas и Shapely.</li>
+<li><strong>[Bloom: применять]</strong> загружать открытые геоданные (OpenStreetMap, Natural Earth, data.gov.kz, Copernicus) в проект и выполнять базовую цепочку геообработки скриптом GeoPandas на данных Северного Казахстана.</li>
+<li><strong>[Bloom: анализировать]</strong> сравнивать результат скрипта с результатом ручной обработки в QGIS и локализовать причину расхождений (СК, топология, параметры операций).</li>
+</ol>
+<blockquote>
+<p><strong>Границы лекции.</strong> Внутри: инструменты (QGIS + Python-стек), источники открытых геоданных и дисциплина воспроизводимости. Снаружи: сами аналитические методы (буферы, оверлей, интерполяция, зональная статистика) — <a href="../03-spatial-analysis/">урок 3</a>; ИИ-генерация геокода и её верификация — <a href="../04-ai-uav-integration/">урок 4</a> и <a href="../../ai-assistant/">задание ИИ-ассистента</a>; Google Earth Engine как облачная платформа анализа временных рядов — <a href="../../../a3/">модуль А3</a>.</p>
+</blockquote>
+<hr />
+<h2 id="1-qgis">1. QGIS: не «программа с кнопками», а среда геообработки<a class="headerlink" href="#1-qgis" title="Permanent link">&para;</a></h2>
+<p><strong>QGIS</strong> — свободная (GPL) настольная ГИС и основной инструмент модуля: бесплатная для любого использования, кроссплатформенная, с русской локализацией и огромным сообществом. Важно с самого начала увидеть в ней не картинку с кнопками, а <em>три уровня работы</em>, различающиеся степенью автоматизации.</p>
+<h3 id="11">1.1 Интерактивный уровень<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>Канва карты, панель слоёв, свойства слоя (символика, подписи), инструменты оцифровки с прилипанием, измерения, компоновщик печатных карт (Layout) — всё, что нужно для разовой задачи и финального оформления карты. Здесь же живут инструменты контроля качества из урока 1: проверка валидности, Topology Checker.</p>
+<p>Ключевая привычка интерактивного уровня — <strong>панель обработки (Processing Toolbox)</strong>: единый каталог из сотен алгоритмов самого QGIS и интегрированных провайдеров (GRASS GIS, SAGA, GDAL). Прежде чем искать плагин или писать код, стоит поискать готовый алгоритм в панели — обычно он там есть.</p>
+<h3 id="12">1.2 Графические модели: автоматизация без кода<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p><strong>Модельер (Graphical Modeler)</strong> позволяет соединить алгоритмы панели обработки в блок-схему: «перепроецировать → исправить геометрии → буфер → пересечение → сохранить». Модель сохраняется в проекте или файле, запускается на новых данных одним кликом и — что важно для команды — <em>читается</em> коллегами без знания Python. Модельер — это первый шаг от «я сделал карту» к «у нас есть процедура построения карты», и для многих специалистов районного уровня он закрывает 80% потребностей автоматизации.</p>
+<p>У каждого алгоритма панели обработки есть ещё одно полезное свойство: кнопка <strong>истории обработки</strong> и журнал показывают эквивалентный Python-вызов (<code>processing.run("native:buffer", {...})</code>). Это готовый мост к следующему уровню.</p>
+<p>Второй усилитель без кода — <strong>пакетный запуск (Batch Processing)</strong>: любой алгоритм панели обработки можно применить сразу к списку слоёв или файлов. Перепроецировать тридцать shapefile-ов из старого архива землеустройства — одна настройка таблицы пакетного запуска вместо тридцати повторов.</p>
+<h3 id="13-pyqgis-python">1.3 PyQGIS и консоль Python<a class="headerlink" href="#13-pyqgis-python" title="Permanent link">&para;</a></h3>
+<p>Внутри QGIS встроена консоль Python с доступом к <strong>PyQGIS</strong> — программному интерфейсу всей системы: слои, проекты, алгоритмы, отрисовка. PyQGIS незаменим, когда автоматизировать нужно саму <em>среду</em> QGIS: пакетно оформить 20 карт, обновить слои проекта, написать собственный плагин. Для чистой обработки данных вне интерфейса удобнее внешний Python-стек — о нём далее.</p>
+<h3 id="14">1.4 Экосистема плагинов<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>Сила QGIS — в репозитории плагинов, расширяющих систему в один клик. Для задач модуля значимы:</p>
+<ul>
+<li><strong>QuickOSM</strong> — выгрузка данных OpenStreetMap по тегам прямо в слои проекта (используем в §3.1 и кейсе);</li>
+<li><strong>QuickMapServices</strong> — подключение веб-подложек (OSM и другие) для визуального контекста;</li>
+<li><strong>Profile tool / DEM-инструменты</strong> — профили рельефа по ЦМР из А1;</li>
+<li><strong>Deepness</strong> — инференс нейросетевых моделей на растрах прямо в QGIS (встретится в <a href="../04-ai-uav-integration/">уроке 4</a>).</li>
+</ul>
+<p>Дисциплина с плагинами такая же, как с данными: фиксируйте название и версию использованного плагина в метаданных проекта — плагины обновляются, поведение алгоритмов может меняться, а воспроизводимость (§4) должна пережить обновление.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph QGIS
+        A[Интерактив:&lt;br/&gt;канва, оцифровка, компоновщик]
+        B[Панель обработки:&lt;br/&gt;QGIS + GRASS + SAGA + GDAL]
+        C[Модельер:&lt;br/&gt;блок-схемы без кода]
+        D[PyQGIS:&lt;br/&gt;консоль и плагины]
+    end
+    subgraph Python-стек
+        E[GeoPandas + Shapely + Fiona&lt;br/&gt;вектор]
+        F[Rasterio&lt;br/&gt;растр]
+        G[xarray&lt;br/&gt;многомерные массивы]
+    end
+    B --&gt; C --&gt; D
+    D &lt;--&gt; E
+    E --- F --- G
+    H[(Открытые геоданные:&lt;br/&gt;OSM, Natural Earth,&lt;br/&gt;data.gov.kz, Copernicus)] --&gt; A
+    H --&gt; E</code></pre>
+<p><em>Рис. 1. Уровни автоматизации открытого геостека: от интерактивной работы в QGIS через модельер к Python-стеку; открытые данные питают оба контура. Alt: схема с двумя блоками — QGIS (интерактив, панель обработки, модельер, PyQGIS) и Python-стек (GeoPandas/Shapely/Fiona, Rasterio, xarray); источники открытых данных соединены стрелками с обоими блоками.</em></p>
+<hr />
+<h3 id="15">1.5 Типовой рабочий цикл<a class="headerlink" href="#15" title="Permanent link">&para;</a></h3>
+<p>Соберём уровни в целостную картину рабочего дня. Разовая задача начинается и заканчивается на интерактивном уровне: загрузили слои, проверили СК и геометрию, выполнили пару алгоритмов панели обработки, оформили карту в компоновщике. Если по ходу выяснилось, что цепочка из трёх и более алгоритмов будет повторяться, — пятнадцать минут на то, чтобы собрать её в модель, и процедура зафиксирована. Если задача упирается в объём (сотни файлов, годовые серии снимков) или в интеграцию с другими системами — история обработки подсказывает Python-эквиваленты шагов, и цепочка переезжает в ноутбук. QGIS при этом не исчезает из процесса: он остаётся средой визуальной проверки промежуточных результатов скрипта и финального оформления. Считать «настольную ГИС» и «скрипты» конкурирующими подходами — ошибка; в зрелой практике это две руки одного специалиста.</p>
+<h2 id="2-python-">2. Python-стек: пять библиотек, одна логика<a class="headerlink" href="#2-python-" title="Permanent link">&para;</a></h2>
+<p>Экосистема геоинформатики в Python выглядит пугающе большой, но опирается на пять библиотек с чётким разделением труда. Понимание этого разделения — половина умения читать чужой (в том числе сгенерированный ИИ) геокод.</p>
+<h3 id="21-shapely">2.1 Shapely: геометрия как объект<a class="headerlink" href="#21-shapely" title="Permanent link">&para;</a></h3>
+<p><strong>Shapely</strong> реализует геометрические примитивы (Point, LineString, Polygon) и операции над ними: буфер, пересечение, объединение, проверку валидности. Shapely ничего не знает о файлах и системах координат — это чистая вычислительная геометрия на плоскости. Когда вы вызываете «буфер» в GeoPandas, реальную работу выполняет Shapely. Следствие, которое надо помнить: раз геометрия плоская, буфер в 500 «единиц» осмыслен только в метрической СК — прямое продолжение дисциплины урока 1.</p>
+<p>Второе следствие плоской геометрии: Shapely честно реализует и <strong>предикаты пространственных отношений</strong> — <code>intersects</code> (пересекаются ли), <code>contains</code> (содержит ли), <code>within</code> (лежит ли внутри), <code>touches</code> (касаются ли границами). Эти предикаты — словарь, на котором формулируются пространственные запросы и соединения; их знание позволяет читать условия в чужом коде так же уверенно, как SQL-фильтры.</p>
+<h3 id="22-fiona-pyproj-">2.2 Fiona и pyproj: ввод-вывод и координаты<a class="headerlink" href="#22-fiona-pyproj-" title="Permanent link">&para;</a></h3>
+<p><strong>Fiona</strong> читает и пишет векторные форматы (через библиотеку GDAL/OGR — фактический «двигатель» всей открытой геоинформатики), <strong>pyproj</strong> выполняет преобразования систем координат (обёртка над PROJ). В повседневной работе вы редко вызываете их напрямую — они работают под капотом GeoPandas, но их имена нужно узнавать в сообщениях об ошибках и в списках зависимостей.</p>
+<p>Про <strong>GDAL/OGR</strong> стоит сказать отдельно: это библиотека-фундамент, на которой стоят и QGIS, и Rasterio, и Fiona. Её консольные утилиты (<code>gdalwarp</code> — перепроецирование растров, <code>gdal_translate</code> — конвертация форматов, <code>ogr2ogr</code> — конвертация векторов) — швейцарский нож пакетной обработки: одна команда <code>ogr2ogr -t_srs EPSG:32642 out.gpkg in.shp</code> конвертирует и перепроецирует слой без открытия каких-либо программ. Когда три инструмента (QGIS, скрипт, консольная утилита) дают одинаковый результат — это не совпадение: под капотом у них один и тот же GDAL.</p>
+<h3 id="23-geopandas">2.3 GeoPandas: таблица, у которой есть геометрия<a class="headerlink" href="#23-geopandas" title="Permanent link">&para;</a></h3>
+<p><strong>GeoPandas</strong> — рабочая лошадка векторного анализа: <code>GeoDataFrame</code> — это таблица pandas, к которой добавлена колонка геометрии и знание о СК. Всё, что вы умеете в pandas (фильтры, группировки, join), работает и здесь, плюс пространственные операции:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+
+<span class="n">fields</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;project.gpkg&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s2">&quot;fields_esil_2025&quot;</span><span class="p">)</span>   <span class="c1"># Fiona под капотом</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">32642</span><span class="p">)</span>                                  <span class="c1"># pyproj под капотом</span>
+<span class="n">fields</span><span class="p">[</span><span class="s2">&quot;area_ha&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="mi">10_000</span>                   <span class="c1"># Shapely под капотом</span>
+<span class="n">big</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;area_ha&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">]</span>                               <span class="c1"># обычный pandas-фильтр</span>
+<span class="n">buffered</span> <span class="o">=</span> <span class="n">big</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>                                           <span class="c1"># буфер 500 м — СК метрическая!</span>
+</code></pre></div>
+<p>Пять строк заменяют цепочку ручных операций — и, в отличие от неё, запускаются повторно на обновлённых данных за секунды. Пространственные соединения (<code>gpd.sjoin</code>), оверлей (<code>gpd.overlay</code>), агрегация (<code>dissolve</code>) — всё это встретится в <a href="../03-spatial-analysis/">уроке 3</a> как программные двойники алгоритмов QGIS. Знание pandas переносится в GeoPandas почти без остатка, поэтому специалисту, уже обрабатывавшему таблицы урожайности, порог входа в векторный геоанализ значительно ниже, чем кажется.</p>
+<h3 id="24-rasterio">2.4 Rasterio: растры без боли<a class="headerlink" href="#24-rasterio" title="Permanent link">&para;</a></h3>
+<p><strong>Rasterio</strong> — питоническая обёртка GDAL для растров: открыть GeoTIFF, прочитать канал в массив NumPy, узнать СК/разрешение/NoData, записать результат. Типовой паттерн — «прочитал массив → посчитал в NumPy → записал с тем же профилем»:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;ndvi_2025.tif&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">ndvi</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>      <span class="c1"># masked=True уважает NoData (§1.2 урока 1)</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">profile</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ndvi</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>                 <span class="c1"># среднее без NoData-пикселей</span>
+</code></pre></div>
+<p>Аргумент <code>masked=True</code> — маленькая деталь с большими последствиями: без него NoData-значения войдут в статистику (вспомните §1.2 урока 1 про облачные маски).</p>
+<p>Второй постоянный паттерн Rasterio — <strong>обрезка растра по векторной границе</strong> (<code>rasterio.mask.mask</code>): из сцены Sentinel-2 размером в целый тайл вырезается только территория района, и все дальнейшие операции ускоряются на порядок. Обратите внимание на связку моделей данных: вектор здесь управляет растром — это та же логика, что и в зональной статистике <a href="../03-spatial-analysis/">урока 3</a>.</p>
+<h3 id="25-xarray">2.5 xarray: когда измерений больше двух<a class="headerlink" href="#25-xarray" title="Permanent link">&para;</a></h3>
+<p><strong>xarray</strong> добавляет к массивам именованные измерения и координаты: куб «широта × долгота × время» для многолетнего ряда NDVI или климатических данных в NetCDF. Вместо «третьего индекса массива, который, кажется, время» появляется явное <code>da.sel(time="2025-06")</code> — код становится самодокументируемым. В А2 достаточно знать его назначение; полноценная работа с временными рядами — в <a href="../../../a3/">А3</a>.</p>
+<h3 id="26">2.6 Где всё это запускать<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
+<p>Учебный стандарт модуля — <strong>Google Colab</strong>: бесплатная среда Jupyter-ноутбуков в браузере, где <code>geopandas</code> и <code>rasterio</code> устанавливаются одной ячейкой <code>pip install</code>. Ноутбук объединяет код, результат и пояснение — идеальная форма и для обучения, и для передачи анализа коллеге. Локальная альтернатива — дистрибутив Python с менеджером окружений (conda/mamba), который решает главную боль локальной геоинформатики: бинарные зависимости GDAL/PROJ, у которых версии должны быть согласованы. Принципиально одно: <strong>весь стек модуля свободен и бесплатен</strong>, привязки к платным лицензиям нет. Ноутбуки уроков: <code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>.</p>
+<h3 id="27-">2.7 Как читать чужой геокод: чек-лист из пяти вопросов<a class="headerlink" href="#27-" title="Permanent link">&para;</a></h3>
+<p>Умение <em>читать</em> геокод понадобится раньше, чем умение его писать: код будет приходить от коллег, со Stack Overflow и — всё чаще — от ИИ-агента. Пять вопросов, которые нужно задать любому чужому скрипту до запуска на своих данных:</p>
+<ol>
+<li><strong>СК:</strong> есть ли явный <code>to_crs</code> в метрическую систему перед измерениями и буферами? Скрипт, молча считающий в исходной СК, — подозреваемый номер один.</li>
+<li><strong>Валидность:</strong> проверяются ли геометрии (<code>is_valid</code>, <code>make_valid</code>) перед оверлеем? На реальных данных землеустройства невалидные полигоны — норма, а не исключение.</li>
+<li><strong>NoData:</strong> читаются ли растры с учётом маски (<code>masked=True</code> или явная обработка <code>nodata</code>)?</li>
+<li><strong>Единицы:</strong> в чём результат — метры или километры, м² или гектары? Ошибка на порядок из-за забытого деления на 10 000 — классика.</li>
+<li><strong>Контроль:</strong> есть ли в скрипте хоть одна проверка правдоподобия результата (число объектов, диапазон значений)? Хороший код проверяет себя сам.</li>
+</ol>
+<p>Этот чек-лист — ядро задания <a href="../../ai-assistant/">ИИ-ассистента модуля</a>, где вы примените его к коду, написанному кодинг-агентом. Заметьте: ни один из пяти вопросов не требует глубокого знания Python — все они про <em>геоинформатическую</em> корректность, то есть про материал урока 1 и здравый смысл. Именно поэтому специалист с крепкой ГИС-базой ревьюирует геокод увереннее «чистого» программиста: он знает, что должно быть в коде по смыслу задачи, а не только по синтаксису.</p>
+<hr />
+<h2 id="3">3. Открытые геоданные: где брать сырьё<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>Открытый инструмент бесполезен без открытых данных. Для Северного Казахстана рабочий набор источников таков.</p>
+<h3 id="31-openstreetmap">3.1 OpenStreetMap<a class="headerlink" href="#31-openstreetmap" title="Permanent link">&para;</a></h3>
+<p><strong>OpenStreetMap (OSM)</strong> — краудсорсинговая карта мира под лицензией ODbL: административные границы, дороги, населённые пункты, гидрография, местами — контуры сельхозугодий. Практические способы выгрузки:</p>
+<ul>
+<li>плагин <strong>QuickOSM</strong> в QGIS: запрос по тегам (<code>boundary=administrative</code>, <code>highway=*</code>, <code>landuse=farmland</code>) на область интереса — результат сразу слоями;</li>
+<li><strong>Overpass API</strong> — тот же механизм запросов из кода или браузера (Overpass Turbo);</li>
+<li>региональные выгрузки (extract) целых областей в PBF с сайтов-зеркал — когда нужно много и сразу.</li>
+</ul>
+<p>Два свойства OSM, которые нужно учитывать в анализе: полнота и актуальность неравномерны (город размечен лучше степи; границы полей могут отсутствовать или устареть), а лицензия ODbL требует указания атрибуции и распространения производных баз данных на тех же условиях.</p>
+<p>Модель данных OSM отличается от привычной послойной: это единая база объектов с <strong>тегами</strong> — парами «ключ=значение» (<code>highway=track</code>, <code>landuse=farmland</code>, <code>admin_level=6</code>). Один и тот же запрос по тегам может вернуть и линии, и полигоны; QuickOSM раскладывает их по геометрии автоматически, но при работе через Overpass это придётся делать самому. Административные границы в OSM устроены иерархией уровней <code>admin_level</code> — при выгрузке границы района важно взять правильный уровень, иначе вместо района приедет область или сельский округ; правильность проверяется визуально и по атрибуту названия.</p>
+<h3 id="32-natural-earth">3.2 Natural Earth и глобальные подложки<a class="headerlink" href="#32-natural-earth" title="Permanent link">&para;</a></h3>
+<p><strong>Natural Earth</strong> — аккуратные обзорные векторные данные мира (страны, регионы, реки, озёра) в масштабах 1:10 млн — 1:110 млн, общественное достояние. Это правильный источник для обзорной врезки «где находится район» — и неправильный для любых измерений на районном уровне (вспомните §3.4 урока 1 о детальности источника). Различие ролей стоит проговорить явно, потому что нарушается оно постоянно: подложка отвечает на вопрос «где мы?», аналитический слой — на вопрос «сколько и что здесь?». Граница области с обзорной карты мира, использованная для обрезки полей, даст ошибку в приграничной полосе шириной в километры — и формально это будет «ошибка данных», а по сути — ошибка выбора источника под задачу.</p>
+<p>К краудсорсинговым источникам примыкает и встречный навык — <strong>возвращать данные сообществу</strong>: оцифрованная вами полевая дорога или уточнённая граница, загруженные в OSM, делают источник лучше для всех, включая ваш собственный следующий проект. Для образовательной экосистемы FOLUR это не абстрактная этика: чем полнее открытые данные по Северному Казахстану, тем дешевле каждый следующий региональный анализ.</p>
+<h3 id="33">3.3 Государственные открытые данные РК<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p>Портал <strong>data.gov.kz</strong> публикует открытые наборы государственных органов РК; их геоинформационная ценность различна — часть данных представлена таблицами с привязкой к административным единицам, которые джойнятся к границам через атрибут (типовой приём: таблица показателей + слой границ = тематическая карта). Существуют и ведомственные геопорталы с картографическими сервисами. Дисциплина здесь та же, что везде: фиксировать источник, дату и лицензию каждого набора; в спорных случаях о правовом режиме пространственных данных РК — см. <a href="../../../../datasets/">политику данных платформы</a>.</p>
+<h3 id="34-copernicus">3.4 Copernicus и производные продукты<a class="headerlink" href="#34-copernicus" title="Permanent link">&para;</a></h3>
+<p>Спутниковые данные <strong>Sentinel-1/2</strong> доступны через <a href="https://dataspace.copernicus.eu/">Copernicus Data Space Ecosystem</a> бесплатно; производный продукт <strong>ESA WorldCover</strong> даёт готовую глобальную карту земного покрова с разрешением 10 м — именно она станет основой <a href="../../practicum/01-landuse-map-sko/">практикума</a>. Каталоги вроде Google Earth Engine и Microsoft Planetary Computer предоставляют те же данные без скачивания — этот путь разворачивается в А3.</p>
+<p>Для настольной работы в А2 важен практический маршрут: в браузере каталога Copernicus выбирается territория и период, фильтруется облачность, скачивается сцена L2A (атмосферно скорректированный продукт), из которой в QGIS или Rasterio берутся нужные каналы. Сцена Sentinel-2 покрывает тайл 110×110 км — на район хватает одной-двух; для карты области уже понадобится мозаика, и это ещё один довод в пользу скриптовой обработки.</p>
+<blockquote>
+<p><strong>Подробнее</strong> — систематика источников данных (включая БПЛА и IoT) и оценка качества датасета — в <a href="../../../a1/">модуле А1</a>.</p>
+</blockquote>
+<hr />
+<h3 id="35">3.5 Паспорт источника: минимальная гигиена<a class="headerlink" href="#35" title="Permanent link">&para;</a></h3>
+<p>Сведём требования к учёту источников в короткую таблицу — она же чек-лист инвентаризации из урока 1, дополненный правовой колонкой:</p>
+<table>
+<thead>
+<tr>
+<th>Источник</th>
+<th>Что берём</th>
+<th>Лицензия / режим</th>
+<th>Главная оговорка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenStreetMap</td>
+<td>границы, дороги, гидрография</td>
+<td>ODbL (атрибуция, share-alike для баз)</td>
+<td>неравномерная полнота и актуальность</td>
+</tr>
+<tr>
+<td>Natural Earth</td>
+<td>обзорные слои мира</td>
+<td>общественное достояние</td>
+<td>только обзорный масштаб</td>
+</tr>
+<tr>
+<td>data.gov.kz</td>
+<td>таблицы и наборы госорганов</td>
+<td>открытые данные (по условиям набора)</td>
+<td>геопривязка часто через админ-единицы</td>
+</tr>
+<tr>
+<td>Copernicus (Sentinel-1/2)</td>
+<td>снимки, L2A-продукты</td>
+<td>свободный доступ и использование</td>
+<td>облачность, размер сцен</td>
+</tr>
+<tr>
+<td>ESA WorldCover</td>
+<td>классы земного покрова 10 м</td>
+<td>открытая (CC BY)</td>
+<td>глобальная модель — локальные ошибки классов</td>
+</tr>
+</tbody>
+</table>
+<p>Правило: <strong>паспорт источника (что, откуда, когда, лицензия, дата выгрузки) записывается в момент получения данных</strong>, а не восстанавливается по памяти перед сдачей отчёта.</p>
+<hr />
+<h2 id="4">4. Воспроизводимость: проект → модель → скрипт<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>Сквозная идея урока: результат геообработки должен быть <strong>воспроизводим</strong> — тем же аналитиком через год, коллегой на своих данных, проверяющим по запросу. Лестница воспроизводимости выглядит так:</p>
+<ol>
+<li><strong>Ручной проект QGIS</strong> — воспроизводим только через инструкцию-скриншоты; хрупко.</li>
+<li><strong>Графическая модель</strong> — воспроизводима одним кликом, параметризуется, читается без кода.</li>
+<li><strong>Скрипт/ноутбук</strong> — воспроизводим полностью, версионируется (git), масштабируется на сотни объектов, тестируем.</li>
+</ol>
+<p>Правило выбора уровня — по частоте и масштабу: разовая карта — уровень 1; повторяющаяся районная процедура — уровень 2; поток данных, интеграция, большие объёмы — уровень 3. Важно: это лестница, а не пропасть — история обработки QGIS показывает Python-эквивалент каждого шага, модельер экспортирует модель в скрипт, и переход между уровнями постепенен.</p>
+<p>Чтобы скрипт уровня 3 был воспроизводим не только «у меня на машине», к нему прилагаются: список зависимостей с версиями (<code>requirements.txt</code> или первая ячейка <code>pip install</code> ноутбука), паспорт входных данных (§3.5) и ожидаемый результат для контрольного запуска («на приложенном тестовом наборе скрипт должен вернуть N объектов и суммарную площадь X»). Последний пункт — это, по сути, встроенный тест: если после обновления библиотек контрольный запуск разошёлся с эталоном, вы узнаете об этом раньше, чем испорченное число попадёт в отчёт.</p>
+<p>Проверим лестницу на конкретной задаче модуля — «средний NDVI по каждому полю района»:</p>
+<ul>
+<li><em>уровень 1</em>: зональная статистика в панели обработки, результат — слой в проекте; быстро, но через год никто не вспомнит параметры;</li>
+<li><em>уровень 2</em>: модель «загрузить поля → проверить валидность → зональная статистика → экспорт таблицы»; запускается на новом снимке одним кликом;</li>
+<li><em>уровень 3</em>: ноутбук, который проходит по списку снимков за сезон и строит таблицу «поле × дата» — то, что вручную не сделать вовсе.</li>
+</ul>
+<p>Видно, что уровни не заменяют, а <em>расширяют</em> друг друга: модель — это протокол процедуры, скрипт — её масштабирование во времени и объёме.</p>
+<p>С этой лестницей связано и главное правило работы с ИИ-агентами, к которому мы придём в <a href="../04-ai-uav-integration/">уроке 4</a>: агент пишет код уровня 3 быстро, но ответственность за результат несёт человек — а проверить код можно, только понимая, какие библиотеки что делают. Этот урок дал вам ровно эту карту.</p>
+<hr />
+<h3 id="41">4.1 Антипаттерны воспроизводимости<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Отрицательный опыт формализуется не хуже положительного. Пять антипаттернов, которые встречаются в реальных ГИС-проектах чаще всего:</p>
+<ol>
+<li><strong>«Финальный_2_испр_НОВЫЙ.shp».</strong> Версионирование именами файлов вместо структуры «исходники / производные» и заметок о происхождении. Через месяц никто (включая автора) не знает, какой файл действующий. Лекарство — один GeoPackage проекта и паспорт слоёв (§3.5).</li>
+<li><strong>Ручная правка производных.</strong> Аналитик вручную подправил результат оверлея — и с этого момента результат невоспроизводим из исходников: следующий запуск процедуры молча перезапишет правки. Ручные корректировки живут в отдельном слое поправок, который применяется последним шагом процедуры.</li>
+<li><strong>Скрипт без данных, данные без скрипта.</strong> Передан только код (пути ведут в чужую файловую систему) или только результат (без способа его повторить). Единица передачи — пара «код + тестовые данные + ожидаемый результат контрольного запуска».</li>
+<li><strong>Скрытые зависимости от интерфейса.</strong> Модель или скрипт, который работает только при «правильно» открытом проекте с нужным активным слоем. Все входы передаются параметрами явно.</li>
+<li><strong>Вечный черновик.</strong> «Потом причешу» — состояние, в котором проект живёт годами. Практическое правило: процедура документируется в момент, когда запускается <em>во второй раз</em>, — второй запуск и есть сигнал, что она станет постоянной.</li>
+</ol>
+<p>Список выглядит очевидным ровно до момента дедлайна — антипаттерны рождаются не из незнания, а из спешки. Поэтому лестница §4 и строится так, чтобы дисциплина требовала минимума воли: модель или скрипт, однажды созданные, делают «правильный путь» самым коротким.</p>
+<hr />
+<h2 id="_2">Региональный кейс<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация.</strong> Специалист акимата в Костанайской области готовит справку о транспортной доступности элеваторов: сколько полевых дорог и дорог с твёрдым покрытием приходится на территорию Костанайского района, и какие сельские округа удалены от дорожной сети. Бюджета на закупку данных нет — работаем полностью на открытых источниках.</p>
+<p><strong>Данные.</strong> OpenStreetMap через QuickOSM (теги <code>highway=*</code>, <code>boundary=administrative</code> по территории Костанайского района; лицензия ODbL, атрибуция обязательна); для обзорной врезки — Natural Earth.</p>
+<p><strong>Задача.</strong></p>
+<ol>
+<li>Соберите цепочку: выгрузка дорог OSM → перепроецирование в EPSG:32641 (Костанай — зона 41N) → обрезка по границе района → суммарная длина дорог по классам тега <code>highway</code>. На каком уровне лестницы воспроизводимости (§4) стоит её реализовать, если справка запрашивается ежеквартально?</li>
+<li>Напишите (или соберите в модельере) эквивалент: какие операции выполняют <code>to_crs</code>, <code>clip</code>/пересечение, <code>dissolve</code> с агрегацией длины?</li>
+<li>Сумма длин «полевых дорог» по OSM оказалась подозрительно малой в степной части района. Ошибка это или свойство данных? Как проверить и как честно отразить в справке?</li>
+</ol>
+<p><strong>Разбор.</strong> (1) Ежеквартальный повтор — минимум уровень 2 (модель), лучше уровень 3 (скрипт GeoPandas: <code>read_file → to_crs(32641) → clip → длина по группам</code>), потому что выгрузка OSM обновляется, и скрипт сравнит кварталы автоматически. (2) <code>to_crs</code> — физическое перепроецирование (урок 1, §2.4); обрезка — пространственное ограничение анализа границей района; группировка по значению тега с суммой <code>geometry.length</code> — атрибутивная агрегация; длины осмысленны только после перевода в метрическую СК. (3) Скорее свойство данных: полнота OSM в степной зоне неравномерна — полевые дороги часто не оцифрованы. Проверка — визуальное сравнение с актуальным снимком Sentinel-2 на выборочных квадратах; в справке — явная оговорка о полноте источника и дате выгрузки. Число без такой оговорки создаёт ложную точность — это уже вопрос научной честности, сквозной для платформы.</p>
+<blockquote>
+<p>Продолжение — в <a href="../../practicum/01-landuse-map-sko/">практикуме</a>: та же дисциплина, но с растровым слоем землепользования и итоговой картой.</p>
+</blockquote>
+<hr />
+<h2 id="_3">Закрепление и применение<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Попробуйте в Colab</p>
+<p>Ноутбук урока повторяет кейс: QuickOSM-выгрузка (подготовленный GeoPackage приложен — интернет-запрос не обязателен), <code>to_crs</code>, обрезка, длины дорог по классам, сравнение с ручным результатом QGIS. Ссылка: <code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>OSM и другие краудсорсинговые данные не имеют гарантий полноты: отсутствие объекта в данных не означает его отсутствия на местности. Для официальных и кадастровых задач открытые данные — вспомогательный, а не юридически значимый источник. Лицензия ODbL накладывает обязательства на производные базы данных — проверяйте перед публикацией продуктов.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Скрипт, один раз написанный для одного поля, бесплатно масштабируется на все поля хозяйства: расчёт площадей, длин лесополос, отчёт по каждому полю в Excel — из одного ноутбука. Это часы ручной работы в QGIS, сведённые к минутам, без единого тенге на лицензии.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Коллега передал вам «финальную карту» в виде картинки PNG и проект QGIS без исходных данных. Через год нужно обновить карту по свежим данным. Что из лестницы воспроизводимости (§4) должно было быть передано вместе с картой, чтобы обновление заняло час, а не неделю?</p>
+</div>
+<hr />
+<h3 id="_4">Проверь себя<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "В скрипте GeoPandas вызвано buffered = fields.buffer(500), слой в EPSG:4326. Что произойдёт?",
+    "options": [
+      "Буфер построится в градусах: 500 «единиц» — это сотни километров бессмысленного охвата",
+      "GeoPandas автоматически поймёт, что 500 — это метры, и пересчитает",
+      "Shapely выдаст ошибку несовместимости системы координат",
+      "Буфер построится корректно: buffer всегда работает в метрах"
+    ],
+    "answer": 0,
+    "explain": "§2.1: Shapely — плоская геометрия без знания о СК; буфер строится в единицах координат слоя. В градусной СК «500» означает 500 градусов. Сначала to_crs в метрическую СК (§2.3)."
+  },
+  {
+    "q": "Какая пара «библиотека — зона ответственности» указана НЕверно?",
+    "options": [
+      "Rasterio — операции над векторной геометрией (буфер, пересечение)",
+      "Fiona — чтение и запись векторных файловых форматов",
+      "GeoPandas — таблицы с геометрией на основе pandas",
+      "xarray — многомерные массивы с именованными измерениями (NetCDF)"
+    ],
+    "answer": 0,
+    "explain": "§2.1–2.5: буфер и пересечение — зона Shapely; Rasterio отвечает за растровый ввод-вывод (GeoTIFF, NoData, профили)."
+  },
+  {
+    "q": "Районная процедура (обрезка дорог OSM по границе + отчёт) повторяется ежеквартально силами специалиста без навыков программирования. Оптимальный уровень автоматизации:",
+    "options": [
+      "Графическая модель в модельере QGIS — воспроизводимо и не требует кода",
+      "Ручное повторение по инструкции со скриншотами",
+      "Обязательно скрипт на PyQGIS — всё остальное непрофессионально",
+      "Автоматизация не нужна: ежеквартально — это редко"
+    ],
+    "answer": 0,
+    "explain": "§4: лестница воспроизводимости выбирается по частоте задачи и навыкам исполнителя; модельер даёт запуск одним кликом и читаемость без Python. Скрипт — оправданное усиление, но не единственный корректный ответ для не-программиста."
+  },
+  {
+    "q": "При чтении NDVI-растра в Rasterio указано src.read(1, masked=True). Зачем?",
+    "options": [
+      "Чтобы NoData-пиксели (например, под маской облаков) не вошли в статистику",
+      "Чтобы прочитать только первый канал многоканального растра",
+      "Чтобы применить пространственную маску по границе поля",
+      "Чтобы ускорить чтение больших файлов"
+    ],
+    "answer": 0,
+    "explain": "§2.4: masked=True возвращает маскированный массив, уважающий NoData; без него «дырки» растра попадут в среднее. Выбор канала задаёт аргумент 1, а не masked."
+  },
+  {
+    "q": "Суммарная длина полевых дорог по данным OSM в степном районе оказалась малой. Корректная интерпретация:",
+    "options": [
+      "Возможна неполнота OSM: отсутствие объекта в данных не доказывает его отсутствия на местности — нужна выборочная сверка со снимком",
+      "OSM — официальный источник, значит дорог действительно почти нет",
+      "Ошибка проекции: длины в UTM всегда занижены",
+      "Ошибка лицензии ODbL: без атрибуции данные выгружаются не полностью"
+    ],
+    "answer": 0,
+    "explain": "§3.1 и кейс: полнота OSM неравномерна, особенно вне городов; вывод о местности требует независимой проверки (Sentinel-2) и честной оговорки в отчёте. ODbL — про условия использования, а не про полноту выгрузки."
+  }
+]</code></pre>
+<hr />
+<h2 id="_5">Что дальше?<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>Инструментальная карта модуля собрана: вы знаете, где живёт каждый уровень автоматизации, откуда берутся открытые данные и по каким пяти вопросам читается чужой геокод. Дальше эта карта наполняется аналитическим содержанием.</p>
+<ul>
+<li>Следующий урок — <strong><a href="../03-spatial-analysis/">Проводим пространственный анализ: буферы, оверлей, интерполяция и зональная статистика</a></strong>: применяем собранный инструментарий к аналитическим задачам.</li>
+<li>Работа с временными рядами и облачными каталогами (GEE, Planetary Computer) — <strong><a href="../../../a3/">модуль А3</a></strong>.</li>
+<li>«Первый скрипт с ИИ-напарником» для специалистов без опыта программирования — <strong><a href="../../../p4/">П4. Python и Jupyter для специалистов</a></strong>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../01-vector-raster-projections/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Собираем корректный ГИС-проект — вектор, растр, проекции и топология">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-spatial-analysis/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>

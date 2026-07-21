@@ -1,0 +1,3743 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/a4/lectures/02-karta-glubin-iz-promerov/">
+      
+      
+        <link rel="prev" href="../01-vodnyj-balans-stepnogo-vodosbora/">
+      
+      
+        <link rel="next" href="../03-sputnikovyj-monitoring-vody/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Превращаем 80 000 сырых промеров в карту глубин водохранилища - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#80-000" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Превращаем 80 000 сырых промеров в карту глубин водохранилища
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Академические модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/01-zhiznennyy-tsikl-agrodannykh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/02-bpla-kompleks-i-polyotnyy-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/03-bpla-ili-sputnik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/04-standarty-formaty-fair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/practicum/01-poljotnoe-zadanie-bpla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/01-vector-raster-projections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/02-qgis-python-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/03-spatial-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/04-ai-uav-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/practicum/01-landuse-map-sko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта землепользования района СКО
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/01-open-data-catalogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/02-dataset-preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/03-classic-models-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/04-cnn-and-architecture-choice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/practicum/01-lulc-three-approaches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-vodnyj-balans-stepnogo-vodosbora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Как измеряют глубину: приборы и их ниши
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Как измеряют глубину: приборы и их ниши">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Однолучевой эхолот — рабочая лошадка малых водоёмов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-adcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Многолучевой эхолот, ADCP и БПЛА
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Геопривязка и правовой режим
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Планирование съёмки: где пройдут галсы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Сырые данные: что в них не так и почему
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Сырые данные: что в них не так и почему">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Знакомство с датасетом
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Каталог дефектов эхолотной съёмки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Коррекция по уровню воды
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Фильтрация: чистим, не искажая
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Фильтрация: чистим, не искажая">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Иерархия фильтров
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Сколько удалять — и как не удалить правду
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Почему это задача для кода, а не для ручной работы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Интерполяция: из точек — в поверхность
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Интерполяция: из точек — в поверхность">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Три метода и их характеры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Как выбрать и как проверить
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Изобаты и оформление карты
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. От карты к решениям: объём, кривые, заиление
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. От карты к решениям: объём, кривые, заиление">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Расчёт объёма
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Кривые «уровень–площадь–объём»
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Заиление: разность двух съёмок
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Отчёт о съёмке: продукт — это документ, а не картинка
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-sputnikovyj-monitoring-vody/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-godovoj-cikl-vodoyoma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-karta-glubin-i-ndwi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин по сырым промерам + сезонная динамика NDWI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/01-landshaftnyj-podhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим хозяйство на функциональные зоны — ландшафтный подход
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/02-degradaciya-zemel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностируем деградацию земель степной зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/03-pochvosberegayushchee-zemledelie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем почвосберегающую систему земледелия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/04-tochnoe-zemledelie-i-ustojchivost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем мониторинг устойчивости и климатическую адаптацию
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/practicum/01-plan-zemlepolzovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — план устойчивого землепользования модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/02-bioraznoobrazie-agrolandshafta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/03-monitoring-degradacii-dzz-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/04-proektirovanie-vosstanovleniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/practicum/01-plan-vosstanovleniya-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект плана восстановления деградированного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../professional/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Как измеряют глубину: приборы и их ниши
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Как измеряют глубину: приборы и их ниши">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Однолучевой эхолот — рабочая лошадка малых водоёмов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-adcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Многолучевой эхолот, ADCP и БПЛА
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Геопривязка и правовой режим
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Планирование съёмки: где пройдут галсы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Сырые данные: что в них не так и почему
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Сырые данные: что в них не так и почему">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Знакомство с датасетом
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Каталог дефектов эхолотной съёмки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Коррекция по уровню воды
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Фильтрация: чистим, не искажая
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Фильтрация: чистим, не искажая">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Иерархия фильтров
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Сколько удалять — и как не удалить правду
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Почему это задача для кода, а не для ручной работы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Интерполяция: из точек — в поверхность
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Интерполяция: из точек — в поверхность">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Три метода и их характеры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Как выбрать и как проверить
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Изобаты и оформление карты
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. От карты к решениям: объём, кривые, заиление
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. От карты к решениям: объём, кривые, заиление">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Расчёт объёма
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Кривые «уровень–площадь–объём»
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Заиление: разность двух съёмок
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Отчёт о съёмке: продукт — это документ, а не картинка
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Академические модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="80-000">Превращаем 80 000 сырых промеров в карту глубин водохранилища<a class="headerlink" href="#80-000" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~20 мин чтения + ~35 мин практики</p>
+<p>Модуль <strong>А4: Водные ресурсы, гидрологический мониторинг, батиметрия</strong>, лекция 2 из 4.
+Академический уровень. Проект UNDP-KAZ, FOLUR. Компоненты FOLUR: <strong>2</strong>, <strong>3</strong>.</p>
+</blockquote>
+<h2 id="_1">Цели лекции и место в модуле<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Это центральная лекция модуля: здесь мы работаем с уникальным ресурсом платформы — сырым батиметрическим датасетом полевых экспедиций исполнителя (80 000 эхолотных промеров водохранилища степной зоны Казахстана, глубины 0–16,1 м). Это не синтетический учебный пример, а настоящие полевые данные со всеми их дефектами: шумом, выбросами, нулевыми отсчётами. Пройдя путь «сырые точки → фильтрация → интерполяция → карта глубин → объём», вы получите навык, который напрямую переносится на любую собственную съёмку.</p>
+<p>После изучения лекции слушатель сможет:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять методы измерения глубин (однолучевой и многолучевой эхолот, ADCP, БПЛА-батиметрия) и типовые дефекты сырых эхолотных данных.</li>
+<li><strong>[Bloom: понимать]</strong> объяснять физику эхолокации, причины появления выбросов и нулевых отсчётов, необходимость коррекции промеров по уровню воды.</li>
+<li><strong>[Bloom: применять]</strong> применять конвейер фильтрации и интерполяции к реальному датасету и строить карту глубин, изобаты и кривую «уровень–площадь–объём».</li>
+<li><strong>[Bloom: анализировать]</strong> сравнивать методы интерполяции (IDW, TIN, кригинг), оценивать качество карты кросс-валидацией и интерпретировать разность повторных съёмок как оценку заиления.</li>
+</ol>
+<blockquote>
+<p><strong>Границы лекции.</strong> Внутри: приборы, дефекты сырых данных, фильтрация, интерполяция, расчёт объёма и заиления. Снаружи: происхождение воды в водоёме — в <a href="../01-vodnyj-balans-stepnogo-vodosbora/">лекции 1</a>; спутниковые методы наблюдения площади — в <a href="../03-sputnikovyj-monitoring-vody/">лекции 3</a>; совместное использование батиметрии и спутниковых рядов — в <a href="../04-godovoj-cikl-vodoyoma/">лекции 4</a>. Полный разбор кода — в <a href="../../practicum/01-karta-glubin-i-ndwi/">практикуме</a>; делегирование фильтрации ИИ-агенту с обязательной верификацией — в <a href="../../ai-assistant/">ИИ-задании</a>. Общие методы интерполяции в ГИС даёт модуль <a href="../../../a2/">А2</a> — здесь мы применяем их к специфике батиметрии.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. Как измеряют глубину: приборы и их ниши<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 Однолучевой эхолот — рабочая лошадка малых водоёмов<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>Эхолот измеряет глубину по времени пробега звукового импульса: излучатель посылает сигнал вниз, дно отражает его, приёмник фиксирует эхо. Глубина = скорость звука × время / 2. Скорость звука в пресной воде — порядка 1450–1500 м/с и зависит от температуры; поэтому серьёзные приборы либо измеряют температуру, либо позволяют ввести поправку. Однолучевой эхолот (single-beam) меряет глубину в одной точке под датчиком; двигаясь на лодке галсами, съёмщик получает облако точек вдоль треков.</p>
+<p>Именно так собран наш учебный датасет: лодка с эхолотом и GNSS-приёмником, галсы по акватории, сотни тысяч записей «координата + глубина». Ключевая особенность такой съёмки — крайне неравномерная плотность точек: вдоль трека промеры идут через доли метра, а между соседними галсами могут быть десятки и сотни метров. Это главный вызов для интерполяции, к которому мы вернёмся в §4.</p>
+<h3 id="12-adcp">1.2 Многолучевой эхолот, ADCP и БПЛА<a class="headerlink" href="#12-adcp" title="Permanent link">&para;</a></h3>
+<p><strong>Многолучевой эхолот</strong> (multibeam) излучает веер лучей поперёк движения и снимает полосу дна целиком — плотное покрытие без «дыр» между галсами. Это стандарт гидрографии судоходных путей и крупных водохранилищ, но цена прибора и требования к судну делают его избыточным для малых степных водоёмов.</p>
+<p><strong>ADCP</strong> (Acoustic Doppler Current Profiler — акустический доплеровский профилограф течений) — прибор в первую очередь для измерения скоростей течения по доплеровскому сдвигу отражённого сигнала; глубину он тоже фиксирует. Его ниша — расходы воды в реках и каналах: ADCP-профиль поперёк русла даёт и сечение, и скорости, то есть расход. В задаче «карта глубин озера» ADCP используют реже, но встречающиеся в открытых данных ADCP-промеры полезно уметь читать.</p>
+<p><strong>БПЛА-батиметрия</strong> — быстро развивающееся направление с двумя ветками. Первая — эхолот на привязном поплавке или лодке-дроне, управляемой дистанционно: решает проблему мелководий и опасных зон, куда не пройдёт лодка. Вторая — оптическая батиметрия по снимкам (spectral-derived bathymetry): в прозрачной воде глубина до нескольких метров восстанавливается по ослаблению света в разных каналах. Для мутных степных водоёмов оптическая ветка работает плохо — прозрачность воды редко превышает метры, — поэтому в нашем регионе БПЛА чаще применяется для фотограмметрии береговой линии и обсохших участков чаши: об этом дополнении — в лекции 3. Носители и сенсорика БПЛА системно разобраны в модуле <a href="../../../a1/">А1</a>.</p>
+<h3 id="13">1.3 Геопривязка и правовой режим<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<p>Каждый промер должен иметь координаты — их даёт GNSS-приёмник. Точность бытового приёмника (метры) для карты глубин малого водоёма обычно достаточна: ошибка позиции в 3 м мала по сравнению с расстоянием между галсами. Режимы точной привязки RTK/PPK нужны при повторных съёмках заиления, когда сантиметровая воспроизводимость позиций повышает достоверность разности карт.</p>
+<p>С координатами связан и правовой аспект. Массивы точных промеров с реальной геопривязкой в РК могут подпадать под ограничения на крупномасштабные пространственные данные, поэтому платформа применяет трёхуровневую политику (см. <a href="../../../../datasets/">Датасеты</a>): учебный датасет (уровень A) распространяется в <strong>локальной системе координат</strong> — метрические оси <code>x_m, y_m</code> с удалённым началом отсчёта, без названия и расположения водоёма; производная сетка глубин 100 м (уровень B) — открытый обобщённый продукт; полный георектифицированный набор (уровень C) — дополнительный материал, доступный только после юридического подтверждения (возможно и его полное исключение — учебный процесс от уровня C не зависит). Все учебные задачи модуля решаются на уровнях A и B: для фильтрации, интерполяции и расчёта объёма реальное положение водоёма не нужно — геометрия и глубины полностью сохранены.</p>
+<h3 id="14">1.4 Планирование съёмки: где пройдут галсы<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>Качество будущей карты закладывается ещё до спуска лодки — схемой галсов. Общие правила гидрографической практики таковы. Основные галсы прокладывают <strong>поперёк ожидаемых форм рельефа</strong>: у вытянутого водохранилища с затопленным руслом — поперёк долины, чтобы каждый галс пересекал русло и борта. Межгалсовое расстояние диктует детальность: всё, что уже этого расстояния, карта гарантированно не увидит. Несколько <strong>контрольных галсов</strong> проходят перпендикулярно основным: в точках пересечения получаются пары независимых промеров одного места — готовая внутренняя оценка воспроизводимости съёмки ещё до всякой статистики.</p>
+<p>Отдельного планирования требуют мелководья: там, где эхолот теряет дно, а лодка — винт, съёмку дополняют промерами с лота вброд, точками уреза по береговой линии (глубина 0) или проходом лодки-дрона. Скорость лодки держат умеренной и равномерной: на высокой скорости растёт аэрация под датчиком и плотность точек вдоль трека падает.</p>
+<p>И организационный минимум: журнал съёмки (даты, прибор, осадка датчика, уровень воды по рейке утром и вечером), заряженные резервные батареи, спасательные жилеты. Строка в журнале «уровень упал на 10 см за день» стоит дешевле, чем испорченная оценка заиления через пять лет (§2.3). Планирование миссий БПЛА для съёмки береговой зоны разбирается в модуле А1 — принципы (перекрытие, контрольные точки) те же.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Сырые промеры&lt;br/&gt;point_id, x_m, y_m, depth_m&lt;br/&gt;80 000 точек] --&gt; B[Контроль диапазона&lt;br/&gt;0 ≤ d ≤ d_max]
+    B --&gt; C[Фильтрация нулей&lt;br/&gt;и потерь дна]
+    C --&gt; D[Статистическая чистка&lt;br/&gt;выбросов: медиана соседей,&lt;br/&gt;IQR / z-score]
+    D --&gt; E[Коррекция по уровню&lt;br/&gt;воды на дату съёмки]
+    E --&gt; F[Интерполяция&lt;br/&gt;IDW / TIN / кригинг]
+    F --&gt; G[Сетка глубин 100 м&lt;br/&gt;+ изобаты]
+    G --&gt; H[Карта глубин]
+    G --&gt; I[Кривая уровень–&lt;br/&gt;площадь–объём]
+    G --&gt; J[Разность съёмок =&lt;br/&gt;оценка заиления]</code></pre>
+<p><em>Рис. 1. Конвейер обработки батиметрических данных: от сырого CSV до прикладных продуктов. Alt: блок-схема из девяти шагов — сырые промеры проходят контроль диапазона, фильтрацию нулей, статистическую чистку, коррекцию по уровню, интерполяцию; из сетки глубин получаются карта, кривая объёма и оценка заиления.</em></p>
+<hr />
+<h2 id="2">2. Сырые данные: что в них не так и почему<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 Знакомство с датасетом<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Учебный датасет <code>datasets/bathymetry-training-80k.csv</code> — случайный сабсет в 80 000 точек из полного набора (~540 000 промеров; полный набор публикуется на Zenodo: <code>&lt;DOI будет присвоен при публикации на Zenodo&gt;</code>). Формат — четыре колонки: <code>point_id, x_m, y_m, depth_m</code>. Глубины — реальные, от 0 до 16,1 м; координаты — локальные метрические. Первое, что делает аналитик с новым датасетом, — разведочный анализ (EDA): распределение глубин, карта точек, статистики. По учебному сабсету средняя глубина — около 3,4 м при медиане около 3,0 м: распределение скошено вправо, мелководий больше, чем глубоких участков, — типичная картина равнинного водохранилища с обширными мелководными заливами.</p>
+<p>Уже на этапе EDA видны и проблемы: заметная доля записей (несколько процентов датасета) имеет глубину ровно 0,0 м. Что это — настоящий урез воды или дефект? Ответ требует понимания того, как эхолот ошибается.</p>
+<h3 id="22">2.2 Каталог дефектов эхолотной съёмки<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p><strong>Нулевые и потерянные отсчёты.</strong> Эхолот теряет дно в нескольких ситуациях: на предельном мелководье (отражение приходит быстрее, чем прибор готов его принять), в плотных зарослях водной растительности (эхо от растений маскирует дно), при аэрации воды под винтом на резком манёвре, при сильной взмученности. Прошивка прибора в таких случаях пишет ноль или служебное значение. Часть нулей при этом — законные точки уреза, снятые у самого берега. Отличить одно от другого помогает контекст: ноль среди глубин 4–5 м вдали от берега — дефект; ноль в цепочке убывающих к берегу глубин — правдоподобен.</p>
+<p><strong>Выбросы-всплески.</strong> Одиночные аномальные значения: эхо от рыбы, косяка, подводного мусора, двойное отражение (сигнал сходил до дна дважды — глубина удваивается). Диагностический признак — резкий скачок относительно соседних по треку точек: дно физически не может измениться на 8 м за метр хода лодки (если это не затопленный обрыв — потому чистка всегда сочетается с картой точек).</p>
+<p><strong>Систематические смещения.</strong> Неправильная осадка датчика (transducer draft — заглубление излучателя под воду прибавляется ко всем глубинам), неверная скорость звука, качка. Эти ошибки не видны как выбросы — они смещают всё облако. Ловятся контролем по опорным глубинам: в нескольких точках глубину измеряют независимо (лотом — размеченным тросом с грузом) и сверяют с показаниями прибора.</p>
+<p><strong>Дефекты позиционирования.</strong> GNSS-приёмник в момент старта или под помехами может дать скачок координат: точка «телепортируется» на сотни метров. На карте треков такие дефекты видны как иглы, торчащие из аккуратных галсов.</p>
+<h3 id="23">2.3 Коррекция по уровню воды<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>Глубина — величина относительная: она измерена от текущей поверхности воды, а уровень водохранилища меняется день ото дня. Если съёмка длилась неделю, за которую уровень упал на 15 см, промеры первого и последнего дня несопоставимы. Поэтому профессиональная практика: все промеры приводят к единому датуму — например, к нормальному подпорному уровню (НПУ) водохранилища — по журналу уровней на даты съёмки: <code>d_прив = d_изм + (H_датум − H_на_дату)</code>. Без такой коррекции сравнение съёмок разных лет (оценка заиления, §5) теряет смысл: разница уровней замаскирует или сымитирует заиление. В учебном датасете глубины уже приведены к единой поверхности, но в собственных съёмках этот шаг — ваша ответственность, и о нём чаще всего забывают новички.</p>
+<blockquote>
+<p><strong>Подробнее</strong> о стандартах качества данных, метаданных и принципах FAIR — в модуле <a href="../../../a1/">А1</a>.</p>
+</blockquote>
+<hr />
+<h2 id="3">3. Фильтрация: чистим, не искажая<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 Иерархия фильтров<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>Правильная стратегия чистки — от грубых физических ограничений к тонкой статистике, с протоколированием каждого шага:</p>
+<p><strong>Уровень 1 — физический диапазон.</strong> Отбрасываем невозможное: отрицательные глубины, глубины больше физически возможной для данного водоёма. Осторожно с верхней границей: максимальная глубина датасета (16,1 м) — это наблюдение, а не догма; жёсткий порог «не больше 16 м» отрезал бы законный максимум. Порог ставят с запасом от априорного знания о водоёме (проектная глубина у плотины), а не от самих данных.</p>
+<p><strong>Уровень 2 — правила для нулей.</strong> Ноль удаляем, если он изолирован среди значимых глубин; сохраняем, если он согласован с соседями по треку (плавный выход на урез). Простая эвристика: сравнить ноль с медианой k ближайших точек; если медиана больше порога (например, 1 м) — это потеря дна, а не берег.</p>
+<p><strong>Уровень 3 — локальная статистика.</strong> Для каждой точки берём соседей в радиусе R (или k ближайших) и сравниваем значение с их медианой. Отклонение больше допуска — выброс. Медиана здесь принципиальна: среднее само подтягивается выбросом (эффект маскировки), а медиана устойчива. Классические альтернативы — правило межквартильного размаха (IQR: выброс за пределами [Q1 − 1,5·IQR; Q3 + 1,5·IQR], применённое к локальным окрестностям) и модифицированный z-score по медианному абсолютному отклонению (MAD). Глобальные версии этих правил (по всему датасету сразу) для батиметрии не годятся: глубина 15 м — норма у плотины и абсурд на мелководном заливе. Статистика должна быть локальной.</p>
+<p><strong>Уровень 4 — контроль по опорным глубинам.</strong> Финальная проверка не статистикой, а независимым измерением: в контрольных точках сверяем очищенные данные с промерами лотом или с повторным проходом (пересечения контрольных галсов из §1.4 — готовые опорные пары). Систематическое расхождение — признак нескорректированной осадки датчика или ошибки скорости звука; случайный разброс задаёт нижнюю оценку погрешности всей съёмки.</p>
+<h3 id="32">3.2 Сколько удалять — и как не удалить правду<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>Фильтрация — всегда компромисс между ложными тревогами (удалили настоящий рельеф) и пропусками (оставили мусор). Два практических правила. Первое: <strong>никогда не перезаписывайте исходный файл</strong> — чистка порождает новую версию, а сырые данные неприкосновенны (принцип из модуля А1). Второе: <strong>смотрите на то, что удалили.</strong> Постройте карту удалённых точек: если они рассеяны поодиночке — фильтр работает как задумано; если выстроились в кластер или вдоль борта затопленного русла — фильтр стирает реальную морфологию, и допуски надо ослаблять. Доля удалённого — тоже диагностика: если статистическая чистка выбрасывает больше нескольких процентов точек, скорее что-то не так с параметрами фильтра или с самой съёмкой.</p>
+<h3 id="33">3.3 Почему это задача для кода, а не для ручной работы<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p>На 80 000 точек ручная чистка в ГИС невозможна физически, но дело не только в объёме. Кодовый конвейер (Python: pandas для таблиц, SciPy — поиск соседей через KD-дерево, NumPy — векторные вычисления) даёт три качества, которых нет у ручной правки. <strong>Воспроизводимость:</strong> тот же скрипт на тех же данных всегда даст тот же результат, и коллега может повторить вашу чистку. <strong>Параметризуемость:</strong> пороги фильтров — аргументы функции; чувствительность результата к порогам проверяется циклом за минуты. <strong>Протоколируемость:</strong> скрипт сам пишет отчёт, сколько и каких точек удалено на каждом шаге, — готовый раздел для отчёта о съёмке (§5.4).</p>
+<p>Типичная структура конвейера: функция загрузки и валидации схемы CSV → функция каждого уровня фильтрации, возвращающая маску удаляемых точек и причину → сборка протокола → сохранение очищенной версии рядом с сырой. Такой код пишется за вечер, а поддерживается годами — он станет вашим личным инструментом для всех будущих съёмок.</p>
+<p>Ровно эта задача — пакетная фильтрация с настраиваемыми порогами и отчётом об удалённом — делегируется ИИ-агенту в <a href="../../ai-assistant/">ИИ-задании модуля</a>: вы ставите задачу кодинг-агенту (Claude Code / OpenCode), проводите ревью сгенерированного кода и верифицируете результат по опорным глубинам. Агент пишет код быстрее человека; проверить, что фильтр не съел затопленное русло, может только человек.</p>
+<hr />
+<h2 id="4">4. Интерполяция: из точек — в поверхность<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 Три метода и их характеры<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Точки, даже чистые, — ещё не карта. Нужна непрерывная поверхность глубин на регулярной сетке. Три стандартных подхода:</p>
+<p><strong>IDW (обратно-взвешенные расстояния).</strong> Значение в узле сетки — среднее ближайших точек с весами, убывающими с расстоянием (обычно как 1/r²). Прост, быстр, предсказуем; всегда остаётся в диапазоне данных. Недостатки: «бычьи глаза» (концентрические артефакты вокруг одиночных точек) и полосчатость вдоль галсов при неравномерной плотности — узлы между галсами тяготеют к значениям ближайшего трека.</p>
+<p><strong>TIN (триангуляция Делоне) с линейной интерполяцией.</strong> Точки соединяются в сеть треугольников, внутри каждого — линейный градиент. Честно передаёт данные (поверхность проходит точно через промеры), не создаёт значений вне диапазона. Недостаток — угловатость на редких данных и невозможность экстраполяции за выпуклую оболочку точек: прибрежная полоса без промеров останется пустой, если не добавить точки уреза (глубина 0 на береговой линии) — стандартный приём батиметрии.</p>
+<p><strong>Кригинг (обзорно).</strong> Геостатистический метод: сначала по данным строится вариограмма — модель того, как быстро растёт различие глубин с расстоянием, — затем интерполяция с оптимальными весами. Даёт не только оценку, но и карту её неопределённости — уникальное преимущество. Цена — сложность: выбор модели вариограммы требует квалификации, а на сотнях тысяч точек кригинг вычислительно тяжёл. В модуле А2 кригинг разбирается в общем контексте пространственной интерполяции; для батиметрических задач начинайте с IDW/TIN и переходите к кригингу, когда нужна карта неопределённости.</p>
+<h3 id="42">4.2 Как выбрать и как проверить<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>Выбор метода — не вкусовщина, а проверяемое решение. Инструмент проверки — <strong>кросс-валидация</strong>: отложите случайные 10–20 % очищенных точек, постройте поверхность по остальным, сравните предсказания с отложенными глубинами. Метрики — RMSE (среднеквадратичная ошибка) и MAE (средняя абсолютная). Метод с меньшей ошибкой на отложенных точках объективно лучше для этих данных. Дополнительно смотрите пространственное распределение ошибок: если крупные ошибки сконцентрированы на кромках галсов или у берега — проблема в покрытии съёмки, и никакой метод её не починит; честный вывод — «в этой зоне карта ненадёжна».</p>
+<p>Разрешение сетки выбирается по плотности данных: сетка мельче межгалсового расстояния создаёт иллюзию детальности, которой в данных нет. Открытая сетка уровня B нашего датасета — 100 м (файл <a href="../../data/bathymetry-grid-100m.tif"><code>bathymetry-grid-100m.tif</code></a>, 211×166 ячеек, значения — глубина в метрах, float32): это разрешение согласовано и с плотностью галсов, и с правовым режимом обобщённых материалов.</p>
+<h3 id="43">4.3 Изобаты и оформление карты<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>Из сетки глубин строятся изобаты — линии равных глубин (аналог горизонталей рельефа). Шаг изобат подбирают по диапазону: для водоёма 0–16 м естественны изобаты через 1–2 м. Сырые изобаты из сетки часто «дребезжат» — их сглаживают, помня, что сглаживание — косметика для читаемости, а не уточнение данных; расчёты объёма всегда ведутся по сетке, а не по сглаженным линиям.</p>
+<p>Карта глубин оформляется по правилам картографии из модуля А2: цветовая шкала с подписями (для глубин традиционна сине-голубая гамма «светлое мелко — тёмное глубоко»), легенда, масштабная линейка, дата съёмки, указание метода интерполяции. Последнее — не формальность, а научная честность карты: читатель должен знать, что перед ним интерполяция однолучевой съёмки, а не сплошная съёмка многолучевым эхолотом.</p>
+<hr />
+<h2 id="5">5. От карты к решениям: объём, кривые, заиление<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 Расчёт объёма<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p>Объём воды под поверхностью — сумма по ячейкам сетки: V = Σ (dᵢ × a), где dᵢ — глубина ячейки, a — её площадь (для сетки 100 м — 10 000 м²). Это метод призм — простой и достаточный при адекватном разрешении. Погрешность объёма складывается из погрешности интерполяции (оценили кросс-валидацией) и погрешности положения береговой линии: у равнинных водоёмов зеркало пологое, и ошибка уреза на десятки метров в плане заметно меняет площадь мелководной зоны.</p>
+<h3 id="52">5.2 Кривые «уровень–площадь–объём»<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p>Батиметрия раскрывает главный практический инструмент управления водоёмом — батиграфические кривые. Мысленно «сливая» воду по шагам (глубина &gt; 1 м, &gt; 2 м, ...), получаем зависимость площади и объёма от уровня. Эти кривые отвечают на вопросы эксплуатации: сколько воды останется при падении уровня на метр? при каком уровне оголятся водозабор и зимовальные ямы? как быстро площадь испаряющего зеркала сокращается со снижением уровня? В лекции 4 кривые станут мостом между спутниковыми наблюдениями и объёмом: <strong>спутник видит площадь → кривая переводит площадь в уровень и объём.</strong> Именно поэтому даже одна батиметрическая съёмка многократно окупается: она превращает весь спутниковый архив площадей в архив объёмов.</p>
+<h3 id="53">5.3 Заиление: разность двух съёмок<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>Повторная съёмка через несколько лет и разность сеток «тогда минус сейчас» дают карту накопления наносов и суммарную потерю объёма. Требования к достоверности такой оценки высоки: обе съёмки приведены к одному датуму уровня (§2.3), сопоставимая плотность галсов, одинаковая методика интерполяции. Разность двух интерполяций содержит ошибки обеих — значимыми считают изменения, превышающие суммарную оценку погрешности; аккуратный отчёт всегда приводит разность вместе с порогом значимости. Интерпретация — гидрологическая (лекция 1, §2.4): очаги аккумуляции у устьев логов указывают на эрозионные источники на водосборе, и карта заиления становится аргументом для противоэрозионных мер на конкретных полях.</p>
+<h3 id="54">5.4 Отчёт о съёмке: продукт — это документ, а не картинка<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<p>Итог батиметрических работ — не файл сетки, а отчёт, который через годы позволит корректно использовать и перепроверить результат. Минимальный состав хорошего отчёта: описание прибора и его настроек (частота, осадка датчика, поправка скорости звука); схема галсов и статистика покрытия; журнал уровней воды и датум приведения; протокол фильтрации — сколько точек удалено на каждом уровне §3.1 и по каким порогам; метод и параметры интерполяции; результаты кросс-валидации (RMSE/MAE) и карту зон пониженной надёжности; собственно продукты — карта глубин, изобаты, кривые «уровень–площадь–объём» и объём на дату съёмки с оценкой погрешности.</p>
+<p>Обратите внимание, как этот список зеркалит принципы честной работы с данными: каждое число в отчёте воспроизводимо из сырых промеров и протокола обработки. Отчёт без протокола фильтрации — то же, что статья без методики: результату нельзя доверять, даже если он верен. В практикуме вы соберёте уменьшенную версию такого отчёта в виде Jupyter-ноутбука, где код и есть протокол.</p>
+<hr />
+<h2 id="_2">Региональный кейс<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация:</strong> Водохозяйственной организации Костанайской области нужно оценить фактическую ёмкость малого водохранилища, эксплуатируемого несколько десятилетий: проектные кривые объёма устарели, заиление никогда не измерялось. Бюджет позволяет только однолучевой эхолот и лодку. Инженеру поручено спланировать съёмку, обработать данные и выдать актуальную кривую «уровень–объём». В качестве тренировочного полигона инженер использует учебный датасет платформы — обезличенные промеры водохранилища степной зоны Казахстана, по структуре и дефектам идентичные тому, что он получит в собственной съёмке.</p>
+<p><strong>Данные:</strong> <code>datasets/bathymetry-training-80k.csv</code> (уровень A: <code>point_id, x_m, y_m, depth_m</code>, 80 000 точек, глубины 0–16,1 м) и контрольная сетка <a href="../../data/bathymetry-grid-100m.tif"><code>bathymetry-grid-100m.tif</code></a> (уровень B).</p>
+<p><strong>Задача:</strong></p>
+<ol>
+<li>Провести EDA: распределение глубин, карта точек, доля нулевых отсчётов; предложить правила фильтрации по §3.1.</li>
+<li>Построить сетку глубин IDW и TIN, сравнить кросс-валидацией; посчитать объём при текущем урезе.</li>
+<li>Сравнить гипсографическую кривую своей сетки с контрольной сеткой 100 м: где расхождения и чем они объяснимы?</li>
+</ol>
+<p><strong>Разбор:</strong> Ожидаемый ход решения: нулевые отсчёты делятся на прибрежные (сохранить) и изолированные (удалить) по медиане соседей; статистическая чистка помечает порядка процента точек — если существенно больше, допуски слишком агрессивны. IDW и TIN дадут близкие объёмы при плотных галсах и разойдутся в зонах редкого покрытия — там же кросс-валидация покажет наибольшие ошибки. Точных «правильных» чисел кейс не задаёт: результат слушатель вычисляет сам, а критерий правильности — согласие формы гипсографической кривой с контрольной сеткой уровня B. Полный код этого конвейера — в <a href="../../practicum/01-karta-glubin-i-ndwi/">практикуме</a>.</p>
+<hr />
+<h2 id="_3">Закрепление и применение<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Попробуйте в Colab</p>
+<p>Ноутбук лекции (<code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>) содержит весь конвейер §2–§5 на учебном датасете. Минимальное задание на 15 минут: загрузите CSV, постройте гистограмму глубин и карту точек, найдите долю нулевых отсчётов и опишите, где они сосредоточены.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>Карта глубин — интерполяция: между галсами она предполагает плавное дно и пропустит узкие объекты (затопленное русло, ямы, техногенные объекты). Оценка заиления по разности съёмок значима только при единой коррекции уровня и сопоставимой методике. Учебный датасет — в локальной системе координат: накладывать его на реальные карты и снимки нельзя, и для учебных задач это не требуется. Работа с реальными геопривязанными промерами в РК требует проверки правового режима данных (см. <a href="../../../../datasets/">Датасеты</a>).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Если у хозяйства есть пруд или доступ к водохранилищу, однодневная съёмка бытовым эхолотом с GPS + описанный конвейер дают кривую «уровень–объём» — основу для планирования полива, водопоя и рыбоводства. Повторная съёмка через несколько лет покажет заиление и подскажет, где на водосборе теряется почва.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Вам передали чужой батиметрический CSV без метаданных: неизвестны прибор, даты, уровень воды и способ чистки. Какие из продуктов этой лекции (карта, объём, кривая, оценка заиления) можно строить по таким данным, а какие — профессионально некорректно? Обоснуйте через §2.3 и §5.3.</p>
+</div>
+<h3 id="_4">Проверь себя<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "Эхолот показал одиночную глубину 12 м среди соседних промеров 4,0–4,5 м вдали от берега. Наиболее вероятная причина?",
+    "options": ["Выброс: эхо от рыбы или двойное отражение сигнала", "Затопленное русло реки", "Неверная осадка датчика", "Ошибка GNSS-позиционирования"],
+    "answer": 0,
+    "explain": "§2.2: одиночный всплеск на фоне плавных соседних глубин — классический выброс (рыба, двойное отражение). Затопленное русло дало бы связную линию точек; осадка датчика смещает все промеры сразу, а не один."
+  },
+  {
+    "q": "Зачем промеры приводят к единому датуму уровня воды?",
+    "options": ["Чтобы перевести глубины из футов в метры", "Уровень водоёма меняется между днями съёмки, и без приведения промеры разных дат несопоставимы", "Чтобы убрать влияние скорости звука", "Для пересчёта координат в локальную систему"],
+    "answer": 1,
+    "explain": "§2.3: глубина измеряется от текущей поверхности; при изменении уровня за время съёмки промеры разных дней относятся к разным поверхностям. Особенно критично для сравнения съёмок разных лет (§5.3)."
+  },
+  {
+    "q": "Почему для чистки батиметрических выбросов используют локальную медиану соседей, а не глобальное среднее по датасету?",
+    "options": ["Глобальное среднее нельзя посчитать для больших файлов", "Медиана вычисляется быстрее среднего", "Локальная медиана всегда удаляет больше точек", "Глубина закономерно меняется по акватории: значение, нормальное у плотины, аномально на мелководье, а медиана устойчива к самим выбросам"],
+    "answer": 3,
+    "explain": "§3.1, уровень 3: статистика должна быть локальной, так как «нормальная» глубина зависит от места; медиана, в отличие от среднего, не подтягивается самим выбросом (эффект маскировки)."
+  },
+  {
+    "q": "Как объективно выбрать между IDW и TIN для конкретного датасета?",
+    "options": ["Выбрать метод с более гладкой картинкой", "IDW всегда лучше для батиметрии", "Кросс-валидацией: отложить часть точек, интерполировать по остальным и сравнить RMSE/MAE предсказаний", "Сравнить время вычислений"],
+    "answer": 2,
+    "explain": "§4.2: единственный объективный критерий — ошибка предсказания на отложенных точках; гладкость картинки не показатель качества, а иногда признак избыточного сглаживания."
+  },
+  {
+    "q": "Что делает одну батиметрическую съёмку «многократно окупаемой» при спутниковом мониторинге водоёма?",
+    "options": ["Карта глубин повышает разрешение снимков Sentinel-2", "Батиметрия не связана со спутниковыми данными", "Съёмка заменяет все последующие спутниковые наблюдения", "Кривая «уровень–площадь–объём» позволяет переводить спутниковые площади зеркала в оценки объёма за весь архив снимков"],
+    "answer": 3,
+    "explain": "§5.2: спутник измеряет только площадь; батиграфическая кривая переводит площадь в уровень и объём, превращая многолетний архив снимков в архив объёмов. Подробности — в лекции 4."
+  }
+]</code></pre>
+<h3 id="_5">Контрольные вопросы<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Перечислите четыре типа дефектов сырых эхолотных данных и по одному диагностическому признаку каждого. <em>(Bloom: знать)</em></li>
+<li>Объясните, почему TIN не может дать значений за пределами выпуклой оболочки промеров и как это чинится добавлением точек уреза. <em>(Bloom: понимать)</em></li>
+<li>Спланируйте контроль качества съёмки собственного пруда: сколько и где взять опорных глубин, как оценить погрешность итогового объёма. <em>(Bloom: применять/анализировать)</em></li>
+</ol>
+<h2 id="_6">Что дальше?<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Мы научились измерять то, что под водой. В <a href="../03-sputnikovyj-monitoring-vody/">лекции 3 «Находим воду из космоса»</a> поднимемся на орбиту: научимся выделять водные объекты на снимках Sentinel-2 индексами NDWI/MNDWI и следить за паводками по радару Sentinel-1 — без единого выезда в поле. Практическая реализация конвейера этой лекции ждёт вас в <a href="../../practicum/01-karta-glubin-i-ndwi/">практикуме</a>, а делегирование фильтрации кодинг-агенту — в <a href="../../ai-assistant/">ИИ-задании</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../01-vodnyj-balans-stepnogo-vodosbora/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Сводим водный баланс степного водосбора — от снегозапасов до подземных вод">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-sputnikovyj-monitoring-vody/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>

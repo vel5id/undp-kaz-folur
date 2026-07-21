@@ -1,0 +1,250 @@
+/*
+ * FOLUR — фирменный визуальный слой «Степь».
+ * Палитра: лесной зелёный (земля) + пшеничное золото (агро) + вода-teal.
+ * Переопределяет CSS-переменные MkDocs Material для светлой и тёмной тем,
+ * добавляет hero, карточки модулей, полосу-статистику, кнопки, бейджи.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Палитра «Степь» — светлая тема ───────────────────────────────────────── */
+:root {
+  --folur-green:        #1B5E3A;
+  --folur-green-dark:   #134029;
+  --folur-green-light:  #2E7D52;
+  --folur-wheat:        #D4A24E;
+  --folur-wheat-soft:   #E8C886;
+  --folur-water:        #2A9D8F;
+  --folur-water-dark:   #1F7A6E;
+  --folur-ink:          #1F2421;
+  --folur-paper:        #FAF9F6;
+  --folur-paper-2:      #F2F0EA;
+  --folur-line:         #E4E0D6;
+
+  --md-primary-fg-color:        var(--folur-green);
+  --md-primary-fg-color--light: var(--folur-green-light);
+  --md-primary-fg-color--dark:  var(--folur-green-dark);
+  --md-accent-fg-color:         var(--folur-water);
+
+  --md-typeset-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color:       var(--folur-paper);
+  --md-default-fg-color:       var(--folur-ink);
+  --md-default-fg-color--light:#5B6159;
+  --md-typeset-color:          var(--folur-ink);
+  --md-typeset-a-color:        var(--folur-water-dark);
+  --md-code-bg-color:          var(--folur-paper-2);
+  --md-default-fg-color--lightest: var(--folur-line);
+}
+
+/* ── Тёмная тема (slate) — тёплая степная ночь ────────────────────────────── */
+[data-md-color-scheme="slate"] {
+  --folur-paper:   #14201A;
+  --folur-paper-2: #1C2A23;
+  --folur-line:    #2C3A32;
+
+  --md-default-bg-color:        #111A15;
+  --md-default-fg-color:        #E8EDE9;
+  --md-typeset-color:           #E8EDE9;
+  --md-primary-fg-color:        #2E7D52;
+  --md-accent-fg-color:         #54C9B8;
+  --md-typeset-a-color:         #54C9B8;
+  --md-code-bg-color:           #1C2A23;
+  --md-default-fg-color--lightest: #2C3A32;
+  --md-default-fg-color--light: #A7B3AC;
+}
+
+/* ── Типографика ──────────────────────────────────────────────────────────── */
+.md-typeset h1, .md-typeset h2, .md-typeset h3,
+.md-header__title, .folur-hero__title {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.md-typeset h1 { color: var(--folur-green); font-weight: 800; }
+[data-md-color-scheme="slate"] .md-typeset h1 { color: #6FD39F; }
+
+/* Шапка сайта — фирменный градиент */
+.md-header {
+  background: linear-gradient(100deg, var(--folur-green-dark) 0%, var(--folur-green) 60%, var(--folur-water-dark) 140%);
+  box-shadow: 0 2px 10px rgba(19, 64, 41, .18);
+}
+.md-tabs {
+  background: transparent;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+.folur-hero {
+  position: relative;
+  margin: -1.2rem -.8rem 2.2rem;
+  padding: 3.4rem 2rem 3rem;
+  border-radius: 0 0 1.2rem 1.2rem;
+  color: #fff;
+  background:
+    radial-gradient(120% 140% at 85% -10%, rgba(42,157,143,.55) 0%, rgba(42,157,143,0) 55%),
+    radial-gradient(120% 120% at 0% 120%, rgba(212,162,78,.40) 0%, rgba(212,162,78,0) 50%),
+    linear-gradient(135deg, var(--folur-green-dark) 0%, var(--folur-green) 70%);
+  overflow: hidden;
+}
+.folur-hero::after {
+  /* тонкий «горизонт степи» */
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+  background: linear-gradient(90deg, var(--folur-wheat) 0%, var(--folur-water) 100%);
+}
+.folur-hero__badge {
+  display: inline-block;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .28rem .7rem; border-radius: 2rem;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-bottom: 1rem;
+}
+.folur-hero__title {
+  font-size: 2.5rem; line-height: 1.1; margin: 0 0 .8rem; color: #fff;
+  max-width: 20ch;
+}
+.folur-hero__sub {
+  font-size: 1.02rem; line-height: 1.55; max-width: 52ch;
+  color: rgba(255,255,255,.92); margin: 0 0 1.6rem;
+}
+.folur-hero__cta { display: flex; flex-wrap: wrap; gap: .7rem; }
+.folur-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-weight: 700; font-size: .9rem;
+  padding: .7rem 1.3rem; border-radius: .5rem;
+  text-decoration: none !important; transition: transform .12s, box-shadow .12s, background .12s;
+}
+.folur-btn--primary {
+  background: var(--folur-wheat); color: var(--folur-green-dark) !important;
+  box-shadow: 0 4px 14px rgba(212,162,78,.4);
+}
+.folur-btn--primary:hover { transform: translateY(-2px); background: var(--folur-wheat-soft); }
+.folur-btn--ghost {
+  background: rgba(255,255,255,.10); color: #fff !important;
+  border: 1px solid rgba(255,255,255,.4);
+}
+.folur-btn--ghost:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+
+/* ── Полоса-статистика ────────────────────────────────────────────────────── */
+.folur-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px; background: var(--folur-line);
+  border: 1px solid var(--folur-line); border-radius: .7rem; overflow: hidden;
+  margin: 0 0 2.4rem;
+}
+.folur-stat { background: var(--md-default-bg-color); padding: 1.1rem 1rem; text-align: center; }
+.folur-stat__num { font-family: "Manrope", sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--folur-green); line-height: 1; }
+[data-md-color-scheme="slate"] .folur-stat__num { color: #6FD39F; }
+.folur-stat__num .accent { color: var(--folur-wheat); }
+.folur-stat__label { font-size: .74rem; color: var(--md-default-fg-color--light); margin-top: .35rem; }
+
+/* ── Карточки модулей (Material .grid.cards + наши акценты) ────────────────── */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > :is(ul,ol) > li {
+  border: 1px solid var(--folur-line);
+  border-radius: .7rem;
+  transition: transform .14s, box-shadow .14s, border-color .14s;
+  background: var(--md-default-bg-color);
+}
+.md-typeset .grid.cards > :is(ul,ol) > li:hover {
+  transform: translateY(-4px);
+  border-color: var(--folur-green-light);
+  box-shadow: 0 10px 24px rgba(19,64,41,.12);
+}
+.md-typeset .grid.cards > :is(ul,ol) > li > hr {
+  margin: .6rem 0; border: none; border-top: 1px solid var(--folur-line);
+}
+/* код-бейдж модуля внутри карточки */
+.folur-code {
+  display: inline-block; font-family: "Manrope", sans-serif; font-weight: 800;
+  font-size: .72rem; color: #fff; background: var(--folur-green);
+  padding: .12rem .5rem; border-radius: 1rem; margin-right: .4rem; letter-spacing: .02em;
+}
+.folur-code--prof { background: var(--folur-water); }
+
+/* Заголовок блока каталога */
+.folur-block-head {
+  display: flex; align-items: center; gap: .6rem;
+  margin: 2.2rem 0 1rem; padding-bottom: .5rem;
+  border-bottom: 2px solid var(--folur-wheat);
+}
+.folur-block-head h2 { margin: 0 !important; border: none !important; padding: 0 !important; font-size: 1.25rem; }
+.folur-block-head .folur-block-tag {
+  font-size: .72rem; color: var(--md-default-fg-color--light);
+  background: var(--folur-paper-2); padding: .15rem .55rem; border-radius: 1rem;
+}
+
+/* ── Подвал-кредиты ───────────────────────────────────────────────────────── */
+.folur-credits {
+  margin-top: 2.6rem; padding: 1.4rem 1.5rem;
+  background: var(--folur-paper-2); border-radius: .7rem;
+  border-left: 4px solid var(--folur-green);
+  font-size: .82rem; color: var(--md-default-fg-color--light);
+}
+.folur-credits strong { color: var(--md-default-fg-color); }
+
+/* Скрыть служебный H1 на кастомной главной */
+.folur-home-h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+@media (max-width: 600px) {
+  .folur-hero__title { font-size: 1.9rem; }
+  .folur-hero { padding: 2.4rem 1.2rem 2.2rem; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   Навигация и макет (ui-ux-pro-max: container-width, nav active-state,
+   whitespace). Скоуп сайдбара — через navigation.prune (mkdocs.yml).
+   Здесь: ширина сетки (меньше пустых полей слева), стиль активного пункта
+   и иерархия боковой навигации в палитре «Степь».
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Шире дефолтной сетки Material (61rem) — сайдбар ближе к краю, меньше
+   пустого поля по бокам на десктопе. Колонка контента остаётся читаемой
+   за счёт правого TOC. */
+@media screen and (min-width: 76.25em) {
+  .md-grid { max-width: 82rem; }
+}
+
+/* ── Заголовок сайдбара (название таба) ───────────────────────────────────── */
+.md-nav--primary > .md-nav__title {
+  color: var(--folur-green);
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__title { color: #6FD39F; }
+
+/* ── Пункты навигации: спокойный покой, чёткие hover/active ────────────────── */
+.md-nav__link { border-radius: .3rem; transition: color .12s ease, background .12s ease; }
+.md-nav__link:hover { color: var(--folur-water-dark); background: rgba(42,157,143,.07); }
+[data-md-color-scheme="slate"] .md-nav__link:hover { color: var(--folur-water); background: rgba(84,201,184,.10); }
+
+/* Активная страница: зелёный жирный текст + аккуратная зелёная «пилюля».
+   Без bar/gradient — они ломались на скруглённой ссылке у пунктов верхнего уровня. */
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link--active:hover {
+  color: var(--folur-green) !important;
+  font-weight: 700;
+  background: rgba(27,94,58,.09);
+  border-radius: .35rem;
+}
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active:hover {
+  color: #6FD39F !important;
+  background: rgba(111,211,159,.12);
+}
+
+/* Заголовки вложенных секций (раскрывашки модулей/блоков) — чуть весомее,
+   чтобы читалась иерархия «блок → модуль → урок». */
+.md-nav--primary .md-nav__item--nested > .md-nav__link {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+
+/* «Хлебные крошки» (navigation.path) — приглушённо, в духе бренда. */
+.md-nav__path .md-nav__link { color: var(--md-default-fg-color--light); font-size: .68rem; }

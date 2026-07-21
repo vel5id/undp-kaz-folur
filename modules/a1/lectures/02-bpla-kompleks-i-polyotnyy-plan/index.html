@@ -1,0 +1,3634 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/a1/lectures/02-bpla-kompleks-i-polyotnyy-plan/">
+      
+      
+        <link rel="prev" href="../01-zhiznennyy-tsikl-agrodannykh/">
+      
+      
+        <link rel="next" href="../03-bpla-ili-sputnik/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Академические модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-zhiznennyy-tsikl-agrodannykh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. БПЛА — это летающая измерительная система
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vtol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Носители: мультиротор, самолётный тип, VTOL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Носители: мультиротор, самолётный тип, VTOL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Энергетика и логистика вылетов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Сенсорная нагрузка: что именно мы измеряем
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Сенсорная нагрузка: что именно мы измеряем">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Матрица «агрозадача → сенсор»
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Электроника: навигация, ориентация, автопилот
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Электроника: навигация, ориентация, автопилот">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Прямая геопривязка или опорные точки: три рабочих схемы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Полётное планирование: от задачи к параметрам миссии
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Полётное планирование: от задачи к параметрам миссии">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-gsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 GSD — главный параметр
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Перекрытия и схема маршрутов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Скорость, свет, погодное окно
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Типичные ошибки планирования
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Чек-лист миссии
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-bpla-ili-sputnik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-standarty-formaty-fair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-poljotnoe-zadanie-bpla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/01-vector-raster-projections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/02-qgis-python-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/03-spatial-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/04-ai-uav-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/practicum/01-landuse-map-sko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта землепользования района СКО
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/01-open-data-catalogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/02-dataset-preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/03-classic-models-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/lectures/04-cnn-and-architecture-choice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/practicum/01-lulc-three-approaches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a3/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/01-vodnyj-balans-stepnogo-vodosbora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/02-karta-glubin-iz-promerov/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/03-sputnikovyj-monitoring-vody/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/04-godovoj-cikl-vodoyoma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/practicum/01-karta-glubin-i-ndwi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин по сырым промерам + сезонная динамика NDWI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/01-landshaftnyj-podhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим хозяйство на функциональные зоны — ландшафтный подход
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/02-degradaciya-zemel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностируем деградацию земель степной зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/03-pochvosberegayushchee-zemledelie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем почвосберегающую систему земледелия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/04-tochnoe-zemledelie-i-ustojchivost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем мониторинг устойчивости и климатическую адаптацию
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/practicum/01-plan-zemlepolzovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — план устойчивого землепользования модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/02-bioraznoobrazie-agrolandshafta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/03-monitoring-degradacii-dzz-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/04-proektirovanie-vosstanovleniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/practicum/01-plan-vosstanovleniya-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект плана восстановления деградированного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../professional/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. БПЛА — это летающая измерительная система
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vtol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Носители: мультиротор, самолётный тип, VTOL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Носители: мультиротор, самолётный тип, VTOL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Энергетика и логистика вылетов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Сенсорная нагрузка: что именно мы измеряем
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Сенсорная нагрузка: что именно мы измеряем">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Матрица «агрозадача → сенсор»
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Электроника: навигация, ориентация, автопилот
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Электроника: навигация, ориентация, автопилот">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Прямая геопривязка или опорные точки: три рабочих схемы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Полётное планирование: от задачи к параметрам миссии
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Полётное планирование: от задачи к параметрам миссии">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-gsd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 GSD — главный параметр
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Перекрытия и схема маршрутов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Скорость, свет, погодное окно
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Типичные ошибки планирования
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Чек-лист миссии
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Академические модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="-">Собираем БПЛА-комплекс под агрозадачу: носитель, сенсор, электроника и полётный план<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~25 мин чтения + ~25 мин практики
+Модуль <strong>А1: Жизненный цикл данных в агросфере (+ БПЛА и IoT)</strong>, урок 2 из 4.
+Академический уровень. Проект UNDP-KAZ FOLUR. Компоненты FOLUR: <strong>1</strong>, <strong>2</strong>.</p>
+</blockquote>
+<h2 id="_1">Цели лекции и место в модуле<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>В <a href="../01-zhiznennyy-tsikl-agrodannykh/">Уроке 1</a> БПЛА был одной строкой в карте источников данных. Теперь мы раскрываем эту строку до инженерного уровня: из чего состоит беспилотный комплекс, какие бывают носители и сенсоры, какая электроника обеспечивает геопривязку и автономный полёт, и — главное — как перевести агрономическую задачу в конкретные полётные параметры: GSD, высоту, перекрытия, схему маршрутов. Это ядро прикладного продукта модуля: в <a href="../../practicum/01-poljotnoe-zadanie-bpla/">практикуме</a> вы спроектируете полётное задание по методике этой лекции, а в <a href="../../ai-assistant/">ИИ-задании</a> поручите те же расчёты кодинг-агенту и проверите его.</p>
+<p>После изучения лекции слушатель сможет:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять типы носителей БПЛА, классы сенсорной нагрузки и ключевые компоненты бортовой электроники.</li>
+<li><strong>[Bloom: понимать]</strong> объяснять, как высота полёта, характеристики камеры и перекрытия определяют GSD, ширину захвата и качество фотограмметрической сшивки.</li>
+<li><strong>[Bloom: применять]</strong> рассчитывать полётные параметры под заданный GSD для участка в Северном Казахстане и составлять схему маршрутов.</li>
+<li><strong>[Bloom: анализировать]</strong> сопоставлять комбинации «носитель + сенсор» с классами агрозадач и выявлять несоответствия между задачей и предлагаемой конфигурацией комплекса.</li>
+</ol>
+<blockquote>
+<p><strong>Границы лекции.</strong> Внутри: устройство БПЛА-комплекса (носители, сенсоры, электроника) и методика полётного планирования. За рамками: сравнение БПЛА со спутниками и правовые рамки полётов в РК — этому целиком посвящён <a href="../03-bpla-ili-sputnik/">Урок 3</a>; фотограмметрическая обработка после полёта — обзорно в <a href="../01-zhiznennyy-tsikl-agrodannykh/">Уроке 1, раздел 4</a>, практически — в модуле <a href="../../../p7/">П7</a>; форматы хранения облаков точек и растров — в <a href="../04-standarty-formaty-fair/">Уроке 4</a>. Пилотирование как навык здесь не преподаётся: все задания платформы выполнимы на готовых наборах снимков — «дрон не обязателен».</p>
+</blockquote>
+<hr />
+<h2 id="1">1. БПЛА — это летающая измерительная система<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Первая смена оптики, которую требует профессиональная работа: дрон — не «летающая камера для красивых кадров», а измерительная система, каждый элемент которой влияет на пригодность данных для анализа. Комплекс состоит из четырёх подсистем: <strong>носитель</strong> (планер с двигателями — определяет площадь, время и условия работы), <strong>сенсорная нагрузка</strong> (что именно измеряем), <strong>навигация и управление</strong> (GNSS/RTK, IMU, автопилот — определяют геопривязку и повторяемость), <strong>наземный сегмент</strong> (станция управления, планировщик миссий, канал телеметрии). Ошибка в любой подсистеме обесценивает остальные: идеальный мультиспектральный сенсор на носителе без RTK даст красивую, но плохо привязанную карту; идеальная навигация с неоткалиброванной камерой — точно привязанные, но искажённые измерения.</p>
+<p>Отсюда правило выбора комплекса, зеркальное методике Урока 1: сначала задача (что измеряем, с каким GSD, на какой площади, как часто), затем сенсор (он определяется измеряемой величиной), затем носитель (он определяется сенсором и площадью), и лишь затем — бюджет и конкретные модели. Продавцы техники предлагают обратный порядок; результат обратного порядка мы видели в кейсе Урока 1.</p>
+<p>Второе следствие «измерительной» оптики — дисциплина воспроизводимости. Научная и производственная ценность съёмки в том, что её можно повторить в тех же параметрах через месяц и честно сравнить результаты. Это значит, что полётное задание — не разовая настройка в приложении, а документ: файл миссии, версия прошивки, параметры камеры, условия съёмки сохраняются вместе с данными. Хозяйство, которое так делает, через три сезона имеет сравнимый архив; хозяйство, которое летает «как в прошлый раз, вроде бы», — набор несопоставимых картинок.</p>
+<hr />
+<h2 id="2-vtol">2. Носители: мультиротор, самолётный тип, VTOL<a class="headerlink" href="#2-vtol" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Характеристика</th>
+<th>Мультиротор</th>
+<th>Самолётный тип (fixed-wing)</th>
+<th>VTOL (гибрид)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Взлёт/посадка</td>
+<td>Вертикально, с любой площадки</td>
+<td>Разбег/катапульта, посадка на полосу или парашют</td>
+<td>Вертикально, полёт «по-самолётному»</td>
+</tr>
+<tr>
+<td>Типичное время полёта</td>
+<td>Десятки минут</td>
+<td>Часы (у крупных платформ)</td>
+<td>Между ними, ближе к самолётному</td>
+</tr>
+<tr>
+<td>Площадь за вылет</td>
+<td>Десятки–первые сотни га</td>
+<td>Сотни–тысячи га</td>
+<td>Сотни–тысячи га</td>
+</tr>
+<tr>
+<td>Скорость и манёвренность</td>
+<td>Может зависать, летать низко и медленно</td>
+<td>Не может зависать; минимальная скорость ограничена</td>
+<td>Может зависать в вертолётном режиме</td>
+</tr>
+<tr>
+<td>Чувствительность к ветру</td>
+<td>Умеренная</td>
+<td>Выше устойчивость на маршруте</td>
+<td>Зависит от режима</td>
+</tr>
+<tr>
+<td>Сложность эксплуатации</td>
+<td>Низкая</td>
+<td>Средняя (нужны площадки, навык запуска)</td>
+<td>Выше (два режима, сложнее механика)</td>
+</tr>
+<tr>
+<td>Типовая агрозадача</td>
+<td>Детальный осмотр полей и очагов, съёмка небольших участков, зависание над точкой</td>
+<td>Картирование больших массивов пашни</td>
+<td>Большие площади при отсутствии посадочных полос</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Мультиротор</strong> — рабочая лошадка малых и средних задач: прост во взлёте с края поля, может снизиться к очагу поражения, зависнуть над точкой для детального кадра. Расплата — аэродинамическая неэффективность: подъёмная сила создаётся только винтами, энергия батареи расходуется быстро, поэтому большие площади требуют многих вылетов и смен батарей.</p>
+<p><strong>Самолётный тип</strong> летит на крыле, поэтому энергетически эффективен: часы в воздухе, тысячи гектаров за смену. Именно такие платформы имеют смысл для сплошного картирования зерновых массивов Северного Казахстана, где поля измеряются сотнями гектаров, а хозяйства — десятками тысяч. Ограничения: нужна площадка для взлёта и посадки, нельзя зависнуть, минимальная высота и скорость ограничены аэродинамикой — детальный осмотр отдельного очага не его жанр.</p>
+<p><strong>VTOL-гибрид</strong> взлетает вертикально, как коптер, и летит горизонтально, как самолёт, совмещая независимость от площадок с эффективностью крыла. Цена совмещения — механическая и программная сложность: больше узлов, которые могут отказать, выше требования к обслуживанию и квалификации оператора.</p>
+<h3 id="21">2.1 Энергетика и логистика вылетов<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Практическое планирование упирается не в паспортное «время полёта», а в <strong>полезное время съёмки</strong>: от паспортной цифры отнимите взлёт и набор высоты, перелёт к участку и обратно, развороты между линиями и обязательный резерв на отказные сценарии. У мультиротора при холодной погоде ёмкость батарей дополнительно проседает — существенный фактор для ранневесенних и осенних съёмок в Северном Казахстане. Отсюда логистика: сколько батарей брать в поле, где и от чего заряжать, сколько смен батарей выдержит световой день. Крупная съёмка — это график вылетов на несколько дней, и погодное окно (раздел 5.3) должно закладываться в него с самого начала.</p>
+<p>Второй логистический вопрос — транспортировка и развёртывание. Мультиротор разворачивается за минуты с любой обочины; самолётному типу нужна оценка площадки, направление ветра при запуске и посадке, свободные подходы. Третий — данные: за смену комплекс порождает десятки гигабайт снимков и логов, и в плане выезда должен быть ответ, на что они копируются в поле и как доезжают до хранилища хозяйства без потери (двойное копирование на независимые носители — минимальная дисциплина стадии сбора из Урока 1).</p>
+<pre class="mermaid"><code>flowchart TD
+    T[Задача съёмки] --&gt; Q1{Площадь за вылет?}
+    Q1 --&gt;|до ~100 га, очаги, зависание| MR[Мультиротор]
+    Q1 --&gt;|сотни–тысячи га| Q2{Есть площадка для&lt;br&gt;взлёта/посадки?}
+    Q2 --&gt;|да| FW[Самолётный тип]
+    Q2 --&gt;|нет| VTOL[VTOL-гибрид]
+    MR &amp; FW &amp; VTOL --&gt; S[Далее: выбор сенсора&lt;br&gt;под измеряемую величину]</code></pre>
+<p><em>Рис. 1. Дерево выбора носителя: площадь и условия базирования решают почти всё. Alt: блок-схема выбора: от задачи съёмки вопрос о площади за вылет ведёт либо к мультиротору (малые площади, очаги), либо к вопросу о наличии взлётной площадки, который разводит самолётный тип и VTOL; все три ветви сходятся к следующему шагу — выбору сенсора.</em></p>
+<hr />
+<h2 id="3">3. Сенсорная нагрузка: что именно мы измеряем<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>Сенсор — это и есть измерительный прибор; носитель лишь доставляет его в нужные точки. Классы нагрузки:</p>
+<p><strong>RGB-камера</strong> — снимает в видимом диапазоне. Базовые продукты: ортофотоплан, ЦМР/ЦММ через фотограмметрию, визуальная диагностика (полегание, вымочки, огрехи сева, повреждения техникой). Самый доступный и универсальный сенсор; для многих задач хозяйства его достаточно.</p>
+<p><strong>Мультиспектральная камера</strong> (индустриальные линейки типа MicaSense, Sentera) — несколько узких спектральных каналов, включая ближний инфракрасный (NIR) и red edge, невидимые глазу, но критичные для оценки состояния растительности: здоровая биомасса сильно отражает NIR. Из каналов считаются вегетационные индексы (NDVI и семейство), по которым строятся карты неоднородности посевов. Требует радиометрической калибровки (эталонная панель, датчик освещённости), иначе значения индексов несравнимы между вылетами — а без сравнимости нет мониторинга динамики.</p>
+<p><strong>Гиперспектральная камера</strong> — сотни узких каналов, спектральная подпись каждого пикселя. Позволяет различать то, что мультиспектру недоступно (виды растительности, тонкие физиологические состояния), но дорога, капризна в калибровке и порождает большие объёмы данных; в агропрактике региона — инструмент исследовательских проектов, не рутины.</p>
+<p><strong>Тепловизор</strong> — измеряет температуру поверхности. Агроприменения: водный стресс растений (транспирация охлаждает листья — стрессующие участки теплее), поиск переувлажнённых и пересушенных зон, контроль работы полива. Тонкость: температурный контраст зависит от времени суток и погоды, съёмка требует продуманного временного окна.</p>
+<p><strong>LiDAR</strong> — активный лазерный сканер, строит облако точек напрямую, без фотограмметрии. Ключевое преимущество перед SfM: часть импульсов пробивает растительный полог до земли, что даёт настоящую ЦМР под растительностью и структуру полога (высоту, плотность). Для задач модуля А6 (лесополосы, экосистемы) это незаменимо; для ровной пашни без покрова обычная фотограмметрия дешевле и достаточна.</p>
+<p><strong>Эхолот на БПЛА</strong> — гидроакустический промер глубин с низколетящего носителя или буксируемого поплавка, управляемого дроном. Расширяет батиметрию на малые и труднодоступные водоёмы, где спуск лодки нерационален. Полный конвейер обработки таких промеров — фильтрация, интерполяция, карта глубин — разбирается в модуле <a href="../../../a4/">А4</a> на учебном датасете платформы (обезличенные промеры водохранилища степной зоны Казахстана): подробнее — в нём.</p>
+<p>Правило соответствия сенсора задаче формулируется через измеряемую величину: «увидеть» (RGB), «оценить состояние растительности» (мультиспектр), «оценить водный стресс» (тепловизор), «измерить рельеф и структуру полога» (LiDAR), «измерить глубины» (эхолот). Если подрядчик предлагает гиперспектр для задачи «найти огрехи сева» — это несоответствие класса задачи и класса сенсора, оплачивать которое будет заказчик.</p>
+<h3 id="31">3.1 Матрица «агрозадача → сенсор»<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Агрозадача</th>
+<th>Первый выбор</th>
+<th>Когда добавлять второй сенсор</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Огрехи сева, полегание, колеи, инвентаризация</td>
+<td>RGB</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Неоднородность состояния посевов, зоны для обследования</td>
+<td>Мультиспектр</td>
+<td>RGB для интерпретации причин</td>
+</tr>
+<tr>
+<td>Водный стресс, контроль полива</td>
+<td>Тепловизор</td>
+<td>Мультиспектр для разделения причин стресса</td>
+</tr>
+<tr>
+<td>Подсчёт всходов, детекция сорняков (для ML в А3)</td>
+<td>RGB с малым GSD</td>
+<td>Мультиспектр при спектрально близких видах</td>
+</tr>
+<tr>
+<td>Рельеф под мелиорацию, сток, микропонижения</td>
+<td>RGB-фотограмметрия (голая почва)</td>
+<td>LiDAR при наличии растительного покрова</td>
+</tr>
+<tr>
+<td>Состояние лесополос, структура полога</td>
+<td>LiDAR</td>
+<td>RGB/мультиспектр для состояния листвы</td>
+</tr>
+<tr>
+<td>Малые водоёмы: глубины, заиление</td>
+<td>Эхолот (БПЛА или лодка)</td>
+<td>Фотограмметрия береговой линии</td>
+</tr>
+</tbody>
+</table>
+<p>Матрица читается в обе стороны. Прямое чтение — выбор сенсора под задачу. Обратное — аудит предложения подрядчика: если конфигурация комплекса не находит своей строки, требуйте обоснования. Отметим также экономику совмещения: один вылет с двумя сенсорами (например, RGB + мультиспектр) обычно дешевле двух вылетов, но тяжелее по массе и энергетике — ещё одна связь между разделами 2 и 3.</p>
+<hr />
+<h2 id="4">4. Электроника: навигация, ориентация, автопилот<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p><strong>GNSS-модуль</strong> даёт координаты носителя. Как мы разобрали в <a href="../01-zhiznennyy-tsikl-agrodannykh/">Уроке 1, раздел 3</a>, автономный приёмник — это метры ошибки, RTK/PPK — сантиметры. Для фотограмметрии картографического качества RTK/PPK-борт либо наземные опорные точки обязательны; для обзорного осмотра достаточно автономного режима.</p>
+<p><strong>IMU (инерциальный измерительный блок)</strong> — гироскопы и акселерометры, измеряющие ориентацию: крен, тангаж, курс. В момент срабатывания затвора автопилот записывает не только координату, но и углы камеры — без них фотограмметрия сходится хуже, а прямая геопривязка невозможна. IMU также держит носитель стабильным между обновлениями GNSS.</p>
+<p><strong>Автопилот</strong> — бортовой компьютер, исполняющий полётное задание: держит высоту и маршрут, управляет затвором камеры, отрабатывает отказные сценарии (потеря связи → возврат домой; низкий заряд → посадка). Открытые экосистемы <strong>PX4</strong> и <strong>ArduPilot</strong> — фактический стандарт: открытый код, поддержка десятков типов носителей, совместимость с открытыми наземными станциями (QGroundControl, Mission Planner) по открытому протоколу телеметрии MAVLink. Для платформы это принципиально: планирование миссий изучается на открытом стеке, без привязки к экосистеме одного производителя.</p>
+<p><strong>Телеметрия</strong> — радиоканал между бортом и наземной станцией: положение, заряд, статус задания в реальном времени, возможность скорректировать или прервать миссию. Дальность и надёжность канала — практический ограничитель площади одной миссии наравне с батареей.</p>
+<p>Связка подсистем в терминах жизненного цикла: автопилот и планировщик реализуют стадию <em>планирования съёмки</em> в железе и софте; GNSS/RTK и IMU обеспечивают <em>качество геопривязки</em>; логи автопилота и GNSS — это <em>метаданные</em> полёта, которые обязаны сохраняться вместе со снимками (стадия хранения). Выбрасывая логи, вы выбрасываете возможность PPK-обработки и разбора любых аномалий съёмки.</p>
+<h3 id="41">4.1 Прямая геопривязка или опорные точки: три рабочих схемы<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Комбинация «борт + земля» даёт три схемы обеспечения точности, между которыми выбирают по задаче и доступному оборудованию.</p>
+<p><strong>Схема 1: автономный GNSS + густая сеть GCP.</strong> Дешёвый борт, вся точность — от наземных опорных точек, измеренных точным приёмником. Трудозатратна в поле (раскладка и измерение марок на каждый вылет), зато не требует RTK-оборудования на борту. Рациональна для разовых съёмок небольших участков.</p>
+<p><strong>Схема 2: RTK/PPK-борт + контрольные точки.</strong> Точность даёт бортовая геопривязка центров фотографирования; несколько наземных точек оставляются только как независимый контроль (check points). Основная схема регулярного производственного мониторинга: минимум полевой работы при подтверждаемой точности.</p>
+<p><strong>Схема 3: автономный GNSS без опорных точек.</strong> Быстро и без наземных работ, но продукт привязан с метровыми ошибками и, что важнее, ошибка ничем не подтверждена. Допустимо для визуального осмотра и относительных сравнений внутри одного вылета; недопустимо для измерений площадей, объёмов и совмещения с другими слоями.</p>
+<p>Заметьте: ни в одной схеме нет варианта «RTK-борт, и поэтому проверять нечего». Независимый контроль — обязательный элемент производственной съёмки, как контрольные точки в фотограмметрии Урока 1 и как шаг верификации в <a href="../../ai-assistant/">ИИ-задании модуля</a>.</p>
+<hr />
+<h2 id="5">5. Полётное планирование: от задачи к параметрам миссии<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>Теперь ядро лекции — перевод задачи в числа. Планировщик миссий (QGroundControl, Mission Planner и аналоги) попросит у вас: контур участка, высоту, перекрытия, скорость. Откуда их взять?</p>
+<h3 id="51-gsd">5.1 GSD — главный параметр<a class="headerlink" href="#51-gsd" title="Permanent link">&para;</a></h3>
+<p><strong>GSD (Ground Sample Distance)</strong> — размер пикселя снимка на местности. Он определяет, что в принципе различимо на данных: объект уверенно распознаётся, когда занимает хотя бы несколько пикселей. Формула:</p>
+<div class="highlight"><pre><span></span><code>GSD = H × p / f
+</code></pre></div>
+<p>где <code>H</code> — высота полёта над поверхностью, <code>p</code> — физический размер пикселя матрицы, <code>f</code> — фокусное расстояние объектива.</p>
+<p>Работаем с <strong>условным учебным сенсором</strong> (все числа — иллюстративные, для реального проекта берите паспорт вашей камеры): размер пикселя <code>p = 3 мкм</code>, фокусное расстояние <code>f = 8 мм</code>, матрица <code>4000 × 3000</code> пикселей. На высоте <code>H = 120 м</code>:</p>
+<div class="highlight"><pre><span></span><code>GSD = 120 м × 0,000003 м / 0,008 м = 0,045 м = 4,5 см
+</code></pre></div>
+<p>Обратная задача встречается чаще: задан целевой GSD, найти высоту. Нужно 3 см на пиксель? <code>H = GSD × f / p = 0,03 × 0,008 / 0,000003 = 80 м</code>. Отсюда рабочее следствие: GSD линеен по высоте — снизились вдвое, получили вдвое детальнее, но и вдвое уже полоса захвата, а значит, почти вчетверо больше времени на ту же площадь.</p>
+<p>Ширина захвата одного снимка: <code>W = 4000 пикс × 0,045 м = 180 м</code> поперёк маршрута (на H = 120 м для условного сенсора); вдоль маршрута кадр покрывает <code>L = 3000 × 0,045 = 135 м</code>.</p>
+<h3 id="52">5.2 Перекрытия и схема маршрутов<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p>Фотограмметрии нужны перекрывающиеся снимки: каждая точка местности должна быть видна с нескольких ракурсов. Общепринятые отправные значения для равнинной местности — порядка <strong>75–80% продольного</strong> (вдоль маршрута) и <strong>60–70% поперечного</strong> (между соседними маршрутами) перекрытия; для однородных поверхностей с бедной текстурой (созревшая пшеница, водная гладь, снег) перекрытия увеличивают — сшивке нужно больше общих точек.</p>
+<p>Из перекрытий следуют шаг съёмки и междурядье маршрутов. Для нашего условного сенсора на 120 м при продольном перекрытии 80%: интервал между снимками <code>= L × (1 − 0,8) = 135 × 0,2 = 27 м</code>. При поперечном перекрытии 70%: расстояние между линиями маршрута <code>= W × (1 − 0,7) = 180 × 0,3 = 54 м</code>. Участок шириной 1 км потребует ~19 параллельных линий. Прибавьте развороты за границей участка — и получите оценку длины миссии, которую планировщик сверит с ёмкостью батареи.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Целевой GSD&lt;br&gt;из задачи] --&gt; B[Высота H = GSD × f / p]
+    B --&gt; C[Захват кадра W, L]
+    C --&gt; D[Перекрытия 80/70]
+    D --&gt; E[Шаг съёмки и&lt;br&gt;междурядье маршрутов]
+    E --&gt; F[Число линий, длина миссии,&lt;br&gt;время, батареи]
+    F --&gt; G{Влезает в один вылет&lt;br&gt;и погодное окно?}
+    G --&gt;|нет| A
+    G --&gt;|да| M[Файл миссии в планировщик]</code></pre>
+<p><em>Рис. 2. Расчётная цепочка полётного планирования: от целевого GSD к файлу миссии; если миссия не помещается в вылет — пересматриваем GSD или делим участок. Alt: последовательность блоков: целевой GSD задаёт высоту, высота — захват кадра, захват с перекрытиями — шаг съёмки и междурядье, из них — длина и время миссии; ромб проверки «влезает ли в вылет» возвращает к пересмотру GSD либо ведёт к загрузке миссии в планировщик.</em></p>
+<h3 id="53">5.3 Скорость, свет, погодное окно<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>Скорость полёта ограничена сверху смазом изображения (за время выдержки носитель не должен смещаться больше, чем на долю GSD) и минимальным интервалом срабатывания камеры. Свет: оптимальны часы вокруг полудня со стабильной освещённостью; рваная переменная облачность — худший режим для мультиспектра (освещённость скачет между кадрами). Ветер: у каждого носителя — паспортный предел, но для качества данных фактический предел ниже паспортного, особенно у лёгких коптеров. Планирование в степной зоне Северного Казахстана означает планирование <em>вокруг ветра</em>: закладывайте резервные дни на миссию.</p>
+<p>У специализированных сенсоров — свои временные окна. Тепловизионная съёмка водного стресса информативна тогда, когда контраст между транспирирующими и стрессующими растениями максимален — в жаркие послеполуденные часы ясного дня; та же съёмка ранним утром покажет выровненное поле и ничего не диагностирует. Мультиспектральная съёмка для <em>мониторинга динамики</em> должна выполняться в близких условиях от даты к дате: сопоставимое время суток, сопоставимая фенофаза, обязательная калибровка по эталонной панели в каждом вылете. Это прямое продолжение принципа Урока 1: сравнимость данных проектируется до сбора, а не восстанавливается после.</p>
+<h3 id="54">5.4 Типичные ошибки планирования<a class="headerlink" href="#54" title="Permanent link">&para;</a></h3>
+<p>Разбор чужих ошибок дешевле собственных, поэтому зафиксируем самые частые. <strong>Высота «на глаз»</strong>: миссия планируется на привычной высоте, а не от целевого GSD; итог — либо неразличимые объекты, либо лишние часы съёмки. <strong>Перекрытия по умолчанию на однородной поверхности</strong>: сшивка разваливается посреди созревшего поля, пересъёмка — новый выезд за сотни километров. <strong>Игнорирование рельефа</strong>: высота задана от точки взлёта, а участок имеет перепад; фактический GSD и перекрытия «плывут» по кадру — на пересечённых участках включайте режим следования рельефу (terrain following), который поддерживают открытые планировщики. <strong>Съёмка «когда приехали», а не в световое и погодное окно</strong>: длинные тени утром и вечером рушат радиометрию, порывистый ветер — геометрию. <strong>Отсутствие плана на данные</strong>: снимки остаются на карте памяти до следующего вылета и перезаписываются — потеря, которую не компенсирует никакая точность борта.</p>
+<p>Общий корень этих ошибок один: планирование ведётся от техники («как удобно летать»), а не от задачи («что должно быть различимо и измеримо»). Расчётная цепочка рис. 2 — противоядие: она принуждает начинать с целевого GSD и заканчивать проверкой выполнимости.</p>
+<h3 id="55-">5.5 Чек-лист миссии<a class="headerlink" href="#55-" title="Permanent link">&para;</a></h3>
+<p>Перед вылетом (и перед сдачей практикума) проверьте: (1) контур участка корректен и покрыт маршрутами с запасом на краях; (2) высота соответствует целевому GSD по формуле; (3) перекрытия не ниже отправных значений, увеличены для однородных поверхностей; (4) время миссии с разворотами укладывается в батарею с резервом; (5) заданы отказные сценарии; (6) правовые условия полёта выполнены — учёт/регистрация носителя и отсутствие запретных зон проверены по актуальным официальным источникам (систему ограничений разбираем в <a href="../03-bpla-ili-sputnik/">Уроке 3</a>); (7) определено, куда и с какими метаданными лягут снимки и логи после посадки (стандарты — <a href="../04-standarty-formaty-fair/">Урок 4</a>).</p>
+<hr />
+<h2 id="_2">Региональный кейс<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация:</strong> агроном хозяйства в Акмолинской области по спутниковому NDVI-мониторингу (навык модуля П7) обнаружил на пшеничном поле зону угнетения площадью в несколько десятков гектаров. Снимок Sentinel-2 с пикселем 10 м показывает, <em>что</em> зона есть, но не показывает, <em>почему</em>: на 10-метровом пикселе неразличимы огрехи сева, очаги сорняков, повреждения техникой и вымочки. Принято решение обследовать зону дроном. Вам поручено спроектировать миссию: мультиротор с RGB-камерой (условный сенсор из раздела 5.1), задача — различать объекты от 10 см (междурядья, колеи, пятна сорняков).</p>
+<p><strong>Данные:</strong> контур проблемной зоны — оцифровка по свежему снимку Sentinel-2 (Copernicus Data Space Ecosystem, открытый доступ); подложка — OpenStreetMap. Для отработки обработки без дрона — открытые демонстрационные наборы аэрофотоснимков проекта OpenDroneMap.</p>
+<p><strong>Задача:</strong></p>
+<ol>
+<li>Объект 10 см должен занимать не меньше ~3 пикселей; какой целевой GSD отсюда следует и какая высота полёта нужна условному сенсору (<code>p = 3 мкм</code>, <code>f = 8 мм</code>)?</li>
+<li>Рассчитайте междурядье маршрутов при поперечном перекрытии 70% и оцените число линий для зоны шириной 600 м.</li>
+<li>Какие два пункта чек-листа 5.5 наиболее критичны для этого вылета и почему?</li>
+</ol>
+<p><strong>Разбор:</strong> из условия «3 пикселя на 10 см» целевой GSD ≈ 3,3 см; высота <code>H = 0,033 × 0,008 / 0,000003 ≈ 88 м</code>. Захват кадра поперёк маршрута на этой высоте <code>W = 4000 × 0,033 ≈ 132 м</code>; при перекрытии 70% междурядье ≈ 40 м, зона шириной 600 м потребует ~16 линий. Критичные пункты: (3) перекрытия — созревающая пшеница текстурно однородна, и экономия на перекрытиях сорвёт сшивку; (6) правовой чек — рядом могут проходить зоны с ограничениями полётов, что проверяется до выезда, а не в поле. Заметьте, что расчёт выявил и запас оптимизации: если агроному достаточно различать не междурядья, а только пятна сорняков от полуметра, целевой GSD смягчается до ~15 см, высота растёт, а число линий и время миссии падают в разы — переспросить заказчика о минимальном различимом объекте дешевле, чем летать с избыточной детальностью. Обратите внимание и на архитектуру решения в целом: спутник дёшево нашёл <em>где</em> проблема, дрон дорого, но точно ответит <em>почему</em> — это и есть комбинированная стратегия, которую формализует <a href="../03-bpla-ili-sputnik/">Урок 3</a>. Кейс продолжается в <a href="../../practicum/01-poljotnoe-zadanie-bpla/">практикуме</a>, где вы выполните полный расчёт и оформите миссию.</p>
+<hr />
+<h2 id="_3">Закрепление и применение<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Попробуйте в Colab</p>
+<p>Ноутбук урока: <code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>. В нём — калькулятор полётного плана: функции <code>gsd(H, p, f)</code>, <code>footprint(...)</code>, <code>line_spacing(...)</code> и упражнение: постройте график зависимости времени миссии от целевого GSD для участка 200 га и найдите GSD, при котором миссия перестаёт помещаться в один вылет условного коптера.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>Все численные примеры лекции построены на <strong>условном сенсоре</strong> — перед реальным проектом подставьте паспортные характеристики вашей камеры и носителя. Отправные перекрытия 80/70 — эвристика для равнины; рельеф, высокая растительность и бедная текстура требуют их увеличения. Формула GSD предполагает надирную съёмку и плоский участок: на склонах фактический GSD меняется по кадру. Правовые требования к полётам БПЛА в РК меняются — проверяйте актуальную редакцию НПА перед каждым проектом, а не конспект курса.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Умение прочитать полётное задание — это умение принимать работу подрядчика: заказчик, который спрашивает «какой GSD, какие перекрытия, где логи GNSS и калибровка камеры», получает данные, пригодные для анализа, а не только красивую картинку. А расчёт раздела 5 позволяет заранее оценить, сколько вылетов стоит сплошная съёмка вашей площади — и не переплачивать за детальность, которая задаче не нужна.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Хозяйство заказало мультиспектральную съёмку двух соседних полей у двух разных подрядчиков в разные дни. Карты NDVI получились несравнимыми: одинаковые по состоянию посевы дали разные значения индекса. Какие элементы комплекса и методики из разделов 3 и 5.3 могли к этому привести? (Подсказка: радиометрическая калибровка, эталонная панель, освещённость, время суток.)</p>
+</div>
+<hr />
+<h3 id="_4">Проверь себя<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "Для сплошного картирования массива пашни в несколько тысяч гектаров при наличии площадок для взлёта и посадки рационален прежде всего:",
+    "options": ["Носитель самолётного типа", "Мультиротор", "Любой носитель с тепловизором", "VTOL — всегда лучший выбор"],
+    "answer": 0,
+    "explain": "§2: полёт на крыле энергетически эффективен — часы в воздухе и тысячи гектаров за смену; мультиротор потребует многих вылетов, VTOL оправдан при отсутствии площадок."
+  },
+  {
+    "q": "Условный сенсор: пиксель 3 мкм, фокусное 8 мм. Какая высота даёт GSD = 3 см?",
+    "options": ["80 м", "120 м", "45 м", "8 м"],
+    "answer": 0,
+    "explain": "§5.1: H = GSD × f / p = 0,03 × 0,008 / 0,000003 = 80 м."
+  },
+  {
+    "q": "Зачем мультиспектральной съёмке радиометрическая калибровка по эталонной панели?",
+    "options": ["Чтобы значения индексов были сравнимы между вылетами и датами", "Чтобы увеличить ширину захвата", "Чтобы снизить требования к перекрытиям", "Чтобы заменить GNSS-геопривязку"],
+    "answer": 0,
+    "explain": "§3: без калибровки значения NDVI зависят от освещённости конкретного вылета — мониторинг динамики становится невозможен."
+  },
+  {
+    "q": "Почему для съёмки созревшего однородного пшеничного поля перекрытия следует увеличивать относительно отправных 80/70?",
+    "options": ["Однородная текстура даёт мало общих точек для фотограмметрической сшивки", "Зрелая пшеница сильнее отражает NIR", "На больших перекрытиях выше скорость полёта", "Перекрытия компенсируют отсутствие RTK"],
+    "answer": 0,
+    "explain": "§5.2: сшивка опирается на поиск общих точек между кадрами; бедная текстура — меньше точек — нужен больший запас перекрытия."
+  },
+  {
+    "q": "Какой компонент записывает углы ориентации камеры (крен, тангаж, курс) в момент снимка?",
+    "options": ["IMU", "Телеметрийный радиоканал", "Эталонная калибровочная панель", "Наземная станция"],
+    "answer": 0,
+    "explain": "§4: инерциальный блок измеряет ориентацию; вместе с координатами GNSS эти углы входят в метаданные кадра и нужны фотограмметрии."
+  }
+]</code></pre>
+<h3 id="_5">Контрольные вопросы<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Назовите четыре подсистемы БПЛА-комплекса и по одному последствию отказа каждой для качества данных. <em>(Bloom: знать)</em></li>
+<li>Объясните цепочку рис. 2: почему уменьшение целевого GSD вдвое увеличивает время съёмки почти вчетверо? <em>(Bloom: понимать)</em></li>
+<li>Рассчитайте параметры миссии для участка 400 × 800 м под GSD 2 см на условном сенсоре и решите, помещается ли она в один вылет коптера с 25 минутами полезного времени при скорости 8 м/с. <em>(Bloom: применять/анализировать)</em></li>
+</ol>
+<h2 id="_6">Что дальше?<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Вы умеете проектировать съёмку с дрона — но всегда ли дрон нужен? <a href="../03-bpla-ili-sputnik/">Урок 3 «Выбираем платформу наблюдения: БПЛА, спутник или их комбинация»</a> поставит БПЛА в один ряд с Sentinel-2 и коммерческими спутниками, добавит погодные и правовые ограничения РК и даст решётку выбора платформы. Практическая обработка снимков в открытом конвейере — в модуле <a href="../../../p7/">П7</a>; применение LiDAR и эхолота — в модулях <a href="../../../a6/">А6</a> и <a href="../../../a4/">А4</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../01-zhiznennyy-tsikl-agrodannykh/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-bpla-ili-sputnik/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Выбираем платформу наблюдения — БПЛА, спутник или их комбинация">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3756 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Учебные модули по устойчивому управлению агроландшафтами Северного Казахстана. Проект UNDP-KAZ FOLUR. Исполнитель — КРУ им. А. Байтұрсынұлы.">
+      
+      
+      
+        <link rel="canonical" href="https://folur-kaz-platform.web.app/modules/a3/lectures/02-dataset-preparation/">
+      
+      
+        <link rel="prev" href="../01-open-data-catalogs/">
+      
+      
+        <link rel="next" href="../03-classic-models-timeseries/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/img/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке - FOLUR Казахстан — учебная платформа</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/css/brand.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-lessons.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/restyle.css">
+    
+      <link rel="stylesheet" href="../../../../assets/css/steppe-course.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/quiz-engine.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sentinel-2" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-header__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FOLUR Казахстан — учебная платформа
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Тёмная тема"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Тёмная тема" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Светлая тема"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Светлая тема" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../my-learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Моё обучение
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about/platform/" class="md-tabs__link">
+          
+  
+  
+  О платформе
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ai-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ИИ-инструменты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../datasets/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Датасеты
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../offline/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Офлайн-материалы
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../verify/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Проверка сертификата
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../training/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Для тренера
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+  Академические модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../professional/" class="md-tabs__link">
+          
+  
+  
+  Профессиональные модули
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../practicums/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Практикумы
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="FOLUR Казахстан — учебная платформа" class="md-nav__button md-logo" aria-label="FOLUR Казахстан — учебная платформа" data-md-component="logo">
+      
+  <img src="../../../../assets/img/logo.svg" alt="logo">
+
+    </a>
+    FOLUR Казахстан — учебная платформа
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../my-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Моё обучение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../about/platform/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    О платформе
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ai-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-инструменты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Датасеты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../offline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Офлайн-материалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проверка сертификата
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Для тренера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Академические модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Академические модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/01-zhiznennyy-tsikl-agrodannykh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/02-bpla-kompleks-i-polyotnyy-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/03-bpla-ili-sputnik/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Выбираем платформу наблюдения — БПЛА, спутник или их комбинация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/lectures/04-standarty-formaty-fair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/practicum/01-poljotnoe-zadanie-bpla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a1/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А2. Геоинформатика и пространственный анализ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/01-vector-raster-projections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем корректный ГИС-проект — вектор, растр, проекции и топология
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/02-qgis-python-stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/03-spatial-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/lectures/04-ai-uav-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/practicum/01-landuse-map-sko/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта землепользования района СКО
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a2/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-open-data-catalogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Анатомия обучающей выборки: три представления данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Анатомия обучающей выборки: три представления данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Сколько данных нужно?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Откуда берутся метки: три источника и их честность
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Откуда берутся метки: три источника и их честность">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Полевые данные — золотой стандарт
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Визуальное дешифрирование — экспертная разметка по снимку
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Готовые карты покрытия — быстро, но с оговорками
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Шум в метках и что с ним делать
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Извлечение тайлов и аугментация
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Извлечение тайлов и аугментация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Нарезка тайлов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Аугментация: расширяем выборку без новых данных
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Дисбаланс классов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Разбиение выборки: где живёт утечка данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Разбиение выборки: где живёт утечка данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Зачем три части
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Пространственная автокорреляция — почему случайное разбиение лжёт
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Другие маршруты утечки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Как проверить чужой пайплайн на утечки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Чек-лист честного разбиения
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Инструменты: открытый стек фреймворков
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Инструменты: открытый стек фреймворков">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Воспроизводимость как инженерное требование
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-classic-models-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-cnn-and-architecture-choice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicum/01-lulc-three-approaches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А4. Водные ресурсы, гидрологический мониторинг, батиметрия
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/01-vodnyj-balans-stepnogo-vodosbora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сводим водный баланс степного водосбора — от снегозапасов до подземных вод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/02-karta-glubin-iz-promerov/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Превращаем 80 000 сырых промеров в карту глубин водохранилища
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/03-sputnikovyj-monitoring-vody/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/lectures/04-godovoj-cikl-vodoyoma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/practicum/01-karta-glubin-i-ndwi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — карта глубин по сырым промерам + сезонная динамика NDWI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a4/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А5. Устойчивое землепользование и агроэкология Северного Казахстана
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/01-landshaftnyj-podhod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Делим хозяйство на функциональные зоны — ландшафтный подход
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/02-degradaciya-zemel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностируем деградацию земель степной зоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/03-pochvosberegayushchee-zemledelie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем почвосберегающую систему земледелия
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/lectures/04-tochnoe-zemledelie-i-ustojchivost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Настраиваем мониторинг устойчивости и климатическую адаптацию
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/practicum/01-plan-zemlepolzovaniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — план устойчивого землепользования модельного хозяйства
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a5/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_7" id="__nav_9_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    А6. Экосистемные услуги, биоразнообразие, восстановление земель
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Программа
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/02-bioraznoobrazie-agrolandshafta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/03-monitoring-degradacii-dzz-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/lectures/04-proektirovanie-vosstanovleniya/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Проектируем восстановление участка — от диагноза к плану практик
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/practicum/01-plan-vosstanovleniya-uchastka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикум — проект плана восстановления деградированного участка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ-ассистент в работе
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../a6/assessment/final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оценивание
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../professional/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Профессиональные модули
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../practicums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практикумы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цели лекции и место в модуле
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Анатомия обучающей выборки: три представления данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Анатомия обучающей выборки: три представления данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Сколько данных нужно?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Откуда берутся метки: три источника и их честность
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Откуда берутся метки: три источника и их честность">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Полевые данные — золотой стандарт
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Визуальное дешифрирование — экспертная разметка по снимку
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Готовые карты покрытия — быстро, но с оговорками
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Шум в метках и что с ним делать
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Извлечение тайлов и аугментация
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Извлечение тайлов и аугментация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Нарезка тайлов
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Аугментация: расширяем выборку без новых данных
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Дисбаланс классов
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Разбиение выборки: где живёт утечка данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Разбиение выборки: где живёт утечка данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Зачем три части
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Пространственная автокорреляция — почему случайное разбиение лжёт
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Другие маршруты утечки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Как проверить чужой пайплайн на утечки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Чек-лист честного разбиения
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Инструменты: открытый стек фреймворков
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Инструменты: открытый стек фреймворков">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Воспроизводимость как инженерное требование
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Региональный кейс
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Закрепление и применение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Закрепление и применение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проверь себя
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Контрольные вопросы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что дальше?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Академические модули
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    А3. ИИ и машинное обучение в агроэкологическом мониторинге
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sentinel-2">Готовим датасет без утечек: от снимка Sentinel-2 к обучающей выборке<a class="headerlink" href="#sentinel-2" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>⏱ <strong>Трудозатраты:</strong> ~23 мин чтения + ~25 мин практики
+Модуль <strong><a href="../../">А3: ИИ и машинное обучение в агроэкологическом мониторинге</a></strong>, урок 2 из 4.
+Академический уровень. Проект UNDP-KAZ FOLUR. Компоненты FOLUR: <strong>1</strong>, <strong>2</strong>, <strong>3</strong>.</p>
+</blockquote>
+<h2 id="_1">Цели лекции и место в модуле<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Качество модели машинного обучения ограничено сверху качеством обучающей выборки — этот принцип не имеет исключений. В <a href="../01-open-data-catalogs/">уроке 1</a> мы научились доставать снимки из открытых каталогов; теперь предстоит превратить их в датасет: выбрать представление данных, добыть метки классов, нарезать тайлы, при необходимости расширить выборку аугментацией и — самое ответственное — правильно разбить её на обучающую, валидационную и тестовую части. Именно на последнем шаге совершается самая дорогая ошибка геопространственного ML — пространственная утечка данных, из-за которой модель выглядит блестяще на бумаге и проваливается на реальной территории.</p>
+<p>После изучения лекции слушатель сможет:</p>
+<ol>
+<li><strong>[Bloom: знать]</strong> перечислять три представления ДЗЗ-данных для ML (пиксельная таблица, тайлы, временные ряды), источники меток и основные фреймворки открытого стека (scikit-learn, PyTorch, TensorFlow, Hugging Face).</li>
+<li><strong>[Bloom: понимать]</strong> объяснять механизм пространственной утечки данных и её влияние на оценку качества модели.</li>
+<li><strong>[Bloom: применять]</strong> собирать обучающую выборку по композиту Sentinel-2 с метками из открытых карт покрытия и корректным пространственным разбиением.</li>
+<li><strong>[Bloom: анализировать]</strong> оценивать качество меток и схему разбиения чужого (в том числе сгенерированного ИИ) пайплайна и находить в них дефекты.</li>
+</ol>
+<blockquote>
+<p><strong>Границы лекции.</strong> Внутри: представления данных, разметка, аугментация, разбиение, обзор фреймворков. За рамками: сами алгоритмы — Random Forest и MiniRocket в <a href="../03-classic-models-timeseries/">уроке 3</a>, CNN в <a href="../04-cnn-and-architecture-choice/">уроке 4</a>; поиск и выгрузка снимков — <a href="../01-open-data-catalogs/">урок 1</a>; полевые методы сбора наземных данных — <a href="../../../a1/">модуль А1</a>.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. Анатомия обучающей выборки: три представления данных<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Формально обучающая выборка — это множество пар «объект → метка»: модель учится предсказывать метку по признакам объекта. В дистанционном зондировании «объектом» могут быть три принципиально разные сущности, и выбор между ними — первое проектное решение любой задачи.</p>
+<p><strong>Пиксельная таблица.</strong> Объект — отдельный пиксель; признаки — значения спектральных каналов и индексов в этом пикселе (возможно, за несколько дат); метка — класс землепользования. Получается обычная таблица «строки × столбцы», с которой работают классические алгоритмы вроде Random Forest. Достоинства: простота, скромные требования к объёму данных, интерпретируемость признаков. Ограничение: модель не видит пространственный контекст — пиксель посреди поля и пиксель у кромки лесополосы для неё различаются только спектром.</p>
+<p><strong>Тайлы (патчи).</strong> Объект — квадратный фрагмент снимка, например 64×64 или 256×256 пикселей; метка — либо класс всего фрагмента (классификация, архитектуры типа ResNet), либо попиксельная маска классов (сегментация, архитектуры типа U-Net). Тайлы сохраняют пространственный контекст — текстуру, форму границ, соседства объектов — и являются родным форматом свёрточных нейросетей. Плата: нужен большой размеченный набор и вычислительные ресурсы.</p>
+<p><strong>Временные ряды.</strong> Объект — последовательность значений (чаще всего NDVI/EVI) для одной точки или одного поля за сезон или несколько лет; метка — культура или тип использования. Это представление напрямую кодирует фенологию — то самое свойство, которое различает яровую пшеницу, пар и залежь, неотличимые на единственном снимке. С рядами работают специализированные методы, в нашем модуле — MiniRocket.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph SRC["Входные данные (урок 1)"]
+        C["Композит / серия
+Sentinel-2 L2A"]
+        L["Источник меток:
+поле · дешифрирование · готовые карты"]
+    end
+    subgraph REP["Представление"]
+        PT["Пиксельная таблица
+→ RF / GB (урок 3)"]
+        TL["Тайлы 64×64…256×256
+→ CNN (урок 4)"]
+        TS["Ряды NDVI за сезон
+→ MiniRocket (урок 3)"]
+    end
+    SPL["Разбиение
+train / val / test
+(пространственное!)"]
+    C --&gt; PT &amp; TL &amp; TS
+    L --&gt; PT &amp; TL &amp; TS
+    PT &amp; TL &amp; TS --&gt; SPL
+    SPL --&gt; M["Обучение моделей
+(уроки 3–4)"]</code></pre>
+<p><em>Рис. 1. Путь от снимка к обучающей выборке: композит и метки соединяются в одном из трёх представлений (таблица, тайлы, ряды), после чего выборка проходит пространственное разбиение. Alt: блок-схема подготовки датасета — входные снимки и метки преобразуются в пиксельные таблицы, тайлы или временные ряды, затем разбиваются на train/val/test и передаются моделям.</em></p>
+<p>Обратите внимание: все три представления собираются из <strong>одних и тех же</strong> исходных сцен. В <a href="../../practicum/01-lulc-three-approaches/">практикуме</a> вы построите все три из одного композита и одной серии NDVI — это и позволит честно сравнить три подхода на общем материале.</p>
+<h3 id="11">1.1 Сколько данных нужно?<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<p>Универсального числа не существует, но есть устойчивые ориентиры, связанные с ёмкостью моделей. Классическим алгоритмам на пиксельной таблице (Random Forest) для укрупнённых классов часто достаточно сотен–тысяч примеров на класс — при условии, что примеры репрезентативны, то есть охватывают разнообразие класса по почвам, влажности и стадиям вегетации. Методам временных рядов нужны сотни размеченных рядов на класс. Свёрточные сети прожорливее всех: обучение с нуля осмысленно от тысяч тайлов, и именно поэтому в глубоких подходах так ценятся аугментация (§ 3.2) и дообучение предобученных моделей (§ 5).</p>
+<p>Важнее абсолютного размера — покрытие изменчивости. Тысяча пикселей из одного поля несёт меньше информации, чем сто пикселей из ста разных полей: первые почти дубликаты. Планируя разметку, распределяйте усилия по территории и по градиентам условий (север–юг района, разные почвенные разности, разные хозяйства), а не концентрируйте их там, где размечать удобно. Этот принцип называют репрезентативностью выборки, и его нарушение не лечится алгоритмами.</p>
+<blockquote>
+<p><strong>Подробнее</strong> о том, какой алгоритм соответствует какому представлению, — в <a href="../03-classic-models-timeseries/">уроке 3</a> и <a href="../04-cnn-and-architecture-choice/">уроке 4</a>.</p>
+</blockquote>
+<h2 id="2">2. Откуда берутся метки: три источника и их честность<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Метки — самая дорогая часть датасета: снимки бесплатны и бесконечны, а знание «что на самом деле растёт на этом поле» стоит времени и экспертизы. Три источника меток образуют лестницу «дороже и точнее ↔ дешевле и шумнее».</p>
+<h3 id="21">2.1 Полевые данные — золотой стандарт<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>Наземные обследования — GPS-точки с зафиксированным классом, журналы севооборотов хозяйств, акты обследования угодий — дают самые надёжные метки. Требования к полевому сбору данных (координаты, время, условия — обязательные атрибуты каждого замера) подробно разобраны в <a href="../../../a1/">модуле А1</a> и профессиональном <a href="../../../p1/">модуле П1</a>. Ограничение очевидно: полевые данные покрывают точки, а не территории, их сбор медленный и дорогой. В учебном практикуме мы полевых данных не имеем — и честно это фиксируем.</p>
+<p>Отдельно подчеркнём ценность данных самих хозяйств: журнал севооборота — это готовые метки культур на уровне целых полей за много лет, то есть именно то, чего не даёт ни одна глобальная карта. Партнёрство «хозяйство даёт историю полей — аналитик даёт модель» — типовая схема региональных проектов агромониторинга, и слушатели профессиональных модулей часто приходят именно с такими данными. Юридическая и этическая сторона передачи таких данных (кому принадлежат, как обезличивать) обсуждалась в <a href="../../../a1/">модуле А1</a>.</p>
+<h3 id="22">2.2 Визуальное дешифрирование — экспертная разметка по снимку<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<p>Эксперт смотрит на снимок (и вспомогательные слои — многолетние композиты, рельеф) и вручную обводит эталонные участки классов. Это стандартная практика создания обучающих полигонов: аналитик с региональным опытом уверенно отличает пашню от пастбища и водоёма по текстуре, цвету и контексту. Качество зависит от квалификации и дисциплины: эталоны должны быть <em>чистыми</em> (внутри полигона — только один класс), <em>репрезентативными</em> (охватывать разнообразие класса — разные почвы, стадии вегетации) и <em>задокументированными</em> (кто, когда, по какому снимку размечал). Разметка по снимку одной даты рискованна для «динамических» классов: залежь в июне легко спутать с пастбищем — эксперт обязан смотреть сезонную серию.</p>
+<h3 id="23">2.3 Готовые карты покрытия — быстро, но с оговорками<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>Глобальные карты землепользования — <strong>ESA WorldCover</strong> (10 м, классы «пашня», «травянистая растительность», «вода» и др.) и аналогичные открытые продукты — позволяют получить тысячи меток за минуты: пересекаем карту с нашим композитом и читаем класс каждого пикселя. Это легальный и распространённый приём бутстрапа выборки, но у него три подводных камня, каждый из которых обязан быть проговорён в отчёте.</p>
+<p>Во-первых, <strong>чужие ошибки становятся вашими</strong>: глобальная карта сама построена моделью и содержит ошибки классификации, которые ваша модель выучит как «истину». Во-вторых, <strong>несовпадение года</strong>: карта фиксированного года не отражает последующие изменения — распаханную залежь или заброшенное поле. В-третьих, <strong>несовпадение легенды</strong>: классы глобальной карты («cropland») не совпадают с нужными вам («яровая пшеница» / «пар» / «залежь») — глобальная карта в принципе не может дать метки культур. Отсюда рабочее правило модуля: готовые карты — источник <strong>черновых</strong> меток укрупнённых классов, которые обязательно проходят выборочную визуальную верификацию, а для тонких классов (культуры) метки добываются дешифрированием сезонной динамики или полевыми данными.</p>
+<p>Минимальный протокол документирования разметки, принятый в модуле, укладывается в короткую таблицу, сопровождающую каждый набор эталонов:</p>
+<table>
+<thead>
+<tr>
+<th>Поле протокола</th>
+<th>Что фиксируем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Источник метки</td>
+<td>поле / дешифрирование / готовая карта (какая, какого года)</td>
+</tr>
+<tr>
+<td>Опорные материалы</td>
+<td>композит (даты), серия NDVI, рельеф</td>
+</tr>
+<tr>
+<td>Автор и дата</td>
+<td>кто размечал, когда</td>
+</tr>
+<tr>
+<td>Правила класса</td>
+<td>письменное определение каждого класса легенды</td>
+</tr>
+<tr>
+<td>Верификация</td>
+<td>доля проверенных меток, процент расхождений</td>
+</tr>
+</tbody>
+</table>
+<p>Пять строк дисциплины превращают «набор полигонов на диске» в научный артефакт: коллега (или вы через полгода) сможет понять, чему верить. Требование задокументированной легенды — самое недооценённое: половина споров «модель ошиблась» на поверку оказывается спором о том, что считать залежью.</p>
+<h3 id="24">2.4 Шум в метках и что с ним делать<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<p>Даже аккуратная разметка содержит шум: смешанные пиксели на границах полей, устаревшие контуры, человеческие ошибки. Практические приёмы снижения вреда: буферный отступ от границ полигонов (не брать краевые пиксели), контроль согласованности (пиксели одного полигона со «странным» спектром — кандидаты на исключение), перекрёстная разметка спорных участков двумя экспертами. И главное — <strong>оценка качества модели должна выполняться на самых чистых метках, какие есть</strong>: допустимо обучаться на шумных метках из готовой карты, но тестовый набор стоит верифицировать вручную, иначе вы измеряете согласие двух моделей, а не качество вашей.</p>
+<p>Полезно понимать и асимметрию последствий: умеренный случайный шум в обучающих метках модели переносят сравнительно стойко — ансамбли деревьев и нейросети усредняют случайные ошибки. Опасен шум <em>систематический</em>: если все залежи в выборке помечены как пастбища, никакой алгоритм не восстановит несуществующий класс, а метрики даже не просигналят о проблеме, потому что тест унаследовал ту же ошибку. Отсюда порядок приоритетов при ограниченном времени: сначала — чистота легенды и теста, затем — объём обучающей выборки, и лишь потом — тонкая настройка моделей.</p>
+<h2 id="3">3. Извлечение тайлов и аугментация<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 Нарезка тайлов<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>Для CNN снимок нарезается на тайлы фиксированного размера. Технически это скользящее окно по растру: шаг равен размеру тайла (без перекрытия) или меньше его (с перекрытием — больше примеров, но соседние тайлы сильно коррелированы, что важно учесть при разбиении, см. § 4). Каждому тайлу сопоставляется метка: класс центрального пикселя, преобладающий класс, или полная маска для сегментации. Практические мелочи, экономящие часы отладки: тайлы с большой долей замаскированных (облачных) пикселей отбрасываются; значения каналов приводятся к плавающему типу и разумному диапазону; геопривязка каждого тайла сохраняется в метаданных — без неё вы не сможете ни собрать карту из предсказаний, ни выполнить пространственное разбиение.</p>
+<p>Выбор размера тайла — компромисс между контекстом и статистикой. Крупный тайл (256×256 при 10 м — это 2,56 км стороны) даёт сети богатый контекст: видны целые поля с границами и соседствами, но таких тайлов из района получится немного, а метка «один класс на тайл» становится сомнительной — внутри почти наверняка несколько классов. Мелкий тайл (32×32, 320 м) даёт тысячи примеров с чистыми метками, но лишает сеть дальнего контекста. Для сегментации (U-Net) проблема мягче — метка попиксельная, и размер тайла выбирается из соображений памяти GPU; для классификации целых тайлов (ResNet) чистота метки критична, и размер подбирают под характерный размер объектов ландшафта. В зерновом поясе Северного Казахстана с его крупными массивами разумно начинать с 64×64 и корректировать по результатам анализа ошибок (<a href="../04-cnn-and-architecture-choice/">урок 4</a>).</p>
+<h3 id="32">3.2 Аугментация: расширяем выборку без новых данных<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>Аугментация — порождение новых обучающих примеров преобразованием существующих. Для снимков естественны геометрические преобразования: повороты на 90°/180°/270°, отражения — спутниковый снимок не имеет «верха», поэтому повёрнутое поле остаётся полем. Осторожнее с радиометрией: лёгкое варьирование яркости имитирует различия освещённости, но агрессивные цветовые искажения могут разрушить спектральную информацию, на которой держится различение классов — в отличие от обычных фотографий, в ДЗЗ точные значения каналов несут физический смысл.</p>
+<p>Два правила без исключений. Первое: <strong>аугментация применяется только к обучающей части</strong> — валидационные и тестовые данные остаются нетронутыми, иначе оценка качества искажается. Второе: аугментация не лечит систематические пробелы выборки — если в ней нет ни одного примера солончака, никакие повороты его не породят; лечится это только сбором данных. Для временных рядов и пиксельных таблиц аугментация используется реже; типовой приём для рядов — небольшие сдвиги по времени, имитирующие межгодовые сдвиги фенологии.</p>
+<h3 id="33">3.3 Дисбаланс классов<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<p>В реальных агроландшафтах Северного Казахстана классы радикально не равны по площади: пашня занимает огромные массивы, а, скажем, водные объекты или лесополосы — проценты территории. Модель, обученная на несбалансированной выборке «как есть», научится игнорировать редкие классы — и при этом покажет высокую <em>общую</em> точность (об этой ловушке метрик — <a href="../04-cnn-and-architecture-choice/">урок 4</a>). Стандартные меры: стратифицированный отбор (фиксированное число примеров каждого класса), взвешивание классов в функции потерь, передискретизация редких классов. Что выбрать — зависит от алгоритма и задачи; важно одно: решение о балансировке принимается осознанно и документируется.</p>
+<h2 id="4">4. Разбиение выборки: где живёт утечка данных<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 Зачем три части<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>Стандартная схема: <strong>train</strong> — на этих данных модель учится; <strong>validation</strong> — на них подбираются гиперпараметры и принимаются решения «какая архитектура лучше»; <strong>test</strong> — неприкосновенный набор, к которому обращаются один раз, для финальной оценки. Смешение ролей обесценивает оценку: если тест участвовал в выборе модели, он уже не независим, и настоящее качество на новых данных окажется ниже измеренного.</p>
+<p>Когда данных мало, вместо фиксированного валидационного набора применяют <strong>кросс-валидацию</strong>: выборка делится на K блоков, модель обучается K раз, каждый раз откладывая один блок на проверку, а оценкой служит среднее по K прогонам. Кросс-валидация использует данные экономнее и даёт представление о разбросе оценки, но правило пространственности распространяется и на неё: блоки должны формироваться из территориальных групп, а не из случайных пикселей — иначе K честных на вид прогонов дадут K одинаково завышенных оценок. Тестовый набор при этом всё равно остаётся отдельным и неприкосновенным: кросс-валидация — инструмент выбора модели, а не финального вердикта.</p>
+<h3 id="42">4.2 Пространственная автокорреляция — почему случайное разбиение лжёт<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>Первый закон географии Тоблера: близкие объекты похожи сильнее далёких. Соседние пиксели одного поля почти идентичны — тот же сорт, та же почва, та же дата съёмки. Теперь проследите, что делает <strong>случайное</strong> разбиение пиксельной таблицы: соседние, практически одинаковые пиксели одного поля разлетаются — один в train, другой в test. Модель «узнаёт» на тесте примеры, неотличимые от обучающих, и оценка качества взлетает. Это и есть <strong>пространственная утечка данных</strong> (spatial leakage): информация из теста просочилась в обучение через пространственную корреляцию. Модель при этом не стала лучше — лучше стала только цифра в отчёте. На новом районе, где нет «близнецов» из обучающей выборки, качество упадёт — иногда драматически. Величину падения вы измерите сами в <a href="../../practicum/01-lulc-three-approaches/">практикуме</a> и в <a href="../../ai-assistant/">ИИ-задании</a>; лекция сознательно не называет числа — оно зависит от данных.</p>
+<p>Лекарство — <strong>пространственное разбиение</strong>: делим не пиксели, а <em>территории</em>. Варианты: разбиение по полигонам разметки (все пиксели одного полигона — целиком в одной части), по полям, по квадратам регулярной сетки, по географическим блокам («запад района — обучение, восток — тест»). В scikit-learn для этого есть групповые схемы (<code>GroupKFold</code>, <code>GroupShuffleSplit</code>), где группа — идентификатор поля/полигона/ячейки сетки. Для тайлов с перекрытием группировка обязательна вдвойне: перекрывающиеся тайлы — почти дубликаты.</p>
+<h3 id="43">4.3 Другие маршруты утечки<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>Пространство — не единственный канал. <strong>Утечка через предобработку</strong>: параметры нормализации (среднее, дисперсия), вычисленные по <em>всей</em> выборке до разбиения, несут информацию о тесте; правильно — вычислять статистики только по train и применять к остальным частям (в scikit-learn это автоматизирует <code>Pipeline</code>). <strong>Временная утечка</strong>: если задача — прогноз, обучение на данных «из будущего» относительно теста обессмысливает оценку. <strong>Утечка через метку</strong>: признак, производный от целевой переменной (например, класс из той же готовой карты, из которой взяты метки, поданный как входной признак), даёт модели ответ в условии задачи. <strong>Утечка через дубликаты</strong>: одна и та же территория, попавшая в выборку дважды через разные сцены.</p>
+<p>Эти маршруты — не экзотика, а типовые дефекты реальных пайплайнов, в том числе сгенерированных ИИ-агентами: код с <code>train_test_split(X, y, random_state=42)</code> на пиксельной таблице выглядит образцово и при этом протекает. Поиск таких дефектов в сгенерированном коде — ваше <a href="../../ai-assistant/">ИИ-задание модуля</a>.</p>
+<h3 id="44">4.4 Как проверить чужой пайплайн на утечки<a class="headerlink" href="#44" title="Permanent link">&para;</a></h3>
+<p>Умение находить утечки в чужом коде — отдельный профессиональный навык, и он тренируется системно, а не интуицией. Порядок досмотра, который мы будем применять в <a href="../../ai-assistant/">ИИ-задании</a>:</p>
+<ol>
+<li><strong>Найдите строку разбиения.</strong> Какая функция делит данные? Есть ли в ней параметр групп (<code>groups=</code>)? Если это простой <code>train_test_split</code> на пиксельных данных — почти наверняка утечка.</li>
+<li><strong>Проследите происхождение каждого признака.</strong> Не участвует ли в признаках источник, из которого взяты метки? Нет ли признаков «из будущего»?</li>
+<li><strong>Найдите предобработку.</strong> Где вычисляются статистики нормализации — до или после разбиения? Обёрнуто ли всё в <code>Pipeline</code>?</li>
+<li><strong>Проверьте аугментацию.</strong> Применяется ли она к val/test?</li>
+<li><strong>Проверьте использование теста.</strong> Сколько раз код обращается к тестовому набору? Больше одного финального раза — красный флаг.</li>
+<li><strong>Сверьте единицы.</strong> Совпадает ли единица разбиения (пиксель? тайл? поле?) с единицей пространственной корреляции данных?</li>
+</ol>
+<p>Полезный эмпирический тест, дополняющий чтение кода: обучите модель дважды — со случайным и с пространственным разбиением. Большой разрыв метрик между ними — количественная подпись утечки; сам по себе он не говорит, какая схема «правильная», но показывает, насколько оптимистична случайная оценка.</p>
+<h3 id="45-">4.5 Чек-лист честного разбиения<a class="headerlink" href="#45-" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Единица разбиения — территория (полигон/поле/ячейка), не пиксель и не тайл.</li>
+<li>Статистики предобработки вычислены только по train (Pipeline).</li>
+<li>Аугментация — только в train.</li>
+<li>Тест заморожен до финальной оценки; решения принимаются по validation.</li>
+<li>Дубликаты и перекрывающиеся тайлы не пересекают границу частей.</li>
+<li>Разбиение зафиксировано (сохранены индексы/сиды) — результат воспроизводим.</li>
+</ul>
+<h2 id="5">5. Инструменты: открытый стек фреймворков<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>Собранный датасет попадает в один из фреймворков. Все инструменты модуля бесплатны и с открытым кодом.</p>
+<p><strong>scikit-learn</strong> — стандарт классического ML в Python: Random Forest, градиентный бустинг, метрики, кросс-валидация, <code>Pipeline</code> и групповые разбиения. Для пиксельных таблиц — инструмент первого выбора; работает на CPU, то есть в любом бесплатном Colab.</p>
+<p><strong>PyTorch</strong> — основной фреймворк глубокого обучения в исследовательском сообществе; на нём мы соберём CNN в <a href="../04-cnn-and-architecture-choice/">уроке 4</a>. Гибкий, с огромной экосистемой; обучение свёрточных сетей комфортно при доступе к GPU (бесплатный уровень Colab периодически его предоставляет).</p>
+<p><strong>TensorFlow/Keras</strong> — второй большой фреймворк глубокого обучения, исторически сильный в промышленном развёртывании; в модуле упоминается для полноты — задания выполнимы на PyTorch, но конспекты Keras легко переносимы.</p>
+<p><strong>Hugging Face</strong> — экосистема обмена предобученными моделями и датасетами. Для ДЗЗ ценна возможность взять предобученную модель (в том числе геопространственные foundation-модели, публикуемые открыто) и дообучить на своей задаче — это снижает потребность в размеченных данных. В модуле — обзорно; практикум обходится компактными моделями, обучаемыми с нуля.</p>
+<p><strong>sktime / специализированные библиотеки временных рядов</strong> — реализация MiniRocket и других методов классификации рядов; понадобится в <a href="../03-classic-models-timeseries/">уроке 3</a>.</p>
+<p>Выбор фреймворка определяется представлением данных: таблица → scikit-learn, ряды → sktime, тайлы → PyTorch. Это соответствие — не догма, а разумное значение по умолчанию, экономящее время.</p>
+<h3 id="51">5.1 Воспроизводимость как инженерное требование<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p>Датасет и эксперимент должны быть воспроизводимы — это не академическая роскошь, а условие доверия к результату (вспомните урок 1: заказчик вправе спросить, откуда данные; теперь добавьте — и как получена оценка качества). Минимальный набор мер: фиксируйте случайные сиды всех генераторов (NumPy, фреймворка, разбиения); сохраняйте версии библиотек (<code>pip freeze</code> в артефакты эксперимента); храните индексы разбиения, а не только его параметры; версионируйте сам датасет — хотя бы датой сборки и хешем скрипта. В ноутбуках практикума эти привычки встроены в шаблон: первая ячейка фиксирует окружение, последняя — сохраняет манифест эксперимента. Когда в <a href="../04-cnn-and-architecture-choice/">уроке 4</a> вы будете сравнивать три подхода, именно эта дисциплина позволит утверждать, что сравнение честное: одни данные, одно разбиение, одни метрики.</p>
+<hr />
+<h2 id="_2">Региональный кейс<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>Ситуация:</strong> Группа студентов готовит обучающую выборку для классификации землепользования одного из районов Костанайской области — региона зернового пояса, где преобладают крупные массивы пашни, перемежающиеся пастбищами, залежами и лесополосами. Полевых данных нет; решено бутстрапировать метки укрупнённых классов из открытой карты ESA WorldCover и верифицировать их по композиту Sentinel-2.</p>
+<p><strong>Данные:</strong> ESA WorldCover 10 м (открытый продукт, доступен в GEE и на сайте ESA); медианный композит Sentinel-2 L2A за май–сентябрь по району (построен по методике <a href="../01-open-data-catalogs/">урока 1</a>); сетка квадратов 5×5 км для пространственного разбиения.</p>
+<p><strong>Задача:</strong></p>
+<ol>
+<li>Составьте протокол выборочной верификации меток: сколько случайных точек каждого класса проверить визуально по композиту, как фиксировать расхождения.</li>
+<li>Класс WorldCover «cropland» объединяет действующую пашню и часть молодых залежей. Предложите способ отделить залежь, используя сезонную динамику NDVI (материал § 2.2–2.3).</li>
+<li>Спроектируйте разбиение train/val/test по сетке 5×5 км. Почему ячейка сетки, а не пиксель, — правильная единица разбиения в этом ландшафте?</li>
+</ol>
+<p><strong>Разбор:</strong> Протокол верификации должен быть стратифицированным (фиксированное число точек на класс, а не пропорционально площади — иначе редкие классы останутся непроверенными) и слепым (проверяющий не видит метку до вынесения своего суждения). Отделение залежи от пашни строится на фенологии: у обрабатываемой пашни сезонный ход NDVI имеет характерный цикл «сев → пик → уборка» с резкими перепадами, у залежи кривая более плавная и близка к пастбищной; следовательно, в выборку нужно добавить признаки сезонной динамики, а не только композит одной даты. Пространственная единица разбиения нужна потому, что поля в зерновом поясе огромны: пиксели одного массива почти идентичны, и случайное разбиение по пикселям создаст утечку (§ 4.2). Ячейка 5×5 км гарантирует, что целые массивы с окружением уходят в одну часть выборки. Числовых «правильных ответов» здесь нет — результат верификации студенты получают и документируют сами.</p>
+<blockquote>
+<p>Этот кейс — прямая заготовка <a href="../../practicum/01-lulc-three-approaches/">практикума</a>, где выборка собирается кодом, и <a href="../../ai-assistant/">ИИ-задания</a>, где аналогичный пайплайн генерирует кодинг-агент, а вы его проверяете.</p>
+</blockquote>
+<hr />
+<h2 id="_3">Закрепление и применение<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Попробуйте в Colab</p>
+<p>В ноутбуке урока (<code>&lt;URL будет назначен при создании репозитория ноутбуков&gt;</code>) соберите мини-выборку: 500 пикселей из композита Sentinel-2 с метками WorldCover, разбейте её дважды — случайно и по сетке 5×5 км — и обучите один и тот же Random Forest. Сравните точность на двух тестах. Разница, которую вы увидите, — цена пространственной утечки, измеренная вашими руками.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Границы применимости</p>
+<p>Метки из глобальных карт пригодны только для укрупнённых классов и только после выборочной верификации; классы культур они не дают в принципе. Аугментация не компенсирует отсутствующие в выборке классы и ландшафты. Пространственное разбиение по сетке — стандартное, но не единственное решение: при сильных градиентах ландшафта (север–юг области) осмысленно блочное разбиение вдоль градиента.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Что это даёт вашему хозяйству</p>
+<p>Понимание «откуда метки и как разбита выборка» — главный вопрос, который стоит задать любому поставщику ИИ-сервиса агромониторинга. Сервис, обученный и проверенный на «соседних пикселях», покажет красивые проценты в презентации и ошибётся на ваших полях. Умение задать этот вопрос — уже защита от некачественного продукта; версия для практиков — в <a href="../../../p3/">модуле П3</a>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Кейс для размышления</p>
+<p>Коллега предлагает: «Добавим в признаки классификации культур слой WorldCover — он же коррелирует с ответом!» Метки вашей выборки взяты из того же WorldCover. Найдите все дефекты этого предложения, пользуясь § 2.3 и § 4.3.</p>
+</div>
+<h3 id="_4">Проверь себя<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre class="quiz"><code>[
+  {
+    "q": "Пиксельная таблица, тайлы и временные ряды — три представления ДЗЗ-данных. Какое из них напрямую кодирует фенологию культуры?",
+    "options": [
+      "Временные ряды NDVI/EVI за сезон",
+      "Пиксельная таблица по композиту одной даты",
+      "Тайлы 256×256 с одного снимка",
+      "Все три представления кодируют фенологию одинаково"
+    ],
+    "answer": 0,
+    "explain": "§ 1: ряд значений индекса за сезон описывает динамику развития растительности — фенологическую кривую; композит и одиночные тайлы фиксируют лишь момент или медиану сезона."
+  },
+  {
+    "q": "Почему метки из глобальной карты ESA WorldCover нельзя использовать для обучения классификатора культур (пшеница/ячмень/пар)?",
+    "options": [
+      "Легенда WorldCover не содержит классов культур — «cropland» един для всех культур",
+      "WorldCover распространяется платно",
+      "Разрешение WorldCover слишком грубое для полей Северного Казахстана",
+      "Метки из готовых карт запрещено использовать в любых задачах"
+    ],
+    "answer": 0,
+    "explain": "§ 2.3: несовпадение легенды — глобальная карта в принципе не различает культуры; для укрупнённых классов её использовать можно (с верификацией). Разрешение WorldCover — 10 м, продукт открытый."
+  },
+  {
+    "q": "В чём механизм пространственной утечки данных при случайном разбиении пиксельной выборки?",
+    "options": [
+      "Соседние почти одинаковые пиксели одного поля попадают и в train, и в test — тест перестаёт быть независимым",
+      "Случайное разбиение делает классы несбалансированными",
+      "Случайное разбиение уменьшает размер обучающей выборки",
+      "Пиксели теряют геопривязку при перемешивании"
+    ],
+    "answer": 0,
+    "explain": "§ 4.2: близкие объекты сильно коррелированы (закон Тоблера); «близнецы» обучающих пикселей в тесте завышают оценку качества, не улучшая модель."
+  },
+  {
+    "q": "Какая последовательность действий с нормализацией признаков корректна?",
+    "options": [
+      "Разбить выборку → вычислить среднее и дисперсию по train → применить их к val и test",
+      "Вычислить среднее и дисперсию по всей выборке → разбить → нормализовать каждую часть",
+      "Нормализовать каждую часть её собственными статистиками",
+      "Нормализация не влияет на честность оценки, порядок не важен"
+    ],
+    "answer": 0,
+    "explain": "§ 4.3: статистики, вычисленные по всей выборке до разбиения, переносят информацию о тесте в обучение — это утечка через предобработку; корректный порядок автоматизирует Pipeline scikit-learn."
+  },
+  {
+    "q": "Аугментацию (повороты, отражения тайлов) применяют:",
+    "options": [
+      "Только к обучающей части выборки",
+      "Ко всей выборке до разбиения — так больше данных",
+      "Только к тестовой части — для стресс-теста модели",
+      "К валидационной и тестовой частям в равной мере"
+    ],
+    "answer": 0,
+    "explain": "§ 3.2: аугментированные копии в val/test искажают оценку качества; расширяется только train."
+  }
+]</code></pre>
+<h3 id="_5">Контрольные вопросы<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Назовите три источника меток и по одному ограничению каждого. <em>(Bloom: знать)</em></li>
+<li>Объясните коллеге-агроному без математики, почему «модель проверили на соседних пикселях» — это не проверка. <em>(Bloom: понимать)</em></li>
+<li>Спроектируйте схему разбиения выборки для классификации землепользования вашего района СКО: единица группировки, доли частей, что фиксируете для воспроизводимости. <em>(Bloom: применять)</em></li>
+</ol>
+<h2 id="_6">Что дальше?<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Датасет собран и честно разбит — пора обучать модели. <a href="../03-classic-models-timeseries/">Урок 3 «Обучаем интерпретируемые модели»</a> начинает с Random Forest и градиентного бустинга на пиксельной таблице и продолжает MiniRocket на рядах NDVI. Затем <a href="../04-cnn-and-architecture-choice/">урок 4</a> добавит CNN и сведёт все три подхода в честное сравнение. Связанные материалы: <a href="../../../../datasets/">политика датасетов платформы</a>, <a href="../../../p4/">модуль П4 — Python и Jupyter для специалистов</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../01-open-data-catalogs/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-classic-models-timeseries/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/qrcode.js"></script>
+      
+        <script src="../../../../javascripts/modules-manifest.js"></script>
+      
+        <script src="../../../../javascripts/quiz-engine.js"></script>
+      
+        <script src="../../../../javascripts/verify.js"></script>
+      
+        <script src="../../../../javascripts/steppe.js"></script>
+      
+    
+  </body>
+</html>
