@@ -553,6 +553,78 @@
     });
   }
 
+  /* ── Скролл-реявл (squidfunk-стиль): плавное появление блоков лендинга
+   * при прокрутке. Только главная и страницы модулей (courseLanding()).
+   * Скрытие задаётся ТОЛЬКО через JS-класс .folur-anim на <html> — без JS
+   * или без IntersectionObserver всё остаётся видимым (см. requirement #3). */
+  function scrollReveal() {
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (window.__FOLUR_PDF__ || reduce) return; // печать/PDF и reduced-motion — всё видно сразу, класс не добавляем
+
+    var isHome = /^\/(index\.html)?$/.test(location.pathname);
+    var isModuleLanding = /\/modules\/[ap]\d+\/(index\.html)?$/.test(location.pathname);
+    if (!isHome && !isModuleLanding) return;
+
+    var article = document.querySelector("article.md-content__inner, article");
+    if (!article) return;
+
+    // группы: каждая — свой стаггер-счётчик, чтобы длинная страница не «тянулась»
+    var groups = [];
+    var hero = article.querySelector(".folur-hero, .folur-course-hero");
+    if (hero) groups.push([hero]);
+    var band = article.querySelector(".folur-course-band");
+    if (band) groups.push([band]);
+    var stats = article.querySelector(".folur-stats");
+    if (stats) groups.push(Array.prototype.slice.call(stats.querySelectorAll(".folur-stat")));
+    var learn = article.querySelector(".folur-learn");
+    if (learn) groups.push([learn]);
+    article.querySelectorAll(".folur-block-head").forEach(function (h) { groups.push([h]); });
+    article.querySelectorAll(".grid.cards").forEach(function (grid) {
+      groups.push(Array.prototype.slice.call(grid.querySelectorAll(":scope > :is(ul,ol) > li")));
+    });
+
+    var targets = [];
+    groups.forEach(function (group) {
+      group.forEach(function (el, i) {
+        if (!el || el.classList.contains("folur-reveal-item")) return; // idempotent: не переинициализировать
+        el.classList.add("folur-reveal-item");
+        el.style.setProperty("--i", String(i));
+        targets.push(el);
+      });
+    });
+    if (!targets.length) return;
+
+    document.documentElement.classList.add("folur-anim");
+
+    if (!("IntersectionObserver" in window)) {
+      // нет наблюдателя — не прячем контент вовсе (без .folur-anim прячущий CSS не сработает,
+      // но подстрахуемся явным снятием класса)
+      document.documentElement.classList.remove("folur-anim");
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("folur-reveal-in");
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+    targets.forEach(function (el) { io.observe(el); });
+
+    // фокус клавиатурой на ещё не раскрытом элементе — раскрыть немедленно.
+    // Слушатель вешаем ОДИН раз: init()/scrollReveal() вызывается на каждой
+    // instant-nav смене страницы, иначе слушатели focusin копились бы (утечка).
+    if (!scrollReveal._focusBound) {
+      scrollReveal._focusBound = true;
+      document.addEventListener("focusin", function (e) {
+        var el = e.target && e.target.closest && e.target.closest(".folur-reveal-item:not(.folur-reveal-in)");
+        if (el) el.classList.add("folur-reveal-in");
+      });
+    }
+  }
+
   function init() {
     readbar();
     lessonHead();
@@ -562,6 +634,7 @@
     cardCovers();
     myLearning();
     pruneSidebarToModule();
+    scrollReveal();
   }
 
   if (window.document$ && window.document$.subscribe) {
