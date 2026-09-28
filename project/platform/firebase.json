@@ -1,12 +1,35 @@
 {
   "hosting": {
     "public": "site",
-    "ignore": ["firebase.json", "**/.*"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/bathymetry-training-80k.csv",
+      "**/lesson-bathymetry-tracks.csv",
+      "**/lesson-shore-synthetic.csv",
+      "**/SECRET-origin.json",
+      "**/bathymetry-grid-100m.tfw",
+      "**/bathymetry-grid-100m.tif",
+      "**/bathymetry-training-set.csv",
+      "**/private-datasets/**"
+    ],
     "cleanUrls": true,
     "headers": [
       {
         "source": "**/*.@(csv|ipynb|pdf|tif|tfw|zip)",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/files/bathymetry-training-80k.csv",
+        "destination": "https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1",
+        "type": 301
       }
     ]
   }

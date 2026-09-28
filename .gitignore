@@ -3,6 +3,10 @@
 *Zone.Identifier
 .~lock.*#
 
+# Служебный граф знаний (graphify) и локальные отчёты — не для публичного репо
+graphify-out/
+Отчет_по_архитектуре_UNDP_FOLUR.docx
+
 # Рабочие извлечения из docx (генерируются заново)
 .work/
 
@@ -34,3 +38,11 @@ data-raw-restricted/
 # и Firebase-деплою; пересоздаются tools/make_module_pdfs.mjs), офлайн-пакет —
 # 40 МБ, раздаётся координатором вручную, в git не хранится.
 project/platform/offline/
+
+# Локальное хранилище изъятых материалов B/C
+/project/private-datasets/
+**/bathymetry-grid-100m.tif
+**/bathymetry-grid-100m.tfw
+**/lesson-bathymetry-tracks.csv
+**/lesson-shore-synthetic.csv
+**/bathymetry-training-set.csv
