@@ -7,7 +7,7 @@
 
 <p><em>Практикум</em>: полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2</p>
 
-<p><em>Инструменты:</em> QGIS (свободный), браузер Copernicus (бесплатная регистрация CDSE), Google Colab или калькулятор — только открытый стек. Данные: OpenStreetMap (подложка), Sentinel-2 L2A (Copernicus Data Space Ecosystem) — открытые; дрон не требуется.</p>
+<p><em>Инструменты:</em> QGIS (свободный), браузер Copernicus (бесплатная регистрация CDSE), встроенный редактор Python или калькулятор — только открытый стек. Данные: OpenStreetMap (подложка), Sentinel-2 L2A (Copernicus Data Space Ecosystem) — открытые; дрон не требуется.</p>
 
 <p><em><strong>Цель практикума</strong></em><em><strong>:</strong></em> самостоятельно спроектировать полётное задание БПЛА на модельный участок пашни в Северном Казахстане — от контура и целевого GSD до схемы маршрутов и оценки времени миссии — и обосновать выбор платформы, сопоставив ожидаемый результат съёмки с реальным снимком Sentinel-2 той же территории</p>
 
@@ -19,7 +19,7 @@
 
 <p class="upgraded-list-item">(Для Шага 7) открытый ЦМР на район — Copernicus GLO-30 DEM (portal.opentopography.org) или SRTM 1 arc-sec; уклоны считаются в QGIS: «Растр → Анализ → Уклон». Слой земного покрова, если нужен, — ESA WorldCover (esa-worldcover.org).</p>
 
-<p class="upgraded-list-item">Ноутбук практикума в Colab: Google Colab (<a href="/python-lab/editor.html?exercise=a1-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>) (расчёты можно выполнить и вручную по формулам Урока 2).</p>
+<p class="upgraded-list-item">Расчёты миссии: <a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a> в конце этой страницы; устанавливать ничего не нужно (расчёты можно выполнить и вручную по формулам Урока 2).</p>
 
 <p class="upgraded-list-item">Параметры условного учебного сенсора (из Урока 2): пиксель p = 3 мкм, фокусное f = 8 мм, матрица 4000 × 3000.</p>
 
@@ -49,7 +49,7 @@
 
 ## Шаг 3: рассчитываем параметры миссии (20 мин)
 
-<p>В ноутбуке Colab (или вручную) вычислите для условного сенсора:</p>
+<p>Во <a href="#python-practice">встроенном редакторе Python</a> (или вручную) вычислите для условного сенсора:</p>
 
 ```python
 p = 3e-6      # размер пикселя, м
@@ -137,7 +137,7 @@ print(H, W, L, spacing, shutter)
 
 <p class="upgraded-list-item">mission.gpkg + mission-map.pdf — схема маршрутов и оформленная карта;</p>
 
-<p class="upgraded-list-item">таблица параметров миссии (в ноутбуке или parameters.csv);</p>
+<p class="upgraded-list-item">таблица параметров миссии (из редактора Python или parameters.csv);</p>
 
 <p class="upgraded-list-item">фрагмент Sentinel-2 (GeoTIFF) + метаданные сцены (дата, ID, облачность);</p>
 
@@ -157,9 +157,10 @@ print(H, W, L, spacing, shutter)
 
 <section class="folur-python-practice" id="python-practice">
 <h3>Практика в Python — прямо в уроке</h3>
-<p>Запустите пример по теме, измените параметры и сравните результаты. Код, таблицы, изображения и графики доступны в редакторе. <a href="/python-lab/editor.html?exercise=a1-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
+<ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
+<p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=a1-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=a1-practice" title="Python: a1-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p><strong>О данных и границах примера.</strong> По умолчанию используются синтетические данные. Реальные CSV, изображения и растры можно загрузить через «Свои файлы». Условия конкретного упражнения и ограничения указаны в редакторе. Для расчётов на 80 000 промерах скачайте набор уровня A с <a href="https://zenodo.org/records/23014446">Zenodo</a> и загрузите его как <code>points.csv</code>. Закрытые наборы B/C не используются.</p>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример работает на синтетических (учебных) данных — скачивать ничего не нужно. Свои CSV, изображения и растры можно подключить в редакторе: раскройте блок «Свои файлы и возможности среды».</p>
 </section>
 
 ---

@@ -270,3 +270,44 @@
   }
 }
 @media print { .folur-nav-toggle { display: none !important; } }
+
+/* ── Номера разделов: шильдик вместо голого «2.3» ────────────────────────── */
+.md-typeset :is(h2, h3).folur-numbered { display: flex; align-items: baseline; gap: .6rem; }
+.md-typeset :is(h2, h3).folur-numbered > .headerlink { margin-left: 0; }
+.folur-hnum-dot { display: none; }
+.folur-hnum {
+  flex: none; align-self: flex-start;
+  font: 800 .78rem/1 "Manrope", "Inter", sans-serif;
+  min-width: 1.75rem; padding: .42rem .5rem; margin-top: .12rem; text-align: center;
+  color: #fff; background: var(--folur-green);
+  border-radius: .45rem; letter-spacing: 0;
+}
+.md-typeset h3 > .folur-hnum {
+  font-size: .66rem; padding: .3rem .45rem; margin-top: .1rem;
+  color: var(--folur-green); background: color-mix(in srgb, var(--folur-green-light) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--folur-green-light) 45%, transparent);
+}
+[data-md-color-scheme="slate"] .folur-hnum { background: #2E7D52; }
+[data-md-color-scheme="slate"] .md-typeset h3 > .folur-hnum { color: #7DD3A3; background: rgba(125,211,163,.10); border-color: rgba(125,211,163,.35); }
+
+/* ── Блок «Практика в Python»: задание, шаги запуска, данные ─────────────── */
+.md-typeset p.folur-lab-task {
+  margin: .6rem 0 1rem; padding: .8rem 1rem;
+  border: 1px solid var(--folur-line); border-left: 4px solid var(--folur-wheat);
+  border-radius: var(--r-sm, .45rem);
+  background: color-mix(in srgb, var(--folur-wheat) 8%, var(--md-default-bg-color));
+}
+.md-typeset ol.folur-lab-steps { margin: .6rem 0 .5rem; padding: 0; list-style: none; counter-reset: lab; display: grid; gap: .35rem; }
+.md-typeset ol.folur-lab-steps > li {
+  counter-increment: lab; position: relative; margin: 0; padding-left: 2rem; font-size: .78rem;
+}
+.md-typeset ol.folur-lab-steps > li::before {
+  content: counter(lab); position: absolute; left: 0; top: .12rem;
+  width: 1.3rem; height: 1.3rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--folur-green); color: #fff; font-size: .62rem; font-weight: 800;
+}
+.md-typeset p.folur-lab-note { margin: .2rem 0 .9rem; font-size: .72rem; color: var(--md-default-fg-color--light); }
+.md-typeset p.folur-lab-data {
+  margin-top: .9rem; padding: .7rem .9rem; font-size: .74rem;
+  border: 1px dashed var(--folur-line); border-radius: var(--r-sm, .45rem);
+}

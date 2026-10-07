@@ -157,6 +157,24 @@
     var lesson = /\/(lectures|practicum)\//.test(location.pathname);
     var kids = Array.prototype.slice.call(article.children);
 
+    // 0) номер раздела («2.», «2.3») — отдельный шильдик; точка остаётся в тексте
+    //    (невидимой), чтобы заголовок читался и искался как прежде
+    kids.forEach(function (h) {
+      if (!/^H[23]$/.test(h.tagName)) return;
+      var t = firstText(h), m = t && t.data.match(/^(\d+(?:\.\d+)*)(\.?)(\s+)/);
+      if (!m) return;
+      var num = document.createElement("span");
+      num.className = "folur-hnum";
+      num.textContent = m[1];
+      var dot = document.createElement("span");
+      dot.className = "folur-hnum-dot";
+      dot.textContent = m[2] + m[3];
+      t.data = t.data.slice(m[0].length);
+      h.insertBefore(dot, t);
+      h.insertBefore(num, dot);
+      h.classList.add("folur-numbered");
+    });
+
     // 1) выноски: абзац начинается с метки курсивом/полужирным («Разбор:», «Границы лекции.»)
     kids.forEach(function (p) {
       if (!plainP(p)) return;

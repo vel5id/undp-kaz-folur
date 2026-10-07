@@ -11,7 +11,7 @@
 <tr><td colspan="1" rowspan="1">Целевая аудитория</td><td colspan="1" rowspan="1">Обучающиеся по направлениям «Агрономия», «Точное земледелие», «Экология, «Землеустройство», «Природообустройство», «Экологический менеджмент»</td></tr>
 <tr><td colspan="1" rowspan="1">Связь с FOLUR</td><td colspan="1" rowspan="1">Компоненты 1 и 2</td></tr>
 <tr><td colspan="1" rowspan="1">Основной региональный контекст</td><td colspan="1" rowspan="1">Северный Казахстан</td></tr>
-<tr><td colspan="1" rowspan="1">Основное ПО</td><td colspan="1" rowspan="1">QGIS, Copernicus Data Space, Google Colab, OpenDroneMap</td></tr>
+<tr><td colspan="1" rowspan="1">Основное ПО</td><td colspan="1" rowspan="1">QGIS, Copernicus Data Space, встроенный редактор Python (в браузере), OpenDroneMap</td></tr>
 <tr><td colspan="1" rowspan="1">Дополнительные инструменты</td><td colspan="1" rowspan="1">Python, Google Earth Engine</td></tr>
 <tr><td colspan="1" rowspan="1">Необходимость БПЛА</td><td colspan="1" rowspan="1">Не является обязательной</td></tr>
 <tr><td colspan="1" rowspan="1">Итоговый продукт</td><td colspan="1" rowspan="1">Комплексный проект цифрового мониторинга сельскохозяйственного участка</td></tr>

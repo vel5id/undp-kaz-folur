@@ -155,7 +155,7 @@
 
 ### 9.3 Данные модуля
 
-<p>Только открытые и бесплатные источники: Sentinel-2 (Copernicus Data Space Ecosystem, Google Earth Engine, Microsoft Planetary Computer), Landsat/MODIS/ASTER (USGS/NASA), ESA WorldCover, OpenStreetMap, data.egov.kz. Политика данных платформы — Датасеты. Ноутбуки практикума: Colab-ссылка — Google Colab (<a href="/python-lab/editor.html?exercise=a3-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>).</p>
+<p>Только открытые и бесплатные источники: Sentinel-2 (Copernicus Data Space Ecosystem, Google Earth Engine, Microsoft Planetary Computer), Landsat/MODIS/ASTER (USGS/NASA), ESA WorldCover, OpenStreetMap, data.egov.kz. Политика данных платформы — Датасеты. Ноутбуки практикума: встроенный редактор Python (<a href="/python-lab/editor.html?exercise=a3-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>).</p>
 
 ### 9.4 Оценивание
 

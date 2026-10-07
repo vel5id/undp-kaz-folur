@@ -21,7 +21,7 @@
 
 <p>Данные: <code>datasets/bathymetry-training-80k.csv</code> (уровень A) + контрольная сетка <code>bathymetry-grid-100m.tif</code> (уровень B) — см. Датасеты платформы.</p>
 
-<p>▶ Открыть в Google Colab (<a href="/python-lab/editor.html?exercise=p11-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>)</p>
+<p>▶ Открыть в <a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a></p>
 
 <p>Цель практикума</p>
 
@@ -31,9 +31,9 @@
 
 <p>Что нужно подготовить</p>
 
-<p class="upgraded-list-item">Google-аккаунт и доступ к Colab (<a href="/python-lab/editor.html?exercise=p11-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>) (бесплатно; навык из П4, лекция 1 — достаточно уметь запускать ячейки);</p>
+<p class="upgraded-list-item">Google-аккаунт и доступ к Colab (<a href="#python-practice">шаг «Практика в Python»</a>) (бесплатно; навык из П4, лекция 1 — достаточно уметь запускать ячейки);</p>
 
-<p class="upgraded-list-item">ноутбук практикума: ▶ Редактор Python (<a href="/python-lab/editor.html?exercise=p11-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>);</p>
+<p class="upgraded-list-item">ноутбук практикума: ▶ Редактор Python (<a href="#python-practice">шаг «Практика в Python»</a>);</p>
 
 <p class="upgraded-list-item">файл <code>bathymetry-training-80k.csv</code> — скачивается из репозитория платформы (см. Датасеты);</p>
 
@@ -148,9 +148,10 @@ TOLERANCE = 2.5    # м, допуск отклонения от медианы
 
 <section class="folur-python-practice" id="python-practice">
 <h3>Практика в Python — прямо в уроке</h3>
-<p>Запустите пример по теме, измените параметры и сравните результаты. Код, таблицы, изображения и графики доступны в редакторе. <a href="/python-lab/editor.html?exercise=p11-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
+<ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
+<p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=p11-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=p11-practice" title="Python: p11-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p><strong>О данных и границах примера.</strong> По умолчанию используются синтетические данные. Реальные CSV, изображения и растры можно загрузить через «Свои файлы». Условия конкретного упражнения и ограничения указаны в редакторе. Для расчётов на 80 000 промерах скачайте набор уровня A с <a href="https://zenodo.org/records/23014446">Zenodo</a> и загрузите его как <code>points.csv</code>. Закрытые наборы B/C не используются.</p>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример сразу работает на синтетических (учебных) данных. Чтобы повторить расчёт на реальных 80 000 промерах: 1) скачайте файл <a href="https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1">bathymetry-training-80k.csv</a> (набор уровня A, <a href="https://zenodo.org/records/23014446">страница набора на Zenodo</a>); 2) переименуйте его в <code>points.csv</code>; 3) в редакторе раскройте «Свои файлы и возможности среды» и выберите этот файл; 4) нажмите «Запустить».</p>
 </section>
 
 ---

@@ -13,7 +13,7 @@
 
 <p>Данные: открытые архивы Sentinel-2, Landsat, MODIS/VIIRS, ERA5-Land, OpenStreetMap, открытые слои земного покрова и ООПТ/Ramsar. Реальные координаты водных объектов в материалы не включаются (см. политику данных).</p>
 
-<p><a class="md-button md-button--primary" href="/python-lab/editor.html?exercise=a6-practice" target="_blank" rel="noopener">▶ Открыть редактор Python</a></p>
+<p><a class="md-button md-button--primary" href="#python-practice">▶ Открыть редактор Python</a></p>
 
 ## Цель практикума
 
@@ -25,7 +25,7 @@
 
 <p class="upgraded-list-item">Google-аккаунт и регистрация в Google Earth Engine (<a href="https://earthengine.google.com">https://earthengine.google.com</a>) (бесплатная некоммерческая учётная запись; активация занимает до пары дней — сделайте заранее).</p>
 
-<p class="upgraded-list-item">Доступ к Colab (<a href="/python-lab/editor.html?exercise=a6-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>) (бесплатно; ноутбук-заготовка: ▶ Редактор Python (<a href="/python-lab/editor.html?exercise=a6-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>)) или к GEE Code Editor (<a href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>).</p>
+<p class="upgraded-list-item">Доступ к Colab (<a href="#python-practice">шаг «Практика в Python»</a>) (бесплатно; ноутбук-заготовка: ▶ Редактор Python (<a href="#python-practice">шаг «Практика в Python»</a>)) или к GEE Code Editor (<a href="https://code.earthengine.google.com">https://code.earthengine.google.com</a>).</p>
 
 <p class="upgraded-list-item">QGIS (<a href="https://qgis.org">https://qgis.org</a>) (бесплатно) — для сборки итоговой карты; по желанию плагин <strong>Trends.Earth</strong> (лекция 3) для сверки субиндикаторов.</p>
 
@@ -227,9 +227,10 @@ Map.addLayer(ndvi.clip(aoi.buffer(2000)), {min: 0, max: 0.8,
 
 <section class="folur-python-practice" id="python-practice">
 <h3>Практика в Python — прямо в уроке</h3>
-<p>Запустите пример по теме, измените параметры и сравните результаты. Код, таблицы, изображения и графики доступны в редакторе. <a href="/python-lab/editor.html?exercise=a6-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
+<ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
+<p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=a6-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=a6-practice" title="Python: a6-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p><strong>О данных и границах примера.</strong> По умолчанию используются синтетические данные. Реальные CSV, изображения и растры можно загрузить через «Свои файлы». Условия конкретного упражнения и ограничения указаны в редакторе. Для расчётов на 80 000 промерах скачайте набор уровня A с <a href="https://zenodo.org/records/23014446">Zenodo</a> и загрузите его как <code>points.csv</code>. Закрытые наборы B/C не используются.</p>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример работает на синтетических (учебных) данных — скачивать ничего не нужно. Свои CSV, изображения и растры можно подключить в редакторе: раскройте блок «Свои файлы и возможности среды».</p>
 </section>
 
 ---

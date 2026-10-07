@@ -17,7 +17,7 @@
 
 <p class="upgraded-list-item">ESA WorldCover — тайл на территорию района (открыто, CC BY) или из учебного набора платформы.</p>
 
-<p class="upgraded-list-item">Учебный ортофотоплан участка (готовый набор платформы — дрон не обязателен): Google Colab (<a href="/python-lab/editor.html?exercise=a2-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>).</p>
+<p class="upgraded-list-item">Учебный ортофотоплан участка (готовый набор платформы — дрон не обязателен): <a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a>.</p>
 
 <p class="upgraded-list-item">Сцена Sentinel-2 L2A вегетационного периода с Copernicus Data Space (бесплатная регистрация) — фон и слой продуктивности (NDVI) для пастбищных шагов.</p>
 
@@ -131,7 +131,7 @@
 
 <p>Шаг 9 (по желанию): интерактивная версия и проверка кода</p>
 
-<p>Экспортируйте веб-карту плагином qgis2web, либо постройте интерактивную карту в Colab (GeoDataFrame.explore()); готовый блокнот пока не опубликован; рабочая среда — Google Colab (<a href="/python-lab/editor.html?exercise=a2-practice" target="_blank" rel="noopener">открыть в новой вкладке</a>).</p>
+<p>Экспортируйте веб-карту плагином qgis2web, либо постройте интерактивную карту в Colab (GeoDataFrame.explore()); готовый блокнот пока не опубликован; рабочая среда — <a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a>.</p>
 
 <p>Если проходите задание ИИ-ассистента — используйте таблицу шага 4 как эталон для верификации скрипта агента.</p>
 
@@ -162,9 +162,10 @@
 
 <section class="folur-python-practice" id="python-practice">
 <h3>Практика в Python — прямо в уроке</h3>
-<p>Запустите пример по теме, измените параметры и сравните результаты. Код, таблицы, изображения и графики доступны в редакторе. <a href="/python-lab/editor.html?exercise=a2-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
+<ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
+<p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=a2-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=a2-practice" title="Python: a2-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p><strong>О данных и границах примера.</strong> По умолчанию используются синтетические данные. Реальные CSV, изображения и растры можно загрузить через «Свои файлы». Условия конкретного упражнения и ограничения указаны в редакторе. Для расчётов на 80 000 промерах скачайте набор уровня A с <a href="https://zenodo.org/records/23014446">Zenodo</a> и загрузите его как <code>points.csv</code>. Закрытые наборы B/C не используются.</p>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример работает на синтетических (учебных) данных — скачивать ничего не нужно. Свои CSV, изображения и растры можно подключить в редакторе: раскройте блок «Свои файлы и возможности среды».</p>
 </section>
 
 ---

@@ -90,18 +90,16 @@ el('files').onchange=async()=>{
  if(file.name.length>120||/[\u0000-\u001f\u007f]/.test(file.name)||file.name.startsWith('.')||! /\.(csv|json|geojson|png|jpe?g|webp|tiff?|txt)$/i.test(file.name)||/[\/\\]/.test(file.name)||names.has(file.name)){el('file-state').textContent='Неподдерживаемое или повторяющееся имя файла: '+file.name;return;}names.add(file.name);}
  try{uploads=await Promise.all(files.map(async f=>{const data=new Uint8Array(await f.arrayBuffer()),ext=f.name.split('.').pop().toLowerCase();const sig=[...data.slice(0,12)].map(x=>x.toString(16).padStart(2,'0')).join('');let valid=true;if(ext==='png')valid=sig.startsWith('89504e470d0a1a0a');if(['jpg','jpeg'].includes(ext))valid=sig.startsWith('ffd8ff');if(ext==='webp')valid=sig.startsWith('52494646')&&sig.slice(16,24)==='57454250';if(['tif','tiff'].includes(ext))valid=['49492a00','4d4d002a','49492b00','4d4d002b'].some(x=>sig.startsWith(x));if(!valid)throw Error('Формат изображения не соответствует расширению: '+f.name);return {name:f.name,data};}));}catch(e){el('file-state').textContent=String(e);return;}el('file-state').textContent=uploads.length?'В памяти браузера: '+uploads.map(f=>f.name).join(', '):'Свои файлы не выбраны.';
 };
-el('exercise').onchange=()=>{const u=new URL(location.href);if(el('exercise').value==='__all'){u.searchParams.set('all','1');}else u.searchParams.set('exercise',el('exercise').value);location.href=u.href;};
+el('exercise').onchange=()=>{const u=new URL(location.href);u.searchParams.set('exercise',el('exercise').value);location.href=u.href;};
 editor.on('change',()=>{if(config)try{localStorage.setItem(key(),editor.getValue());changed=true;}catch(e){}});
 try{
  const r=await fetch('catalog.json');if(!r.ok)throw new Error('Не удалось загрузить каталог');catalog=await r.json();
  const item=catalog.find(x=>x.id===selected);if(!item)throw new Error('Упражнение не найдено');
- // Из урока открыт редактор одного модуля: в списке только его упражнения, а не весь каталог курса.
- const scoped=item.module!=='demo'&&!new URLSearchParams(location.search).has('all');
- if(scoped){
-  catalog.filter(x=>x.module===item.module).forEach(x=>el('exercise').append(new Option(x.title,x.id)));
-  el('exercise').append(new Option('Все упражнения курса…','__all'));
-  el('exercise-label').textContent='Упражнения модуля '+item.module.toUpperCase();
- }else{
+ // Упражнение, открытое из урока, фиксировано: список выбора есть только в общем каталоге
+ // (страница «Python-практика», ?exercise=demo-visuals или ?all=1), чтобы слушатель не уходил в чужие уроки.
+ const locked=item.module!=='demo'&&!new URLSearchParams(location.search).has('all');
+ if(locked){el('exercise').hidden=true;el('exercise-label').hidden=true;el('exercise').append(new Option(item.title,item.id));}
+ else{
   const groups=new Map();
   catalog.forEach(x=>{if(!groups.has(x.module)){const g=document.createElement('optgroup');g.label=x.module==='demo'?'Демонстрация':'Модуль '+x.module.toUpperCase();groups.set(x.module,g);el('exercise').append(g);}groups.get(x.module).append(new Option(x.title,x.id));});
  }
