@@ -8,6 +8,14 @@
     "page": ""
   },
   {
+    "id": "my-field",
+    "title": "Мой участок · паспорт данных и расчёты",
+    "label": "Мой участок",
+    "module": "project",
+    "recipe": "project",
+    "page": ""
+  },
+  {
     "id": "a1-l01",
     "title": "A1.1 · Паспорт потока данных",
     "label": "A1.1",

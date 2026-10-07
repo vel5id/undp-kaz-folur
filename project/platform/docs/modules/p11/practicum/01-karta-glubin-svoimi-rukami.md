@@ -155,6 +155,7 @@ TOLERANCE = 2.5    # м, допуск отклонения от медианы
 <p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=p11-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=p11-practice" title="Python: p11-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
 <p class="folur-lab-data"><strong>О данных.</strong> Пример сразу работает на синтетических (учебных) данных. Чтобы повторить расчёт на реальных 80 000 промерах: 1) скачайте файл <a href="https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1">bathymetry-training-80k.csv</a> (набор уровня A, <a href="https://zenodo.org/records/23014446">страница набора на Zenodo</a>); 2) в редакторе, в блоке «Свои данные и возможности среды», нажмите «Подставить свой файл» у строки <code>points.csv</code> и выберите скачанный файл (переименовывать не нужно); 3) нажмите «Запустить».</p>
+<p class="folur-lab-own"><strong>Свой участок.</strong> Во вкладке «Мой участок» над редактором можно вставить координаты своего поля или загрузить его контур (GeoJSON, KML, GeoPackage, Shapefile в архиве .zip) и снимок (GeoTIFF) — и получить паспорт данных, площадь, систему координат и оценку съёмки. Данные остаются в вашем браузере и сохраняются для следующих уроков.</p>
 </section>
 
 ---
