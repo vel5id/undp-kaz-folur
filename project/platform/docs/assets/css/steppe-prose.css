@@ -354,3 +354,21 @@
   color: #fff; background: var(--folur-green);
 }
 @media print { .folur-hint { display: none; } }
+
+/* Снимки экрана программ: где скачать и что нажать */
+.md-typeset img.folur-shot {
+  display: block;
+  width: 100%;
+  max-width: 44rem;
+  margin: .6rem auto .3rem;
+  border: 1px solid rgba(27, 94, 58, .22);
+  border-radius: .5rem;
+  box-shadow: 0 6px 18px rgba(20, 40, 30, .10);
+}
+.md-typeset img.folur-shot + em,
+.md-typeset p:has(> img.folur-shot) + p > em:only-child {
+  display: block;
+  text-align: center;
+  font-size: .72rem;
+  color: var(--md-default-fg-color--light);
+}
