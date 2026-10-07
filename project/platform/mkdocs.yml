@@ -84,7 +84,7 @@ extra_css:
   - assets/css/steppe-course.css?v=20260928-merged   # лендинг курса + степ-бар уроков
   - stylesheets/quiz-engine.css
   - assets/css/upgraded-lessons.css
-  - assets/css/steppe-prose.css?v=20261008-soft   # читаемость урока: меню, ссылки, код, выноски, замок шагов
+  - assets/css/steppe-prose.css?v=20261008-soft22   # читаемость урока: меню, ссылки, код, выноски, замок шагов
 
 nav:
   - Главная: index.md
