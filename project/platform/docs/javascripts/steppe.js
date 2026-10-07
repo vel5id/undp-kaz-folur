@@ -822,6 +822,9 @@
   function myLearning() {
     var box = document.getElementById("folur-my-learning");
     if (!box) return;
+    // страница живёт в /my-learning/, поэтому ссылки на модули строим от корня сайта:
+    // относительное «modules/a1/» уводило на несуществующий /my-learning/modules/a1/
+    var root = location.pathname.replace(/my-learning\/(index\.html)?$/, "");
 
     var done = visited();
     var results = {};
@@ -841,8 +844,8 @@
 
     if (!codes.length) {
       box.innerHTML = "<p>Вы ещё не открывали уроки в этом браузере. " +
-        'Начните с <a href="modules/professional/">профессиональных модулей</a> ' +
-        'или <a href="modules/">общего каталога</a>.</p>';
+        'Начните с <a href="' + root + 'modules/professional/">профессиональных модулей</a> ' +
+        'или <a href="' + root + 'modules/">общего каталога</a>.</p>';
       return;
     }
 
@@ -877,11 +880,11 @@
       html += '<div class="folur-mylearn__row">' +
         '<span class="folur-badge">' + badge + "</span>" +
         '<div class="folur-mylearn__main">' +
-        '<a class="folur-mylearn__title" href="modules/' + code + '/">' + title.replace(/</g, "&lt;") + "</a>" +
+        '<a class="folur-mylearn__title" href="' + root + "modules/" + code + '/">' + title.replace(/</g, "&lt;") + "</a>" +
         '<div class="folur-card-progress__bar"><span style="width:' + pct + '%"></span></div>' +
         '<div class="folur-card-progress__label">пройдено ' + n + " из " + total + (resHtml ? " · " : "") + resHtml + "</div>" +
         "</div>" +
-        '<a class="md-button' + (n < total ? " md-button--primary" : "") + '" href="modules/' + code + '/">' +
+        '<a class="md-button' + (n < total ? " md-button--primary" : "") + '" href="' + root + "modules/" + code + '/">' +
         (n < total ? "Продолжить" : "Открыть") + "</a>" +
         "</div>";
     });
@@ -1014,7 +1017,38 @@
     }
   }
 
+  /* ── Левое меню можно скрыть и вернуть (выбор запоминается в браузере).
+   * Только на широком экране: на узком меню и так живёт в выдвижной панели. ── */
+  var NAV_KEY = "folur-nav-collapsed";
+  function sidebarToggle() {
+    var inner = document.querySelector(".md-sidebar--primary .md-sidebar__inner");
+    if (!inner || document.querySelector(".folur-nav-toggle")) return;
+    function make(cls, text, label) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "folur-nav-toggle " + cls;
+      b.textContent = text;
+      b.setAttribute("aria-label", label);
+      b.addEventListener("click", function () { set(!document.body.classList.contains("folur-nav-collapsed")); });
+      return b;
+    }
+    var hide = make("folur-nav-toggle--hide", "‹ Скрыть", "Скрыть меню модуля");
+    var show = make("folur-nav-toggle--show", "Раскрыть ›", "Раскрыть меню модуля");
+    function set(collapsed) {
+      document.body.classList.toggle("folur-nav-collapsed", collapsed);
+      hide.setAttribute("aria-expanded", String(!collapsed));
+      show.setAttribute("aria-expanded", String(!collapsed));
+      try { localStorage.setItem(NAV_KEY, collapsed ? "1" : "0"); } catch (e) {}
+    }
+    inner.insertBefore(hide, inner.firstChild);
+    document.body.appendChild(show);
+    var saved = null;
+    try { saved = localStorage.getItem(NAV_KEY); } catch (e) {}
+    set(saved === "1");
+  }
+
   function init() {
+    sidebarToggle();
     readbar();
     lessonHead();
     bloomPills();
