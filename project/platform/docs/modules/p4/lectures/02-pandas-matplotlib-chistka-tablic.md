@@ -206,16 +206,11 @@ fig.savefig("karta-tochek.png", dpi=150)
 
 <p>Попробуйте в редакторе Python.</p>
 
-<section class="folur-python-practice" id="python-practice">
-<h3>Практика в Python — прямо в уроке</h3>
-<ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
-<p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=p4-l02" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
-<iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=p4-l02" title="Python: p4-l02" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p class="folur-lab-data"><strong>О данных.</strong> Пример сразу работает на синтетических (учебных) данных. Чтобы повторить расчёт на реальных 80 000 промерах: 1) скачайте файл <a href="https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1">bathymetry-training-80k.csv</a> (набор уровня A, <a href="https://zenodo.org/records/23014446">страница набора на Zenodo</a>); 2) переименуйте его в <code>points.csv</code>; 3) в редакторе раскройте «Свои файлы и возможности среды» и выберите этот файл; 4) нажмите «Запустить».</p>
-</section>
 
 
-<p>Ноутбук лекции (<a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a>) содержит весь конвейер §1–§4 на учебном датасете. Минимальное задание на 20 минут: выполните осмотр тремя командами, посчитайте долю точек глубже 10 м, постройте обе картинки §4 и добейтесь, чтобы карта точек не была искажена (<code>set_aspect(&quot;equal&quot;)</code>).</p>
+<p><strong>В редакторе урока</strong> (<a href="#python-practice">шаг «Практика в Python»</a>) — учебный пример на синтетических данных. Загрузите набор A с Zenodo как points.csv или запустите синтетический пример. Измените границы контроля и сравните протокол.</p>
+
+<p><strong>Расширенное задание — на реальных данных, вне редактора.</strong> Минимальное задание на 20 минут: на учебном наборе уровня A (его можно подставить и во встроенный редактор — см. пометку «О данных» под ним) выполните осмотр тремя командами, посчитайте долю точек глубже 10 м, постройте обе картинки §4 и добейтесь, чтобы карта точек не была искажена (<code>set_aspect("equal")</code>). Среда: Google Colab — как открыть и с чего начать, см. <a href="../../../software.md#colab">«Программы и сервисы»</a>.</p>
 
 ## Границы применимости.
 
@@ -246,6 +241,14 @@ fig.savefig("karta-tochek.png", dpi=150)
 </table></div>
 
 <p>Вывод: словарь — быстрый возврат к терминам; за словами «ноутбук», «ядро» и «Restart &amp; Run all» стоят обязательные действия, а не названия.</p>
+
+<section class="folur-python-practice" id="python-practice">
+<h3>Практика в Python — прямо в уроке</h3>
+<ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
+<p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=p4-l02" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
+<iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=p4-l02" title="Python: p4-l02" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример сразу работает на синтетических (учебных) данных. Чтобы повторить расчёт на реальных 80 000 промерах: 1) скачайте файл <a href="https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1">bathymetry-training-80k.csv</a> (набор уровня A, <a href="https://zenodo.org/records/23014446">страница набора на Zenodo</a>); 2) в редакторе, в блоке «Свои данные и возможности среды», нажмите «Подставить свой файл» у строки <code>points.csv</code> и выберите скачанный файл (переименовывать не нужно); 3) нажмите «Запустить».</p>
+</section>
 
 ## Закрепление и применение
 

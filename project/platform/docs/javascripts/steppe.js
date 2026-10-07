@@ -294,6 +294,97 @@
       frag.appendChild(document.createTextNode(s.slice(last)));
       tn.parentNode.replaceChild(frag, tn);
     });
+
+    glossTerms(article);
+  }
+
+  /* ── Пояснения терминов: первое упоминание термина в каждом разделе урока
+   * подчёркнуто пунктиром, по наведению или фокусу — пояснение простыми словами.
+   * Словарь — window.FOLUR_GLOSSARY (glossary.js). ─────────────────────────── */
+  function glossTerms(article) {
+    var G = window.FOLUR_GLOSSARY;
+    if (!G || !G.length) return;
+    var exact = {}, lower = {}, alts = [];
+    G.forEach(function (g) {
+      [g[0]].concat(g[2] ? g[2].split("|") : []).forEach(function (f) {
+        exact[f] = g;
+        if (/[а-яё]/.test(f)) lower[f.toLowerCase()] = g; // русские слова — без учёта регистра
+        alts.push(f);
+      });
+    });
+    alts.sort(function (a, b) { return b.length - a.length; });
+    var re = new RegExp("(^|[^A-Za-zА-Яа-яЁё0-9_])(" +
+      alts.map(function (a) { return a.replace(/[.*+?^${}()|[\]\\\/-]/g, "\\$&"); }).join("|") +
+      ")(?![A-Za-zА-Яа-яЁё0-9_-])", "gi");
+    var skip = NO_CODE + ", abbr, table, .bloom, .folur-callout__label, .folur-def__term, .folur-python-practice, .admonition, .folur-lesson-head, .folur-gate";
+    var seen = {};
+    Array.prototype.slice.call(article.children).forEach(function (block) {
+      if (block.tagName === "H2") { seen = {}; return; }
+      if (!/^(P|UL|OL)$/.test(block.tagName)) return;
+      var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+      while ((n = walker.nextNode())) if (n.data.length > 2 && !n.parentNode.closest(skip)) nodes.push(n);
+      nodes.forEach(function (tn) {
+        var s = tn.data, last = 0, frag = null, m;
+        re.lastIndex = 0;
+        while ((m = re.exec(s))) {
+          var g = exact[m[2]] || lower[m[2].toLowerCase()];
+          if (!g || seen[g[0]]) continue;
+          seen[g[0]] = true;
+          var start = m.index + m[1].length;
+          frag = frag || document.createDocumentFragment();
+          frag.appendChild(document.createTextNode(s.slice(last, start)));
+          var ab = document.createElement("abbr");
+          ab.className = "folur-term";
+          ab.tabIndex = 0;
+          ab.setAttribute("data-tip", g[1]);
+          ab.setAttribute("aria-description", g[1]);
+          ab.textContent = m[2];
+          frag.appendChild(ab);
+          last = start + m[2].length;
+        }
+        if (!frag) return;
+        frag.appendChild(document.createTextNode(s.slice(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+    });
+  }
+
+  function glossaryPage() {
+    var box = document.getElementById("folur-glossary"), G = window.FOLUR_GLOSSARY;
+    if (!box || !G || box.getAttribute("data-ready")) return;
+    box.setAttribute("data-ready", "");
+    box.textContent = "";
+    var dl = document.createElement("dl");
+    dl.className = "folur-glossary";
+    G.slice().sort(function (a, b) { return a[0].localeCompare(b[0], "ru", { sensitivity: "base" }); }).forEach(function (g) {
+      var dt = document.createElement("dt"), dd = document.createElement("dd");
+      dt.textContent = g[0];
+      dd.textContent = g[1];
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    box.appendChild(dl);
+  }
+
+  /* ── Подсказка для первого захода в урок: как устроена страница ─────────── */
+  var HINT_KEY = "folur-hint-lesson";
+  function lessonHint(bar) {
+    try { if (localStorage.getItem(HINT_KEY)) return; } catch (e) { return; }
+    var note = document.createElement("div");
+    note.className = "folur-hint";
+    note.setAttribute("role", "note");
+    var text = document.createElement("p");
+    text.textContent = "Как устроен урок. Он разбит на шаги — это квадратики с номерами над заголовком. " +
+      "Читайте шаг и переходите кнопкой «Дальше» внизу страницы. Шаг «Практика в Python» — запуск примера прямо на сайте, " +
+      "последний шаг — проверка знаний. Слова, подчёркнутые пунктиром, можно навести мышью: появится пояснение.";
+    var ok = document.createElement("button");
+    ok.type = "button";
+    ok.textContent = "Понятно";
+    ok.addEventListener("click", function () {
+      try { localStorage.setItem(HINT_KEY, "1"); } catch (e) {}
+      note.remove();
+    });
+    note.appendChild(text); note.appendChild(ok);
+    bar.parentNode.insertBefore(note, bar.nextSibling);
   }
 
   /* ── Элементы модуля из навигации (в порядке следования) ────────────── */
@@ -551,6 +642,7 @@
     });
     article.insertBefore(bar, article.firstChild);
     document.body.classList.add("folur-stepped"); // «Содержание» следует за шагом, а не за прокруткой
+    if (/\/lectures\//.test(location.pathname) && !GATED) lessonHint(bar);
 
     // пейджер внизу
     var pager = document.createElement("nav");
@@ -842,7 +934,7 @@
     if (!box) return;
     // страница живёт в /my-learning/, поэтому ссылки на модули строим от корня сайта:
     // относительное «modules/a1/» уводило на несуществующий /my-learning/modules/a1/
-    var root = location.pathname.replace(/my-learning\/(index\.html)?$/, "");
+    var root = location.pathname.replace(/my-learning(?:\/(?:index\.html)?)?$/, "");
 
     var done = visited();
     var results = {};
@@ -1077,6 +1169,7 @@
     courseLanding();
     cardCovers();
     myLearning();
+    glossaryPage();
     pruneSidebarToModule();
     scrollReveal();
   }

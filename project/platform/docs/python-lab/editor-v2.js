@@ -5,7 +5,7 @@ const el=id=>document.getElementById(id);
 if(parent!==window)new ResizeObserver(()=>parent.postMessage({type:'folur-lab-height',height:Math.ceil(document.querySelector('main').getBoundingClientRect().height)+24},location.origin)).observe(document.querySelector('main'));
 const editor=CodeMirror.fromTextArea(el('code'),{mode:'python',lineNumbers:true,lineWrapping:true,indentUnit:4,extraKeys:{'Ctrl-Enter':()=>run(false)}});
 let epoch=0,resultCount=0,resultBytes=0,messageCount=0;
-let config,worker,ready=false,busy=false,loading=false,timer,uploads=[],catalog=[],urls=[],changed=false;
+let config,worker,ready=false,busy=false,loading=false,timer,uploads=[],slots=new Map(),expected=[],catalog=[],urls=[],changed=false;
 const selected=new URLSearchParams(location.search).get('exercise')||'demo-visuals';
 function checkFile(name){if(typeof name!=='string'||name.length>160||/[\\/\x00-\x1f\x7f]/.test(name)||name.startsWith('.')||!/\.(csv|json|geojson|png|jpg|jpeg|webp|tif|tiff|txt)$/i.test(name))throw Error('Недопустимое имя результата');}
 function safeCSV(text){
@@ -75,7 +75,7 @@ async function run(check){
  resultCount=0;resultBytes=0;messageCount=0;
  urls.forEach(URL.revokeObjectURL);urls=[];el('results').replaceChildren();el('downloads').replaceChildren();el('output').textContent='';el('feedback').textContent='';
  try{const active=await start();if(!active||active!==worker||!ready)return;busy=true;controls();el('status').textContent='Выполняется…';
-  worker.postMessage({type:'run',code:editor.getValue(),check:check?config.check:'',files:uploads,fixtures:config.fixtures||{},label:config.title});
+  worker.postMessage({type:'run',code:editor.getValue(),check:check?config.check:'',files:[...slots.values(),...uploads.filter(f=>!slots.has(f.name))],fixtures:config.fixtures||{},label:config.title});
   timer=setTimeout(()=>{terminate();el('feedback').textContent='Достигнут лимит 60 секунд. Выполнение остановлено; нажмите «Запустить» для новой сессии.';el('status').textContent='Python остановлен';},60000);
  }catch(e){terminate();output(String(e));el('status').textContent='Не удалось запустить. Повторите запуск.';}
 }
@@ -83,13 +83,35 @@ el('run').onclick=()=>run(false);el('check').onclick=()=>run(true);
 el('stop').onclick=()=>{terminate();el('status').textContent='Python остановлен';el('feedback').textContent='Выполнение остановлено. Код и выбранные файлы сохранены.';};
 el('reset').onclick=()=>{if(!config)return;terminate();editor.setValue(config.code);el('output').textContent='Пример восстановлен. Нажмите «Запустить».';el('feedback').textContent='';el('status').textContent='Готово к запуску';el('results').replaceChildren();el('downloads').replaceChildren();urls.forEach(URL.revokeObjectURL);urls=[];};
 el('download').onclick=()=>{if(!config)return;const a=document.createElement('a');const url=URL.createObjectURL(new Blob([editor.getValue()],{type:'text/x-python'}));a.href=url;a.download=config.id+'.py';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-el('clear-files').onclick=()=>{uploads=[];el('files').value='';el('file-state').textContent='Свои файлы убраны. Используются учебные примеры.';};
+el('clear-files').onclick=()=>{uploads=[];slots.clear();renderSlots();el('files').value='';el('file-state').textContent='Свои файлы убраны. Используются учебные примеры.';};
 el('files').onchange=async()=>{
  const files=[...el('files').files];if(files.length>20){el('file-state').textContent='Лимит: 20 файлов';return;}let total=0;const names=new Set();
  for(const file of files){total+=file.size;if(file.size>20*1024*1024||total>50*1024*1024){el('file-state').textContent='Превышен лимит: 20 МБ на файл, 50 МБ суммарно. Предыдущие файлы сохранены.';el('files').value='';return;}
  if(file.name.length>120||/[\u0000-\u001f\u007f]/.test(file.name)||file.name.startsWith('.')||! /\.(csv|json|geojson|png|jpe?g|webp|tiff?|txt)$/i.test(file.name)||/[\/\\]/.test(file.name)||names.has(file.name)){el('file-state').textContent='Неподдерживаемое или повторяющееся имя файла: '+file.name;return;}names.add(file.name);}
- try{uploads=await Promise.all(files.map(async f=>{const data=new Uint8Array(await f.arrayBuffer()),ext=f.name.split('.').pop().toLowerCase();const sig=[...data.slice(0,12)].map(x=>x.toString(16).padStart(2,'0')).join('');let valid=true;if(ext==='png')valid=sig.startsWith('89504e470d0a1a0a');if(['jpg','jpeg'].includes(ext))valid=sig.startsWith('ffd8ff');if(ext==='webp')valid=sig.startsWith('52494646')&&sig.slice(16,24)==='57454250';if(['tif','tiff'].includes(ext))valid=['49492a00','4d4d002a','49492b00','4d4d002b'].some(x=>sig.startsWith(x));if(!valid)throw Error('Формат изображения не соответствует расширению: '+f.name);return {name:f.name,data};}));}catch(e){el('file-state').textContent=String(e);return;}el('file-state').textContent=uploads.length?'В памяти браузера: '+uploads.map(f=>f.name).join(', '):'Свои файлы не выбраны.';
+ try{uploads=await Promise.all(files.map(f=>readUpload(f,f.name)));}catch(e){el('file-state').textContent=String(e);return;}el('file-state').textContent=uploads.length?'В памяти браузера: '+uploads.map(f=>f.name).join(', '):'Свои файлы не выбраны.';
 };
+// Проверка содержимого по расширению — общая для слотов и свободной загрузки.
+async function readUpload(f,name){const data=new Uint8Array(await f.arrayBuffer()),ext=name.split('.').pop().toLowerCase();const sig=[...data.slice(0,12)].map(x=>x.toString(16).padStart(2,'0')).join('');let valid=true;if(ext==='png')valid=sig.startsWith('89504e470d0a1a0a');if(['jpg','jpeg'].includes(ext))valid=sig.startsWith('ffd8ff');if(ext==='webp')valid=sig.startsWith('52494646')&&sig.slice(16,24)==='57454250';if(['tif','tiff'].includes(ext))valid=['49492a00','4d4d002a','49492b00','4d4d002b'].some(x=>sig.startsWith(x));if(!valid)throw Error('Формат файла не соответствует расширению: '+f.name);return {name,data};}
+// Слоты данных: упражнение стартует на учебном наборе; свой файл подставляется под имя,
+// которое ждёт код (переименовывать вручную не нужно).
+function renderSlots(){
+ const box=el('slots');box.replaceChildren();if(!expected.length)return;
+ const lead=document.createElement('p');lead.className='slots-lead';lead.textContent='Упражнение запускается на учебных данных. Чтобы посчитать на своих, подставьте свой файл — переименовывать его не нужно:';box.append(lead);
+ expected.forEach(name=>{
+  const ext=name.split('.').pop().toLowerCase(),row=document.createElement('div');row.className='slot';
+  const label=document.createElement('code');label.textContent=name;
+  const state=document.createElement('span');state.className='slot-state';const mine=slots.get(name);
+  state.textContent=mine?'ваш файл: '+mine.source:'учебные данные';if(mine)row.classList.add('slot-own');
+  const input=document.createElement('input');input.type='file';input.accept='.'+ext;input.hidden=true;
+  const pick=document.createElement('button');pick.type='button';pick.className='secondary';pick.textContent=mine?'Заменить файл':'Подставить свой файл';pick.onclick=()=>input.click();
+  input.onchange=async()=>{const f=input.files[0];if(!f)return;
+   if(f.size>20*1024*1024){state.textContent='Файл больше 20 МБ';return;}
+   if(f.name.split('.').pop().toLowerCase()!==ext){state.textContent='Нужен файл .'+ext+', выбран '+f.name;return;}
+   try{const u=await readUpload(f,name);u.source=f.name;slots.set(name,u);renderSlots();el('feedback').textContent='Свой файл подставлен. Нажмите «Запустить».';}catch(e){state.textContent=String(e.message||e);}};
+  row.append(label,state,pick,input);
+  if(mine){const back=document.createElement('button');back.type='button';back.className='secondary';back.textContent='Вернуть учебные данные';back.onclick=()=>{slots.delete(name);renderSlots();};row.append(back);}
+  box.append(row);});
+}
 el('exercise').onchange=()=>{const u=new URL(location.href);u.searchParams.set('exercise',el('exercise').value);location.href=u.href;};
 editor.on('change',()=>{if(config)try{localStorage.setItem(key(),editor.getValue());changed=true;}catch(e){}});
 try{
@@ -105,7 +127,7 @@ try{
  }
  el('exercise').value=selected;
  const c=await fetch('exercises/'+item.id+'.json');if(!c.ok)throw new Error('Не удалось загрузить упражнение');config=await c.json();
- el('title').textContent=config.title;el('task').textContent=config.task;el('scope').textContent=config.scope;document.title=config.title+' · FOLUR Python';el('standalone').href=location.href;
+ expected=[...new Set([...config.code.matchAll(/os\.path\.exists\(\s*['"]([^'"/]+)['"]\s*\)/g)].map(m=>m[1]))].filter(n=>{try{checkFile(n);return true;}catch(e){return false;}});renderSlots();if(expected.length)el('files-box').open=true;el('title').textContent=config.title;el('task').textContent=config.task;el('scope').textContent=config.scope;document.title=config.title+' · FOLUR Python';el('standalone').href=location.href;
  let saved;try{saved=localStorage.getItem(key());if(saved===null&&config.id==='a1-l01')saved=localStorage.getItem('folur-python-a1-passport-v1');}catch(e){}editor.setValue(saved===null||saved===undefined?config.code:saved);el('status').textContent='Готово к запуску';controls();
 }catch(e){el('status').textContent=String(e);}
 })();

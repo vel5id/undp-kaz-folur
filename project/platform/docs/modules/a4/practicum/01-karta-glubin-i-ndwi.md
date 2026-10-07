@@ -1,5 +1,8 @@
 # Практикум: карта глубин по сырым промерам + сезонная динамика NDWI
 
+!!! tip "Впервые работаете с этими программами?"
+    Где скачать, как установить и что нажать при первом запуске — в справке [«Программы и сервисы»](../../../software.md): [QGIS](../../../software.md#qgis), [Google Colab](../../../software.md#colab), [Google Earth Engine](../../../software.md#gee). Встроенный редактор Python установки не требует.
+
 !!! info "Вычисления в браузере"
     Для этого материала подготовлен [редактор Python](#python-practice). Он выполняет весь скрипт целиком; графики, изображения, таблицы и файлы появляются под кодом. Учебный пример запускается без аккаунта Google. Облачные API и полноценные настольные ГИС используются отдельно, когда этого требует исходное задание.
 
@@ -27,7 +30,7 @@
 
 <p>Что нужно подготовить</p>
 
-<p>☐ Google-аккаунт и доступ к Colab (бесплатно; готовый блокнот пока не опубликован; рабочая среда — <a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a>).</p>
+<p>☐ Google-аккаунт и доступ к Google Colab — для расширенной части на реальных данных (бесплатно; готовый блокнот пока не опубликован). Учебный пример работает без аккаунта: <a href="#python-practice">встроенный редактор Python — шаг «Практика в Python»</a>.</p>
 
 <p>☐ Файл bathymetry-training-80k.csv — скачайте со страницы Датасеты платформы (файл datasets/bathymetry-training-80k.csv репозитория платформы) и загрузите в сессию Colab (значок «Файлы» → «Загрузить»). Полный датасет: Zenodo, полный набор не опубликован; учебная выборка — Zenodo, DOI 10.5281/zenodo.23014446.</p>
 
@@ -313,7 +316,7 @@ print(ui.Chart.feature.byFeature(series, 'date', 'area_ha')
 <ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
 <p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=a4-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=a4-practice" title="Python: a4-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p class="folur-lab-data"><strong>О данных.</strong> Пример сразу работает на синтетических (учебных) данных. Чтобы повторить расчёт на реальных 80 000 промерах: 1) скачайте файл <a href="https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1">bathymetry-training-80k.csv</a> (набор уровня A, <a href="https://zenodo.org/records/23014446">страница набора на Zenodo</a>); 2) переименуйте его в <code>points.csv</code>; 3) в редакторе раскройте «Свои файлы и возможности среды» и выберите этот файл; 4) нажмите «Запустить».</p>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример сразу работает на синтетических (учебных) данных. Чтобы повторить расчёт на реальных 80 000 промерах: 1) скачайте файл <a href="https://zenodo.org/records/23014446/files/bathymetry-training-80k.csv?download=1">bathymetry-training-80k.csv</a> (набор уровня A, <a href="https://zenodo.org/records/23014446">страница набора на Zenodo</a>); 2) в редакторе, в блоке «Свои данные и возможности среды», нажмите «Подставить свой файл» у строки <code>points.csv</code> и выберите скачанный файл (переименовывать не нужно); 3) нажмите «Запустить».</p>
 </section>
 
 ---

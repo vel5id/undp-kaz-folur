@@ -264,7 +264,7 @@
   body.folur-nav-collapsed .md-sidebar--primary { display: none; }
   body.folur-nav-collapsed .folur-nav-toggle--show {
     display: block; position: fixed; z-index: 3;
-    left: 0; top: 6.4rem;
+    left: 0; top: 42vh;
     border-left: 0; border-radius: 0 .4rem .4rem 0;
     box-shadow: var(--sh1, 0 1px 2px rgba(19,64,41,.06));
   }
@@ -311,3 +311,60 @@
   margin-top: .9rem; padding: .7rem .9rem; font-size: .74rem;
   border: 1px dashed var(--folur-line); border-radius: var(--r-sm, .45rem);
 }
+
+/* ── Скрытое левое меню: текст остаётся по центру страницы ───────────────── */
+@media screen and (min-width: 76.25em) {
+  body.folur-nav-collapsed .md-main__inner > .md-content { margin-left: auto; margin-right: auto; }
+  body.folur-nav-collapsed .md-content > .md-content__inner,
+  body.folur-nav-collapsed .md-sidebar--primary ~ .md-content > .md-content__inner {
+    margin-left: auto !important; margin-right: auto !important;
+  }
+}
+
+/* ── Пояснение термина по наведению / фокусу ─────────────────────────────── */
+.md-typeset abbr.folur-term {
+  position: relative; cursor: help; text-decoration: none;
+  border-bottom: 1.5px dotted color-mix(in srgb, var(--folur-green-light) 80%, transparent);
+}
+.md-typeset abbr.folur-term:hover::after,
+.md-typeset abbr.folur-term:focus::after {
+  content: attr(data-tip);
+  position: absolute; left: 0; top: calc(100% + .35rem); z-index: 6;
+  width: max-content; max-width: min(22rem, 72vw);
+  padding: .55rem .7rem;
+  font: 500 .68rem/1.5 "Inter", sans-serif; letter-spacing: 0; text-transform: none; white-space: normal;
+  color: #fff; background: #1F2421;
+  border-radius: .4rem; box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+.md-typeset abbr.folur-term:focus { outline: 2px solid var(--folur-wheat); outline-offset: 2px; border-radius: 2px; }
+[data-md-color-scheme="slate"] .md-typeset abbr.folur-term:hover::after,
+[data-md-color-scheme="slate"] .md-typeset abbr.folur-term:focus::after { background: #E8EDE9; color: #14201A; }
+@media print { .md-typeset abbr.folur-term { border-bottom: 0; } }
+
+/* ── Страница «Словарь» ──────────────────────────────────────────────────── */
+.md-typeset dl.folur-glossary { display: grid; grid-template-columns: minmax(8rem, 13rem) 1fr; gap: 0; margin: 1rem 0; }
+.md-typeset dl.folur-glossary > dt, .md-typeset dl.folur-glossary > dd {
+  margin: 0; padding: .6rem .8rem; border-top: 1px solid var(--folur-line);
+}
+.md-typeset dl.folur-glossary > dt { font-weight: 700; color: var(--folur-green); }
+[data-md-color-scheme="slate"] .md-typeset dl.folur-glossary > dt { color: #7DD3A3; }
+@media screen and (max-width: 44em) {
+  .md-typeset dl.folur-glossary { grid-template-columns: 1fr; }
+  .md-typeset dl.folur-glossary > dd { border-top: 0; padding-top: 0; }
+}
+
+/* ── Подсказка первого захода в урок ─────────────────────────────────────── */
+.folur-hint {
+  display: flex; align-items: flex-start; gap: .9rem;
+  margin: 0 0 1rem; padding: .7rem .9rem;
+  border: 1px solid color-mix(in srgb, var(--folur-water) 45%, var(--folur-line));
+  border-radius: var(--r-sm, .45rem);
+  background: color-mix(in srgb, var(--folur-water) 7%, var(--md-default-bg-color));
+}
+.md-typeset .folur-hint p { margin: 0; font-size: .74rem; line-height: 1.55; }
+.folur-hint button {
+  flex: none; cursor: pointer; font: 700 .68rem/1 "Inter", sans-serif;
+  padding: .5rem .8rem; border-radius: .4rem; border: 0;
+  color: #fff; background: var(--folur-green);
+}
+@media print { .folur-hint { display: none; } }

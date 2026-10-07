@@ -1,5 +1,8 @@
 # Практикум: собираем отчёт об экосистемных услугах территории
 
+!!! tip "Впервые работаете с этими программами?"
+    Где скачать, как установить и что нажать при первом запуске — в справке [«Программы и сервисы»](../../../software.md): [QGIS](../../../software.md#qgis), [Copernicus Browser](../../../software.md#copernicus), [таблицы (LibreOffice, Google Таблицы)](../../../software.md#office). Встроенный редактор Python установки не требует.
+
 !!! info "Вычисления в браузере"
     Для этого материала подготовлен [редактор Python](#python-practice). Он выполняет весь скрипт целиком; графики, изображения, таблицы и файлы появляются под кодом. Учебный пример запускается без аккаунта Google. Облачные API и полноценные настольные ГИС используются отдельно, когда этого требует исходное задание.
 
@@ -21,7 +24,7 @@
 
 <p>Что нужно подготовить</p>
 
-<p class="upgraded-list-item">QGIS (версия LTR) — установите бесплатно с &lt;<a href="https://qgis.org/&gt">https://qgis.org/&gt</a>; (Windows/macOS/Linux). Плагины: QuickMapServices (подложки) и QuickOSM (выборки OSM), устанавливаются в QGIS: Расширения → Управление плагинами. Если ставить некуда — большинство шагов выполнимо в браузере Copernicus и вручную, но карты удобнее в QGIS.</p>
+<p class="upgraded-list-item">QGIS (версия LTR) — установите бесплатно с &lt;<a href="https://qgis.org/&gt">https://qgis.org/&gt</a>; (Windows/macOS/Linux). Плагины: QuickMapServices (подложки) и QuickOSM (выборки OSM), устанавливаются в QGIS: Расширения → Управление модулями. Если ставить некуда — большинство шагов выполнимо в браузере Copernicus и вручную, но карты удобнее в QGIS.</p>
 
 <p class="upgraded-list-item">Учётная запись Copernicus (бесплатная регистрация) — &lt;<a href="https://dataspace.copernicus.eu/&gt">https://dataspace.copernicus.eu/&gt</a>; для Sentinel-2 и Copernicus Browser.</p>
 
@@ -35,7 +38,7 @@
 
 <p>Шаг 1: загрузите подложку и определите территорию (10 мин)</p>
 
-<p>Откройте QGIS → установите плагин QuickMapServices (Расширения → Управление плагинами) → добавьте базовую карту OSM (Web → QuickMapServices → OSM Standard).</p>
+<p>Откройте QGIS → установите плагин QuickMapServices (Расширения → Управление модулями) → добавьте базовую карту OSM (Web → QuickMapServices → OSM Standard).</p>
 
 <p>Приблизьте карту к выбранной территории. Ориентируйтесь по OSM-объектам: пашня, лесополосы (<code>landuse</code>, линейные насаждения), водные объекты, дороги, населённые пункты.</p>
 
@@ -167,7 +170,7 @@
 <ol class="folur-lab-steps"><li>Нажмите <strong>▶ Запустить</strong> под кодом. При первом запуске загружается Python — это занимает до минуты.</li><li>Таблицы, графики и файлы появятся ниже, в блоке «Результат».</li><li>Измените параметры в коде и запустите ещё раз. Кнопка «Восстановить пример» возвращает исходный код.</li></ol>
 <p class="folur-lab-note">Устанавливать ничего не нужно: редактор работает прямо в браузере, без аккаунта. <a href="/python-lab/editor.html?exercise=p6-practice" target="_blank" rel="noopener">Открыть редактор в отдельной вкладке</a>.</p>
 <iframe class="folur-python-editor" src="/python-lab/editor.html?exercise=p6-practice" title="Python: p6-practice" loading="lazy" style="width:100%;height:1250px;border:1px solid #d4dfd0;border-radius:8px"></iframe>
-<p class="folur-lab-data"><strong>О данных.</strong> Пример работает на синтетических (учебных) данных — скачивать ничего не нужно. Свои CSV, изображения и растры можно подключить в редакторе: раскройте блок «Свои файлы и возможности среды».</p>
+<p class="folur-lab-data"><strong>О данных.</strong> Пример работает на синтетических (учебных) данных — скачивать ничего не нужно. Свои CSV, изображения и растры можно подключить в редакторе: раскройте блок «Свои данные и возможности среды».</p>
 </section>
 
 ---
