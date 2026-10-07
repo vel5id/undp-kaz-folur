@@ -1,0 +1,13 @@
+{
+  "title": "A4.3 · NDWI / MNDWI и вода",
+  "task": "К теме «Находим воду из космоса: строим маски NDWI/MNDWI и читаем радар Sentinel-1». Измените порог и сравните площади. Каналы модельные; реальный порог требует проверки сцены.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nyy, xx = np.mgrid[0:80, 0:100]\ntruth = ((xx - 50) / 30) ** 2 + ((yy - 40) / 22) ** 2 < 1\ngreen = np.where(truth, 0.2, 0.13)\nnir = np.where(truth, 0.05, 0.4)\nswir = np.where(truth, 0.03, 0.25)\nndwi = (green - nir) / (green + nir)\nmndwi = (green - swir) / (green + swir)\nthreshold = 0\nwater = mndwi > threshold\npixel_m = 10\nsummary = pd.DataFrame({'индекс': ['NDWI', 'MNDWI'], 'площадь_га': [(ndwi > threshold).sum() * pixel_m ** 2 / 10000, water.sum() * pixel_m ** 2 / 10000]})\ndisplay(summary)\nfig, axs = plt.subplots(1, 3, figsize=(9, 3))\nfor ax, arr, title in zip(axs, [ndwi, mndwi, water], ['NDWI', 'MNDWI', 'Маска воды']):\n    ax.imshow(arr, cmap='Blues')\n    ax.set_title(title)\nfig.tight_layout()\nprint('Оптический пример. Радар Sentinel-1 обрабатывается другим алгоритмом.')\n",
+  "check": "assert np.array_equal(water,truth)\nassert summary.iloc[0,1]==summary.iloc[1,1]",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a4-l03",
+  "recipe": "watermask",
+  "label": "A4.3",
+  "module": "a4",
+  "page": "modules/a4/lectures/03-sputnikovyj-monitoring-vody.md"
+}

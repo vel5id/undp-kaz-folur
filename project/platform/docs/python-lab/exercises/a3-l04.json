@@ -1,0 +1,15 @@
+{
+  "title": "A3.4 · Свёртка и метрики маски",
+  "task": "К теме «Сегментируем снимки и выбираем архитектуру: CNN, метрики и честное сравнение трёх подходов». Измените порог карты признаков и сравните IoU. Это фиксированный фильтр, а не обученная CNN.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.signal import convolve2d\nrng = np.random.default_rng(7)\nimage = np.zeros((64, 64))\nimage[15:48, 18:50] = 1\nimage += rng.normal(0, 0.15, image.shape)\nfeatures = convolve2d(image, np.ones((3, 3)) / 9, mode='same', boundary='symm')\ntruth = np.zeros(image.shape, dtype=bool)\ntruth[15:48, 18:50] = True\nthreshold = 0.5\npred = features >= threshold\niou = (pred & truth).sum() / (pred | truth).sum()\ndisplay(pd.DataFrame({'метрика': ['IoU', 'доля точных пикселей'], 'значение': [iou, (pred == truth).mean()]}))\nfig, axs = plt.subplots(1, 3, figsize=(9, 3))\nfor ax, arr, title in zip(axs, [image, features, pred], ['Вход с шумом', 'Свёртка 3×3', 'Маска']):\n    ax.imshow(arr, cmap='gray')\n    ax.set_title(title)\n    ax.axis('off')\nfig.tight_layout()\nprint('Обучение CNN требует отдельного конвейера; здесь показаны свёртка и контроль маски.')\n",
+  "check": "assert .9<iou<=1\nassert pred.shape==truth.shape",
+  "packages": [
+    "scipy"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a3-l04",
+  "recipe": "convolution",
+  "label": "A3.4",
+  "module": "a3",
+  "page": "modules/a3/lectures/04-cnn-and-architecture-choice.md"
+}

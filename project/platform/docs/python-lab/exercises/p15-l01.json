@@ -1,0 +1,13 @@
+{
+  "title": "P15.1 · Цепочка стоимости",
+  "task": "К теме «Строим карту цепочки стоимости: от поля до покупателя «зелёной» продукции». Измените затраты этапов и найдите их доли. Суммы учебные.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nchain = pd.DataFrame({'этап': ['производство', 'хранение', 'сертификация', 'логистика', 'сбыт'], 'тг_т': [120000, 7000, 4000, 12000, 5000]})\nchain['доля'] = chain.тг_т / chain.тг_т.sum()\ndisplay(chain)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.barh(chain.этап, chain.тг_т)\nax.set(xlabel='тг/т', title='Учебная цепочка')\nfig.tight_layout()\nprint('Всего:', chain.тг_т.sum(), 'тг/т')\nchain.to_csv('value-chain.csv', index=False)\n",
+  "check": "assert chain.тг_т.sum()==148000\nassert abs(chain.доля.sum()-1)<1e-9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p15-l01",
+  "recipe": "chain",
+  "label": "P15.1",
+  "module": "p15",
+  "page": "modules/p15/lectures/01-karta-cepochki-stoimosti.md"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "P7 · практикум · Мониторинг NDVI",
+  "task": "К теме «Практикум: многолетний ряд NDVI поля + разбор готового облёта БПЛА». Измените долю чистых пикселей. Свой monitoring.csv: date, field, zone, clear_fraction.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nif os.path.exists('monitoring.csv'):\n    data = pd.read_csv('monitoring.csv')\nelse:\n    data = pd.DataFrame({'date': pd.date_range('2025-05-01', periods=8, freq='14D'), 'field': [0.25, 0.38, 0.52, 0.68, 0.73, 0.65, 0.48, 0.3], 'zone': [0.23, 0.33, 0.44, 0.54, 0.58, 0.5, 0.39, 0.27], 'clear_fraction': [0.95, 0.92, 0.2, 0.85, 0.9, 0.3, 0.92, 0.95]})\ndata['date'] = pd.to_datetime(data.date)\nvalid = data[data.clear_fraction >= 0.7].copy()\nvalid['difference'] = valid.zone - valid.field\ndisplay(data)\ndisplay(valid, title='После контроля качества')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.plot(valid.date, valid.field, 'o-', label='поле')\nax.plot(valid.date, valid.zone, 'o-', label='зона')\nax.legend()\nax.set(ylabel='NDVI', title='Ряд после отбора')\nfig.autofmt_xdate()\nvalid.to_csv('monitoring-clean.csv', index=False)\n",
+  "check": "assert len(valid)==6\nassert valid.clear_fraction.min()>=.7\nassert (valid.difference<0).all()",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "p7-practice",
+  "recipe": "monitoring",
+  "label": "P7 · практикум",
+  "module": "p7",
+  "page": "modules/p7/practicum/01-ryad-ndvi-i-razbor-oblyota.md"
+}

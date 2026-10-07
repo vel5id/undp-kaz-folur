@@ -1,0 +1,15 @@
+{
+  "title": "A2.2 · Обрезка дорог и сводка",
+  "task": "К теме «Автоматизируем геообработку: QGIS, Python-стек и открытые геоданные». Измените границу и сравните длину дорог до и после обрезки. Линии учебные, не выгрузка OSM.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom shapely.geometry import LineString, box\nroads = [('primary', LineString([(-200, 100), (1200, 100)])), ('secondary', LineString([(300, -100), (300, 900)])), ('track', LineString([(0, 0), (1000, 800)]))]\nboundary = box(0, 0, 1000, 800)\nresult = pd.DataFrame([{'класс': kind, 'до_м': line.length, 'после_м': line.intersection(boundary).length} for kind, line in roads])\ndisplay(result)\nfig, ax = plt.subplots(figsize=(5, 4))\nx, y = boundary.exterior.xy\nax.plot(x, y, 'k--')\nfor kind, line in roads:\n    x, y = line.intersection(boundary).xy\n    ax.plot(x, y, label=kind)\nax.legend()\nax.set_aspect('equal')\nax.set(xlabel='x, м', ylabel='y, м', title='Обрезка дорог')\nresult.to_csv('roads.csv', index=False)\n",
+  "check": "assert (result.после_м<=result.до_м).all()\nassert result.iloc[0,2]==1000",
+  "packages": [
+    "shapely"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a2-l02",
+  "recipe": "roads",
+  "label": "A2.2",
+  "module": "a2",
+  "page": "modules/a2/lectures/02-qgis-python-stack.md"
+}

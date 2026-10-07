@@ -1,0 +1,13 @@
+{
+  "title": "P14 · практикум · Полнота подтверждений",
+  "task": "К теме «Практикум: формируем заявку на меру поддержки для модельного хозяйства». Дополните отсутствующие документы. Проверка полноты учебного пакета не подтверждает сертификацию или право на поддержку.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nCHECKLIST_ITEMS = ['Описание проекта', 'Смета', 'Календарный план', 'Подтверждающие документы']\nitems = pd.DataFrame({'пункт': CHECKLIST_ITEMS, 'статус': ['есть', 'нет', 'есть', 'нет'], 'подтверждение': ['журнал.csv', '', 'план.pdf', '']})\nitems['готово'] = items.статус.eq('есть') & items.подтверждение.ne('')\ndisplay(items)\nshare = items.готово.mean()\nprint(f'Подтверждено {items.готово.sum()} из {len(items)} ({share:.0%})')\nfig, ax = plt.subplots(figsize=(5, 3))\nax.bar(['подтверждено', 'дополнить'], [items.готово.sum(), (~items.готово).sum()])\nax.set(ylabel='Пункты', title='Полнота пакета')\nitems.to_csv('checklist.csv', index=False)\n",
+  "check": "assert items.готово.sum()==2\nassert share==.5",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "p14-practice",
+  "recipe": "checklist",
+  "label": "P14 · практикум",
+  "module": "p14",
+  "page": "modules/p14/practicum/01-zayavka-na-meru-podderzhki.md"
+}

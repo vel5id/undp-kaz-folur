@@ -9,7 +9,7 @@
 
 <div class="grid cards" markdown>
 
--   :material-chart-timeline-variant:{ .lg .middle } <span class="folur-code">А1</span>**Жизненный цикл данных в агросфере (+ БПЛА и IoT)**
+-   :material-chart-timeline-variant:{ .lg .middle } <span class="folur-code">А1</span>**Жизненный цикл агроданных и почвенно-агрохимический мониторинг (+ БПЛА и IoT)**
 
     ---
 
@@ -17,7 +17,7 @@
 
     [:octicons-arrow-right-24: Открыть модуль](a1/index.md)
 
--   :material-map:{ .lg .middle } <span class="folur-code">А2</span>**Геоинформатика и пространственный анализ**
+-   :material-map:{ .lg .middle } <span class="folur-code">А2</span>**Геоинформатика, пространственный анализ и управление пастбищами**
 
     ---
 

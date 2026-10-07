@@ -1,0 +1,13 @@
+{
+  "title": "P15 · практикум · Маржа и сценарии сбыта",
+  "task": "К теме «Практикум: карта цепочки и маркетинговый план модельного хозяйства». Измените цену и объём. Сравните маржу с безубыточной ценой; все суммы учебные.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nprice, cost, volume, logistics, fixed = (180000, 120000, 400, 12000, 1500000)\n\ndef margin(p, v):\n    return p * v - (cost + logistics) * v - fixed\nbase = margin(price, volume)\nrows = []\nfor name, p, v in [('база', price, volume), ('цена −10%', price * 0.9, volume), ('объём −20%', price, volume * 0.8), ('цена +10%', price * 1.1, volume)]:\n    rows.append([name, p, v, margin(p, v)])\nscenarios = pd.DataFrame(rows, columns=['сценарий', 'цена_тг_т', 'объём_т', 'маржа_тг'])\ndisplay(scenarios)\nbreakeven = cost + logistics + fixed / volume\nprint('Безубыточная цена:', breakeven, 'тг/т')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(scenarios.сценарий, scenarios.маржа_тг / 1000000.0)\nax.set(ylabel='Маржа, млн тг', title='Учебные сценарии')\nfig.tight_layout()\nscenarios.to_csv('market.csv', index=False)\n",
+  "check": "assert base==17700000\nassert breakeven==135750",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "p15-practice",
+  "recipe": "market",
+  "label": "P15 · практикум",
+  "module": "p15",
+  "page": "modules/p15/practicum/01-marketingovyj-plan.md"
+}

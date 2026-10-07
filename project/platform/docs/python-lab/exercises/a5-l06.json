@@ -1,0 +1,13 @@
+{
+  "title": "A5.6 · Экономика и чувствительность",
+  "task": "К теме «Считаем экономику устойчивой практики: форвардный контракт и товарный кредит». Измените инвестиции, экономию и ставку. Суммы условные, не условия действующей программы поддержки.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\ninvestment, annual_saving, annual_cost, rate = (12000000, 3800000, 700000, 0.1)\nyears = np.arange(0, 6)\nflow = np.r_[-investment, np.repeat(annual_saving - annual_cost, 5)]\ndiscounted = flow / (1 + rate) ** years\nnpv = discounted.sum()\ntable = pd.DataFrame({'год': years, 'поток_тг': flow, 'дисконтированный_тг': discounted, 'накопленный_тг': flow.cumsum()})\ndisplay(table.round(2))\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(years, flow / 1000000.0)\nax.plot(years, flow.cumsum() / 1000000.0, 'o-', label='накопленный')\nax.axhline(0, color='k')\nax.legend()\nax.set(xlabel='Год', ylabel='млн тг', title='Учебные денежные потоки')\nprint('NPV:', round(npv), 'тг')\ntable.to_csv('cashflow.csv', index=False)\n",
+  "check": "assert flow[0]==-12000000 and flow[1]==3100000\nassert npv<0 and flow.sum()>0",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a5-l06",
+  "recipe": "finance",
+  "label": "A5.6",
+  "module": "a5",
+  "page": "modules/a5/lectures/06-ekonomika-ustojchivoj-praktiki.md"
+}

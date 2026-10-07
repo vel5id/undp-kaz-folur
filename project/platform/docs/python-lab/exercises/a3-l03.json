@@ -1,0 +1,15 @@
+{
+  "title": "A3.3 · Random Forest и Gradient Boosting",
+  "task": "К теме «Обучаем интерпретируемые модели: Random Forest, Gradient Boosting и MiniRocket на рядах NDVI». Обучите две модели на синтетических сезонных признаках. Поля обучения и проверки не пересекаются.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier\nfrom sklearn.model_selection import GroupShuffleSplit\nfrom sklearn.metrics import accuracy_score, ConfusionMatrixDisplay\nrng = np.random.default_rng(42)\ngroups = np.repeat(np.arange(60), 6)\ny = groups % 3\nseason = np.linspace(0, 1, 8)\ncenters = np.array([0.25 + 0.3 * np.sin(np.pi * season), 0.2 + 0.45 * np.sin(np.pi * (season + 0.1)), 0.3 + 0.2 * np.cos(np.pi * season)])\nX = centers[y] + rng.normal(0, 0.035, (len(y), 8))\ntr, te = next(GroupShuffleSplit(n_splits=1, test_size=0.3, random_state=11).split(X, y, groups))\nmodels = {'Random Forest': RandomForestClassifier(n_estimators=40, random_state=42, n_jobs=1), 'Gradient Boosting': GradientBoostingClassifier(n_estimators=30, random_state=42)}\nrows = []\nfor name, model in models.items():\n    model.fit(X[tr], y[tr])\n    rows.append([name, accuracy_score(y[te], model.predict(X[te]))])\nmetrics = pd.DataFrame(rows, columns=['модель', 'accuracy'])\ndisplay(metrics)\nfig, ax = plt.subplots(figsize=(5, 4))\nConfusionMatrixDisplay.from_predictions(y[te], models['Random Forest'].predict(X[te]), ax=ax, colorbar=False)\nax.set_title('Синтетические проверочные поля')\ndisplay(pd.DataFrame({'месяц': np.arange(1, 9), 'важность_RF': models['Random Forest'].feature_importances_}))\nprint('Метрики относятся к синтетическим данным, не к реальной точности мониторинга.')\n",
+  "check": "assert not (set(groups[tr])&set(groups[te]))\nassert metrics.accuracy.between(0,1).all()\nassert metrics.accuracy.min()>.8",
+  "packages": [
+    "scikit-learn"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. RF и Gradient Boosting выполняются здесь. Полные MiniRocket и обучение CNN на GPU требуют отдельного конвейера; этот пример не выдаётся за их реализацию.",
+  "id": "a3-l03",
+  "recipe": "models",
+  "label": "A3.3",
+  "module": "a3",
+  "page": "modules/a3/lectures/03-classic-models-timeseries.md"
+}

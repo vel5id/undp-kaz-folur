@@ -1,0 +1,13 @@
+{
+  "title": "P2.2 · Отбор сцен по облачности",
+  "task": "К теме «Находим своё хозяйство на космоснимке: открытые данные Sentinel и Landsat». Измените порог облачности. Для своего каталога загрузите экспорт STAC как scenes.json с массивом features.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport json\nif os.path.exists('scenes.json'):\n    features = json.load(open('scenes.json'))['features']\n    scenes = pd.DataFrame([{'id': f['id'], 'date': f['properties']['datetime'], 'cloud': f['properties']['eo:cloud_cover']} for f in features])\nelse:\n    scenes = pd.DataFrame({'id': [f'demo-{i:02}' for i in range(18)], 'date': pd.date_range('2025-05-01', periods=18, freq='7D'), 'cloud': [5, 60, 12, 8, 40, 70, 10, 18, 2, 90, 35, 15, 5, 45, 12, 11, 20, 80]})\n    print('Синтетический каталог: запрос к спутниковому архиву не выполняется.')\nscenes['date'] = pd.to_datetime(scenes.date, utc=True)\nmax_cloud = 20\nuseful = scenes[scenes.cloud <= max_cloud].copy()\nmonthly = useful.groupby(useful.date.dt.strftime('%Y-%m')).size().rename('полезных сцен')\ndisplay(useful)\ndisplay(monthly)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nmonthly.plot.bar(ax=ax)\nax.set(xlabel='Месяц', ylabel='Число сцен', title='Отбор сцен')\nfig.tight_layout()\nuseful.to_csv('selected-scenes.csv', index=False)\n",
+  "check": "assert (useful.cloud<=max_cloud).all()\nassert monthly.sum()==len(useful)\nassert len(useful)==11",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. Локальный отбор по экспорту STAC. Реальные сцены ищутся в каталоге источника; их JSON можно загрузить сюда. Учебные даты не описывают фактическую доступность снимков.",
+  "id": "p2-l02",
+  "recipe": "catalog",
+  "label": "P2.2",
+  "module": "p2",
+  "page": "modules/p2/lectures/02-open-data-sentinel.md"
+}

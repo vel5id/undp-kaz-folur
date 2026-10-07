@@ -44,6 +44,8 @@ markdown_extensions:
   - admonition
   - md_in_html
   - pymdownx.details
+  - pymdownx.highlight:
+      pygments_lang_class: true   # класс language-* на блоке кода → подпись языка в рамке
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -71,14 +73,17 @@ extra_javascript:
   - javascripts/modules-manifest.js
   - javascripts/quiz-engine.js
   - javascripts/verify.js
-  - javascripts/steppe.js
+  - javascripts/steppe.js?v=20261007-review
+  - javascripts/python-lab.js?v=20260928-all
 
 extra_css:
   - assets/css/brand.css
   - assets/css/steppe-lessons.css
   - assets/css/restyle.css   # сильный рестайл: карточки, hero-контур, таблицы, a11y
-  - assets/css/steppe-course.css   # лендинг курса + степ-бар уроков
+  - assets/css/steppe-course.css?v=20260928-merged   # лендинг курса + степ-бар уроков
   - stylesheets/quiz-engine.css
+  - assets/css/upgraded-lessons.css
+  - assets/css/steppe-prose.css?v=20261007-review   # читаемость урока: меню, ссылки, код, выноски, замок шагов
 
 nav:
   - Главная: index.md
@@ -87,63 +92,71 @@ nav:
       - Архитектура: about/platform.md
       - Шаблон модуля: about/module-template.md
   - ИИ-инструменты: ai-tools.md
+  - Python-практика: python-practice.md
   - Датасеты: datasets.md
   - Офлайн-материалы: offline.md
   - Проверка сертификата: verify.md
   - Для тренера: training/index.md
   - Академические модули:
       - Обзор: modules/index.md
-      - А1. Жизненный цикл данных в агросфере (+ БПЛА и IoT):
+      - А1. Жизненный цикл агроданных и почвенно-агрохимический мониторинг (+ БПЛА и IoT):
           - Программа: modules/a1/index.md
           - Выстраиваем жизненный цикл данных хозяйства — от датчика в поле до аналитического слоя: modules/a1/lectures/01-zhiznennyy-tsikl-agrodannykh.md
           - Собираем БПЛА-комплекс под агрозадачу — носитель, сенсор, электроника и полётный план: modules/a1/lectures/02-bpla-kompleks-i-polyotnyy-plan.md
           - Выбираем платформу наблюдения — БПЛА, спутник или их комбинация: modules/a1/lectures/03-bpla-ili-sputnik.md
           - Приводим данные к стандарту — системы координат, форматы, FAIR и контроль качества: modules/a1/lectures/04-standarty-formaty-fair.md
+          - Собираем почвенно-агрохимические данные — от плана опробования до агрохимической картограммы: modules/a1/lectures/05-pochvenno-agrohimicheskie-dannye.md
           - Практикум — полётное задание БПЛА на модельный участок и сопоставление с Sentinel-2: modules/a1/practicum/01-poljotnoe-zadanie-bpla.md
           - ИИ-ассистент в работе: modules/a1/ai-assistant.md
           - Оценивание: modules/a1/assessment/final.md
-      - А2. Геоинформатика и пространственный анализ:
+      - А2. Геоинформатика, пространственный анализ и управление пастбищами:
           - Программа: modules/a2/index.md
           - Собираем корректный ГИС-проект — вектор, растр, проекции и топология: modules/a2/lectures/01-vector-raster-projections.md
           - Автоматизируем геообработку — QGIS, Python-стек и открытые геоданные: modules/a2/lectures/02-qgis-python-stack.md
           - Проводим пространственный анализ — буферы, оверлей, интерполяция и зональная статистика: modules/a2/lectures/03-spatial-analysis.md
           - Совмещаем спутник, БПЛА и ИИ-инструменты в одном ГИС-проекте: modules/a2/lectures/04-ai-uav-integration.md
+          - Картируем пастбища и проектируем пастбищеоборот — инвентаризация, ёмкость, ротация выпаса: modules/a2/lectures/05-pastbischa-i-pastbischeoborot.md
           - Практикум — карта землепользования района СКО: modules/a2/practicum/01-landuse-map-sko.md
           - ИИ-ассистент в работе: modules/a2/ai-assistant.md
           - Оценивание: modules/a2/assessment/final.md
-      - А3. ИИ и машинное обучение в агроэкологическом мониторинге:
+      - А3. ИИ и цифровой мониторинг агроландшафтов:
           - Программа: modules/a3/index.md
           - Находим и выгружаем обучающие данные — открытые каталоги ДЗЗ для ML-мониторинга агроландшафтов: modules/a3/lectures/01-open-data-catalogs.md
           - Готовим датасет без утечек — от снимка Sentinel-2 к обучающей выборке: modules/a3/lectures/02-dataset-preparation.md
           - Обучаем интерпретируемые модели — Random Forest, Gradient Boosting и MiniRocket на рядах NDVI: modules/a3/lectures/03-classic-models-timeseries.md
           - Сегментируем снимки и выбираем архитектуру — CNN, метрики и честное сравнение трёх подходов: modules/a3/lectures/04-cnn-and-architecture-choice.md
+          - Верифицируем севооборот из космоса — классификация культур, индекс разнообразия и контроль ротации: modules/a3/lectures/05-verifikaciya-sevooborota.md
           - Практикум — классификация землепользования района СКО тремя подходами (RF / MiniRocket / CNN): modules/a3/practicum/01-lulc-three-approaches.md
           - ИИ-ассистент в работе: modules/a3/ai-assistant.md
           - Оценивание: modules/a3/assessment/final.md
-      - А4. Водные ресурсы, гидрологический мониторинг, батиметрия:
+      - А4. Водные ресурсы, климатическая адаптация и батиметрия:
           - Программа: modules/a4/index.md
           - Сводим водный баланс степного водосбора — от снегозапасов до подземных вод: modules/a4/lectures/01-vodnyj-balans-stepnogo-vodosbora.md
           - Превращаем 80 000 сырых промеров в карту глубин водохранилища: modules/a4/lectures/02-karta-glubin-iz-promerov.md
           - Находим воду из космоса — строим маски NDWI/MNDWI и читаем радар Sentinel-1: modules/a4/lectures/03-sputnikovyj-monitoring-vody.md
           - Восстанавливаем годовой цикл водоёма — площадь, уровень, температура, хлорофилл: modules/a4/lectures/04-godovoj-cikl-vodoyoma.md
+          - Адаптируем землепользование к климатическим шокам — засуха, переувлажнение, паводок: modules/a4/lectures/05-adaptaciya-k-klimaticheskim-shokam.md
           - Практикум — карта глубин по сырым промерам + сезонная динамика NDWI: modules/a4/practicum/01-karta-glubin-i-ndwi.md
           - ИИ-ассистент в работе: modules/a4/ai-assistant.md
           - Оценивание: modules/a4/assessment/final.md
-      - А5. Устойчивое землепользование и агроэкология Северного Казахстана:
+      - А5. Научно обоснованный севооборот, устойчивое землепользование и агроэкономика:
           - Программа: modules/a5/index.md
           - Делим хозяйство на функциональные зоны — ландшафтный подход: modules/a5/lectures/01-landshaftnyj-podhod.md
           - Диагностируем деградацию земель степной зоны: modules/a5/lectures/02-degradaciya-zemel.md
           - Проектируем почвосберегающую систему земледелия: modules/a5/lectures/03-pochvosberegayushchee-zemledelie.md
           - Настраиваем мониторинг устойчивости и климатическую адаптацию: modules/a5/lectures/04-tochnoe-zemledelie-i-ustojchivost.md
+          - Проектируем научно обоснованный севооборот — диверсификация и формула 1 —1 —1: modules/a5/lectures/05-nauchno-obosnovannyj-sevooborot.md
+          - Считаем экономику устойчивой практики — форвардный контракт и товарный кредит: modules/a5/lectures/06-ekonomika-ustojchivoj-praktiki.md
           - Практикум — план устойчивого землепользования модельного хозяйства: modules/a5/practicum/01-plan-zemlepolzovaniya.md
           - ИИ-ассистент в работе: modules/a5/ai-assistant.md
           - Оценивание: modules/a5/assessment/final.md
-      - А6. Экосистемные услуги, биоразнообразие, восстановление земель:
+      - А6. Экосистемные услуги, биоразнообразие, восстановление земель и социально-экологический скрининг:
           - Программа: modules/a6/index.md
           - Читаем ландшафт как поток экосистемных услуг — четыре категории и природный капитал: modules/a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital.md
           - Собираем каркас биоразнообразия агроландшафта — лесополосы, буферы, ВБУ, соседство с ООПТ: modules/a6/lectures/02-bioraznoobrazie-agrolandshafta.md
           - Ставим диагноз деградации по спутнику — тренды продуктивности и субиндикаторы ЦУР 15.3.1: modules/a6/lectures/03-monitoring-degradacii-dzz-ml.md
           - Проектируем восстановление участка — от диагноза к плану практик: modules/a6/lectures/04-proektirovanie-vosstanovleniya.md
+          - Проводим социально-экологический скрининг проекта — чек-лист ПРООН и журнал рисков: modules/a6/lectures/05-socialno-ekologicheskij-skrining.md
           - Практикум — проект плана восстановления деградированного участка: modules/a6/practicum/01-plan-vosstanovleniya-uchastka.md
           - ИИ-ассистент в работе: modules/a6/ai-assistant.md
           - Оценивание: modules/a6/assessment/final.md
@@ -175,7 +188,7 @@ nav:
           - Оценивание: modules/p3/assessment/final.md
       - П4. Python и Jupyter для специалистов:
           - Программа: modules/p4/index.md
-          - Запускаем Python без установки — первый ноутбук в Google Colab: modules/p4/lectures/01-zapuskaem-python-v-colab.md
+          - Запускаем Python без установки — редактор внутри урока: modules/p4/lectures/01-zapuskaem-python-v-colab.md
           - Читаем и чистим 80 000 промеров — pandas и matplotlib: modules/p4/lectures/02-pandas-matplotlib-chistka-tablic.md
           - Открываем растры и автоматизируем рутину — rasterio и пакетная обработка: modules/p4/lectures/03-rasterio-i-paketnaya-obrabotka.md
           - Практикум — первый рабочий скрипт — паспорт водоёма из 80 000 промеров: modules/p4/practicum/01-pervyj-rabochij-skript.md

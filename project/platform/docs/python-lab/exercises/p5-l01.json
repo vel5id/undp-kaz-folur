@@ -1,0 +1,13 @@
+{
+  "title": "P5.1 · Зонирование и площади",
+  "task": "К теме «Проводим инвентаризацию территории хозяйства на открытых данных». Измените границы зон. Параметры буферов в примере не являются нормативами.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nyy, xx = np.mgrid[0:60, 0:80]\nzones = np.ones((60, 80), dtype=int)\nzones[:, 35:41] = 2\nzones[yy > 48] = 3\nzones[(xx < 15) & (yy < 20)] = 4\nnames = {1: 'производство', 2: 'буфер', 3: 'восстановление', 4: 'местообитание'}\npixel_m = 20\nareas = pd.DataFrame([{'зона': name, 'площадь_га': int((zones == v).sum()) * pixel_m ** 2 / 10000} for v, name in names.items()])\nareas['доля'] = areas.площадь_га / areas.площадь_га.sum()\ndisplay(areas)\nfig, ax = plt.subplots(figsize=(6, 4))\nim = ax.imshow(zones, cmap='tab10', vmin=1, vmax=4)\nfig.colorbar(im, ax=ax, ticks=list(names), label='Код зоны')\nax.set_title('Модельное зонирование')\nareas.to_csv('zones.csv', index=False)\n",
+  "check": "assert abs(areas.площадь_га.sum()-192)<1e-9\nassert abs(areas.доля.sum()-1)<1e-9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p5-l01",
+  "recipe": "zones",
+  "label": "P5.1",
+  "module": "p5",
+  "page": "modules/p5/lectures/01-inventarizaciya-territorii.md"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Демонстрация · Таблица → изображение → график",
+  "task": "Запустите пример. Измените порог яркости, сравните маски и скачайте CSV и PNG.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom PIL import Image, ImageEnhance, ImageFilter\nif os.path.exists('photo.png'):\n    original = Image.open('photo.png').convert('RGB')\n    original.thumbnail((640, 480))\nelse:\n    yy, xx = np.mgrid[0:180, 0:260]\n    rgb = np.stack([40 + xx * 0.7, 50 + yy * 0.9, 90 + 40 * np.sin(xx / 20)], axis=2)\n    original = Image.fromarray(np.clip(rgb, 0, 255).astype('uint8'))\n    print('Синтетическое RGB-изображение, не спутниковый снимок.')\nprocessed = ImageEnhance.Contrast(original).enhance(1.8).filter(ImageFilter.GaussianBlur(1))\ngray = np.array(processed.convert('L'))\nthreshold = 125\nmask = Image.fromarray(np.where(gray >= threshold, 255, 0).astype('uint8'))\ndisplay(original, title='Исходное изображение')\ndisplay(processed, title='Контраст и сглаживание')\ndisplay(mask, title='Пороговая маска')\ntable = pd.DataFrame({'показатель': ['ширина, px', 'высота, px', 'средняя яркость', 'доля светлых'], 'значение': [gray.shape[1], gray.shape[0], gray.mean(), (gray >= threshold).mean()]})\ndisplay(table, title='Измерения изображения')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.hist(gray.ravel(), bins=32, color='#267655')\nax.axvline(threshold, color='#bd6929')\nax.set(xlabel='Яркость, 0–255', ylabel='Пиксели', title='Распределение яркости')\nprocessed.save('processed.png')\nmask.save('mask.png')\ntable.to_csv('image-statistics.csv', index=False)\n",
+  "check": "assert len(table)==4\nassert set(np.unique(np.array(mask))).issubset({0,255})\nassert original.size==processed.size==mask.size",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "demo-visuals",
+  "recipe": "demo",
+  "label": "Демонстрация",
+  "module": "demo",
+  "page": ""
+}

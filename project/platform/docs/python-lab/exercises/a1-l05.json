@@ -1,0 +1,13 @@
+{
+  "title": "A1.5 · Сопоставимость обследований почвы",
+  "task": "К теме «Собираем почвенно-агрохимические данные: от плана опробования до агрохимической картограммы». Сравните тренд гумуса до и после отбора одинаковой глубины. Объясните влияние смены методики.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nsamples = pd.DataFrame({'год': [2021, 2023, 2025, 2021, 2023, 2025], 'глубина_см': [20, 20, 10, 20, 20, 20], 'гумус_проц': [3, 3.1, 3.8, 2.7, 2.8, 2.9], 'участок': ['А'] * 3 + ['Б'] * 3})\ncomparable = samples[samples.глубина_см == 20]\ndisplay(samples)\ndisplay(comparable, title='Сопоставимые пробы')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nfor label, part in samples.groupby('участок'):\n    ax.plot(part.год, part.гумус_проц, 'o-', label=label)\nax.set(xlabel='Год', ylabel='Гумус, %', title='Условные обследования')\nax.legend()\nprint('У А в 2025 изменилась глубина: рост нельзя автоматически считать восстановлением.')\n",
+  "check": "assert len(comparable)==5\nassert not ((comparable.участок=='А')&(comparable.год==2025)).any()",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a1-l05",
+  "recipe": "soil",
+  "label": "A1.5",
+  "module": "a1",
+  "page": "modules/a1/lectures/05-pochvenno-agrohimicheskie-dannye.md"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "P12.2 · Технологии полива",
+  "task": "К теме «Выбираем технологию полива: капельное орошение, дождевание и датчики влажности». Измените эффективность систем и сравните валовой забор для одинаковой чистой потребности.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nnet = 30000\nsystems = pd.DataFrame({'система': ['поверхностный', 'дождевание', 'капельный'], 'эффективность': [0.55, 0.75, 0.9]})\nsystems['забор_м3'] = net / systems.эффективность\nsystems['потери_м3'] = systems.забор_м3 - net\ndisplay(systems.round(1))\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(systems.система, systems.забор_м3)\nax.axhline(net, color='r')\nax.set(ylabel='м³', title='Учебное сравнение')\nfig.tight_layout()\nprint('Эффективности условные; выбор также зависит от поля, воды, обслуживания и затрат.')\n",
+  "check": "assert systems.забор_м3.is_monotonic_decreasing\nassert abs(systems.iloc[2,2]-33333.333333)<1e-3",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p12-l02",
+  "recipe": "irrigation-options",
+  "label": "P12.2",
+  "module": "p12",
+  "page": "modules/p12/lectures/02-kapelnoe-oroshenie-i-datchiki.md"
+}

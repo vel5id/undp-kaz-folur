@@ -180,3 +180,30 @@
 
 /* ── Кредиты-подвал ───────────────────────────────────────────────────────── */
 .folur-credits { border-radius: var(--r-md); border-left-width: 4px; }
+
+/* ════════════════════════════════════════════════════════════════════════
+   СКРОЛЛ-РЕЯВЛ — плавное появление блоков лендинга при прокрутке
+   (squidfunk-стиль). Прячущий CSS работает ТОЛЬКО под .folur-anim, который
+   добавляет scrollReveal() в steppe.js — без JS/наблюдателя всё видно сразу.
+   ════════════════════════════════════════════════════════════════════════ */
+.folur-anim .folur-reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s var(--ease, ease-out), transform .6s var(--ease, ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+  will-change: opacity, transform;
+}
+.folur-anim .folur-reveal-item.folur-reveal-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .folur-anim .folur-reveal-item {
+    opacity: 1; transform: none; transition: none; transition-delay: 0s;
+  }
+}
+@media print {
+  .folur-anim .folur-reveal-item {
+    opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+}

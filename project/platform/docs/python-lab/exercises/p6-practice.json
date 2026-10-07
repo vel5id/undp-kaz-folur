@@ -1,0 +1,13 @@
+{
+  "title": "P6 · практикум · Природный капитал",
+  "task": "К теме «Практикум: собираем отчёт об экосистемных услугах территории». Составьте таблицу площадей и услуг. Не суммируйте разные единицы измерения.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nassets = pd.DataFrame({'объект': ['пашня', 'лесополосы', 'луг', 'водоём'], 'площадь_га': [500, 25, 120, 15], 'услуга': ['производство', 'защита от ветра', 'опыление и корм', 'удержание воды']})\nassets['доля'] = assets.площадь_га / assets.площадь_га.sum()\ndisplay(assets)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(assets.объект, assets.площадь_га)\nax.set(ylabel='га', title='Модельная инвентаризация')\nprint('Площадь — характеристика территории, не денежная стоимость услуги.')\nassets.to_csv('natural-capital.csv', index=False)\n",
+  "check": "assert assets.площадь_га.sum()==660\nassert abs(assets.доля.sum()-1)<1e-9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "p6-practice",
+  "recipe": "services",
+  "label": "P6 · практикум",
+  "module": "p6",
+  "page": "modules/p6/practicum/01-otchyot-ob-ekosistemnyh-uslugah.md"
+}

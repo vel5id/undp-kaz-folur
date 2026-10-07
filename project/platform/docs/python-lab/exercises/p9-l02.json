@@ -1,0 +1,13 @@
+{
+  "title": "P9.2 · Кормовой баланс",
+  "task": "К теме «Встраиваем кормовую базу: связываем поле и ферму в одном севообороте». Измените поголовье, длительность периода и урожайность. Сравните потребность с доступным кормом.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nherd, days, kg_day = (100, 180, 12)\nloss = 0.15\nyield_t_ha = 3\narea_ha = 100\nneed = herd * days * kg_day / 1000\navailable = area_ha * yield_t_ha * (1 - loss)\nrequired_area = need / (yield_t_ha * (1 - loss))\ntable = pd.DataFrame({'показатель': ['потребность, т', 'доступно, т', 'площадь, га', 'резерв, т'], 'значение': [need, available, required_area, available - need]})\ndisplay(table)\nprint('Нормы и урожайность условные; реальные рационы согласуются со специалистом.')\nfig, ax = plt.subplots(figsize=(5, 3))\nax.bar(['нужно', 'доступно'], [need, available])\nax.set(ylabel='т', title='Учебный кормовой баланс')\n",
+  "check": "assert need==216\nassert available==255\nassert required_area<area_ha",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p9-l02",
+  "recipe": "feed",
+  "label": "P9.2",
+  "module": "p9",
+  "page": "modules/p9/lectures/02-kormovaya-baza.md"
+}

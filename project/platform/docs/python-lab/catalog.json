@@ -1,0 +1,794 @@
+[
+  {
+    "id": "demo-visuals",
+    "title": "Демонстрация · Таблица → изображение → график",
+    "label": "Демонстрация",
+    "module": "demo",
+    "recipe": "demo",
+    "page": ""
+  },
+  {
+    "id": "a1-l01",
+    "title": "A1.1 · Паспорт потока данных",
+    "label": "A1.1",
+    "module": "a1",
+    "recipe": "passport",
+    "page": "modules/a1/lectures/01-zhiznennyy-tsikl-agrodannykh.md"
+  },
+  {
+    "id": "a1-l02",
+    "title": "A1.2 · GSD и длительность полёта",
+    "label": "A1.2",
+    "module": "a1",
+    "recipe": "flight",
+    "page": "modules/a1/lectures/02-bpla-kompleks-i-polyotnyy-plan.md"
+  },
+  {
+    "id": "a1-l03",
+    "title": "A1.3 · Отбор сцен по облачности",
+    "label": "A1.3",
+    "module": "a1",
+    "recipe": "catalog",
+    "page": "modules/a1/lectures/03-bpla-ili-sputnik.md"
+  },
+  {
+    "id": "a1-l04",
+    "title": "A1.4 · Чистка промеров и карта точек",
+    "label": "A1.4",
+    "module": "a1",
+    "recipe": "audit",
+    "page": "modules/a1/lectures/04-standarty-formaty-fair.md"
+  },
+  {
+    "id": "a1-l05",
+    "title": "A1.5 · Сопоставимость обследований почвы",
+    "label": "A1.5",
+    "module": "a1",
+    "recipe": "soil",
+    "page": "modules/a1/lectures/05-pochvenno-agrohimicheskie-dannye.md"
+  },
+  {
+    "id": "a1-practice",
+    "title": "A1 · практикум · GSD и длительность полёта",
+    "label": "A1 · практикум",
+    "module": "a1",
+    "recipe": "flight",
+    "page": "modules/a1/practicum/01-poljotnoe-zadanie-bpla.md"
+  },
+  {
+    "id": "a2-l01",
+    "title": "A2.1 · Проекции и геометрия",
+    "label": "A2.1",
+    "module": "a2",
+    "recipe": "geometry",
+    "page": "modules/a2/lectures/01-vector-raster-projections.md"
+  },
+  {
+    "id": "a2-l02",
+    "title": "A2.2 · Обрезка дорог и сводка",
+    "label": "A2.2",
+    "module": "a2",
+    "recipe": "roads",
+    "page": "modules/a2/lectures/02-qgis-python-stack.md"
+  },
+  {
+    "id": "a2-l03",
+    "title": "A2.3 · Интерполяция и проверка",
+    "label": "A2.3",
+    "module": "a2",
+    "recipe": "interpolation",
+    "page": "modules/a2/lectures/03-spatial-analysis.md"
+  },
+  {
+    "id": "a2-l04",
+    "title": "A2.4 · Классы землепользования",
+    "label": "A2.4",
+    "module": "a2",
+    "recipe": "landcover",
+    "page": "modules/a2/lectures/04-ai-uav-integration.md"
+  },
+  {
+    "id": "a2-l05",
+    "title": "A2.5 · Ёмкость пастбища",
+    "label": "A2.5",
+    "module": "a2",
+    "recipe": "pasture",
+    "page": "modules/a2/lectures/05-pastbischa-i-pastbischeoborot.md"
+  },
+  {
+    "id": "a2-practice",
+    "title": "A2 · практикум · Классы землепользования",
+    "label": "A2 · практикум",
+    "module": "a2",
+    "recipe": "landcover",
+    "page": "modules/a2/practicum/01-landuse-map-sko.md"
+  },
+  {
+    "id": "a3-l01",
+    "title": "A3.1 · Отбор сцен по облачности",
+    "label": "A3.1",
+    "module": "a3",
+    "recipe": "catalog",
+    "page": "modules/a3/lectures/01-open-data-catalogs.md"
+  },
+  {
+    "id": "a3-l02",
+    "title": "A3.2 · Разбиение без утечки",
+    "label": "A3.2",
+    "module": "a3",
+    "recipe": "split",
+    "page": "modules/a3/lectures/02-dataset-preparation.md"
+  },
+  {
+    "id": "a3-l03",
+    "title": "A3.3 · Random Forest и Gradient Boosting",
+    "label": "A3.3",
+    "module": "a3",
+    "recipe": "models",
+    "page": "modules/a3/lectures/03-classic-models-timeseries.md"
+  },
+  {
+    "id": "a3-l04",
+    "title": "A3.4 · Свёртка и метрики маски",
+    "label": "A3.4",
+    "module": "a3",
+    "recipe": "convolution",
+    "page": "modules/a3/lectures/04-cnn-and-architecture-choice.md"
+  },
+  {
+    "id": "a3-l05",
+    "title": "A3.5 · Ротационная таблица",
+    "label": "A3.5",
+    "module": "a3",
+    "recipe": "rotation",
+    "page": "modules/a3/lectures/05-verifikaciya-sevooborota.md"
+  },
+  {
+    "id": "a3-practice",
+    "title": "A3 · практикум · Random Forest и Gradient Boosting",
+    "label": "A3 · практикум",
+    "module": "a3",
+    "recipe": "models",
+    "page": "modules/a3/practicum/01-lulc-three-approaches.md"
+  },
+  {
+    "id": "a4-l01",
+    "title": "A4.1 · Водный баланс",
+    "label": "A4.1",
+    "module": "a4",
+    "recipe": "waterbalance",
+    "page": "modules/a4/lectures/01-vodnyj-balans-stepnogo-vodosbora.md"
+  },
+  {
+    "id": "a4-l02",
+    "title": "A4.2 · Интерполяция и проверка",
+    "label": "A4.2",
+    "module": "a4",
+    "recipe": "interpolation",
+    "page": "modules/a4/lectures/02-karta-glubin-iz-promerov.md"
+  },
+  {
+    "id": "a4-l03",
+    "title": "A4.3 · NDWI / MNDWI и вода",
+    "label": "A4.3",
+    "module": "a4",
+    "recipe": "watermask",
+    "page": "modules/a4/lectures/03-sputnikovyj-monitoring-vody.md"
+  },
+  {
+    "id": "a4-l04",
+    "title": "A4.4 · Сезонный ряд водоёма",
+    "label": "A4.4",
+    "module": "a4",
+    "recipe": "seasonal",
+    "page": "modules/a4/lectures/04-godovoj-cikl-vodoyoma.md"
+  },
+  {
+    "id": "a4-l05",
+    "title": "A4.5 · Сценарии климата",
+    "label": "A4.5",
+    "module": "a4",
+    "recipe": "climate",
+    "page": "modules/a4/lectures/05-adaptaciya-k-klimaticheskim-shokam.md"
+  },
+  {
+    "id": "a4-practice",
+    "title": "A4 · практикум · Интерполяция и проверка",
+    "label": "A4 · практикум",
+    "module": "a4",
+    "recipe": "interpolation",
+    "page": "modules/a4/practicum/01-karta-glubin-i-ndwi.md"
+  },
+  {
+    "id": "a5-l01",
+    "title": "A5.1 · Зонирование и площади",
+    "label": "A5.1",
+    "module": "a5",
+    "recipe": "zones",
+    "page": "modules/a5/lectures/01-landshaftnyj-podhod.md"
+  },
+  {
+    "id": "a5-l02",
+    "title": "A5.2 · Тренд и контрольная зона",
+    "label": "A5.2",
+    "module": "a5",
+    "recipe": "degradation",
+    "page": "modules/a5/lectures/02-degradaciya-zemel.md"
+  },
+  {
+    "id": "a5-l03",
+    "title": "A5.3 · Покрытие почвы и практики",
+    "label": "A5.3",
+    "module": "a5",
+    "recipe": "conservation",
+    "page": "modules/a5/lectures/03-pochvosberegayushchee-zemledelie.md"
+  },
+  {
+    "id": "a5-l04",
+    "title": "A5.4 · Мониторинг NDVI",
+    "label": "A5.4",
+    "module": "a5",
+    "recipe": "monitoring",
+    "page": "modules/a5/lectures/04-tochnoe-zemledelie-i-ustojchivost.md"
+  },
+  {
+    "id": "a5-l05",
+    "title": "A5.5 · Ротационная таблица",
+    "label": "A5.5",
+    "module": "a5",
+    "recipe": "rotation",
+    "page": "modules/a5/lectures/05-nauchno-obosnovannyj-sevooborot.md"
+  },
+  {
+    "id": "a5-l06",
+    "title": "A5.6 · Экономика и чувствительность",
+    "label": "A5.6",
+    "module": "a5",
+    "recipe": "finance",
+    "page": "modules/a5/lectures/06-ekonomika-ustojchivoj-praktiki.md"
+  },
+  {
+    "id": "a5-practice",
+    "title": "A5 · практикум · Зонирование и площади",
+    "label": "A5 · практикум",
+    "module": "a5",
+    "recipe": "zones",
+    "page": "modules/a5/practicum/01-plan-zemlepolzovaniya.md"
+  },
+  {
+    "id": "a6-l01",
+    "title": "A6.1 · Природный капитал",
+    "label": "A6.1",
+    "module": "a6",
+    "recipe": "services",
+    "page": "modules/a6/lectures/01-ekosistemnye-uslugi-i-prirodnyj-kapital.md"
+  },
+  {
+    "id": "a6-l02",
+    "title": "A6.2 · Связность местообитаний",
+    "label": "A6.2",
+    "module": "a6",
+    "recipe": "connectivity",
+    "page": "modules/a6/lectures/02-bioraznoobrazie-agrolandshafta.md"
+  },
+  {
+    "id": "a6-l03",
+    "title": "A6.3 · Тренд и контрольная зона",
+    "label": "A6.3",
+    "module": "a6",
+    "recipe": "degradation",
+    "page": "modules/a6/lectures/03-monitoring-degradacii-dzz-ml.md"
+  },
+  {
+    "id": "a6-l04",
+    "title": "A6.4 · Очередность восстановления",
+    "label": "A6.4",
+    "module": "a6",
+    "recipe": "restoration",
+    "page": "modules/a6/lectures/04-proektirovanie-vosstanovleniya.md"
+  },
+  {
+    "id": "a6-l05",
+    "title": "A6.5 · Журнал рисков",
+    "label": "A6.5",
+    "module": "a6",
+    "recipe": "risk",
+    "page": "modules/a6/lectures/05-socialno-ekologicheskij-skrining.md"
+  },
+  {
+    "id": "a6-practice",
+    "title": "A6 · практикум · Очередность восстановления",
+    "label": "A6 · практикум",
+    "module": "a6",
+    "recipe": "restoration",
+    "page": "modules/a6/practicum/01-plan-vosstanovleniya-uchastka.md"
+  },
+  {
+    "id": "p1-l01",
+    "title": "P1.1 · Контроль журнала",
+    "label": "P1.1",
+    "module": "p1",
+    "recipe": "journal",
+    "page": "modules/p1/lectures/01-atributy-zamera.md"
+  },
+  {
+    "id": "p1-l02",
+    "title": "P1.2 · Контроль журнала",
+    "label": "P1.2",
+    "module": "p1",
+    "recipe": "journal",
+    "page": "modules/p1/lectures/02-zhurnaly-i-instrumenty.md"
+  },
+  {
+    "id": "p1-l03",
+    "title": "P1.3 · Целостность копий",
+    "label": "P1.3",
+    "module": "p1",
+    "recipe": "backup",
+    "page": "modules/p1/lectures/03-rezervnye-kopii-i-peredacha.md"
+  },
+  {
+    "id": "p1-practice",
+    "title": "P1 · практикум · Контроль журнала",
+    "label": "P1 · практикум",
+    "module": "p1",
+    "recipe": "journal",
+    "page": "modules/p1/practicum/01-shablon-sistemy-uchyota.md"
+  },
+  {
+    "id": "p2-l01",
+    "title": "P2.1 · Проекции и геометрия",
+    "label": "P2.1",
+    "module": "p2",
+    "recipe": "geometry",
+    "page": "modules/p2/lectures/01-qgis-first-project.md"
+  },
+  {
+    "id": "p2-l02",
+    "title": "P2.2 · Отбор сцен по облачности",
+    "label": "P2.2",
+    "module": "p2",
+    "recipe": "catalog",
+    "page": "modules/p2/lectures/02-open-data-sentinel.md"
+  },
+  {
+    "id": "p2-l03",
+    "title": "P2.3 · Зонирование и площади",
+    "label": "P2.3",
+    "module": "p2",
+    "recipe": "zones",
+    "page": "modules/p2/lectures/03-digitize-and-map.md"
+  },
+  {
+    "id": "p2-practice",
+    "title": "P2 · практикум · Проекции и геометрия",
+    "label": "P2 · практикум",
+    "module": "p2",
+    "recipe": "geometry",
+    "page": "modules/p2/practicum/01-farm-map.md"
+  },
+  {
+    "id": "p3-l01",
+    "title": "P3.1 · NDVI и маска облаков",
+    "label": "P3.1",
+    "module": "p3",
+    "recipe": "ndvi",
+    "page": "modules/p3/lectures/01-chitaem-ndvi.md"
+  },
+  {
+    "id": "p3-l02",
+    "title": "P3.2 · Мониторинг NDVI",
+    "label": "P3.2",
+    "module": "p3",
+    "recipe": "monitoring",
+    "page": "modules/p3/lectures/02-nastraivaem-monitoring.md"
+  },
+  {
+    "id": "p3-l03",
+    "title": "P3.3 · Проверка прогноза",
+    "label": "P3.3",
+    "module": "p3",
+    "recipe": "validation",
+    "page": "modules/p3/lectures/03-proveryaem-servisy.md"
+  },
+  {
+    "id": "p3-practice",
+    "title": "P3 · практикум · Мониторинг NDVI",
+    "label": "P3 · практикум",
+    "module": "p3",
+    "recipe": "monitoring",
+    "page": "modules/p3/practicum/01-ndvi-monitoring.md"
+  },
+  {
+    "id": "p4-l01",
+    "title": "P4.1 · Первый Python",
+    "label": "P4.1",
+    "module": "p4",
+    "recipe": "basics",
+    "page": "modules/p4/lectures/01-zapuskaem-python-v-colab.md"
+  },
+  {
+    "id": "p4-l02",
+    "title": "P4.2 · Чистка промеров и карта точек",
+    "label": "P4.2",
+    "module": "p4",
+    "recipe": "audit",
+    "page": "modules/p4/lectures/02-pandas-matplotlib-chistka-tablic.md"
+  },
+  {
+    "id": "p4-l03",
+    "title": "P4.3 · GeoTIFF и NoData",
+    "label": "P4.3",
+    "module": "p4",
+    "recipe": "raster",
+    "page": "modules/p4/lectures/03-rasterio-i-paketnaya-obrabotka.md"
+  },
+  {
+    "id": "p4-practice",
+    "title": "P4 · практикум · Чистка промеров и карта точек",
+    "label": "P4 · практикум",
+    "module": "p4",
+    "recipe": "audit",
+    "page": "modules/p4/practicum/01-pervyj-rabochij-skript.md"
+  },
+  {
+    "id": "p5-l01",
+    "title": "P5.1 · Зонирование и площади",
+    "label": "P5.1",
+    "module": "p5",
+    "recipe": "zones",
+    "page": "modules/p5/lectures/01-inventarizaciya-territorii.md"
+  },
+  {
+    "id": "p5-l02",
+    "title": "P5.2 · Зонирование и площади",
+    "label": "P5.2",
+    "module": "p5",
+    "recipe": "zones",
+    "page": "modules/p5/lectures/02-funkcionalnye-zony.md"
+  },
+  {
+    "id": "p5-l03",
+    "title": "P5.3 · План работ и сроки",
+    "label": "P5.3",
+    "module": "p5",
+    "recipe": "roadmap",
+    "page": "modules/p5/lectures/03-plan-na-5-let.md"
+  },
+  {
+    "id": "p5-practice",
+    "title": "P5 · практикум · План работ и сроки",
+    "label": "P5 · практикум",
+    "module": "p5",
+    "recipe": "roadmap",
+    "page": "modules/p5/practicum/01-landshaftnyj-plan.md"
+  },
+  {
+    "id": "p6-l01",
+    "title": "P6.1 · Природный капитал",
+    "label": "P6.1",
+    "module": "p6",
+    "recipe": "services",
+    "page": "modules/p6/lectures/01-inventarizaciya-prirodnogo-kapitala.md"
+  },
+  {
+    "id": "p6-l02",
+    "title": "P6.2 · Связность местообитаний",
+    "label": "P6.2",
+    "module": "p6",
+    "recipe": "connectivity",
+    "page": "modules/p6/lectures/02-reguliruyushchie-uslugi.md"
+  },
+  {
+    "id": "p6-l03",
+    "title": "P6.3 · Экономика и чувствительность",
+    "label": "P6.3",
+    "module": "p6",
+    "recipe": "finance",
+    "page": "modules/p6/lectures/03-ekonomika-i-otchyot.md"
+  },
+  {
+    "id": "p6-practice",
+    "title": "P6 · практикум · Природный капитал",
+    "label": "P6 · практикум",
+    "module": "p6",
+    "recipe": "services",
+    "page": "modules/p6/practicum/01-otchyot-ob-ekosistemnyh-uslugah.md"
+  },
+  {
+    "id": "p7-l01",
+    "title": "P7.1 · NDVI и маска облаков",
+    "label": "P7.1",
+    "module": "p7",
+    "recipe": "ndvi",
+    "page": "modules/p7/lectures/01-chitaem-pole-iz-kosmosa-ndvi.md"
+  },
+  {
+    "id": "p7-l02",
+    "title": "P7.2 · Мониторинг NDVI",
+    "label": "P7.2",
+    "module": "p7",
+    "recipe": "monitoring",
+    "page": "modules/p7/lectures/02-mnogoletnij-ryad-ndvi-problemnye-zony.md"
+  },
+  {
+    "id": "p7-l03",
+    "title": "P7.3 · Изображение и детализация",
+    "label": "P7.3",
+    "module": "p7",
+    "recipe": "image",
+    "page": "modules/p7/lectures/03-oblyot-bpla-i-opendronemap.md"
+  },
+  {
+    "id": "p7-practice",
+    "title": "P7 · практикум · Мониторинг NDVI",
+    "label": "P7 · практикум",
+    "module": "p7",
+    "recipe": "monitoring",
+    "page": "modules/p7/practicum/01-ryad-ndvi-i-razbor-oblyota.md"
+  },
+  {
+    "id": "p8-l01",
+    "title": "P8.1 · Готовность полей",
+    "label": "P8.1",
+    "module": "p8",
+    "recipe": "readiness",
+    "page": "modules/p8/lectures/01-gotovnost-poley-k-no-till.md"
+  },
+  {
+    "id": "p8-l02",
+    "title": "P8.2 · План работ и сроки",
+    "label": "P8.2",
+    "module": "p8",
+    "recipe": "roadmap",
+    "page": "modules/p8/lectures/02-tekhnika-i-sezon-pryamogo-poseva.md"
+  },
+  {
+    "id": "p8-l03",
+    "title": "P8.3 · Экономика и чувствительность",
+    "label": "P8.3",
+    "module": "p8",
+    "recipe": "finance",
+    "page": "modules/p8/lectures/03-perekhodnyy-period-i-ekonomika.md"
+  },
+  {
+    "id": "p8-practice",
+    "title": "P8 · практикум · Готовность полей",
+    "label": "P8 · практикум",
+    "module": "p8",
+    "recipe": "readiness",
+    "page": "modules/p8/practicum/01-plan-perekhoda-na-no-till.md"
+  },
+  {
+    "id": "p9-l01",
+    "title": "P9.1 · Ротационная таблица",
+    "label": "P9.1",
+    "module": "p9",
+    "recipe": "rotation",
+    "page": "modules/p9/lectures/01-shema-pod-vlagu.md"
+  },
+  {
+    "id": "p9-l02",
+    "title": "P9.2 · Кормовой баланс",
+    "label": "P9.2",
+    "module": "p9",
+    "recipe": "feed",
+    "page": "modules/p9/lectures/02-kormovaya-baza.md"
+  },
+  {
+    "id": "p9-l03",
+    "title": "P9.3 · Ротационная таблица",
+    "label": "P9.3",
+    "module": "p9",
+    "recipe": "rotation",
+    "page": "modules/p9/lectures/03-sborka-i-perekhod.md"
+  },
+  {
+    "id": "p9-practice",
+    "title": "P9 · практикум · Ротационная таблица",
+    "label": "P9 · практикум",
+    "module": "p9",
+    "recipe": "rotation",
+    "page": "modules/p9/practicum/01-rotacionnaya-tablica.md"
+  },
+  {
+    "id": "p10-l01",
+    "title": "P10.1 · Полнота подтверждений",
+    "label": "P10.1",
+    "module": "p10",
+    "recipe": "checklist",
+    "page": "modules/p10/lectures/01-organika-bez-mifov.md"
+  },
+  {
+    "id": "p10-l02",
+    "title": "P10.2 · План работ и сроки",
+    "label": "P10.2",
+    "module": "p10",
+    "recipe": "roadmap",
+    "page": "modules/p10/lectures/02-put-sertifikacii.md"
+  },
+  {
+    "id": "p10-l03",
+    "title": "P10.3 · Маржа и сценарии сбыта",
+    "label": "P10.3",
+    "module": "p10",
+    "recipe": "market",
+    "page": "modules/p10/lectures/03-rynok-i-dorozhnaya-karta.md"
+  },
+  {
+    "id": "p10-practice",
+    "title": "P10 · практикум · План работ и сроки",
+    "label": "P10 · практикум",
+    "module": "p10",
+    "recipe": "roadmap",
+    "page": "modules/p10/practicum/01-dorozhnaya-karta-perekhoda.md"
+  },
+  {
+    "id": "p11-l01",
+    "title": "P11.1 · План промерных галсов",
+    "label": "P11.1",
+    "module": "p11",
+    "recipe": "transects",
+    "page": "modules/p11/lectures/01-planiruem-semku-glubin.md"
+  },
+  {
+    "id": "p11-l02",
+    "title": "P11.2 · Интерполяция и проверка",
+    "label": "P11.2",
+    "module": "p11",
+    "recipe": "interpolation",
+    "page": "modules/p11/lectures/02-ot-promerov-k-karte-glubin.md"
+  },
+  {
+    "id": "p11-l03",
+    "title": "P11.3 · Объём по сетке",
+    "label": "P11.3",
+    "module": "p11",
+    "recipe": "volume",
+    "page": "modules/p11/lectures/03-obyom-zailenie-resheniya.md"
+  },
+  {
+    "id": "p11-l04",
+    "title": "P11.4 · Разрежение и ошибка",
+    "label": "P11.4",
+    "module": "p11",
+    "recipe": "transect-error",
+    "page": "modules/p11/lectures/04-shag-galsa-i-cena-tochnosti.md"
+  },
+  {
+    "id": "p11-practice",
+    "title": "P11 · практикум · Интерполяция и проверка",
+    "label": "P11 · практикум",
+    "module": "p11",
+    "recipe": "interpolation",
+    "page": "modules/p11/practicum/01-karta-glubin-svoimi-rukami.md"
+  },
+  {
+    "id": "p12-l01",
+    "title": "P12.1 · Потребность культуры в воде",
+    "label": "P12.1",
+    "module": "p12",
+    "recipe": "irrigation",
+    "page": "modules/p12/lectures/01-vodnyj-byudzhet-uchastka.md"
+  },
+  {
+    "id": "p12-l02",
+    "title": "P12.2 · Технологии полива",
+    "label": "P12.2",
+    "module": "p12",
+    "recipe": "irrigation-options",
+    "page": "modules/p12/lectures/02-kapelnoe-oroshenie-i-datchiki.md"
+  },
+  {
+    "id": "p12-l03",
+    "title": "P12.3 · Экономика и чувствительность",
+    "label": "P12.3",
+    "module": "p12",
+    "recipe": "finance",
+    "page": "modules/p12/lectures/03-ekonomika-i-proekt-vodosberezheniya.md"
+  },
+  {
+    "id": "p12-practice",
+    "title": "P12 · практикум · Потребность культуры в воде",
+    "label": "P12 · практикум",
+    "module": "p12",
+    "recipe": "irrigation",
+    "page": "modules/p12/practicum/01-proekt-vodosberezheniya.md"
+  },
+  {
+    "id": "p13-l01",
+    "title": "P13.1 · Учёт биоразнообразия",
+    "label": "P13.1",
+    "module": "p13",
+    "recipe": "habitats",
+    "page": "modules/p13/lectures/01-inventarizaciya-bioraznoobraziya.md"
+  },
+  {
+    "id": "p13-l02",
+    "title": "P13.2 · Связность местообитаний",
+    "label": "P13.2",
+    "module": "p13",
+    "recipe": "connectivity",
+    "page": "modules/p13/lectures/02-ekologicheskij-karkas-bufery-lesopolosy.md"
+  },
+  {
+    "id": "p13-l03",
+    "title": "P13.3 · Журнал рисков",
+    "label": "P13.3",
+    "module": "p13",
+    "recipe": "risk",
+    "page": "modules/p13/lectures/03-oopt-vbu-plan-sohraneniya.md"
+  },
+  {
+    "id": "p13-practice",
+    "title": "P13 · практикум · Журнал рисков",
+    "label": "P13 · практикум",
+    "module": "p13",
+    "recipe": "risk",
+    "page": "modules/p13/practicum/01-plan-sohraneniya-bioraznoobraziya.md"
+  },
+  {
+    "id": "p14-l01",
+    "title": "P14.1 · Экономика и чувствительность",
+    "label": "P14.1",
+    "module": "p14",
+    "recipe": "finance",
+    "page": "modules/p14/lectures/01-karta-istochnikov-finansirovaniya.md"
+  },
+  {
+    "id": "p14-l02",
+    "title": "P14.2 · Углеродный потенциал",
+    "label": "P14.2",
+    "module": "p14",
+    "recipe": "carbon",
+    "page": "modules/p14/lectures/02-zelenye-finansy-i-uglerodnye-platezhi.md"
+  },
+  {
+    "id": "p14-l03",
+    "title": "P14.3 · Полнота подтверждений",
+    "label": "P14.3",
+    "module": "p14",
+    "recipe": "checklist",
+    "page": "modules/p14/lectures/03-sobiraem-zayavku.md"
+  },
+  {
+    "id": "p14-practice",
+    "title": "P14 · практикум · Полнота подтверждений",
+    "label": "P14 · практикум",
+    "module": "p14",
+    "recipe": "checklist",
+    "page": "modules/p14/practicum/01-zayavka-na-meru-podderzhki.md"
+  },
+  {
+    "id": "p15-l01",
+    "title": "P15.1 · Цепочка стоимости",
+    "label": "P15.1",
+    "module": "p15",
+    "recipe": "chain",
+    "page": "modules/p15/lectures/01-karta-cepochki-stoimosti.md"
+  },
+  {
+    "id": "p15-l02",
+    "title": "P15.2 · Прослеживаемость партий",
+    "label": "P15.2",
+    "module": "p15",
+    "recipe": "traceability",
+    "page": "modules/p15/lectures/02-trassiruemost-i-markirovka.md"
+  },
+  {
+    "id": "p15-l03",
+    "title": "P15.3 · Маржа и сценарии сбыта",
+    "label": "P15.3",
+    "module": "p15",
+    "recipe": "market",
+    "page": "modules/p15/lectures/03-marketingovyj-plan.md"
+  },
+  {
+    "id": "p15-practice",
+    "title": "P15 · практикум · Маржа и сценарии сбыта",
+    "label": "P15 · практикум",
+    "module": "p15",
+    "recipe": "market",
+    "page": "modules/p15/practicum/01-marketingovyj-plan.md"
+  }
+]

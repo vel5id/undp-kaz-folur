@@ -1,0 +1,13 @@
+{
+  "title": "P3.3 · Проверка прогноза",
+  "task": "К теме «Проверяем ИИ на честность: проблемные зоны, прогноз урожайности и выбор сервиса». Сравните прогноз и контроль. Измените смещение и посмотрите на MAE и bias.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nobserved = np.array([2.1, 2.5, 3, 3.4, 2.8, 3.8, 4, 2.2])\npredicted = observed + np.array([0.1, -0.2, 0.4, 0.2, -0.1, 0.3, 0.5, 0])\nerror = predicted - observed\nmae = np.abs(error).mean()\nbias = error.mean()\nrows = pd.DataFrame({'измерено': observed, 'прогноз': predicted, 'ошибка': error})\ndisplay(rows)\nprint('MAE:', round(mae, 3), 'bias:', round(bias, 3), 'условных т/га')\nfig, ax = plt.subplots(figsize=(5, 4))\nax.scatter(observed, predicted)\nax.plot([2, 4.5], [2, 4.5], 'k--')\nax.set(xlabel='Контроль, т/га', ylabel='Прогноз, т/га', title='Синтетическая проверка')\nrows.to_csv('prediction-check.csv', index=False)\n",
+  "check": "assert abs(mae-.225)<1e-9\nassert abs(bias-.15)<1e-9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p3-l03",
+  "recipe": "validation",
+  "label": "P3.3",
+  "module": "p3",
+  "page": "modules/p3/lectures/03-proveryaem-servisy.md"
+}

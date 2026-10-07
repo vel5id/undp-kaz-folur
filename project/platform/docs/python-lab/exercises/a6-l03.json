@@ -1,0 +1,13 @@
+{
+  "title": "A6.3 · Тренд и контрольная зона",
+  "task": "К теме «Ставим диагноз деградации по спутнику: тренды продуктивности и субиндикаторы ЦУР 15.3.1». Сравните участок и контроль. Какие независимые данные нужны для вывода о деградации?",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nyears = np.arange(2018, 2026)\nfield = np.array([0.61, 0.6, 0.57, 0.55, 0.56, 0.51, 0.5, 0.48])\ncontrol = np.array([0.63, 0.62, 0.61, 0.6, 0.64, 0.61, 0.62, 0.61])\ndifference = field - control\nslope = np.polyfit(years, difference, 1)[0]\ntable = pd.DataFrame({'год': years, 'участок': field, 'контроль': control, 'разность': difference})\ndisplay(table)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.plot(years, field, 'o-', label='участок')\nax.plot(years, control, 'o-', label='контроль')\nax.legend()\nax.set(xlabel='Год', ylabel='NDVI', title='Синтетические ряды')\nprint('Тренд разности:', round(slope, 4), 'NDVI/год — сигнал проверки, не доказательство причины.')\n",
+  "check": "assert slope<0\nassert len(table)==8",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a6-l03",
+  "recipe": "degradation",
+  "label": "A6.3",
+  "module": "a6",
+  "page": "modules/a6/lectures/03-monitoring-degradacii-dzz-ml.md"
+}

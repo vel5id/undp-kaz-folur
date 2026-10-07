@@ -1,0 +1,15 @@
+{
+  "title": "A2.3 · Интерполяция и проверка",
+  "task": "К теме «Проводим пространственный анализ: буферы, оверлей, интерполяция и зональная статистика». Измените степень IDW и сравните ошибку на отложенных точках. Свой файл: points.csv с x_m, y_m, depth_m.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.spatial import cKDTree\nfrom scipy.interpolate import LinearNDInterpolator\nif os.path.exists('points.csv'):\n    df = pd.read_csv('points.csv').dropna(subset=['x_m', 'y_m', 'depth_m'])\n    df = df[df.depth_m.between(0, 20)].drop_duplicates(['x_m', 'y_m'])\nelse:\n    rng = np.random.default_rng(12)\n    xy = rng.uniform(0, 1000, (240, 2))\n    df = pd.DataFrame({'x_m': xy[:, 0], 'y_m': xy[:, 1], 'depth_m': 1 + 6 * np.exp(-((xy[:, 0] - 500) ** 2 + (xy[:, 1] - 500) ** 2) / 180000)})\n    print('240 точек синтетической поверхности, не реальный водоём.')\nassert len(df) >= 30, 'Нужно не менее 30 точек'\ntest = df.iloc[::5]\ntrain = df.drop(test.index)\ncoords = train[['x_m', 'y_m']].to_numpy()\ntree = cKDTree(coords)\npower = 2\n\ndef idw(target):\n    distance, index = tree.query(target, k=min(8, len(train)))\n    weight = 1 / np.maximum(distance, 1e-06) ** power\n    return (weight * train.depth_m.to_numpy()[index]).sum(axis=1) / weight.sum(axis=1)\npred = idw(test[['x_m', 'y_m']])\nlinear = LinearNDInterpolator(coords, train.depth_m)(test[['x_m', 'y_m']])\nvalid = np.isfinite(linear)\nmetrics = pd.DataFrame({'метод': ['IDW', 'линейная триангуляция'], 'MAE_м': [np.abs(pred - test.depth_m).mean(), np.abs(linear[valid] - test.depth_m.to_numpy()[valid]).mean()]})\ndisplay(metrics)\nxx, yy = np.meshgrid(np.linspace(train.x_m.min(), train.x_m.max(), 60), np.linspace(train.y_m.min(), train.y_m.max(), 60))\ngrid = idw(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)\ninside = np.isfinite(LinearNDInterpolator(coords, np.ones(len(train)))(xx, yy))\ngrid[~inside] = np.nan\nfig, ax = plt.subplots(figsize=(6, 4))\nim = ax.pcolormesh(xx, yy, grid, cmap='viridis_r', shading='auto')\nax.scatter(test.x_m, test.y_m, c='white', s=8)\nax.set_aspect('equal')\nax.set(xlabel='x, м', ylabel='y, м', title='Интерполяция и проверочные точки')\nfig.colorbar(im, ax=ax, label='Глубина, м')\nmetrics.to_csv('validation.csv', index=False)\n",
+  "check": "assert set(train.index).isdisjoint(test.index)\nassert np.isfinite(pred).all()\nassert len(test)==48\nassert metrics.iloc[0,1]<1",
+  "packages": [
+    "scipy"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. Браузерная адаптация: IDW и линейная триангуляция. Кригинг и подбор вариограммы остаются отдельной частью полного ГИС-задания.",
+  "id": "a2-l03",
+  "recipe": "interpolation",
+  "label": "A2.3",
+  "module": "a2",
+  "page": "modules/a2/lectures/03-spatial-analysis.md"
+}

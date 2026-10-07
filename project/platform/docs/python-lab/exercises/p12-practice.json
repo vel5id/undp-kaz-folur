@@ -1,0 +1,13 @@
+{
+  "title": "P12 · практикум · Потребность культуры в воде",
+  "task": "К теме «Практикум: проект системы водосбережения для модельного участка». Измените Kc, ETo и эффективные осадки. Переведите дефицит из миллиметров в объём.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nphases = pd.DataFrame({'фаза': ['начальная', 'развитие', 'середина', 'поздняя'], 'дни': [20, 30, 40, 25], 'Kc': [0.4, 0.75, 1.1, 0.65], 'ETo_мм_сут': [3.2, 4.5, 5.4, 4.1], 'эфф_осадки_мм': [22, 35, 41, 18]})\nphases['ETc_мм'] = phases.дни * phases.Kc * phases.ETo_мм_сут\nphases['дефицит_мм'] = (phases.ETc_мм - phases.эфф_осадки_мм).clip(lower=0)\narea_ha = 10\nvolume = phases.дефицит_мм.sum() * area_ha * 10\ndisplay(phases)\nprint('Чистая потребность:', round(volume), 'м³ на', area_ha, 'га')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(phases.фаза, phases.дефицит_мм)\nax.set(ylabel='мм', title='Учебный дефицит')\nphases.to_csv('water-demand.csv', index=False)\nprint('Kc и климат условные. Для проекта укажите источники, почвенный запас и эффективность системы.')\n",
+  "check": "assert abs(volume-31507.5)<1e-6\nassert (phases.дефицит_мм>=0).all()",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "p12-practice",
+  "recipe": "irrigation",
+  "label": "P12 · практикум",
+  "module": "p12",
+  "page": "modules/p12/practicum/01-proekt-vodosberezheniya.md"
+}

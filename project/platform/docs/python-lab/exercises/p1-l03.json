@@ -1,0 +1,13 @@
+{
+  "title": "P1.3 · Целостность копий",
+  "task": "К теме «Сохраняем и передаём данные: резервные копии по правилу 3-2-1 и передача партнёрам». Сравните контрольные суммы, затем измените одну копию. Совпадение SHA-256 проверяет целостность, не стратегию хранения.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport hashlib, json\ntext = 'id,value\\nT1,2.1\\nT2,3.0\\n'\nopen('master.csv', 'w').write(text)\nopen('copy.csv', 'w').write(text)\n\ndef checksum(name):\n    return hashlib.sha256(open(name, 'rb').read()).hexdigest()\nchecks = pd.DataFrame([{'файл': name, 'SHA256': checksum(name)} for name in ['master.csv', 'copy.csv']])\ndisplay(checks)\nidentical = checks.SHA256.nunique() == 1\nprint('Копии совпадают:', identical)\njson.dump({'files': checks.to_dict('records'), 'note': 'Две копии в памяти браузера не выполняют правило 3-2-1.'}, open('manifest.json', 'w'), ensure_ascii=False, indent=2)\n",
+  "check": "assert identical\nassert len(checksum('master.csv'))==64",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p1-l03",
+  "recipe": "backup",
+  "label": "P1.3",
+  "module": "p1",
+  "page": "modules/p1/lectures/03-rezervnye-kopii-i-peredacha.md"
+}

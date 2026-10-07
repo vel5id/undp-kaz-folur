@@ -1,0 +1,243 @@
+/* Читаемость урока: разгруженные меню, различимые ссылки и код, визуальный
+ * ритм текста (выноски, определения, списки), замок последовательного доступа.
+ * Разметку для выносок и списков собирает enrichProse() в steppe.js. */
+
+/* ── Левое меню «Программа»: короткие названия шагов, не больше двух строк ── */
+.md-sidebar--primary .folur-nav-step > a.md-nav__link { padding: .42rem .55rem; font-size: .68rem; line-height: 1.35; }
+.md-sidebar--primary .folur-nav-step > a.md-nav__link .md-ellipsis {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden; white-space: normal;
+}
+.md-sidebar--primary .folur-nav-step { margin: .2rem 0; }
+
+/* пройденные и ещё закрытые шаги */
+.md-nav__link.folur-nav-done .folur-nav-num { background: var(--folur-green-light, #2E7D52); font-size: 0; }
+.md-nav__link.folur-nav-done .folur-nav-num::before { content: "✓"; font-size: .62rem; }
+.md-sidebar--primary .folur-nav-step > a.md-nav__link.folur-nav-locked {
+  color: var(--md-default-fg-color--light); border-style: dashed; background: transparent;
+}
+.md-nav__link.folur-nav-locked .folur-nav-num {
+  background: transparent; color: var(--md-default-fg-color--light) !important;
+  border: 1.5px solid currentColor;
+}
+
+/* ── Правое меню «Содержание»: только разделы; подпункты — у текущего ────── */
+.md-nav--secondary .md-nav__link { font-size: .66rem; line-height: 1.35; }
+.md-nav--secondary .md-nav__link .md-ellipsis {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden; white-space: normal;
+}
+@media screen and (min-width: 60em) {
+  .md-nav--secondary .md-nav__item > .md-nav { display: none; }
+  body:not(.folur-stepped) .md-nav--secondary .md-nav__item:has(.md-nav__link--active) > .md-nav,
+  .md-nav--secondary .md-nav__item.folur-toc-current > .md-nav { display: block; }
+}
+.md-nav--secondary .md-nav__item.folur-toc-current > .md-nav__link { font-weight: 700; color: var(--md-typeset-color); }
+
+/* ── Ссылки: различимы не только цветом (подчёркивание + вес) ────────────── */
+.md-typeset :is(p, li, td, dd, figcaption) a:not(.md-button):not(.headerlink):not(.folur-btn):not(.folur-cover):not(.folur-mylearn__title) {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: .09em;
+  text-underline-offset: .2em;
+}
+.md-typeset :is(p, li, td, dd) a:not(.md-button):hover { text-decoration-thickness: .16em; }
+[data-md-color-scheme="slate"] { --md-typeset-a-color: #6FE0CF; }
+.md-typeset a.folur-ext::after { content: "\00a0↗"; font-size: .85em; text-decoration: none; display: inline-block; }
+
+/* ── Инлайн-код: заметная «плашка» для имён файлов, функций, идентификаторов ─ */
+.md-typeset :not(pre) > code {
+  color: var(--md-typeset-color);
+  background: var(--folur-paper-2);
+  border: 1px solid var(--folur-line);
+  font-size: .84em;
+  padding: .08em .4em;
+  border-radius: .3rem;
+  white-space: nowrap;
+}
+[data-md-color-scheme="slate"] .md-typeset :not(pre) > code {
+  background: rgba(125,211,163,.10); border-color: rgba(125,211,163,.28); color: #D6F2E2;
+}
+.md-typeset a > code { color: inherit; }
+@media screen and (max-width: 44em) { .md-typeset :not(pre) > code { white-space: normal; overflow-wrap: anywhere; } }
+
+/* ── Блоки кода: рамка, подпись языка ────────────────────────────────────── */
+.md-typeset .highlight {
+  position: relative;
+  margin: 1.1rem 0 1.3rem;
+  border: 1px solid var(--folur-line);
+  border-left: 3px solid var(--folur-green-light);
+  border-radius: var(--r-sm, .45rem);
+  overflow: hidden;
+  box-shadow: var(--sh1, 0 1px 2px rgba(19,64,41,.06));
+}
+.md-typeset .highlight pre { margin: 0; }
+.md-typeset .highlight > pre > code { font-size: .78em; line-height: 1.6; }
+.md-typeset .highlight[class*="language-"]::before {
+  display: block;
+  padding: .28rem .8rem;
+  font: 700 .6rem/1.4 var(--md-code-font-family, monospace);
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  background: color-mix(in srgb, var(--folur-line) 55%, transparent);
+  border-bottom: 1px solid var(--folur-line);
+}
+.md-typeset .highlight.language-python::before { content: "Python"; }
+.md-typeset .highlight.language-javascript::before { content: "JavaScript"; }
+.md-typeset .highlight.language-text::before { content: "Текст · запрос"; }
+.md-typeset .highlight.language-python .md-clipboard,
+.md-typeset .highlight.language-javascript .md-clipboard,
+.md-typeset .highlight.language-text .md-clipboard { top: 1.9rem; }
+
+/* формула отдельной строкой */
+.md-typeset p.folur-formula {
+  margin: 1rem 0; padding: .7rem 1rem;
+  font-family: var(--md-code-font-family, monospace); font-size: .9rem; text-align: center;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--folur-line); border-radius: var(--r-sm, .45rem);
+  overflow-x: auto;
+}
+
+/* ── Цель урока — крупнее основного текста ───────────────────────────────── */
+.md-typeset p.folur-goal {
+  margin: .4rem 0 1.4rem; padding: .9rem 1.1rem;
+  font-size: 1.02rem; line-height: 1.55; font-weight: 500;
+  border-left: 4px solid var(--folur-wheat);
+  background: linear-gradient(100deg, rgba(212,162,78,.12), rgba(212,162,78,.03));
+  border-radius: 0 var(--r-sm, .45rem) var(--r-sm, .45rem) 0;
+}
+.md-typeset p.folur-goal::first-letter { text-transform: uppercase; }
+
+/* ── Цели обучения ───────────────────────────────────────────────────────── */
+.md-typeset ul.folur-objectives { list-style: none; margin: .8rem 0 1.3rem; padding: 0; display: grid; gap: .45rem; }
+.md-typeset ul.folur-objectives > li,
+.md-typeset p.folur-objective {
+  margin: 0; padding: .55rem .8rem; list-style: none;
+  border: 1px solid var(--folur-line); border-radius: var(--r-sm, .45rem);
+  background: var(--md-default-bg-color);
+  font-size: .78rem; line-height: 1.6;
+}
+.md-typeset p.folur-objective { margin: .45rem 0; }
+.md-typeset ul.folur-objectives > li > em:first-child { font-style: normal; font-weight: 700; color: var(--folur-green-light); }
+[data-md-color-scheme="slate"] .md-typeset ul.folur-objectives > li > em:first-child { color: #7DD3A3; }
+
+/* ── Выноски: метка-«шильдик» + рамка с цветной кромкой ──────────────────── */
+.md-typeset p.folur-callout {
+  --c: var(--folur-water);
+  margin: 1rem 0; padding: .75rem 1rem .8rem;
+  border: 1px solid var(--folur-line); border-left: 4px solid var(--c);
+  border-radius: var(--r-sm, .45rem);
+  background: color-mix(in srgb, var(--c) 6%, var(--md-default-bg-color));
+  font-size: .78rem; line-height: 1.65;
+}
+.folur-callout__label {
+  display: block; margin-bottom: .3rem;
+  font: 800 .64rem/1.4 "Manrope", "Inter", sans-serif;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--c) 72%, var(--md-default-fg-color));
+}
+.md-typeset p.folur-callout--limits   { --c: #C7791F; }
+.md-typeset p.folur-callout--solution { --c: var(--folur-green-light); }
+.md-typeset p.folur-callout--case     { --c: var(--folur-water); }
+.md-typeset p.folur-callout--next     { --c: #7A8791; }
+.md-typeset p.folur-callout--task     { --c: var(--folur-wheat); }
+.md-typeset p.folur-callout--result   { --c: var(--folur-green-light); }
+.md-typeset p.folur-callout--benefit  { --c: #5468D4; }
+.md-typeset p.folur-callout--key      { --c: var(--folur-green); font-size: .84rem; font-weight: 500; }
+/* рядовая метка («Механизм», «Данные»): без рамки, только цветная кромка —
+   иначе серия таких абзацев превращается в стену одинаковых блоков */
+.md-typeset p.folur-callout--note {
+  --c: var(--folur-green-light);
+  padding: .1rem 0 .1rem .9rem; margin: .7rem 0;
+  border: 0; border-left: 3px solid color-mix(in srgb, var(--c) 55%, transparent);
+  border-radius: 0; background: none; font-size: inherit;
+}
+.folur-callout--note > .folur-callout__label { display: inline; margin: 0 .45em 0 0; }
+.folur-callout--note > .folur-callout__label::after { content: " ·"; opacity: .6; }
+[data-md-color-scheme="slate"] .md-typeset p.folur-callout--key { --c: #7DD3A3; }
+[data-md-color-scheme="slate"] .md-typeset p.folur-callout--benefit { --c: #9AA9F4; }
+
+.md-typeset p.folur-subhead {
+  margin: 1.4rem 0 .4rem;
+  font: 700 .86rem/1.4 "Manrope", "Inter", sans-serif;
+}
+
+/* ── Определение: термин выделен, блок в рамке ───────────────────────────── */
+.md-typeset p.folur-def {
+  margin: 1rem 0; padding: .75rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--folur-water) 45%, var(--folur-line));
+  border-radius: var(--r-sm, .45rem);
+  background: color-mix(in srgb, var(--folur-water) 5%, var(--md-default-bg-color));
+}
+.folur-def__term {
+  font-style: normal; font-weight: 800;
+  color: var(--folur-water-dark);
+  padding: .05em .4em; margin-right: .1em;
+  background: color-mix(in srgb, var(--folur-water) 14%, transparent);
+  border-radius: .3rem;
+}
+[data-md-color-scheme="slate"] .folur-def__term { color: #6FE0CF; }
+
+/* ── Списки из серий абзацев ─────────────────────────────────────────────── */
+.md-typeset ul.folur-points { list-style: none; margin: .9rem 0 1.3rem; padding: 0; display: grid; gap: .55rem; }
+.md-typeset ul.folur-points > li {
+  margin: 0; padding: .1rem 0 .1rem 1rem;
+  border-left: 3px solid var(--folur-wheat);
+}
+.folur-points__lead { display: block; font-family: "Manrope", "Inter", sans-serif; font-size: .86rem; }
+.md-typeset ol.folur-questions { margin: .9rem 0 1.3rem; padding: 0; list-style: none; counter-reset: q; display: grid; gap: .5rem; }
+.md-typeset ol.folur-questions > li {
+  counter-increment: q; position: relative; margin: 0;
+  padding: .6rem .8rem .6rem 2.6rem;
+  border: 1px solid var(--folur-line); border-radius: var(--r-sm, .45rem);
+}
+.md-typeset ol.folur-questions > li::before {
+  content: counter(q);
+  position: absolute; left: .7rem; top: .62rem;
+  width: 1.35rem; height: 1.35rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--folur-green); color: #fff;
+  font-size: .64rem; font-weight: 800;
+}
+
+/* ── Таблицы и подписи из Word ───────────────────────────────────────────── */
+.md-typeset .upgraded-table { border: 1px solid var(--folur-line); border-radius: var(--r-sm, .45rem); box-shadow: var(--sh1, none); }
+.md-typeset .upgraded-table table { display: table; margin: 0; font-size: .76rem; border: 0; }
+.md-typeset .upgraded-table th, .md-typeset .upgraded-table td { border: 0; border-top: 1px solid var(--folur-line); }
+.md-typeset .upgraded-table tr:first-child > * { border-top: 0; }
+.md-typeset .upgraded-table th {
+  background: var(--folur-paper-2);
+  font-size: .68rem; letter-spacing: .04em; text-transform: uppercase;
+}
+.md-typeset .upgraded-table td:first-child { font-weight: 600; }
+.md-typeset .upgraded-table tr:nth-child(odd) td { background: color-mix(in srgb, var(--folur-paper-2) 50%, transparent); }
+.md-typeset .upgraded-caption { text-align: center; font-style: italic; }
+.md-typeset .upgraded-caption--desc { margin-top: -1.1rem !important; font-size: .78em; }
+.md-typeset .upgraded-caption--desc em { font-style: inherit; }
+
+/* ── Отдельный шаг «Практика в Python» ───────────────────────────────────── */
+.md-typeset .folur-python-practice > h3:first-child { margin-top: .2rem; font-size: 1.5rem; }
+
+/* ── Замок последовательного доступа ─────────────────────────────────────── */
+.folur-gated > :not(.folur-gate):not(h1) { display: none !important; }
+.folur-gate {
+  margin: 1.2rem 0 2rem; padding: 1.4rem 1.5rem;
+  border: 1px dashed color-mix(in srgb, var(--folur-wheat) 70%, var(--folur-line));
+  border-radius: var(--r-md, .8rem);
+  background: color-mix(in srgb, var(--folur-wheat) 8%, var(--md-default-bg-color));
+}
+.folur-gate__title { font: 800 1.05rem/1.3 "Manrope", "Inter", sans-serif; margin-bottom: .4rem; }
+.folur-gate__title::before { content: "🔒 "; }
+.md-typeset .folur-gate p { margin: 0 0 1rem; max-width: 60ch; }
+.folur-gate__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; }
+.folur-gate__actions .md-button { margin: 0; }
+.folur-gate__skip {
+  font: inherit; font-size: .72rem; cursor: pointer;
+  color: var(--md-default-fg-color--light);
+  background: none; border: 0; padding: .3rem 0;
+  text-decoration: underline; text-underline-offset: .2em;
+}
+.folur-gate__skip:hover { color: var(--md-typeset-color); }
+@media print {
+  .folur-gated > :not(.folur-gate) { display: revert !important; }
+  .folur-gate { display: none; }
+}

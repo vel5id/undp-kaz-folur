@@ -1,0 +1,13 @@
+{
+  "title": "P13.1 · Учёт биоразнообразия",
+  "task": "К теме «Инвентаризируем биоразнообразие агроландшафта: местообитания, виды, экологический каркас». Сравните регистрации по местообитаниям. Отсутствие наблюдения не доказывает отсутствия вида.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nobservations = pd.DataFrame({'место': ['лесополоса', 'лесополоса', 'луг', 'луг', 'водоём', 'водоём', 'луг'], 'группа': ['птицы', 'опылители', 'птицы', 'опылители', 'птицы', 'амфибии', 'опылители'], 'число': [8, 5, 6, 12, 15, 4, 3]})\nsummary = observations.pivot_table(index='место', columns='группа', values='число', aggfunc='sum', fill_value=0)\ndisplay(observations)\ndisplay(summary)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nsummary.plot.bar(ax=ax)\nax.set(ylabel='Условные регистрации', title='Учебный учёт')\nfig.tight_layout()\nsummary.to_csv('habitats.csv')\n",
+  "check": "assert summary.to_numpy().sum()==53\nassert summary.loc['луг','опылители']==15",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p13-l01",
+  "recipe": "habitats",
+  "label": "P13.1",
+  "module": "p13",
+  "page": "modules/p13/lectures/01-inventarizaciya-bioraznoobraziya.md"
+}

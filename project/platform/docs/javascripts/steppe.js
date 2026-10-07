@@ -78,6 +78,206 @@
     });
   }
 
+  /* ── Внешние ссылки и редактор Python открываются в новой вкладке:
+   * слушатель не теряет место в уроке. ───────────────────────────────────── */
+  function externalLinks() {
+    document.querySelectorAll("article a[href]").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      var ext = /^https?:\/\//i.test(href) && a.host !== location.host;
+      if (!ext && !/\/python-lab\/editor\.html/.test(href)) return;
+      a.target = "_blank";
+      a.rel = "noopener";
+      if (ext && !a.querySelector("img, svg") && !a.classList.contains("md-button")) a.classList.add("folur-ext");
+    });
+  }
+
+  /* ── Визуальный ритм текста урока ────────────────────────────────────────
+   * Уроки пришли из Word сплошными абзацами. Здесь по устойчивым признакам
+   * текста собираются списки, выноски, определения и инлайн-код. Текст не
+   * переписывается: меняется только разметка. Должно выполняться ДО stepsBar,
+   * потому что тот запоминает ссылки на блоки статьи. ────────────────────── */
+  var CALLOUTS = [
+    [/^границы/i, "limits"],
+    [/^разбор/i, "solution"],
+    [/^(региональный кейс|кейс|ситуация)/i, "case"],
+    [/^(что дальше|подробнее)/i, "next"],
+    [/^(закрепление|самостоятельно|задани|задач|самопроверка|работа)/i, "task"],
+    [/^(ожидаемый результат|получить|собрать)/i, "result"],
+    [/^что это да[её]т/i, "benefit"],
+  ];
+  var KEY_LEAD = /^(Практический вывод|Практическое правило|Важная деталь|Обратите внимание|Важно|Вывод|Правило|Главное|Итог|Запомните)\s*(?:[:.]|—|–)\s*/;
+  var POINT_LEAD = /^([A-ZА-ЯЁ][^.!?:;,()«»—–]{2,44})\.\s+(?=[A-ZА-ЯЁ«0-9])/;
+  var DEF_LEAD = /^([A-ZА-ЯЁ][A-Za-zА-Яа-яЁё0-9\-./ ]{0,48}?(?:\s\([^)]{2,60}\))?)\s[—–]\s(?=[а-яё])/;
+  var NOT_TERM = /^(В|Во|На|Для|При|По|С|Со|К|Из|От|У|О|Об|Если|Когда|Но|И|А|Это|Этот|Эта|Эти|Так|Как|Что|Чем|Без|Про|За|Над|Под|После|До|Через|Здесь|Там|Тогда|Затем|Наш|Ваш|Их|Его|Её)\s/;
+  var FILE_EXT ="csv|json|geojson|tif|tiff|gpkg|shp|py|ipynb|xlsx|xls|qgz|qgs|kml|kmz|las|laz|txt|zip|png|jpg|jpeg|pdf|md|yml|yaml|tfw|nc|parquet|docx|gpx|dbf|prj|html";
+  // 1 — граница слева; 2 — то, что оборачивается в <code>
+  var CODE_RE = new RegExp("(^|[^A-Za-z0-9_./@\\-])(" +
+    "\\*?[A-Za-z0-9_][A-Za-z0-9_\\-]*(?:\\.[A-Za-z0-9_\\-]+)*\\.(?:" + FILE_EXT + ")(?![A-Za-z0-9_\\-])" +      // имя файла
+    "|[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\([^()А-Яа-яЁё]{0,40}\\)" +                         // вызов()
+    "|(?:[A-Za-z0-9]+\\/)*[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+" +                                          // snake_case, ID коллекций
+    "|EPSG:\\d{4,5}" +
+    ")", "g");
+  var NO_CODE = "a, code, pre, kbd, h1, h2, h3, h4, button, label, figure, svg, .mermaid, .folur-formula, .folur-quiz, .folur-steps, .folur-pager, .folur-gate, .md-button";
+
+  function firstText(p) {
+    var n = p.firstChild;
+    return n && n.nodeType === 3 ? n : null;
+  }
+  function plainP(el) {
+    return el && el.tagName === "P" && !el.className;
+  }
+  // обернуть первые len символов абзаца в элемент tag.cls (остальное не трогаем)
+  function wrapLead(p, len, tag, cls, strip) {
+    var t = firstText(p);
+    var lead = document.createElement(tag);
+    lead.className = cls;
+    lead.textContent = t.data.slice(0, len).replace(/\s+$/, "");
+    t.data = t.data.slice(len + (strip || 0));
+    p.insertBefore(lead, t);
+    if (t.data.charAt(0) !== " ") p.insertBefore(document.createTextNode(" "), t);
+    return lead;
+  }
+  function toList(run, tag, cls) {
+    var list = document.createElement(tag);
+    list.className = cls;
+    run[0].parentNode.insertBefore(list, run[0]);
+    run.forEach(function (p) {
+      var li = document.createElement("li");
+      while (p.firstChild) li.appendChild(p.firstChild);
+      list.appendChild(li);
+      p.remove();
+    });
+    return list;
+  }
+
+  function enrichProse() {
+    var article = pathCode() && document.querySelector("article.md-content__inner, article");
+    if (!article || article.hasAttribute("data-folur-prose")) return;
+    article.setAttribute("data-folur-prose", "");
+    var lesson = /\/(lectures|practicum)\//.test(location.pathname);
+    var kids = Array.prototype.slice.call(article.children);
+
+    // 1) выноски: абзац начинается с метки курсивом/полужирным («Разбор:», «Границы лекции.»)
+    kids.forEach(function (p) {
+      if (!plainP(p)) return;
+      var first = p.firstChild;
+      while (first && first.nodeType === 3 && !first.data.trim()) first = first.nextSibling;
+      if (!first || first.nodeType !== 1 || !/^(EM|STRONG)$/.test(first.tagName)) return;
+      var tag = first.tagName, nodes = [], n = first;
+      while (n && ((n.nodeType === 1 && n.tagName === tag) || (n.nodeType === 3 && !n.data.trim()))) { nodes.push(n); n = n.nextSibling; }
+      var label = nodes.map(function (x) { return x.textContent; }).join("").replace(/\s+/g, " ").replace(/[\s.:]+$/, "").trim();
+      if (!n && nodes.length === 1 && label.length > 45 && tag === "EM" &&
+          p.previousElementSibling && p.previousElementSibling.classList.contains("upgraded-caption")) {
+        p.className = "upgraded-caption upgraded-caption--desc"; // словесное описание рисунка
+        return;
+      }
+      if (label.length < 3 || label.length > 45 || /^\[/.test(label)) return;
+      if (!n) { p.className = "folur-subhead"; return; } // абзац целиком из метки — подзаголовок
+      var bloom = BLOOM[label.toLowerCase()] || (/^[А-ЯЁ][а-яё]+ть$/.test(label) ? "apply" : null);
+      if (bloom || /^[а-яё]/.test(label)) {
+        // цель обучения: «Знать: …» → пилюля; «перечислять …» → глагол-акцент
+        p.className = "folur-objective";
+        if (bloom) {
+          var pill = document.createElement("span");
+          pill.className = "bloom bloom--" + bloom;
+          pill.textContent = label.toLowerCase();
+          p.insertBefore(pill, nodes[0]);
+          nodes.forEach(function (x) { x.remove(); });
+        }
+        return;
+      }
+      var type = "note";
+      CALLOUTS.some(function (c) { if (c[0].test(label)) { type = c[1]; return true; } return false; });
+      var cap = document.createElement("span");
+      cap.className = "folur-callout__label";
+      cap.textContent = label;
+      p.insertBefore(cap, nodes[0]);
+      nodes.forEach(function (x) { x.remove(); });
+      p.className = "folur-callout folur-callout--" + type;
+    });
+
+    // 2) цель урока — крупнее основного текста
+    kids.forEach(function (h) {
+      if (h.tagName === "H2" && /^Цел[ьи]\s/.test(h.textContent) && plainP(h.nextElementSibling)) {
+        h.nextElementSibling.className = "folur-goal";
+      }
+    });
+
+    // 3) ключевые выводы и определения в рамке
+    kids.forEach(function (p) {
+      var t = plainP(p) && firstText(p);
+      if (!t) return;
+      var m = t.data.match(KEY_LEAD);
+      if (m) {
+        wrapLead(p, m[1].length, "span", "folur-callout__label", m[0].length - m[1].length);
+        p.className = "folur-callout folur-callout--key";
+        return;
+      }
+      m = lesson && t.data.match(DEF_LEAD);
+      if (m && m[1].replace(/\s\(.*$/, "").split(/\s+/).length <= 4 && !NOT_TERM.test(m[1]) &&
+          (/[A-Za-z]/.test(m[1]) || /^это\s/.test(t.data.slice(m[0].length)))) {
+        wrapLead(p, m[1].length, "dfn", "folur-def__term");
+        p.className = "folur-def";
+      }
+    });
+
+    // 4) серии абзацев → списки: цели, «Заголовок. Пояснение», «1) вопрос»
+    var run = [], mode = null;
+    function flush() {
+      if (mode === "objective" && run.length > 1) toList(run, "ul", "folur-objectives");
+      else if (mode === "num" && run.length > 1) {
+        run.forEach(function (p) { var t = firstText(p); t.data = t.data.replace(/^\s*\d{1,2}\)\s*/, ""); });
+        toList(run, "ol", "folur-questions");
+      } else if (mode === "point") {
+        var prev = run[0].previousElementSibling;
+        var asked = prev && prev.tagName === "P" && /:\s*$/.test(prev.textContent);
+        if (run.length >= 3 || (run.length === 2 && asked)) {
+          run.forEach(function (p) {
+            var m = firstText(p).data.match(POINT_LEAD);
+            wrapLead(p, m[1].length + 1, "strong", "folur-points__lead");
+          });
+          toList(run, "ul", "folur-points");
+        }
+      }
+      run = []; mode = null;
+    }
+    kids.forEach(function (el) {
+      var k = null, t;
+      if (el.tagName === "P" && el.className === "folur-objective") k = "objective";
+      else if (plainP(el) && (t = firstText(el))) {
+        var m = t.data.match(POINT_LEAD);
+        if (/^\s*\d{1,2}\)\s+\S/.test(t.data)) k = "num";
+        else if (m && m[1].split(/\s+/).length <= 5) k = "point";
+      }
+      if (k !== mode) flush();
+      if (k) { mode = k; run.push(el); }
+    });
+    flush();
+
+    // 5) имена файлов, вызовы функций и идентификаторы → инлайн-код
+    var walker = document.createTreeWalker(article, NodeFilter.SHOW_TEXT, null);
+    var texts = [], node;
+    while ((node = walker.nextNode())) {
+      if (node.data.length > 3 && /[A-Za-z]/.test(node.data) && !node.parentNode.closest(NO_CODE)) texts.push(node);
+    }
+    texts.forEach(function (tn) {
+      var s = tn.data, last = 0, m, frag = null;
+      CODE_RE.lastIndex = 0;
+      while ((m = CODE_RE.exec(s))) {
+        var start = m.index + m[1].length;
+        frag = frag || document.createDocumentFragment();
+        frag.appendChild(document.createTextNode(s.slice(last, start)));
+        var code = document.createElement("code");
+        code.textContent = m[2];
+        frag.appendChild(code);
+        last = start + m[2].length;
+      }
+      if (!frag) return;
+      frag.appendChild(document.createTextNode(s.slice(last)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
   /* ── Элементы модуля из навигации (в порядке следования) ────────────── */
   function moduleItems(code) {
     var seen = new Set(), items = [];
@@ -87,7 +287,8 @@
       var abs = new URL(href, location.href).pathname;
       if (!re.test(abs) || seen.has(abs)) return;
       seen.add(abs);
-      items.push({ url: abs, title: (a.textContent || "").trim() });
+      var label = a.querySelector(".md-ellipsis") || a;
+      items.push({ url: abs, title: a.getAttribute("title") || (label.textContent || "").trim() });
     });
     return items;
   }
@@ -107,29 +308,199 @@
     if (v.indexOf(path) === -1) { v.push(path); localStorage.setItem(VISITED_KEY, JSON.stringify(v)); }
   }
 
-  /* ── Шаги урока (Stepik-стиль): каждый раздел (h2) рендерится ОТДЕЛЬНО.
+  /* ── Последовательный доступ к шагам модуля ──────────────────────────────
+   * Шаг «пройден», когда слушатель дошёл до его последнего раздела. Следующий
+   * шаг открывается только после этого. Состояние — в localStorage, сервера
+   * нет, поэтому замок мягкий: на закрытой странице есть «Открыть без
+   * ограничений» (другой браузер, преподаватель, очищенное хранилище). ───── */
+  var DONE_KEY = "folur-done", GATE_OFF_KEY = "folur-gate-off";
+  var GATED = false; // текущая страница закрыта — прогресс на ней не засчитываем
+  function readList(key) {
+    try { var v = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(v) ? v : []; }
+    catch (e) { return []; }
+  }
+  function doneList() {
+    try {
+      // первый запуск после включения замка: уже открытые шаги считаем пройденными
+      if (localStorage.getItem(DONE_KEY) === null) localStorage.setItem(DONE_KEY, JSON.stringify(visited()));
+    } catch (e) {}
+    return readList(DONE_KEY);
+  }
+  function markDone(path) {
+    if (GATED) return;
+    var d = doneList();
+    if (d.indexOf(path) !== -1) return;
+    d.push(path);
+    try { localStorage.setItem(DONE_KEY, JSON.stringify(d)); } catch (e) {}
+    lessonGate(); // следующий шаг открылся — обновить замки в сайдбаре
+  }
+  function gateOff(code) {
+    return !!window.__FOLUR_PDF__ || readList(GATE_OFF_KEY).indexOf(code) !== -1;
+  }
+  // индекс первого непройденного шага; всё, что после него, закрыто
+  function frontier(items, code) {
+    if (gateOff(code)) return items.length;
+    var d = doneList();
+    for (var i = 0; i < items.length; i++) if (d.indexOf(items[i].url) === -1) return i;
+    return items.length;
+  }
+
+  function lessonGate() {
+    var code = pathCode();
+    if (!code) return;
+    var items = moduleItems(code);
+    if (!items.length) return;
+    var open = frontier(items, code), d = doneList(), here = -1;
+    items.forEach(function (it, i) { if (it.url === location.pathname) here = i; });
+
+    document.querySelectorAll(".md-sidebar--primary .md-nav__link[href]").forEach(function (a) {
+      var p = new URL(a.getAttribute("href"), location.href).pathname, idx = -1;
+      items.forEach(function (it, i) { if (it.url === p) idx = i; });
+      if (idx === -1) return;
+      var locked = idx > open;
+      a.classList.toggle("folur-nav-locked", locked);
+      a.classList.toggle("folur-nav-done", d.indexOf(p) !== -1);
+      if (locked) a.setAttribute("aria-description", "Откроется после шага " + (open + 1));
+      else a.removeAttribute("aria-description");
+    });
+
+    var article = document.querySelector("article.md-content__inner, article");
+    if (!article || article.querySelector(".folur-gate")) return;
+    GATED = here > open;
+    if (!GATED) return;
+    var cur = items[open];
+    var gate = document.createElement("div");
+    gate.className = "folur-gate";
+    gate.setAttribute("role", "status");
+    var h = document.createElement("div");
+    h.className = "folur-gate__title";
+    h.textContent = "Шаг " + (here + 1) + " пока закрыт";
+    var p = document.createElement("p");
+    p.textContent = "Шаги модуля открываются по порядку. Сначала завершите шаг " + (open + 1) +
+      " — «" + cur.title + "»: дойдите до его последнего раздела.";
+    var go = document.createElement("a");
+    go.className = "md-button md-button--primary";
+    go.href = cur.url;
+    go.textContent = "Перейти к шагу " + (open + 1) + " →";
+    var skip = document.createElement("button");
+    skip.type = "button";
+    skip.className = "folur-gate__skip";
+    skip.textContent = "Открыть без ограничений";
+    skip.title = "Если вы уже проходили модуль в другом браузере или ведёте занятие";
+    skip.addEventListener("click", function () {
+      var off = readList(GATE_OFF_KEY);
+      if (off.indexOf(code) === -1) off.push(code);
+      try { localStorage.setItem(GATE_OFF_KEY, JSON.stringify(off)); } catch (e) {}
+      location.reload();
+    });
+    var row = document.createElement("div");
+    row.className = "folur-gate__actions";
+    row.appendChild(go); row.appendChild(skip);
+    gate.appendChild(h); gate.appendChild(p); gate.appendChild(row);
+    var h1 = article.querySelector("h1");
+    if (h1 && h1.parentNode === article) article.insertBefore(gate, h1.nextSibling);
+    else article.insertBefore(gate, article.firstChild);
+    article.classList.add("folur-gated");
+  }
+
+  /* ── Шаги урока (Stepik-стиль): связанные подразделы объединены по смыслу.
    * Квадратики и хэш-URL переключают активный раздел; внизу «Назад/Дальше».
    * Печать/PDF видят весь урок целиком (скрытие — классом, print его снимает,
    * а в режиме генерации PDF пагинация не включается вовсе). ─────────────── */
+  function isContent(el) {
+    return !/^H[1-6]$/.test(el.tagName) && el.tagName !== "HR" &&
+      !/^Программа модуля\s*·\s*Данные и условия использования$/.test(el.textContent.trim()) &&
+      !!(el.textContent.trim() || el.matches("img, iframe, canvas, video, input") ||
+         el.querySelector("img, iframe, canvas, video, input"));
+  }
+
+  // H2 describes text structure, not necessarily a separate lesson screen.
+  function groupLessonSections(sections) {
+    function text(s) { return s.title || s.head.textContent.replace(/¶/g, "").trim(); }
+    function kind(s) {
+      if (s.lab) return "lab";
+      if (s.kindHint) return s.kindHint;
+      var t = text(s);
+      if (/^(Цел[ьи].*(урока|лекции)|Место в модуле|После изучения)/i.test(t)) return "intro";
+      if (/Региональный кейс/i.test(t)) return "case";
+      if (/(Контроль знаний|Контрольные вопросы|Тестовые вопросы|Проверь себя|(?:^|\. )Контроль$)/i.test(t)) return "check";
+      if (/^(Закрепление и применение|Практикум)/i.test(t)) return "practice";
+      if (/^Лекционный блок/i.test(t)) return "lecture";
+      if (/^\d+\.\s/.test(t)) return "topic";
+      if (/Словарь урока/i.test(t)) return "glossary";
+      if (/^Код для выполнения задания/i.test(t)) return "code";
+      return "detail";
+    }
+    function hasContent(s) { return s.els.some(isContent); }
+    var groups = [], pending = [], pendingTopic = null;
+    sections.forEach(function (s) {
+      var k = kind(s), last = groups[groups.length - 1];
+      // Empty wrappers travel with the next section that actually has content.
+      if (!hasContent(s)) {
+        pending = pending.concat(s.els);
+        if (/^(lecture|practice|check)$/.test(k)) {
+          s.head.classList.add("folur-empty-section-label");
+          document.querySelectorAll('.md-nav--secondary a[href="#' + s.head.id + '"]').forEach(function (a) {
+            var item = a.closest("li"); if (item) item.classList.add("folur-empty-section-label");
+          });
+        }
+        if (k !== "detail") pendingTopic = s;
+        return;
+      }
+      var parent = pendingTopic && k === "detail" ? pendingTopic : s;
+      if (parent !== s) k = kind(parent);
+      var merge = last && (k === "detail" ||
+        (k === last.kind && /^(intro|check|practice)$/.test(k)));
+      if (merge) last.els = last.els.concat(pending, s.els);
+      else groups.push({ head: parent.head, els: pending.concat(s.els), kind: k,
+        title: k === "intro" ? "Введение" : k === "check" ? "Проверка знаний" : text(parent) });
+      pending = []; pendingTopic = null;
+    });
+    if (pending.length && groups.length) groups[groups.length - 1].els = groups[groups.length - 1].els.concat(pending);
+    return groups.length ? groups : sections;
+  }
+
   function stepsBar() {
     var code = pathCode();
     if (!code || !/\/(lectures|practicum|ai-assistant|assessment)\//.test(location.pathname + "/")) return;
     var article = document.querySelector("article.md-content__inner, article");
     if (!article || article.querySelector(".folur-steps")) return;
-    markVisited(location.pathname);
+    if (!GATED) markVisited(location.pathname);
     if (window.__FOLUR_PDF__) return; // конспект печатается сплошным текстом
 
     var heads = Array.prototype.slice.call(article.querySelectorAll("h2[id]"));
-    if (heads.length < 2) return;
+    if (heads.length < 2) { markDone(location.pathname); return; }
 
-    // разбивка: раздел = h2 + все top-level блоки до следующего h2
-    var sections = heads.map(function (h) { return { head: h, els: [h] }; });
-    var si = -1;
+    // разбивка: раздел = h2 + все top-level блоки до следующего h2;
+    // встроенный редактор Python — отдельный шаг со своим названием
+    var sections = [], cur = null;
     Array.prototype.slice.call(article.children).forEach(function (el) {
-      var idx = heads.indexOf(el);
-      if (idx !== -1) { si = idx; return; }
-      if (si >= 0) sections[si].els.push(el);
+      if (heads.indexOf(el) !== -1) { cur = { head: el, els: [el] }; sections.push(cur); return; }
+      if (!cur) return;
+      if (el.id && el.classList.contains("folur-python-practice")) {
+        cur = { head: el, els: [el], title: "Практика в Python", lab: true };
+        sections.push(cur);
+        return;
+      }
+      if (cur.lab) { cur = { head: el, els: [], tail: true }; sections.push(cur); }
+      cur.els.push(el);
     });
+    // то, что в исходнике идёт после редактора до следующего заголовка, остаётся
+    // после него отдельным шагом (порядок материала не меняется)
+    sections = sections.filter(function (s, i) {
+      if (!s.tail) return true;
+      if (!s.els.some(isContent)) { sections[i - 1].els = sections[i - 1].els.concat(s.els); return false; }
+      var quiz = s.els.some(function (el) {
+        return el.matches(".folur-quiz, .quiz") || el.querySelector(".folur-quiz, .quiz");
+      });
+      s.title = quiz ? "Проверка знаний" : "Закрепление и применение";
+      s.kindHint = quiz ? "check" : "practice";
+      if (!s.head.id) s.head.id = "after-practice";
+      return true;
+    });
+    if (sections.length < 2) { markDone(location.pathname); return; }
+
+    if (/\/lectures\//.test(location.pathname)) sections = groupLessonSections(sections);
 
     // подпись «шаг N из M модуля»
     var items = moduleItems(code);
@@ -153,7 +524,7 @@
       var a = document.createElement("a");
       a.className = "folur-step";
       a.href = "#" + s.head.id;
-      var t = s.head.textContent.replace(/¶/g, "").trim();
+      var t = s.title || s.head.textContent.replace(/¶/g, "").trim();
       a.title = t;
       a.setAttribute("aria-label", "Раздел " + (i + 1) + ": " + t);
       a.textContent = String(i + 1);
@@ -161,6 +532,7 @@
       return a;
     });
     article.insertBefore(bar, article.firstChild);
+    document.body.classList.add("folur-stepped"); // «Содержание» следует за шагом, а не за прокруткой
 
     // пейджер внизу
     var pager = document.createElement("nav");
@@ -200,7 +572,14 @@
         sq.classList.toggle("folur-step--done", !!seen[j] && j !== current);
       });
       title.textContent = "Раздел " + (current + 1) + " из " + sections.length + ": " +
-        sections[current].head.textContent.replace(/¶/g, "").trim();
+        (sections[current].title || sections[current].head.textContent.replace(/¶/g, "").trim());
+      // «Содержание» справа: подпункты раскрыты только у текущего раздела
+      document.querySelectorAll(".md-nav--secondary > .md-nav__list > .md-nav__item").forEach(function (li) {
+        var a = li.querySelector("a[href]");
+        var id = a ? decodeURIComponent((a.getAttribute("href") || "").replace(/^[^#]*#/, "")) : "";
+        li.classList.toggle("folur-toc-current", !!id && idToIndex(id) === current);
+      });
+      if (current === sections.length - 1) markDone(location.pathname);
       prevBtn.style.visibility = current === 0 ? "hidden" : "visible";
       prevBtn.href = current > 0 ? "#" + sections[current - 1].head.id : "#";
       if (current < sections.length - 1) {
@@ -226,7 +605,8 @@
       show(i, false);
       // если якорь — подраздел (h3) внутри секции, доскроллить к нему
       var target = id && document.getElementById(id);
-      if (target && target !== sections[i].head) target.scrollIntoView();
+      if (target && target.classList.contains("folur-empty-section-label")) sections[i].head.scrollIntoView();
+      else if (target && target !== sections[i].head) target.scrollIntoView();
       else window.scrollTo({ top: 0 });
     });
 
@@ -545,6 +925,15 @@
           chip.className = "folur-nav-num";
           chip.textContent = n;
           a.insertBefore(chip, a.firstChild);
+          // короткое название в карточке шага: в nav заголовок записан как
+          // «Действие — уточнение»; уточнение уходит в подсказку
+          var label = a.querySelector(".md-ellipsis");
+          var full = label ? label.textContent.trim() : "";
+          var parts = full.split(" — ");
+          if (label && parts.length > 1) {
+            label.textContent = parts[0].length < 14 ? parts[0] + ": " + parts[1] : parts[0];
+            a.title = full;
+          }
         }
       } else if (p.replace(/index\.html$/, "") === "/modules/" + code + "/" ||
                  p.endsWith("/modules/" + code + "/")) {
@@ -553,15 +942,91 @@
     });
   }
 
+  /* ── Скролл-реявл (squidfunk-стиль): плавное появление блоков лендинга
+   * при прокрутке. Только главная и страницы модулей (courseLanding()).
+   * Скрытие задаётся ТОЛЬКО через JS-класс .folur-anim на <html> — без JS
+   * или без IntersectionObserver всё остаётся видимым (см. requirement #3). */
+  function scrollReveal() {
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (window.__FOLUR_PDF__ || reduce) return; // печать/PDF и reduced-motion — всё видно сразу, класс не добавляем
+
+    var isHome = /^\/(index\.html)?$/.test(location.pathname);
+    var isModuleLanding = /\/modules\/[ap]\d+\/(index\.html)?$/.test(location.pathname);
+    if (!isHome && !isModuleLanding) return;
+
+    var article = document.querySelector("article.md-content__inner, article");
+    if (!article) return;
+
+    // группы: каждая — свой стаггер-счётчик, чтобы длинная страница не «тянулась»
+    var groups = [];
+    var hero = article.querySelector(".folur-hero, .folur-course-hero");
+    if (hero) groups.push([hero]);
+    var band = article.querySelector(".folur-course-band");
+    if (band) groups.push([band]);
+    var stats = article.querySelector(".folur-stats");
+    if (stats) groups.push(Array.prototype.slice.call(stats.querySelectorAll(".folur-stat")));
+    var learn = article.querySelector(".folur-learn");
+    if (learn) groups.push([learn]);
+    article.querySelectorAll(".folur-block-head").forEach(function (h) { groups.push([h]); });
+    article.querySelectorAll(".grid.cards").forEach(function (grid) {
+      groups.push(Array.prototype.slice.call(grid.querySelectorAll(":scope > :is(ul,ol) > li")));
+    });
+
+    var targets = [];
+    groups.forEach(function (group) {
+      group.forEach(function (el, i) {
+        if (!el || el.classList.contains("folur-reveal-item")) return; // idempotent: не переинициализировать
+        el.classList.add("folur-reveal-item");
+        el.style.setProperty("--i", String(i));
+        targets.push(el);
+      });
+    });
+    if (!targets.length) return;
+
+    document.documentElement.classList.add("folur-anim");
+
+    if (!("IntersectionObserver" in window)) {
+      // нет наблюдателя — не прячем контент вовсе (без .folur-anim прячущий CSS не сработает,
+      // но подстрахуемся явным снятием класса)
+      document.documentElement.classList.remove("folur-anim");
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("folur-reveal-in");
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+    targets.forEach(function (el) { io.observe(el); });
+
+    // фокус клавиатурой на ещё не раскрытом элементе — раскрыть немедленно.
+    // Слушатель вешаем ОДИН раз: init()/scrollReveal() вызывается на каждой
+    // instant-nav смене страницы, иначе слушатели focusin копились бы (утечка).
+    if (!scrollReveal._focusBound) {
+      scrollReveal._focusBound = true;
+      document.addEventListener("focusin", function (e) {
+        var el = e.target && e.target.closest && e.target.closest(".folur-reveal-item:not(.folur-reveal-in)");
+        if (el) el.classList.add("folur-reveal-in");
+      });
+    }
+  }
+
   function init() {
     readbar();
     lessonHead();
     bloomPills();
+    externalLinks();
+    enrichProse();
+    lessonGate();
     stepsBar();
     courseLanding();
     cardCovers();
     myLearning();
     pruneSidebarToModule();
+    scrollReveal();
   }
 
   if (window.document$ && window.document$.subscribe) {

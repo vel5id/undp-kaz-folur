@@ -1,0 +1,13 @@
+{
+  "title": "P11.1 · План промерных галсов",
+  "task": "К теме «Планируем съёмку глубин своего водоёма: эхолот, GPS и галсы, которые не придётся переделывать». Измените шаг галсов и оцените время промеров. Повороты и резерв времени уточняются отдельно.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nwidth, length, speed = (800, 1200, 2)\nsteps = np.array([25, 50, 100, 200])\nlines = np.ceil(width / steps).astype(int) + 1\ndistance = lines * length + width * 2\nresult = pd.DataFrame({'шаг_м': steps, 'галсы': lines, 'путь_м': distance, 'время_ч': distance / speed / 3600})\ndisplay(result)\nfig, ax = plt.subplots(figsize=(6, 4))\nfor x in np.linspace(0, width, int(lines[2])):\n    ax.plot([x, x], [0, length], color='#357f69')\nax.set_aspect('equal')\nax.set(xlabel='x, м', ylabel='y, м', title='Учебная схема: шаг 100 м')\n",
+  "check": "assert lines.tolist()==[33,17,9,5]\nassert result.время_ч.is_monotonic_decreasing",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p11-l01",
+  "recipe": "transects",
+  "label": "P11.1",
+  "module": "p11",
+  "page": "modules/p11/lectures/01-planiruem-semku-glubin.md"
+}

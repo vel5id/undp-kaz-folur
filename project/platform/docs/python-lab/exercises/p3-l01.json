@@ -1,0 +1,15 @@
+{
+  "title": "P3.1 · NDVI и маска облаков",
+  "task": "К теме «Читаем карту NDVI: что спутник видит на вашем поле». Измените порог проблемной зоны. Свои каналы: B04.tif, B08.tif и, при наличии, SCL.tif на одной сетке.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport rasterio\nif os.path.exists('B04.tif') and os.path.exists('B08.tif'):\n    with rasterio.open('B04.tif') as r:\n        red = r.read(1, masked=True).astype(float).filled(np.nan)\n        profile = r.profile\n    with rasterio.open('B08.tif') as r:\n        assert r.shape == red.shape and r.crs == profile['crs'] and (r.transform == profile['transform']), 'Согласуйте сетки и CRS'\n        nir = r.read(1, masked=True).astype(float).filled(np.nan)\n    scl = np.zeros(red.shape, dtype=int)\n    if os.path.exists('SCL.tif'):\n        with rasterio.open('SCL.tif') as r:\n            assert r.shape == red.shape and r.crs == profile['crs'] and (r.transform == profile['transform'])\n            scl = r.read(1)\nelse:\n    yy, xx = np.mgrid[0:80, 0:120]\n    red = 0.15 + 0.04 * np.sin(xx / 10)\n    nir = 0.45 + 0.1 * np.cos(yy / 15)\n    scl = np.full(red.shape, 4)\n    scl[10:25, 25:55] = 9\n    print('Синтетические каналы отражения и маска.')\nden = nir + red\nndvi = np.divide(nir - red, den, out=np.full(red.shape, np.nan), where=np.isfinite(den) & (den != 0))\nndvi[np.isin(scl, [3, 8, 9, 10, 11])] = np.nan\nthreshold = 0.45\nvalid = np.isfinite(ndvi)\nproblem = valid & (ndvi < threshold)\nsummary = pd.DataFrame({'показатель': ['чистые пиксели', 'средний NDVI', 'доля ниже порога'], 'значение': [valid.sum(), np.nanmean(ndvi), problem.sum() / valid.sum()]})\ndisplay(summary)\nfig, axs = plt.subplots(1, 2, figsize=(9, 3.7))\nim = axs[0].imshow(ndvi, vmin=-1, vmax=1, cmap='RdYlGn')\nfig.colorbar(im, ax=axs[0], label='NDVI')\naxs[0].set_title('NDVI без облаков')\naxs[1].imshow(np.where(valid, problem, np.nan))\naxs[1].set_title(f'Учебный порог {threshold}')\nfig.tight_layout()\nsummary.to_csv('ndvi-summary.csv', index=False)\nprint('Порог иллюстративный; причина низкого NDVI проверяется в поле.')\n",
+  "check": "assert valid.sum()==9150\nassert np.nanmin(ndvi)>=-1 and np.nanmax(ndvi)<=1\nassert np.isnan(ndvi[12,30])",
+  "packages": [
+    "rasterio"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p3-l01",
+  "recipe": "ndvi",
+  "label": "P3.1",
+  "module": "p3",
+  "page": "modules/p3/lectures/01-chitaem-ndvi.md"
+}

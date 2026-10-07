@@ -1,0 +1,13 @@
+{
+  "title": "P8.1 · Готовность полей",
+  "task": "К теме «Оцениваем готовность полей к no-till: стерня, сорняки, влага». Сопоставьте покрытие, засорённость и технику. Правила учебные, решение требует агрономического обоснования.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfields = pd.DataFrame({'поле': ['А', 'Б', 'В'], 'покрытие_проц': [65, 15, 50], 'сорняки_балл': [1, 3, 2], 'техника': ['есть', 'есть', 'нет']})\nfields['готовность'] = (fields.покрытие_проц >= 40) & (fields.сорняки_балл <= 2) & fields.техника.eq('есть')\ndisplay(fields)\nprint('Предварительно готовые:', fields.loc[fields.готовность, 'поле'].tolist())\nfields.to_csv('readiness.csv', index=False)\n",
+  "check": "assert fields.loc[fields.готовность,'поле'].tolist()==['А']",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p8-l01",
+  "recipe": "readiness",
+  "label": "P8.1",
+  "module": "p8",
+  "page": "modules/p8/lectures/01-gotovnost-poley-k-no-till.md"
+}

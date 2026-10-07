@@ -1,0 +1,13 @@
+{
+  "title": "A2 · практикум · Классы землепользования",
+  "task": "К теме «Практикум: карта землепользования района СКО». Измените размер пикселя и сравните площади классов. Карта синтетическая.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nyy, xx = np.mgrid[0:60, 0:80]\nclasses = np.where(xx < 40, 1, 2)\nclasses[(xx - 55) ** 2 + (yy - 30) ** 2 < 120] = 3\nclasses[yy < 8] = 4\nnames = {1: 'пашня', 2: 'луг', 3: 'вода', 4: 'лесополоса'}\npixel_m = 10\nsummary = pd.DataFrame([{'класс': name, 'пиксели': int((classes == code).sum()), 'площадь_га': (classes == code).sum() * pixel_m ** 2 / 10000} for code, name in names.items()])\ndisplay(summary)\nfig, ax = plt.subplots(figsize=(6, 4))\nim = ax.imshow(classes, vmin=1, vmax=4, cmap='tab10')\nfig.colorbar(im, ax=ax, ticks=list(names), label='Код класса')\nax.set_title('Учебная карта классов')\nsummary.to_csv('landcover.csv', index=False)\n",
+  "check": "assert summary.пиксели.sum()==4800\nassert abs(summary.площадь_га.sum()-48)<1e-9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "a2-practice",
+  "recipe": "landcover",
+  "label": "A2 · практикум",
+  "module": "a2",
+  "page": "modules/a2/practicum/01-landuse-map-sko.md"
+}

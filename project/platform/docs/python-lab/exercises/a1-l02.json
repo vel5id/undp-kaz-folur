@@ -1,0 +1,13 @@
+{
+  "title": "A1.2 · GSD и длительность полёта",
+  "task": "К теме «Собираем БПЛА-комплекс под агрозадачу: носитель, сенсор, электроника и полётный план». Измените GSD, перекрытие и запас батареи. Сравните миссии для участка 200 га.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\narea_ha, width_m, speed, battery = (200, 1000, 8, 30)\nrows = []\nfor gsd_cm in [1, 2, 3, 4, 5, 7, 10]:\n    height = gsd_cm / 100 * 0.008 / 3e-06\n    spacing = 4000 * gsd_cm / 100 * 0.3\n    lines = int(np.ceil(width_m / spacing)) + 1\n    minutes = lines * (area_ha * 10000 / width_m) / speed / 60 + (lines - 1) * 0.3\n    rows.append([gsd_cm, height, spacing, lines, minutes, int(np.ceil(minutes / battery))])\nresult = pd.DataFrame(rows, columns=['GSD, см', 'высота, м', 'шаг, м', 'линии', 'время, мин', 'вылеты'])\ndisplay(result.round(2))\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.plot(result.iloc[:, 0], result.iloc[:, 4], 'o-')\nax.axhline(battery, color='r')\nax.set(xlabel='GSD, см/px', ylabel='Время, мин', title='Учебная миссия')\nprint('Геометрическая оценка: ветер, резервы и ограничения полёта учитываются отдельно.')\n",
+  "check": "assert result['время, мин'].is_monotonic_decreasing\nassert abs(result.iloc[0,1]-26.6666667)<1e-5",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a1-l02",
+  "recipe": "flight",
+  "label": "A1.2",
+  "module": "a1",
+  "page": "modules/a1/lectures/02-bpla-kompleks-i-polyotnyy-plan.md"
+}

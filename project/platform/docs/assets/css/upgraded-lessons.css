@@ -1,0 +1,16 @@
+/* Word source figures and tables; original media bytes remain unchanged. */
+.md-typeset .upgraded-figure{margin:1.6rem 0 .65rem;width:100%}
+.upgraded-figure>img{display:block;max-width:100%;height:auto;margin:auto;border-radius:.4rem}
+.upgraded-image-crop{position:relative;overflow:hidden;width:100%;background:white;border-radius:.4rem}
+.upgraded-image-crop img{position:absolute;display:block;max-height:none!important}
+.upgraded-caption{font-size:.88em;line-height:1.55;color:var(--md-default-fg-color--light);margin:.5rem 0 1.5rem!important}
+.upgraded-table{overflow-x:auto;margin:1.2rem 0;max-width:100%}
+.upgraded-table table{min-width:100%;border-collapse:collapse;font-size:.88em}
+.upgraded-table th,.upgraded-table td{padding:.7rem .8rem;border:1px solid var(--md-default-fg-color--lightest);vertical-align:top;min-width:6rem}
+.upgraded-table th{background:var(--md-default-fg-color--lightest);font-weight:600}
+.upgraded-list-item{padding-left:1.15rem;position:relative}
+.upgraded-list-item:before{content:"•";position:absolute;left:.25rem;color:var(--md-primary-fg-color)}
+.md-typeset h2,.md-typeset h3{overflow-wrap:anywhere}
+@media(max-width:700px){.upgraded-caption{font-size:.8em}.upgraded-table{font-size:.88em}}
+
+@media print{.md-typeset .upgraded-figure{break-inside:avoid;page-break-inside:avoid}}

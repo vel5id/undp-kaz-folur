@@ -1,0 +1,15 @@
+{
+  "title": "P2.1 · Проекции и геометрия",
+  "task": "К теме «Устанавливаем QGIS и собираем первый проект хозяйства». Сравните площадь учебного полигона в UTM и Web Mercator. Проверьте CRS и валидность до расчёта.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport geopandas as gpd\nfrom shapely.geometry import Polygon\npolygon = Polygon([(63.5, 53.2), (63.51, 53.2), (63.51, 53.21), (63.5, 53.21)])\nfields = gpd.GeoDataFrame({'name': ['Учебный полигон']}, geometry=[polygon], crs='EPSG:4326')\nareas = pd.DataFrame([[crs, fields.to_crs(crs).area.iloc[0] / 10000] for crs in ['EPSG:32641', 'EPSG:3857']], columns=['CRS', 'площадь_га'])\ndisplay(areas)\nprint('Квадратные градусы:', polygon.area, '— не гектары.')\nfig, ax = plt.subplots(figsize=(5, 4))\nfields.to_crs('EPSG:32641').plot(ax=ax, facecolor='#8fb693', edgecolor='#245a40')\nax.set(xlabel='Easting, м', ylabel='Northing, м', title='Учебный полигон')\nfields.to_file('field.geojson', driver='GeoJSON')\n",
+  "check": "assert fields.is_valid.all()\nassert areas.iloc[1,1]>areas.iloc[0,1]\nassert os.path.exists('field.geojson')",
+  "packages": [
+    "geopandas"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p2-l01",
+  "recipe": "geometry",
+  "label": "P2.1",
+  "module": "p2",
+  "page": "modules/p2/lectures/01-qgis-first-project.md"
+}

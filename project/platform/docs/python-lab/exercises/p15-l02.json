@@ -1,0 +1,13 @@
+{
+  "title": "P15.2 · Прослеживаемость партий",
+  "task": "К теме «Подтверждаем устойчивость документами: трассируемость, маркировка, честные «зелёные» заявления». Найдите партии без подтверждающего документа. Добавьте документ и повторите аудит.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nlots = pd.DataFrame({'партия': ['L01', 'L02', 'L03'], 'поле': ['А', 'Б', 'А'], 'сбор_т': [120, 90, 80], 'документ': ['DOC1', '', 'DOC3']})\ndocs = pd.DataFrame({'документ': ['DOC1', 'DOC3'], 'тип': ['журнал', 'акт']})\naudit = lots.merge(docs, on='документ', how='left')\naudit['подтверждено'] = audit.тип.notna()\ndisplay(audit)\nprint('Без подтверждения:', audit.loc[~audit.подтверждено, 'партия'].tolist())\naudit.to_csv('traceability.csv', index=False)\n",
+  "check": "assert audit.loc[~audit.подтверждено,'партия'].tolist()==['L02']\nassert audit.сбор_т.sum()==290",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p15-l02",
+  "recipe": "traceability",
+  "label": "P15.2",
+  "module": "p15",
+  "page": "modules/p15/lectures/02-trassiruemost-i-markirovka.md"
+}

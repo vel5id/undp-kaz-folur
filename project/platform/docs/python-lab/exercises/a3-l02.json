@@ -1,0 +1,15 @@
+{
+  "title": "A3.2 · Разбиение без утечки",
+  "task": "К теме «Готовим датасет без утечек: от снимка Sentinel-2 к обучающей выборке». Сравните разбиение пикселей и целых полей; посчитайте пересечение полей.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split, GroupShuffleSplit\nrng = np.random.default_rng(4)\ndata = pd.DataFrame({'field_id': np.repeat(np.arange(12), 30), 'ndvi': rng.uniform(0.2, 0.8, 360)})\ndata['class'] = data.field_id % 3\ntr, te = train_test_split(np.arange(len(data)), test_size=0.25, random_state=42, stratify=data['class'])\noverlap = set(data.iloc[tr].field_id) & set(data.iloc[te].field_id)\ntr, te = next(GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=42).split(data, groups=data.field_id))\ntrain = data.iloc[tr]\ntest = data.iloc[te]\ngroup_overlap = set(train.field_id) & set(test.field_id)\ncomparison = pd.DataFrame({'разбиение': ['пиксели', 'целые поля'], 'общих полей': [len(overlap), len(group_overlap)]})\ndisplay(comparison)\ndisplay(pd.crosstab(data['class'], np.where(data.index.isin(te), 'test', 'train')))\nfig, ax = plt.subplots(figsize=(6, 3))\nax.bar(comparison.разбиение, comparison['общих полей'])\nax.set(ylabel='Общих полей', title='Контроль утечки')\ntrain.to_csv('train.csv', index=False)\ntest.to_csv('test.csv', index=False)\n",
+  "check": "assert overlap and not group_overlap\nassert len(train)+len(test)==360",
+  "packages": [
+    "scikit-learn"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a3-l02",
+  "recipe": "split",
+  "label": "A3.2",
+  "module": "a3",
+  "page": "modules/a3/lectures/02-dataset-preparation.md"
+}

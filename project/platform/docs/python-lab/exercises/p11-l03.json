@@ -1,0 +1,13 @@
+{
+  "title": "P11.3 · Объём по сетке",
+  "task": "К теме «Считаем воду и принимаем решения: объём, заиление и спутниковые архивы». Измените размер клетки. Считайте площадь и объём только по валидным ячейкам.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nyy, xx = np.mgrid[-1:1:60j, -1:1:80j]\nr2 = xx ** 2 + yy ** 2\ndepth = np.where(r2 <= 1, 6 * (1 - r2), np.nan)\npixel_m = 20\nvalid = np.isfinite(depth)\narea = valid.sum() * pixel_m ** 2\nvolume = np.nansum(depth) * pixel_m ** 2\nsummary = pd.DataFrame({'показатель': ['площадь, га', 'объём, м³', 'средняя глубина, м'], 'значение': [area / 10000, volume, np.nanmean(depth)]})\ndisplay(summary)\nfig, ax = plt.subplots(figsize=(6, 4))\nim = ax.imshow(depth, cmap='viridis_r')\nfig.colorbar(im, ax=ax, label='Глубина, м')\nax.set_title('Синтетическая чаша')\nprint('Учебный метод призм. Точность реального объёма зависит от промеров и интерполяции.')\n",
+  "check": "assert volume>0\nassert abs(volume/area-np.nanmean(depth))<1e-9\nassert np.isnan(depth[0,0])",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p11-l03",
+  "recipe": "volume",
+  "label": "P11.3",
+  "module": "p11",
+  "page": "modules/p11/lectures/03-obyom-zailenie-resheniya.md"
+}

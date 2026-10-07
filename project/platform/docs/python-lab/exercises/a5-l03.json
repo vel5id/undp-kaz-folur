@@ -1,0 +1,13 @@
+{
+  "title": "A5.3 · Покрытие почвы и практики",
+  "task": "К теме «Проектируем почвосберегающую систему земледелия». Сравните модельные системы по покрытию. Индекс открытой почвы не заменяет физическую модель эрозии.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\npractices = pd.DataFrame({'вариант': ['отвальная', 'минимальная', 'прямой посев'], 'покрытие_проц': [10, 40, 70], 'затраты_условн': [100, 90, 85]})\npractices['открытая_почва'] = 1 - practices.покрытие_проц / 100\ndisplay(practices)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(practices.вариант, practices.открытая_почва)\nax.set(ylabel='Доля открытой почвы', title='Условное сравнение')\nfig.tight_layout()\n",
+  "check": "assert np.allclose(practices.открытая_почва,[.9,.6,.3])",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a5-l03",
+  "recipe": "conservation",
+  "label": "A5.3",
+  "module": "a5",
+  "page": "modules/a5/lectures/03-pochvosberegayushchee-zemledelie.md"
+}

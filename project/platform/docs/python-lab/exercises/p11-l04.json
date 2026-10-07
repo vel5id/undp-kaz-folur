@@ -1,0 +1,15 @@
+{
+  "title": "P11.4 · Разрежение и ошибка",
+  "task": "К теме «Шаг галса и цена точности: эксперимент на 519 192 реальных промерах». Измените шаг отбора и сравните MAE на независимых точках. Поверхность искусственная, закрытые промеры не используются.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.interpolate import RegularGridInterpolator\naxis = np.linspace(0, 1000, 101)\nxx, yy = np.meshgrid(axis, axis, indexing='ij')\nsurface = 2 + 5 * np.exp(-((xx - 500) ** 2 + (yy - 500) ** 2) / 100000) + 0.2 * np.sin(xx / 45)\nrng = np.random.default_rng(6)\ntarget = rng.uniform(0, 1000, (400, 2))\ntruth = 2 + 5 * np.exp(-((target[:, 0] - 500) ** 2 + (target[:, 1] - 500) ** 2) / 100000) + 0.2 * np.sin(target[:, 0] / 45)\nrows = []\nfor skip in [1, 2, 5, 10, 20]:\n    selected = axis[::skip]\n    model = RegularGridInterpolator((selected, selected), surface[::skip, ::skip])\n    pred = model(target)\n    rows.append([10 * skip, len(selected) ** 2, np.abs(pred - truth).mean()])\nmetrics = pd.DataFrame(rows, columns=['шаг_м', 'точек', 'MAE_м'])\ndisplay(metrics)\nfig, ax = plt.subplots(figsize=(6, 3.5))\nax.plot(metrics.шаг_м, metrics.MAE_м, 'o-')\nax.set(xlabel='Шаг, м', ylabel='MAE, м', title='Разрежение модельной поверхности')\n",
+  "check": "assert metrics.MAE_м.iloc[-1]>metrics.MAE_м.iloc[0]\nassert metrics.точек.is_monotonic_decreasing",
+  "packages": [
+    "scipy"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p11-l04",
+  "recipe": "transect-error",
+  "label": "P11.4",
+  "module": "p11",
+  "page": "modules/p11/lectures/04-shag-galsa-i-cena-tochnosti.md"
+}

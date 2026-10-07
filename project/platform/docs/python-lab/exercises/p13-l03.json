@@ -1,0 +1,13 @@
+{
+  "title": "P13.3 · Журнал рисков",
+  "task": "К теме «Соседство с ООПТ и ВБУ: собираем план сохранения биоразнообразия». Дополните меры и ответственных. Баллы предназначены для учебной приоритизации, не официального решения.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nrisks = pd.DataFrame({'риск': ['сток в водоём', 'утрата местообитаний', 'доступ к пастбищу'], 'вероятность': [3, 2, 2], 'последствие': [3, 3, 2], 'мера': ['буфер', 'обход участка', ''], 'ответственный': ['агроном', '', 'координатор']})\nrisks['приоритет'] = risks.вероятность * risks.последствие\nrisks['неполно'] = risks.мера.eq('') | risks.ответственный.eq('')\ndisplay(risks)\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.barh(risks.риск, risks.приоритет)\nax.set(xlabel='Учебный балл', title='Приоритет проверки')\nfig.tight_layout()\nrisks.to_csv('risk-register.csv', index=False)\n",
+  "check": "assert risks.неполно.sum()==2\nassert risks.приоритет.max()==9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p13-l03",
+  "recipe": "risk",
+  "label": "P13.3",
+  "module": "p13",
+  "page": "modules/p13/lectures/03-oopt-vbu-plan-sohraneniya.md"
+}

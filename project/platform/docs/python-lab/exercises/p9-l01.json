@@ -1,0 +1,13 @@
+{
+  "title": "P9.1 · Ротационная таблица",
+  "task": "К теме «Проектируем схему севооборота под влагообеспеченность своей зоны». Измените культуру и найдите повтор. Доли культур считайте по площадям, а не по количеству полей.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nrotation = pd.DataFrame({'поле': ['А', 'Б', 'В'], 'площадь_га': [200, 200, 200], '2025': ['зерновые', 'бобовые', 'масличные'], '2026': ['бобовые', 'масличные', 'зерновые'], '2027': ['масличные', 'зерновые', 'бобовые']})\nrepeats = []\nfor _, row in rotation.iterrows():\n    for left, right in [('2025', '2026'), ('2026', '2027')]:\n        if row[left] == row[right]:\n            repeats.append([row['поле'], left, right])\nshares = rotation.groupby('2025').площадь_га.sum() / rotation.площадь_га.sum()\nshannon = float(-(shares * np.log(shares)).sum())\ndisplay(rotation)\ndisplay(shares.rename('доля'))\nprint('Повторы:', repeats, 'Шеннон:', round(shannon, 3))\nfig, ax = plt.subplots(figsize=(6, 3.5))\nshares.plot.bar(ax=ax)\nax.set(ylabel='Доля площади', title='Учебная схема 1:1:1')\nfig.tight_layout()\nrotation.to_csv('rotation.csv', index=False)\n",
+  "check": "assert not repeats\nassert abs(shares.sum()-1)<1e-9\nassert abs(shannon-np.log(3))<1e-9",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p9-l01",
+  "recipe": "rotation",
+  "label": "P9.1",
+  "module": "p9",
+  "page": "modules/p9/lectures/01-shema-pod-vlagu.md"
+}

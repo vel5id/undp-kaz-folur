@@ -1,0 +1,13 @@
+{
+  "title": "P4 · практикум · Чистка промеров и карта точек",
+  "task": "К теме «Практикум: первый рабочий скрипт — паспорт водоёма из 80 000 промеров». Загрузите набор A с Zenodo как points.csv или запустите синтетический пример. Измените границы контроля и сравните протокол.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport hashlib, json\nif os.path.exists('points.csv'):\n    raw = pd.read_csv('points.csv')\n    print('Загружено', len(raw), 'строк')\nelse:\n    rng = np.random.default_rng(42)\n    x = rng.uniform(0, 1000, 250)\n    y = rng.uniform(0, 800, 250)\n    raw = pd.DataFrame({'x_m': x, 'y_m': y, 'depth_m': 2 + 5 * np.exp(-((x - 500) ** 2 + (y - 400) ** 2) / 150000)})\n    raw.loc[0, 'depth_m'] = np.nan\n    raw.loc[1, 'depth_m'] = -2\n    raw.loc[2, 'depth_m'] = 30\n    raw = pd.concat([raw, raw.iloc[[10]]], ignore_index=True)\n    print('251 синтетическая запись: пропуск, выбросы, дубликат.')\nrequired = ['x_m', 'y_m', 'depth_m']\nassert set(required) <= set(raw.columns), 'Нужны x_m, y_m, depth_m'\ndedup = raw.drop_duplicates()\nclean = dedup.dropna(subset=required)\nclean = clean[clean.depth_m.between(0, 20)].copy()\nassert len(clean) > 0\nreport = pd.DataFrame({'этап': ['исходные', 'без дубликатов', 'после контроля'], 'строк': [len(raw), len(dedup), len(clean)]})\ndisplay(report)\ndisplay(clean.head(12))\ndisplay(clean[required].describe())\nfig, axs = plt.subplots(1, 2, figsize=(9, 4))\naxs[0].hist(clean.depth_m, bins=20)\naxs[0].set(xlabel='Глубина, м', ylabel='Промеры')\nsc = axs[1].scatter(clean.x_m, clean.y_m, c=clean.depth_m, s=10)\naxs[1].set_aspect('equal')\naxs[1].set(xlabel='x, м', ylabel='y, м', title='Локальные координаты')\nfig.colorbar(sc, ax=axs[1], label='Глубина, м')\nfig.tight_layout()\nclean.to_csv('clean.csv', index=False)\nmeta = {'rows': len(clean), 'sha256': hashlib.sha256(open('clean.csv', 'rb').read()).hexdigest(), 'coordinates': 'локальные, не накладывать на реальную карту'}\njson.dump(meta, open('metadata.json', 'w'), ensure_ascii=False, indent=2)\n",
+  "check": "assert len(clean)==247\nassert clean.depth_m.between(0,20).all()\nassert not clean[required].isna().any().any()",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "p4-practice",
+  "recipe": "audit",
+  "label": "P4 · практикум",
+  "module": "p4",
+  "page": "modules/p4/practicum/01-pervyj-rabochij-skript.md"
+}

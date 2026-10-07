@@ -1,0 +1,13 @@
+{
+  "title": "A4.4 · Сезонный ряд водоёма",
+  "task": "К теме «Восстанавливаем годовой цикл водоёма: площадь, уровень, температура, хлорофилл». Сравните площадь, уровень и температуру. Таблица синтетическая; зависимость не переносится на другой водоём.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nseries = pd.DataFrame({'месяц': ['апр', 'май', 'июн', 'июл', 'авг', 'сен'], 'площадь_га': [110, 125, 119, 108, 96, 91], 'уровень_м': [3.1, 3.5, 3.35, 3, 2.7, 2.6], 'температура_C': [5, 12, 19, 24, 22, 14]})\ndisplay(series)\nfig, axs = plt.subplots(1, 2, figsize=(9, 3.5))\naxs[0].plot(series.месяц, series.площадь_га, 'o-')\naxs[0].set(ylabel='Площадь, га', title='Сезон')\naxs[1].scatter(series.уровень_м, series.площадь_га)\naxs[1].set(xlabel='Уровень, м', ylabel='Площадь, га')\nfig.tight_layout()\nseries.to_csv('season.csv', index=False)\npeak = series.loc[series.площадь_га.idxmax(), 'месяц']\nprint('Максимум:', peak)\n",
+  "check": "assert peak=='май'\nassert len(series)==6",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a4-l04",
+  "recipe": "seasonal",
+  "label": "A4.4",
+  "module": "a4",
+  "page": "modules/a4/lectures/04-godovoj-cikl-vodoyoma.md"
+}

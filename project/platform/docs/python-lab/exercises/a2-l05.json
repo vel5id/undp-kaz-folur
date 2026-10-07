@@ -1,0 +1,13 @@
+{
+  "title": "A2.5 · Ёмкость пастбища",
+  "task": "К теме «Картируем пастбища и проектируем пастбищеоборот: инвентаризация, ёмкость, ротация выпаса». Измените продуктивность, допустимое изъятие и период выпаса. Параметры учебные, не нормы выпаса.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nareas = pd.DataFrame({'участок': ['А', 'Б', 'В'], 'площадь_га': [120, 80, 100], 'масса_кг_га': [900, 700, 1100], 'изъятие': [0.35, 0.3, 0.4]})\ndays, need_kg_day = (90, 10)\nareas['доступно_кг'] = areas.площадь_га * areas.масса_кг_га * areas.изъятие\nareas['условных_голов'] = np.floor(areas.доступно_кг / (days * need_kg_day)).astype(int)\ndisplay(areas)\nfig, ax = plt.subplots(figsize=(6, 3.5))\nax.bar(areas.участок, areas.условных_голов)\nax.set(xlabel='Участок', ylabel='Условные головы', title='Учебная ёмкость')\n",
+  "check": "assert areas.условных_голов.tolist()==[42,18,48]",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a2-l05",
+  "recipe": "pasture",
+  "label": "A2.5",
+  "module": "a2",
+  "page": "modules/a2/lectures/05-pastbischa-i-pastbischeoborot.md"
+}

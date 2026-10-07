@@ -249,3 +249,7 @@ html { scroll-behavior: smooth; }
 [data-md-color-scheme="slate"] .folur-step--done {
   background: #2E7D52; border-color: #2E7D52; color: #fff;
 }
+
+/* Empty editorial labels retain their anchors without occupying a lesson screen. */
+.folur-empty-section-label { display: none !important; }
+@media print { iframe.folur-python-editor { display: none !important; } }

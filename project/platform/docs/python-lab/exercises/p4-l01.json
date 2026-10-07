@@ -1,0 +1,13 @@
+{
+  "title": "P4.1 · Первый Python",
+  "task": "К теме «Запускаем Python без установки: первый ноутбук в Google Colab». Измените список глубин, вычислите долю мелководных измерений и сохраните CSV.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport statistics\nvalues = [0.27, 2.87, 3.4, 16.1, 0.0]\nthreshold = 2\nshallow = [x for x in values if x < threshold]\nshare = len(shallow) / len(values)\nprint('Измерений:', len(values), 'медиана:', statistics.median(values), 'мелководных:', f'{share:.0%}')\ntable = pd.DataFrame({'глубина_м': values})\ndisplay(table)\ntable.to_csv('measurements.csv', index=False)\nfig, ax = plt.subplots(figsize=(6, 3))\nax.bar(range(1, len(values) + 1), values)\nax.axhline(threshold, color='r')\nax.set(xlabel='Измерение', ylabel='Глубина, м', title='Учебные измерения')\n",
+  "check": "assert share==.4\nassert statistics.median(values)==2.87",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p4-l01",
+  "recipe": "basics",
+  "label": "P4.1",
+  "module": "p4",
+  "page": "modules/p4/lectures/01-zapuskaem-python-v-colab.md"
+}

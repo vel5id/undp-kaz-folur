@@ -1,0 +1,13 @@
+{
+  "title": "P14.2 · Углеродный потенциал",
+  "task": "К теме «Разбираемся в зелёных финансах: зелёные кредиты, углеродные платежи и агроэкологические инструменты». Измените площади и коэффициенты. Сравните потенциальный и подтверждённый объём; это не единицы к продаже.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\npractices = pd.DataFrame({'практика': ['no-till', 'покровные культуры', 'залужение'], 'площадь_га': [500, 200, 80], 'tC_га_год': [0.3, 0.45, 0.85]})\npractices['tCO2_год'] = practices.площадь_га * practices.tC_га_год * 44 / 12\ntotal = practices.tCO2_год.sum()\ndisplay(practices)\nshares = np.array([1, 0.8, 0.6, 0.4])\nscenarios = pd.DataFrame({'подтверждённая_доля': shares, 'объём_tCO2': total * shares})\ndisplay(scenarios)\nfig, ax = plt.subplots(figsize=(6, 3.5))\nax.plot(shares, total * shares, 'o-')\nax.set(xlabel='Подтверждённая доля', ylabel='т CO₂/год', title='Учебная чувствительность')\nprint('Коэффициенты условные. Без методики, базовой линии, дополнительности и верификации это не зачтённое поглощение.')\n",
+  "check": "assert abs(total-1129.3333333333)<1e-6\nassert scenarios.объём_tCO2.is_monotonic_decreasing",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p14-l02",
+  "recipe": "carbon",
+  "label": "P14.2",
+  "module": "p14",
+  "page": "modules/p14/lectures/02-zelenye-finansy-i-uglerodnye-platezhi.md"
+}

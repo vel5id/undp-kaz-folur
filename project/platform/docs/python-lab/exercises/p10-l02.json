@@ -1,0 +1,13 @@
+{
+  "title": "P10.2 · План работ и сроки",
+  "task": "К теме «Проходим путь сертификации: переходный период, документы, инспекция». Измените длительность и стоимость работ. Сроки и затраты в упражнении условные.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nPLAN_ITEMS = ['Инвентаризация', 'План изменений', 'Подготовка записей', 'Проверка полноты']\nplan = pd.DataFrame({'работа': PLAN_ITEMS, 'начало_месяц': [0, 2, 5, 8], 'длительность_месяц': [2, 3, 3, 4], 'затраты_млн': [1, 3, 2, 1]})\nplan['завершение'] = plan.начало_месяц + plan.длительность_месяц\ndisplay(plan)\nfig, ax = plt.subplots(figsize=(8, 3.5))\nax.barh(plan.работа, plan.длительность_месяц, left=plan.начало_месяц)\nax.invert_yaxis()\nax.set(xlabel='Месяц', title='Учебный план')\nfig.tight_layout()\nprint('Всего:', plan.затраты_млн.sum(), 'млн тг')\nplan.to_csv('roadmap.csv', index=False)\n",
+  "check": "assert plan.завершение.max()==12\nassert plan.затраты_млн.sum()==7",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p10-l02",
+  "recipe": "roadmap",
+  "label": "P10.2",
+  "module": "p10",
+  "page": "modules/p10/lectures/02-put-sertifikacii.md"
+}

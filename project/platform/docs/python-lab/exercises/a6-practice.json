@@ -1,0 +1,13 @@
+{
+  "title": "A6 · практикум · Очередность восстановления",
+  "task": "К теме «Практикум: проект плана восстановления деградированного участка». Измените бюджет и сравните меры по пользе и затратам. Простой рейтинг не заменяет экологическую экспертизу.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nmeasures = pd.DataFrame({'мера': ['залужение', 'лесополоса', 'буфер', 'ремонт водопоя'], 'стоимость_млн': [4, 6, 2, 3], 'польза_балл': [7, 8, 5, 4]})\nbudget = 10\nmeasures['балл_на_млн'] = measures.польза_балл / measures.стоимость_млн\nordered = measures.sort_values('балл_на_млн', ascending=False).copy()\nremaining = budget\nchosen = []\nfor _, r in ordered.iterrows():\n    take = r.стоимость_млн <= remaining\n    chosen.append(take)\n    if take:\n        remaining -= r.стоимость_млн\nordered['выбрано'] = chosen\ndisplay(ordered)\nprint('Остаток:', remaining, 'млн тг')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(ordered.мера, ordered.балл_на_млн)\nax.set(ylabel='Учебные баллы / млн', title='Простой рейтинг')\nfig.tight_layout()\nordered.to_csv('restoration.csv', index=False)\n",
+  "check": "assert ordered.loc[ordered.выбрано,'стоимость_млн'].sum()<=budget\nassert remaining>=0",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы.  Это вычислительная часть практикума; карты, обоснование решений и итоговый отчёт оформляются по заданию.",
+  "id": "a6-practice",
+  "recipe": "restoration",
+  "label": "A6 · практикум",
+  "module": "a6",
+  "page": "modules/a6/practicum/01-plan-vosstanovleniya-uchastka.md"
+}

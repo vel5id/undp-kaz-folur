@@ -1,0 +1,15 @@
+{
+  "title": "P4.3 · GeoTIFF и NoData",
+  "task": "К теме «Открываем растры и автоматизируем рутину: rasterio и пакетная обработка». Создайте GeoTIFF и сравните статистики с маской и без. Свой растр: input.tif.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport rasterio\nfrom rasterio.transform import from_origin\nif not os.path.exists('input.tif'):\n    yy, xx = np.mgrid[-1:1:60j, -1:1:80j]\n    r2 = xx ** 2 + yy ** 2\n    arr = np.where(r2 <= 1, 6 * (1 - r2), -9999).astype('float32')\n    with rasterio.open('synthetic.tif', 'w', driver='GTiff', width=80, height=60, count=1, dtype='float32', transform=from_origin(0, 1200, 20, 20), nodata=-9999) as dst:\n        dst.write(arr, 1)\n    filename = 'synthetic.tif'\n    print('Синтетический растр в локальной сетке, без реальной геопривязки.')\nelse:\n    filename = 'input.tif'\nwith rasterio.open(filename) as src:\n    raw = src.read(1)\n    masked = src.read(1, masked=True)\n    cell_area = abs(src.transform.a * src.transform.e - src.transform.b * src.transform.d)\n    print('CRS:', src.crs, 'NoData:', src.nodata, 'размер:', src.shape)\nsummary = pd.DataFrame({'статистика': ['среднее без маски', 'среднее с маской', 'валидных ячеек'], 'значение': [raw.mean(), masked.mean(), masked.count()]})\ndisplay(summary)\nfig, ax = plt.subplots(figsize=(6, 4))\nim = ax.imshow(masked, cmap='viridis_r')\nfig.colorbar(im, ax=ax, label='Значение')\nax.set_title('GeoTIFF с NoData')\nsummary.to_csv('raster-statistics.csv', index=False)\nprint('Площадь и объём считают после проверки единиц CRS и смысла значений.')\n",
+  "check": "assert masked.count()<raw.size\nassert raw.mean()<0 and masked.mean()>0\nassert cell_area==400",
+  "packages": [
+    "rasterio"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p4-l03",
+  "recipe": "raster",
+  "label": "P4.3",
+  "module": "p4",
+  "page": "modules/p4/lectures/03-rasterio-i-paketnaya-obrabotka.md"
+}

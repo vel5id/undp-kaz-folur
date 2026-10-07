@@ -1,0 +1,15 @@
+{
+  "title": "P13.2 · Связность местообитаний",
+  "task": "К теме «Проектируем экологический каркас: буферные зоны, лесополосы, водно-болотные полосы». Измените расстояние связи между участками. Учебный порог не заменяет сведения о конкретном виде.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy.spatial.distance import cdist\npoints = np.array([[100, 100], [250, 150], [480, 180], [800, 500], [820, 700]])\nthreshold = 300\ndistance = cdist(points, points)\nedges = [(i, j) for i in range(len(points)) for j in range(i + 1, len(points)) if distance[i, j] <= threshold]\ntable = pd.DataFrame([{'от': i + 1, 'до': j + 1, 'расстояние_м': distance[i, j]} for i, j in edges])\ndisplay(table)\nfig, ax = plt.subplots(figsize=(6, 4))\nax.scatter(*points.T, s=100)\nfor i, j in edges:\n    ax.plot(points[[i, j], 0], points[[i, j], 1], color='#66995d')\nfor i, (x, y) in enumerate(points):\n    ax.text(x + 10, y + 10, str(i + 1))\nax.set_aspect('equal')\nax.set(xlabel='x, м', ylabel='y, м', title='Учебная связность')\nprint('Связей:', len(edges))\n",
+  "check": "assert len(edges)==3\nassert all(distance[i,j]<=threshold for i,j in edges)",
+  "packages": [
+    "scipy"
+  ],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "p13-l02",
+  "recipe": "connectivity",
+  "label": "P13.2",
+  "module": "p13",
+  "page": "modules/p13/lectures/02-ekologicheskij-karkas-bufery-lesopolosy.md"
+}

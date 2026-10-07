@@ -1,0 +1,13 @@
+{
+  "title": "A4.1 · Водный баланс",
+  "task": "К теме «Сводим водный баланс степного водосбора: от снегозапасов до подземных вод». Измените приток, осадки и потери. Все слагаемые должны быть в одних единицах.",
+  "code": "# Учебный пример. По умолчанию данные синтетические.\nimport os\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nbalance = pd.DataFrame({'статья': ['приток', 'осадки', 'испарение', 'забор', 'отток'], 'тыс_м3': [120, 18, -35, -22, -40]})\nobserved = 38\ncalculated = balance.тыс_м3.sum()\nresidual = observed - calculated\ndisplay(balance)\nprint('Расчёт:', calculated, 'наблюдение:', observed, 'невязка:', residual, 'тыс. м³')\nfig, ax = plt.subplots(figsize=(7, 3.5))\nax.bar(balance.статья, balance.тыс_м3)\nax.axhline(0, color='k')\nax.set(ylabel='тыс. м³', title='Условный баланс')\nfig.tight_layout()\n",
+  "check": "assert calculated==41\nassert residual==-3",
+  "packages": [],
+  "scope": "По умолчанию все числовые примеры и изображения синтетические. Вы можете изменить код или загрузить свои файлы. ",
+  "id": "a4-l01",
+  "recipe": "waterbalance",
+  "label": "A4.1",
+  "module": "a4",
+  "page": "modules/a4/lectures/01-vodnyj-balans-stepnogo-vodosbora.md"
+}
