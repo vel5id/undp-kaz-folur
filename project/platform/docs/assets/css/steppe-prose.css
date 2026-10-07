@@ -249,7 +249,8 @@
   .md-content__inner { max-width: 50rem; margin-left: auto; margin-right: auto; }
 }
 
-/* ── Левое меню: «Скрыть» / «Раскрыть» ───────────────────────────────────── */
+/* ── Левое меню: «Скрыть» / «Показать». Колонка меню сохраняет ширину,
+   поэтому текст урока остаётся на прежнем месте. ─────────────────────────── */
 .folur-nav-toggle {
   display: none;
   font: 600 .64rem/1.2 "Inter", sans-serif; cursor: pointer;
@@ -260,14 +261,8 @@
 }
 .folur-nav-toggle:hover { color: var(--md-typeset-color); border-color: var(--folur-green-light); }
 @media screen and (min-width: 76.25em) {
-  .folur-nav-toggle--hide { display: inline-block; margin: 0 0 .7rem .6rem; }
-  body.folur-nav-collapsed .md-sidebar--primary { display: none; }
-  body.folur-nav-collapsed .folur-nav-toggle--show {
-    display: block; position: fixed; z-index: 3;
-    left: 0; top: 42vh;
-    border-left: 0; border-radius: 0 .4rem .4rem 0;
-    box-shadow: var(--sh1, 0 1px 2px rgba(19,64,41,.06));
-  }
+  .folur-nav-toggle { display: inline-block; margin: 0 0 .7rem .6rem; }
+  body.folur-nav-collapsed .md-sidebar--primary .md-sidebar__inner > :not(.folur-nav-toggle) { display: none; }
 }
 @media print { .folur-nav-toggle { display: none !important; } }
 
@@ -310,15 +305,6 @@
 .md-typeset p.folur-lab-data {
   margin-top: .9rem; padding: .7rem .9rem; font-size: .74rem;
   border: 1px dashed var(--folur-line); border-radius: var(--r-sm, .45rem);
-}
-
-/* ── Скрытое левое меню: текст остаётся по центру страницы ───────────────── */
-@media screen and (min-width: 76.25em) {
-  body.folur-nav-collapsed .md-main__inner > .md-content { margin-left: auto; margin-right: auto; }
-  body.folur-nav-collapsed .md-content > .md-content__inner,
-  body.folur-nav-collapsed .md-sidebar--primary ~ .md-content > .md-content__inner {
-    margin-left: auto !important; margin-right: auto !important;
-  }
 }
 
 /* ── Пояснение термина по наведению / фокусу ─────────────────────────────── */

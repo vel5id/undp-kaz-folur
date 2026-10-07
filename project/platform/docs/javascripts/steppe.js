@@ -1127,31 +1127,26 @@
     }
   }
 
-  /* ── Левое меню можно скрыть и вернуть (выбор запоминается в браузере).
-   * Только на широком экране: на узком меню и так живёт в выдвижной панели. ── */
+  /* ── Левое меню можно скрыть и показать (выбор запоминается в браузере).
+   * Колонка меню остаётся на месте, поэтому текст урока не сдвигается:
+   * исчезает только содержимое меню, а кнопка меняет подпись. Только на
+   * широком экране: на узком меню и так живёт в выдвижной панели. ───────── */
   var NAV_KEY = "folur-nav-collapsed";
   function sidebarToggle() {
     var inner = document.querySelector(".md-sidebar--primary .md-sidebar__inner");
-    if (!inner || document.querySelector(".folur-nav-toggle")) return;
-    function make(cls, text, label) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "folur-nav-toggle " + cls;
-      b.textContent = text;
-      b.setAttribute("aria-label", label);
-      b.addEventListener("click", function () { set(!document.body.classList.contains("folur-nav-collapsed")); });
-      return b;
-    }
-    var hide = make("folur-nav-toggle--hide", "‹ Скрыть", "Скрыть меню модуля");
-    var show = make("folur-nav-toggle--show", "Раскрыть ›", "Раскрыть меню модуля");
+    if (!inner || inner.querySelector(".folur-nav-toggle")) return;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "folur-nav-toggle";
     function set(collapsed) {
       document.body.classList.toggle("folur-nav-collapsed", collapsed);
-      hide.setAttribute("aria-expanded", String(!collapsed));
-      show.setAttribute("aria-expanded", String(!collapsed));
+      btn.textContent = collapsed ? "Показать ›" : "‹ Скрыть";
+      btn.setAttribute("aria-label", collapsed ? "Показать меню модуля" : "Скрыть меню модуля");
+      btn.setAttribute("aria-expanded", String(!collapsed));
       try { localStorage.setItem(NAV_KEY, collapsed ? "1" : "0"); } catch (e) {}
     }
-    inner.insertBefore(hide, inner.firstChild);
-    document.body.appendChild(show);
+    btn.addEventListener("click", function () { set(!document.body.classList.contains("folur-nav-collapsed")); });
+    inner.insertBefore(btn, inner.firstChild);
     var saved = null;
     try { saved = localStorage.getItem(NAV_KEY); } catch (e) {}
     set(saved === "1");

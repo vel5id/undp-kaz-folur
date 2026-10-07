@@ -74,7 +74,7 @@ extra_javascript:
   - javascripts/quiz-engine.js
   - javascripts/verify.js
   - javascripts/glossary.js?v=20261008
-  - javascripts/steppe.js?v=20261008-terms
+  - javascripts/steppe.js?v=20261008-nav2
   - javascripts/python-lab.js?v=20260928-all
 
 extra_css:
@@ -84,7 +84,7 @@ extra_css:
   - assets/css/steppe-course.css?v=20260928-merged   # лендинг курса + степ-бар уроков
   - stylesheets/quiz-engine.css
   - assets/css/upgraded-lessons.css
-  - assets/css/steppe-prose.css?v=20261008-terms   # читаемость урока: меню, ссылки, код, выноски, замок шагов
+  - assets/css/steppe-prose.css?v=20261008-nav2   # читаемость урока: меню, ссылки, код, выноски, замок шагов
 
 nav:
   - Главная: index.md
